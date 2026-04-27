@@ -1,0 +1,160 @@
+---
+---
+
+<section class="contact" id="contact">
+	<h2 class="heading">Contact <span>Me</span></h2>
+	<div class="contact-container">
+		<div class="contact-info">
+			<div class="info-box">
+				<div class="info-icon">
+					<i class="fa-solid fa-envelope"></i>
+				</div>
+				<div>
+					<h3>Email</h3>
+					<p>sabidoangel.uc@gmail.com</p>
+				</div>
+			</div>
+			<div class="info-box">
+				<div class="info-icon">
+					<i class="fa-solid fa-phone"></i>
+				</div>
+				<div>
+					<h3>Phone</h3>
+					<p>+63 954 291 7099</p>
+				</div>
+			</div>
+			<div class="info-box">
+				<div class="info-icon">
+					<i class="fa-solid fa-location-dot"></i>
+				</div>
+				<div>
+					<h3>Location</h3>
+					<p>Lapu-Lapu City, Cebu 6015, Philippines</p>
+				</div>
+			</div>
+		</div>
+		<form action="#" class="contact-form">
+			<div class="form-group">
+				<input type="text" placeholder="Your Name" required />
+				<i class="fa-solid fa-user"></i>
+			</div>
+			<div class="form-group">
+				<input type="email" placeholder="Your Email" required />
+				<i class="fa-solid fa-envelope"></i>
+			</div>
+			<div class="form-group">
+				<input type="text" placeholder="Subject" required />
+				<i class="fa-solid fa-pen"></i>
+			</div>
+			<div class="form-group">
+				<textarea placeholder="Your Message" required></textarea>
+				<i class="fa-solid fa-message"></i>
+			</div>
+			<button type="submit" class="btn">
+				<span>Send Message</span>
+				<i class="fa-solid fa-paper-plane"></i>
+			</button>
+		</form>
+	</div>
+</section>
+
+<style>
+	.contact {
+		background: var(--white);
+	}
+
+	.contact-container {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+		gap: 3rem;
+		max-width: 1200px;
+		margin: 0 auto;
+	}
+
+	.contact-info {
+		display: flex;
+		flex-direction: column;
+		gap: 1.5rem;
+	}
+
+	.info-box {
+		background: var(--light);
+		padding: 1.5rem;
+		border-radius: 10px;
+		display: flex;
+		align-items: center;
+		gap: 1rem;
+	}
+
+	.info-icon {
+		width: 50px;
+		height: 50px;
+		background: var(--gradient);
+		border-radius: 50%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		color: var(--white);
+		font-size: 1.2rem;
+		flex-shrink: 0;
+	}
+
+	.info-box h3 {
+		font-size: 1.1rem;
+		color: var(--dark);
+		margin-bottom: 0.25rem;
+	}
+
+	.info-box p {
+		color: #666;
+		font-size: 0.95rem;
+	}
+
+	.contact-form {
+		display: flex;
+		flex-direction: column;
+		gap: 1.5rem;
+	}
+
+	.form-group {
+		position: relative;
+	}
+
+	.form-group input,
+	.form-group textarea {
+		width: 100%;
+		padding: 1rem 1rem 1rem 3rem;
+		border: 2px solid var(--secondary);
+		border-radius: 10px;
+		font-size: 1rem;
+		font-family: inherit;
+		transition: border-color 0.3s ease;
+		background: var(--light);
+	}
+
+	.form-group input:focus,
+	.form-group textarea:focus {
+		outline: none;
+		border-color: var(--primary);
+	}
+
+	.form-group textarea {
+		min-height: 150px;
+		resize: vertical;
+	}
+
+	.form-group i {
+		position: absolute;
+		left: 1rem;
+		top: 1rem;
+		color: var(--primary);
+	}
+
+	.contact-form .btn {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 0.5rem;
+		width: fit-content;
+	}
+</style>

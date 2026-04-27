@@ -1,0 +1,189 @@
+---
+---
+
+<section class="education" id="education">
+	<h2 class="heading">Educational <span>Background</span></h2>
+	<div class="timeline">
+		<div class="timeline-item">
+			<div class="timeline-dot"></div>
+			<div class="timeline-date">Batch 2026</div>
+			<div class="timeline-content">
+				<div class="timeline-connector"></div>
+				<h3>Bachelor of Science in Information Technology</h3>
+				<h4>University of Cebu - Lapu-Lapu and Mandaue</h4>
+				<p>Dean's Lister from 1st Year to 3rd Year</p>
+				<div class="achievement-badge">
+					<i class="fa-solid fa-award"></i>
+					<span>Dean's Lister</span>
+				</div>
+				<div class="achievement-badge">
+					<i class="fa-solid fa-graduation-cap"></i>
+					<span>Academic Scholar</span>
+				</div>
+			</div>
+		</div>
+		<div class="timeline-item">
+			<div class="timeline-dot"></div>
+			<div class="timeline-date">Batch 2022</div>
+			<div class="timeline-content">
+				<div class="timeline-connector"></div>
+				<h3>Senior High School</h3>
+				<h4>University of Cebu - Lapu-Lapu and Mandaue</h4>
+				<p>Science, Technology, Engineering, and Mathematics (STEM)</p>
+				<div class="achievement-badge">
+					<i class="fa-solid fa-medal"></i>
+					<span>With Honors</span>
+				</div>
+				<div class="achievement-badge">
+					<i class="fa-solid fa-graduation-cap"></i>
+					<span>Academic Scholar</span>
+				</div>
+			</div>
+		</div>
+		<div class="timeline-item">
+			<div class="timeline-dot"></div>
+			<div class="timeline-date">Class of 2020</div>
+			<div class="timeline-content">
+				<h3>Junior High School</h3>
+				<h4>Babag National High School</h4>
+				<p>Graduated with Honors</p>
+				<div class="achievement-badge">
+					<i class="fa-solid fa-medal"></i>
+					<span>With Honors</span>
+				</div>
+			</div>
+		</div>
+		<div class="timeline-item">
+			<div class="timeline-dot"></div>
+			<div class="timeline-date">Class of 2016</div>
+			<div class="timeline-content">
+				<h3>Elementary School</h3>
+				<h4>Lapu-Lapu City Central Elementary School</h4>
+				<p>Graduated with Honors</p>
+				<div class="achievement-badge">
+					<i class="fa-solid fa-medal"></i>
+					<span>With Honors</span>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<style>
+	.education {
+		background: var(--white);
+	}
+
+	.timeline {
+		position: relative;
+		max-width: 1000px;
+		margin: 0 auto;
+		padding: 2rem 0;
+	}
+
+	.timeline::before {
+		content: '';
+		position: absolute;
+		left: 50%;
+		transform: translateX(-50%);
+		width: 3px;
+		height: 100%;
+		background: var(--gradient);
+	}
+
+	.timeline-item {
+		position: relative;
+		margin-bottom: 3rem;
+		width: 50%;
+	}
+
+	.timeline-item:nth-child(odd) {
+		padding-right: 3rem;
+		text-align: right;
+	}
+
+	.timeline-item:nth-child(even) {
+		padding-left: 3rem;
+		margin-left: 50%;
+	}
+
+	.timeline-dot {
+		position: absolute;
+		top: 0;
+		width: 20px;
+		height: 20px;
+		background: var(--primary);
+		border-radius: 50%;
+		border: 4px solid var(--white);
+		box-shadow: 0 0 0 4px var(--secondary);
+	}
+
+	.timeline-item:nth-child(odd) .timeline-dot {
+		right: -10px;
+	}
+
+	.timeline-item:nth-child(even) .timeline-dot {
+		left: -10px;
+	}
+
+	.timeline-date {
+		font-size: 0.9rem;
+		color: var(--primary);
+		font-weight: 600;
+		margin-bottom: 0.5rem;
+	}
+
+	.timeline-content {
+		background: var(--light);
+		padding: 1.5rem;
+		border-radius: 10px;
+		box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+	}
+
+	.timeline-content h3 {
+		font-size: 1.3rem;
+		color: var(--dark);
+		margin-bottom: 0.5rem;
+	}
+
+	.timeline-content h4 {
+		font-size: 1rem;
+		color: var(--primary);
+		margin-bottom: 0.5rem;
+	}
+
+	.timeline-content p {
+		color: #666;
+		margin-bottom: 1rem;
+	}
+
+	.achievement-badge {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.5rem;
+		background: var(--white);
+		padding: 0.5rem 1rem;
+		border-radius: 20px;
+		margin: 0.25rem;
+		font-size: 0.85rem;
+		color: var(--primary);
+	}
+
+	@media (max-width: 768px) {
+		.timeline::before {
+			left: 20px;
+		}
+
+		.timeline-item {
+			width: 100%;
+			padding-left: 3rem !important;
+			padding-right: 0 !important;
+			text-align: left !important;
+			margin-left: 0 !important;
+		}
+
+		.timeline-dot {
+			left: 11px !important;
+		}
+	}
+</style>

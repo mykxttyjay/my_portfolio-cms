@@ -1,0 +1,48 @@
+---
+---
+
+<section class="skills" id="skills">
+	<h2 class="heading">My <span>Skills</span></h2>
+	<div class="skills-container">
+		<div class="skill-box">
+			<h3>Programming Languages</h3>
+			<p></p>
+		</div>
+		<div class="skill-box">
+			<h3>Web Technologies</h3>
+			<p></p>
+		</div>
+		<div class="skill-box">
+			<h3></h3>
+			<p></p>
+		</div>
+	</div>
+</section>
+
+<style>
+	.skills-container {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+		gap: 2rem;
+		max-width: 1000px;
+		margin: 0 auto;
+	}
+
+	.skill-box {
+		background: var(--white);
+		padding: 2rem;
+		border-radius: 15px;
+		box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+		transition: transform 0.3s ease;
+	}
+
+	.skill-box:hover {
+		transform: translateY(-10px);
+	}
+
+	.skill-box h3 {
+		font-size: 1.5rem;
+		color: var(--primary);
+		margin-bottom: 1rem;
+	}
+</style>

@@ -1,0 +1,107 @@
+---
+---
+
+<section class="projects" id="projects">
+	<h2 class="heading">My <span>Projects</span></h2>
+	<div class="projects-container">
+		<div class="project-card">
+			<div class="project-icon">
+				<i class="fa-solid fa-laptop-code"></i>
+			</div>
+			<h3>Portfolio Website</h3>
+			<p>A responsive personal portfolio website built with HTML, CSS, and JavaScript showcasing my skills and projects.</p>
+			<div class="project-tags">
+				<span class="tag">HTML</span>
+				<span class="tag">CSS</span>
+				<span class="tag">JavaScript</span>
+			</div>
+		</div>
+		<div class="project-card">
+			<div class="project-icon">
+				<i class="fa-solid fa-mobile-screen"></i>
+			</div>
+			<h3>Mobile App Design</h3>
+			<p>UI/UX design for a mobile application focused on user experience and modern design principles.</p>
+			<div class="project-tags">
+				<span class="tag">UI/UX</span>
+				<span class="tag">Figma</span>
+				<span class="tag">Design</span>
+			</div>
+		</div>
+		<div class="project-card">
+			<div class="project-icon">
+				<i class="fa-solid fa-code"></i>
+			</div>
+			<h3>Web Application</h3>
+			<p>Full-stack web application with user authentication, data visualization, and real-time updates.</p>
+			<div class="project-tags">
+				<span class="tag">React</span>
+				<span class="tag">Node.js</span>
+				<span class="tag">MongoDB</span>
+			</div>
+		</div>
+	</div>
+</section>
+
+<style>
+	.projects-container {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+		gap: 2rem;
+		max-width: 1200px;
+		margin: 0 auto;
+	}
+
+	.project-card {
+		background: var(--white);
+		padding: 2rem;
+		border-radius: 15px;
+		box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+		transition: transform 0.3s ease, box-shadow 0.3s ease;
+	}
+
+	.project-card:hover {
+		transform: translateY(-10px);
+		box-shadow: 0 8px 30px rgba(170, 90, 176, 0.2);
+	}
+
+	.project-icon {
+		width: 60px;
+		height: 60px;
+		background: var(--gradient);
+		border-radius: 50%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		color: var(--white);
+		font-size: 1.5rem;
+		margin-bottom: 1rem;
+	}
+
+	.project-card h3 {
+		font-size: 1.5rem;
+		color: var(--dark);
+		margin-bottom: 1rem;
+	}
+
+	.project-card p {
+		color: #666;
+		line-height: 1.6;
+		margin-bottom: 1rem;
+	}
+
+	.project-tags {
+		display: flex;
+		gap: 0.5rem;
+		flex-wrap: wrap;
+	}
+
+	.tag {
+		padding: 0.25rem 0.75rem;
+		background: var(--light);
+		border: 1px solid var(--primary);
+		border-radius: 15px;
+		font-size: 0.85rem;
+		color: var(--primary);
+	}
+</style>

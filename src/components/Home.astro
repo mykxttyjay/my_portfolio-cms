@@ -1,0 +1,194 @@
+---
+---
+
+<section class="home" id="home">
+	<div class="home-header">
+		<div class="header-left">
+			<h2>Angel Marie Sabido</h2>
+		</div>
+		<div class="header-center">
+			<h2>Web Developer</h2>
+		</div>
+		<div class="header-right">
+			<h2>Graphic Designer</h2>
+		</div>
+	</div>
+
+	<div class="hero-main">
+		<div class="hero-text">
+			<p class="welcome-text">welcome to my</p>
+			<h1 class="portfolio-text">PORTFOLIO</h1>
+			<div class="decorative-elements">
+				<svg class="star-top" viewBox="0 0 24 24" fill="currentColor">
+					<path d="M12 0l3.708 8.292L24 12l-8.292 3.708L12 24l-3.708-8.292L0 12l8.292-3.708z"/>
+				</svg>
+			</div>
+		</div>
+	</div>
+
+	<div class="home-footer">
+		<div class="footer-left">
+			<h3>sabidoangel.uc@gmail.com</h3>
+		</div>
+		<div class="footer-right">
+			<h3>www.linkedin.com/in/gelmarie</h3>
+		</div>
+	</div>
+</section>
+
+<style>
+	.home {
+		min-height: 100vh;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		padding: 2rem 5%;
+		position: relative;
+		background: linear-gradient(180deg, var(--light) 0%, var(--white) 100%);
+	}
+
+	.home-header {
+		display: flex;
+		justify-content: space-between;
+		align-items: flex-start;
+		gap: 2rem;
+		padding: 1rem 0;
+	}
+
+	.header-left h2 {
+		font-size: 1.2rem;
+		font-weight: 600;
+		margin-bottom: 0.5rem;
+	}
+
+	.header-left p,
+	.header-center p,
+	.header-right p {
+		font-size: 0.95rem;
+		line-height: 1.4;
+	}
+
+	.header-right {
+		text-align: right;
+	}
+
+	.hero-main {
+		flex: 1;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		position: relative;
+		padding: 3rem 0;
+	}
+
+	.hero-text {
+		position: relative;
+		text-align: left;
+	}
+
+	.welcome-text {
+		font-size: 2.5rem;
+		font-weight: 400;
+		color: var(--dark);
+		margin-bottom: -1rem;
+		font-style: italic;
+	}
+
+	.portfolio-text {
+		font-size: clamp(6rem, 15vw, 12rem);
+		font-weight: 700;
+		color: rgba(170, 90, 176, 0.4);
+		line-height: 0.9;
+		position: relative;
+		z-index: 1;
+		letter-spacing: 0.02em;
+	}
+
+	.decorative-elements {
+		position: absolute;
+		top: 0;
+		right: 10%;
+		width: 100%;
+		height: 100%;
+		pointer-events: none;
+	}
+
+	.star-top {
+		position: absolute;
+		width: clamp(3rem, 6vw, 5rem);
+		height: clamp(3rem, 6vw, 5rem);
+		color: var(--primary);
+		top: -2rem;
+		right: 0;
+		animation: rotate 10s linear infinite;
+	}
+
+	@keyframes rotate {
+		from {
+			transform: rotate(0deg);
+		}
+		to {
+			transform: rotate(360deg);
+		}
+	}
+
+	.home-footer {
+		display: flex;
+		justify-content: space-between;
+		align-items: flex-end;
+		gap: 2rem;
+		padding: 1rem 0;
+	}
+
+	.footer-left p:first-child,
+	.footer-right p:first-child {
+		font-weight: 600;
+	}
+
+	.footer-left p,
+	.footer-center p,
+	.footer-right p {
+		font-size: 0.95rem;
+		line-height: 1.4;
+	}
+
+	.footer-center {
+		text-align: center;
+		font-style: italic;
+	}
+
+	.footer-right {
+		text-align: right;
+	}
+
+	@media (max-width: 768px) {
+		.home-header,
+		.home-footer {
+			flex-direction: column;
+			align-items: flex-start;
+			gap: 1rem;
+		}
+
+		.header-right,
+		.footer-right {
+			text-align: left;
+		}
+
+		.footer-center {
+			text-align: left;
+		}
+
+		.welcome-text {
+			font-size: 1.5rem;
+		}
+
+		.portfolio-text {
+			font-size: clamp(4rem, 12vw, 8rem);
+		}
+
+		.star-top {
+			right: 5%;
+			top: -1rem;
+		}
+	}
+</style>
