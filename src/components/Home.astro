@@ -1,194 +1,352 @@
 ---
 ---
 
+<header class="header">
+	<a href="#" class="logo">Angel Marie Sabido</a>
+	<nav>
+		<a href="#home" class="nav-link">Home</a>
+		<a href="#education" class="nav-link">Education</a>
+		<a href="#skills" class="nav-link">Skills</a>
+		<a href="#experience" class="nav-link">Experience</a>
+		<a href="#projects" class="nav-link">Projects</a>
+		<a href="#contact" class="nav-link">Contact</a>
+	</nav>
+</header>
+
 <section class="home" id="home">
-	<div class="home-header">
-		<div class="header-left">
-			<h2>Angel Marie Sabido</h2>
-		</div>
-		<div class="header-center">
-			<h2>Web Developer</h2>
-		</div>
-		<div class="header-right">
-			<h2>Graphic Designer</h2>
-		</div>
+	<div class="home-bg-animation">
+		<div class="shape shape-1"></div>
+		<div class="shape shape-2"></div>
+		<div class="shape shape-3"></div>
+		<div class="shape shape-4"></div>
 	</div>
 
-	<div class="hero-main">
-		<div class="hero-text">
-			<p class="welcome-text">welcome to my</p>
-			<h1 class="portfolio-text">PORTFOLIO</h1>
-			<div class="decorative-elements">
-				<svg class="star-top" viewBox="0 0 24 24" fill="currentColor">
-					<path d="M12 0l3.708 8.292L24 12l-8.292 3.708L12 24l-3.708-8.292L0 12l8.292-3.708z"/>
-				</svg>
-			</div>
-		</div>
+	<div class="home-img">
+		<div class="rotating-border"></div>
+		<div class="rotating-border-2"></div>
+		<img src="main.jpg" alt="Angel Marie Sabido" />
+		<div class="img-glow"></div>
 	</div>
 
-	<div class="home-footer">
-		<div class="footer-left">
-			<h3>sabidoangel.uc@gmail.com</h3>
+	<div class="home-content">
+		<h1 class="fade-in">Hi, I'm <span class="gradient-text">Angel Marie Sabido</span></h1>
+		<h3 class="typing-text fade-in-delay-1">I'm a <span></span></h3>
+		<p class="fade-in-delay-2">Aspiring IT professional with a strong work ethic and a passion for learning and growth in the technology field. Committed to developing technical skills and contributing positively to team environments. Eager to gain hands-on experience and continuously improve to deliver quality results in any task or project.</p>
+		<br />
+		<p class="fade-in-delay-2">Driven by curiosity and a desire to make an impact, I aim to leverage my skills to support organizational goals, create innovative digital solutions, and grow as a well-rounded IT professional.</p>
+		<div class="btn-group fade-in-delay-3">
+			<a href="#contact" class="btn">Contact Me</a>
+			<a href="#projects" class="btn btn-secondary">View Projects</a>
+			<a href="#" class="btn btn-secondary" download><i class="fa-solid fa-download"></i> Download CV</a>
 		</div>
-		<div class="footer-right">
-			<h3>www.linkedin.com/in/gelmarie</h3>
+		<div class="social-icons fade-in-delay-4">
+			<a href="https://www.linkedin.com/in/gelmarie" target="_blank" title="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+			<a href="https://github.com/mykxttyjay" target="_blank" title="GitHub"><i class="fa-brands fa-github"></i></a>
+			<a href="https://twitter.com/mykxttyjay" target="_blank" title="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+			<a href="https://www.instagram.com/gelmarieee" target="_blank" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
 		</div>
 	</div>
 </section>
 
 <style>
+	.header {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		padding: 1.5rem 5%;
+		background: var(--white);
+		box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+		position: sticky;
+		top: 0;
+		z-index: 100;
+	}
+
+	.logo {
+		font-size: 1.5rem;
+		font-weight: 700;
+		background: var(--gradient);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		background-clip: text;
+		text-decoration: none;
+	}
+
+	nav {
+		display: flex;
+		gap: 2rem;
+	}
+
+	.nav-link {
+		text-decoration: none;
+		color: var(--dark);
+		font-weight: 500;
+		transition: color 0.3s ease;
+	}
+
+	.nav-link:hover {
+		color: var(--primary);
+	}
+
 	.home {
 		min-height: 100vh;
 		display: flex;
-		flex-direction: column;
-		justify-content: space-between;
-		padding: 2rem 5%;
-		position: relative;
-		background: linear-gradient(180deg, var(--light) 0%, var(--white) 100%);
-	}
-
-	.home-header {
-		display: flex;
-		justify-content: space-between;
-		align-items: flex-start;
-		gap: 2rem;
-		padding: 1rem 0;
-	}
-
-	.header-left h2 {
-		font-size: 1.2rem;
-		font-weight: 600;
-		margin-bottom: 0.5rem;
-	}
-
-	.header-left p,
-	.header-center p,
-	.header-right p {
-		font-size: 0.95rem;
-		line-height: 1.4;
-	}
-
-	.header-right {
-		text-align: right;
-	}
-
-	.hero-main {
-		flex: 1;
-		display: flex;
 		align-items: center;
-		justify-content: center;
+		justify-content: space-between;
+		padding: 5rem 5%;
 		position: relative;
-		padding: 3rem 0;
+		background: linear-gradient(135deg, var(--light) 0%, var(--white) 100%);
+		overflow: hidden;
 	}
 
-	.hero-text {
-		position: relative;
-		text-align: left;
-	}
-
-	.welcome-text {
-		font-size: 2.5rem;
-		font-weight: 400;
-		color: var(--dark);
-		margin-bottom: -1rem;
-		font-style: italic;
-	}
-
-	.portfolio-text {
-		font-size: clamp(6rem, 15vw, 12rem);
-		font-weight: 700;
-		color: rgba(170, 90, 176, 0.4);
-		line-height: 0.9;
-		position: relative;
-		z-index: 1;
-		letter-spacing: 0.02em;
-	}
-
-	.decorative-elements {
+	.home-bg-animation {
 		position: absolute;
 		top: 0;
-		right: 10%;
+		left: 0;
 		width: 100%;
 		height: 100%;
+		z-index: 0;
 		pointer-events: none;
 	}
 
-	.star-top {
+	.shape {
 		position: absolute;
-		width: clamp(3rem, 6vw, 5rem);
-		height: clamp(3rem, 6vw, 5rem);
-		color: var(--primary);
-		top: -2rem;
-		right: 0;
-		animation: rotate 10s linear infinite;
+		opacity: 0.1;
+		border-radius: 50%;
+	}
+
+	.shape-1 {
+		width: 300px;
+		height: 300px;
+		background: var(--primary);
+		top: -50px;
+		left: -50px;
+		animation: float 6s ease-in-out infinite;
+	}
+
+	.shape-2 {
+		width: 200px;
+		height: 200px;
+		background: var(--secondary);
+		bottom: 50px;
+		right: 50px;
+		animation: float 8s ease-in-out infinite reverse;
+	}
+
+	.shape-3 {
+		width: 150px;
+		height: 150px;
+		background: var(--accent);
+		top: 50%;
+		left: 10%;
+		animation: float 7s ease-in-out infinite;
+	}
+
+	.shape-4 {
+		width: 250px;
+		height: 250px;
+		background: var(--primary);
+		bottom: -100px;
+		right: 10%;
+		animation: float 9s ease-in-out infinite reverse;
+	}
+
+	@keyframes float {
+		0%, 100% {
+			transform: translateY(0px);
+		}
+		50% {
+			transform: translateY(30px);
+		}
+	}
+
+	.home-img {
+		position: relative;
+		flex: 1;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		z-index: 1;
+	}
+
+	.home-img img {
+		width: 300px;
+		height: 300px;
+		border-radius: 50%;
+		object-fit: cover;
+		position: relative;
+		z-index: 2;
+		box-shadow: 0 10px 40px rgba(170, 90, 176, 0.2);
+	}
+
+	.rotating-border,
+	.rotating-border-2 {
+		position: absolute;
+		border-radius: 50%;
+		border: 2px solid transparent;
+		border-top-color: var(--primary);
+		border-right-color: var(--secondary);
+		animation: rotate 3s linear infinite;
+	}
+
+	.rotating-border {
+		width: 320px;
+		height: 320px;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+	}
+
+	.rotating-border-2 {
+		width: 350px;
+		height: 350px;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		animation: rotate 4s linear infinite reverse;
+		border-top-color: var(--secondary);
+		border-right-color: var(--accent);
 	}
 
 	@keyframes rotate {
 		from {
-			transform: rotate(0deg);
+			transform: translate(-50%, -50%) rotate(0deg);
 		}
 		to {
-			transform: rotate(360deg);
+			transform: translate(-50%, -50%) rotate(360deg);
 		}
 	}
 
-	.home-footer {
+	.img-glow {
+		position: absolute;
+		width: 320px;
+		height: 320px;
+		background: radial-gradient(circle, rgba(170, 90, 176, 0.2) 0%, transparent 70%);
+		border-radius: 50%;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		filter: blur(20px);
+	}
+
+	.home-content {
+		flex: 1;
+		padding-left: 3rem;
+		z-index: 1;
+	}
+
+	.home-content h1 {
+		font-size: 3.5rem;
+		font-weight: 700;
+		margin-bottom: 1rem;
+		line-height: 1.2;
+	}
+
+	.gradient-text {
+		background: var(--gradient);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		background-clip: text;
+	}
+
+	.typing-text {
+		font-size: 1.5rem;
+		color: var(--dark);
+		margin-bottom: 1.5rem;
+		font-weight: 500;
+	}
+
+	.home-content p {
+		font-size: 1rem;
+		line-height: 1.8;
+		color: var(--dark);
+		margin-bottom: 1rem;
+	}
+
+	.btn-group {
 		display: flex;
-		justify-content: space-between;
-		align-items: flex-end;
-		gap: 2rem;
-		padding: 1rem 0;
+		gap: 1rem;
+		margin: 2rem 0;
+		flex-wrap: wrap;
 	}
 
-	.footer-left p:first-child,
-	.footer-right p:first-child {
-		font-weight: 600;
+	.social-icons {
+		display: flex;
+		gap: 1.5rem;
+		margin-top: 2rem;
 	}
 
-	.footer-left p,
-	.footer-center p,
-	.footer-right p {
-		font-size: 0.95rem;
-		line-height: 1.4;
+	.social-icons a {
+		width: 50px;
+		height: 50px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		background: var(--gradient);
+		color: var(--white);
+		border-radius: 50%;
+		text-decoration: none;
+		font-size: 1.2rem;
+		transition: transform 0.3s ease, box-shadow 0.3s ease;
+		box-shadow: 0 4px 15px rgba(170, 90, 176, 0.3);
 	}
 
-	.footer-center {
-		text-align: center;
-		font-style: italic;
-	}
-
-	.footer-right {
-		text-align: right;
+	.social-icons a:hover {
+		transform: translateY(-5px);
+		box-shadow: 0 6px 20px rgba(170, 90, 176, 0.4);
 	}
 
 	@media (max-width: 768px) {
-		.home-header,
-		.home-footer {
+		.header {
 			flex-direction: column;
-			align-items: flex-start;
 			gap: 1rem;
 		}
 
-		.header-right,
-		.footer-right {
-			text-align: left;
+		nav {
+			flex-wrap: wrap;
+			gap: 1rem;
+			justify-content: center;
 		}
 
-		.footer-center {
-			text-align: left;
+		.home {
+			flex-direction: column;
+			padding: 3rem 5%;
 		}
 
-		.welcome-text {
-			font-size: 1.5rem;
+		.home-content {
+			padding-left: 0;
+			margin-top: 2rem;
 		}
 
-		.portfolio-text {
-			font-size: clamp(4rem, 12vw, 8rem);
+		.home-content h1 {
+			font-size: 2rem;
 		}
 
-		.star-top {
-			right: 5%;
-			top: -1rem;
+		.typing-text {
+			font-size: 1.2rem;
+		}
+
+		.btn-group {
+			flex-direction: column;
+		}
+
+		.btn-group a {
+			width: 100%;
+			text-align: center;
+		}
+
+		.home-img img {
+			width: 200px;
+			height: 200px;
+		}
+
+		.rotating-border {
+			width: 220px;
+			height: 220px;
+		}
+
+		.rotating-border-2 {
+			width: 250px;
+			height: 250px;
 		}
 	}
 </style>
