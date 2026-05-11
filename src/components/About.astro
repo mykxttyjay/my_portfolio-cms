@@ -1,81 +1,124 @@
 ---
+import CloudIcon from '../assets/cloud.svg';
 ---
 
 <section class="about" id="about">
-	<div class="about-container">
-		<div class="about-image">
-			<div class="rotating-border"></div>
-			<div class="rotating-border-2"></div>
-			<img src="main.jpg" alt="Angel Marie Sabido" />
-			<div class="img-glow"></div>
+	<div class="about-img">
+		<div class="rotating-border"></div>
+		<div class="rotating-border-2"></div>
+		<img src="main.jpg" alt="Angel Marie Sabido" />
+		<div class="img-glow"></div>
+	</div>
+
+	<div class="about-content">
+		<h1 class="fade-in">Hi, I'm <span class="gradient-text">Angel Marie Sabido</span></h1>
+		<h3 class="typing-text fade-in-delay-1">I'm a <span></span></h3>
+		<p class="fade-in-delay-2">Aspiring IT professional with a strong work ethic and a passion for learning and growth in the technology field. Committed to developing technical skills and contributing positively to team environments. Eager to gain hands-on experience and continuously improve to deliver quality results in any task or project.</p>
+		<br />
+		<p class="fade-in-delay-2">Driven by curiosity and a desire to make an impact, I aim to leverage my skills to support organizational goals, create innovative digital solutions, and grow as a well-rounded IT professional.</p>
+		<div class="btn-group fade-in-delay-3">
+			<a href="#contact" class="btn">Contact Me</a>
+			<a href="#projects" class="btn btn-secondary">View Projects</a>
+			<a href="#" class="btn btn-secondary" download><i class="fa-solid fa-download"></i> Download CV</a>
 		</div>
-		<div class="about-content">
-			<h2 class="heading">About <span>Me</span></h2>
-			<p>Aspiring IT professional with a strong work ethic and a passion for learning and growth in the technology field. Committed to developing technical skills and contributing positively to team environments. Eager to gain hands-on experience and continuously improve to deliver quality results in any task or project.</p>
-			<p>Driven by curiosity and a desire to make an impact, I aim to leverage my skills to support organizational goals, create innovative digital solutions, and grow as a well-rounded IT professional.</p>
-			<div class="btn-group">
-				<a href="#contact" class="btn">Contact Me</a>
-				<a href="#projects" class="btn btn-secondary">View Projects</a>
-				<a href="#" class="btn btn-secondary" download><i class="fa-solid fa-download"></i> Download CV</a>
-			</div>
-			<div class="social-icons">
-				<a href="https://www.linkedin.com/in/gelmarie" target="_blank" title="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
-				<a href="https://github.com/mykxttyjay" target="_blank" title="GitHub"><i class="fa-brands fa-github"></i></a>
-				<a href="https://twitter.com/mykxttyjay" target="_blank" title="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
-				<a href="https://www.instagram.com/gelmarieee" target="_blank" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
-			</div>
+		<div class="social-icons fade-in-delay-4">
+			<a href="https://www.linkedin.com/in/gelmarie" target="_blank" title="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+			<a href="https://github.com/mykxttyjay" target="_blank" title="GitHub"><i class="fa-brands fa-github"></i></a>
+			<a href="https://twitter.com/mykxttyjay" target="_blank" title="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+			<a href="https://www.instagram.com/gelmarieee" target="_blank" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
 		</div>
+	</div>
+
+	<div class="clouds">
+		<CloudIcon class="cloud-style cloud-1" />
+		<CloudIcon class="cloud-style cloud-2" />
+		<CloudIcon class="cloud-style cloud-3" />
 	</div>
 </section>
 
 <style>
 	.about {
-		background: var(--white);
-		padding: 5rem 5%;
-	}
-
-	.about-container {
-		max-width: 1200px;
-		margin: 0 auto;
-		display: grid;
-		grid-template-columns: 1fr 1.5fr;
-		gap: 4rem;
+		min-height: 100vh;
+		display: flex;
 		align-items: center;
+		justify-content: space-between;
+		padding: 5rem 8%;
+		gap: 2rem;
+		position: relative;
+		background-color: #a288a6;
+		overflow: hidden;
 	}
 
-	.about-image {
+	.about .about-content h1 {
+		color: #ffffff;
+	}
+
+	.about .gradient-text {
+		-webkit-text-fill-color: #ffffff;
+		color: #ffffff;
+	}
+
+	.about .typing-text {
+		color: #ffffff;
+	}
+
+	.about .about-content p {
+		color: #ffffff;
+	}
+
+	.about-img {
 		position: relative;
-		width: 100%;
-		max-width: 400px;
-		aspect-ratio: 1;
-		margin: 0 auto;
+		flex: 1;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		z-index: 1;
+	}
+
+	.about-img img {
+		width: 300px;
+		height: 300px;
+		border-radius: 50%;
+		object-fit: cover;
+		position: relative;
+		z-index: 2;
+		box-shadow: 0 20px 60px rgba(162, 136, 166, 0.3), 0 0 40px rgba(187, 155, 176, 0.2);
+		border: 3px solid rgba(255, 255, 255, 0.8);
+		transition: transform 0.3s ease, box-shadow 0.3s ease;
+	}
+
+	.about-img img:hover {
+		transform: scale(1.05);
+		box-shadow: 0 25px 70px rgba(162, 136, 166, 0.4), 0 0 50px rgba(187, 155, 176, 0.3);
 	}
 
 	.rotating-border,
 	.rotating-border-2 {
 		position: absolute;
-		top: 50%;
-		left: 50%;
-		transform: translate(-50%, -50%);
 		border-radius: 50%;
-		border: 3px solid transparent;
-		animation: rotate 10s linear infinite;
+		border: 2px solid transparent;
+		border-top-color: var(--primary);
+		border-right-color: var(--secondary);
+		animation: rotate 3s linear infinite;
 	}
 
 	.rotating-border {
-		width: 110%;
-		height: 110%;
-		border-top-color: var(--primary);
-		border-right-color: var(--primary);
+		width: 320px;
+		height: 320px;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
 	}
 
 	.rotating-border-2 {
-		width: 120%;
-		height: 120%;
-		border-bottom-color: var(--accent);
-		border-left-color: var(--accent);
-		animation-direction: reverse;
-		animation-duration: 8s;
+		width: 350px;
+		height: 350px;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		animation: rotate 4s linear infinite reverse;
+		border-top-color: var(--secondary);
+		border-right-color: var(--accent);
 	}
 
 	@keyframes rotate {
@@ -87,100 +130,193 @@
 		}
 	}
 
-	.about-image img {
-		width: 100%;
-		height: 100%;
-		border-radius: 50%;
-		object-fit: cover;
-		border: 5px solid var(--white);
-		box-shadow: 0 0 50px rgba(170, 90, 176, 0.3);
-		position: relative;
-		z-index: 1;
-	}
-
 	.img-glow {
 		position: absolute;
+		width: 320px;
+		height: 320px;
+		background: radial-gradient(circle, rgba(162, 136, 166, 0.2) 0%, transparent 70%);
+		border-radius: 50%;
 		top: 50%;
 		left: 50%;
 		transform: translate(-50%, -50%);
-		width: 100%;
-		height: 100%;
-		border-radius: 50%;
-		background: var(--gradient);
-		opacity: 0.2;
-		filter: blur(40px);
-		z-index: 0;
+		filter: blur(20px);
 	}
 
 	.about-content {
-		display: flex;
-		flex-direction: column;
-		gap: 1.5rem;
+		flex: 1;
+		padding-left: 1rem;
+		z-index: 1;
+		animation: slideInLeft 0.8s ease-out;
 	}
 
-	.about-content .heading {
-		text-align: left;
+	@keyframes slideInLeft {
+		from {
+			opacity: 0;
+			transform: translateX(-50px);
+		}
+		to {
+			opacity: 1;
+			transform: translateX(0);
+		}
+	}
+
+	.about-content h1 {
+		font-size: 3.5rem;
+		font-weight: 700;
 		margin-bottom: 1rem;
+		line-height: 1.2;
+		color: var(--dark);
+		text-shadow: 0 2px 10px rgba(162, 136, 166, 0.1);
+	}
+
+	.gradient-text {
+		background: var(--gradient);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		background-clip: text;
+		font-weight: 800;
+	}
+
+	.typing-text {
+		font-size: 1.5rem;
+		color: var(--primary);
+		margin-bottom: 1.5rem;
+		font-weight: 600;
+		letter-spacing: 0.5px;
 	}
 
 	.about-content p {
-		font-size: 1.1rem;
-		color: #666;
+		font-size: 1rem;
 		line-height: 1.8;
+		color: var(--dark);
+		margin-bottom: 1rem;
+		font-weight: 500;
+		letter-spacing: 0.3px;
 	}
 
 	.btn-group {
 		display: flex;
 		gap: 1rem;
+		margin: 2rem 0;
 		flex-wrap: wrap;
-		margin-top: 1rem;
-	}
-
-	.btn i {
-		margin-left: 0.5rem;
 	}
 
 	.social-icons {
 		display: flex;
-		gap: 1rem;
-		margin-top: 1rem;
+		gap: 1.5rem;
+		margin-top: 2rem;
 	}
 
 	.social-icons a {
 		width: 50px;
 		height: 50px;
-		background: var(--gradient);
-		border-radius: 50%;
 		display: flex;
 		align-items: center;
 		justify-content: center;
+		background: var(--gradient);
 		color: var(--white);
-		font-size: 1.5rem;
-		transition: transform 0.3s ease, box-shadow 0.3s ease;
+		border-radius: 50%;
+		text-decoration: none;
+		font-size: 1.2rem;
+		transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+		box-shadow: 0 8px 25px rgba(162, 136, 166, 0.35);
+		border: 2px solid rgba(255, 255, 255, 0.3);
 	}
 
 	.social-icons a:hover {
-		transform: translateY(-5px);
-		box-shadow: 0 10px 20px rgba(170, 90, 176, 0.4);
+		transform: translateY(-8px) scale(1.1);
+		box-shadow: 0 12px 35px rgba(162, 136, 166, 0.5);
+		border-color: rgba(255, 255, 255, 0.6);
 	}
 
-	@media (max-width: 968px) {
-		.about-container {
-			grid-template-columns: 1fr;
-			gap: 3rem;
+	.clouds {
+		position: absolute;
+		bottom: -80px;
+		left: 0;
+		right: 0;
+		height: 120px;
+		z-index: 1;
+		pointer-events: none;
+		width: 100%;
+		overflow: hidden;
+	}
+
+	.cloud-style {
+		position: absolute;
+		bottom: 0;
+		width: 100px;
+		height: auto;
+		fill: white;
+		opacity: 0.7;
+	}
+
+	.cloud-1 {
+		left: 5%;
+		animation: moveClouds 60s linear infinite;
+	}
+
+	.cloud-2 {
+		left: 35%;
+		animation: moveClouds 80s linear infinite reverse;
+		width: 120px;
+	}
+
+	.cloud-3 {
+		left: 65%;
+		animation: moveClouds 100s linear infinite;
+		width: 90px;
+	}
+
+	@keyframes moveClouds {
+		from {
+			transform: translateX(0);
+		}
+		to {
+			transform: translateX(100vw);
+		}
+	}
+
+	@media (max-width: 768px) {
+		.about {
+			flex-direction: column;
+			padding: 3rem 5%;
 		}
 
-		.about-content .heading {
+		.about-content {
+			padding-left: 0;
+			margin-top: 2rem;
+		}
+
+		.about-content h1 {
+			font-size: 2rem;
+		}
+
+		.typing-text {
+			font-size: 1.2rem;
+		}
+
+		.btn-group {
+			flex-direction: column;
+		}
+
+		.btn-group a {
+			width: 100%;
 			text-align: center;
 		}
 
-		.about-image {
-			max-width: 300px;
+		.about-img img {
+			width: 200px;
+			height: 200px;
 		}
 
-		.btn-group,
-		.social-icons {
-			justify-content: center;
+		.rotating-border {
+			width: 220px;
+			height: 220px;
+		}
+
+		.rotating-border-2 {
+			width: 250px;
+			height: 250px;
 		}
 	}
 </style>

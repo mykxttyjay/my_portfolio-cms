@@ -1,0 +1,38 @@
+<div class="divider">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 200" preserveAspectRatio="none">
+    <path d="M0,100 Q80,40 160,100 T320,100 T480,100 T640,100 T800,100 T960,100 T1120,100 T1280,100 T1440,100 L1440,200 L0,200 Z" fill="#a288a6"/>
+  </svg>
+</div>
+
+<style>
+  .divider {
+    width: 100%;
+    line-height: 0;
+    margin: 0;
+    padding: 0;
+  }
+
+  svg {
+    display: block;
+    width: 100%;
+    height: 80px;
+  }
+
+  :global(section:has(+ .divider)) {
+    background-color: #f1e3e4;
+  }
+
+  :global(.divider + section) {
+    background-color: #a288a6;
+    color: #ffffff;
+  }
+
+  :global(.divider + section .heading) {
+    color: #ffffff;
+  }
+
+  :global(.divider + section .heading span) {
+    -webkit-text-fill-color: #ffffff;
+    color: #ffffff;
+  }
+</style>

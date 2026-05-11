@@ -1,11 +1,11 @@
 :root {
-	--primary: #aa5ab0;
-	--secondary: #d3a4be;
-	--accent: #bd758e;
-	--dark: #000000;
-	--light: #f9f2f9;
+	--primary: #a288a6;
+	--secondary: #bb9bb0;
+	--accent: #ccbcbc;
+	--dark: #1c1d21;
+	--light: #f1e3e4;
 	--white: #ffffff;
-	--gradient: linear-gradient(135deg, #aa5ab0 0%, #d3a4be 100%);
+	--gradient: linear-gradient(135deg, #a288a6 0%, #bb9bb0 100%);
 }
 
 * {
@@ -19,12 +19,13 @@ body {
 	line-height: 1.6;
 	color: var(--dark);
 	background-color: var(--light);
-}
-
-.container {
-	max-width: 1200px;
-	margin: 0 auto;
-	padding: 0 2rem;
+	background-image: 
+		radial-gradient(circle at 20% 50%, rgba(162, 136, 166, 0.1) 0%, transparent 50%),
+		radial-gradient(circle at 80% 80%, rgba(187, 155, 176, 0.1) 0%, transparent 50%),
+		radial-gradient(circle at 40% 20%, rgba(204, 188, 188, 0.08) 0%, transparent 50%),
+		linear-gradient(135deg, var(--light) 0%, rgba(241, 227, 228, 0.8) 100%);
+	background-attachment: fixed;
+	position: relative;
 }
 
 section {
