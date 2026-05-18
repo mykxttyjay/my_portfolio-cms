@@ -1,7 +1,7 @@
 import { c as createComponent } from './astro-component_wp9zoKZU.mjs';
 import 'piccolore';
 import { T as createRenderInstruction, aw as generateCspDigest, bf as unescapeHTML, Q as renderTemplate, z as maybeRenderHead, a3 as addAttribute, b0 as renderHead } from './params-and-props_DwyEVPUa.mjs';
-import { s as spreadAttributes, r as renderComponent } from './entrypoint_BekPkF6C.mjs';
+import { s as spreadAttributes, r as renderComponent } from './entrypoint_2UBQPNzx.mjs';
 import 'clsx';
 import './adapt-sandbox-entry_H5gl0boC.mjs';
 import 'better-sqlite3';
@@ -176,12 +176,12 @@ const $$Projects = createComponent(async ($$result, $$props, $$slots) => {
     const { entries } = await getEmDashCollection("projects");
     if (entries && entries.length > 0) {
       projectsList = entries.map((entry) => {
-        const title = entry.data.title;
-        const description = entry.data.description;
-        const icon = entry.data.icon;
-        const tags_str = entry.data.tags;
+        const title = entry.data?.title || "";
+        const description = entry.data?.description || "";
+        const icon = entry.data?.icon || "";
+        const tags_str = entry.data?.tags || "";
         const tags = tags_str ? tags_str.split(",").map((t) => t.trim()) : [];
-        const project_url = entry.data.project_url || "";
+        const project_url = entry.data?.project_url || "";
         return { title, description, icon, tags, project_url };
       });
     }
@@ -216,9 +216,9 @@ const $$Contact = createComponent(async ($$result, $$props, $$slots) => {
     const { entries } = await getEmDashCollection("contact");
     if (entries && entries.length > 0) {
       contactItems = entries.map((entry) => {
-        const platform = entry.data.platform;
-        const value = entry.data.value;
-        const icon = entry.data.icon;
+        const platform = entry.data?.platform || "";
+        const value = entry.data?.value || "";
+        const icon = entry.data?.icon || "";
         return { platform, value, icon };
       });
     }

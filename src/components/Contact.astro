@@ -23,9 +23,9 @@ try {
 	const { entries } = await getEmDashCollection('contact');
 	if (entries && entries.length > 0) {
 		contactItems = entries.map((entry) => {
-			const platform = entry.data.platform;
-			const value = entry.data.value;
-			const icon = entry.data.icon;
+			const platform = (entry.data?.platform as string) || "";
+			const value = (entry.data?.value as string) || "";
+			const icon = (entry.data?.icon as string) || "";
 			return { platform, value, icon };
 		});
 	}

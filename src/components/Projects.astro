@@ -29,12 +29,12 @@ try {
 	const { entries } = await getEmDashCollection('projects');
 	if (entries && entries.length > 0) {
 		projectsList = entries.map((entry) => {
-			const title = entry.data.title;
-			const description = entry.data.description;
-			const icon = entry.data.icon;
-			const tags_str = entry.data.tags;
+			const title = (entry.data?.title as string) || "";
+			const description = (entry.data?.description as string) || "";
+			const icon = (entry.data?.icon as string) || "";
+			const tags_str = (entry.data?.tags as string) || "";
 			const tags = tags_str ? tags_str.split(',').map((t: string) => t.trim()) : [];
-			const project_url = entry.data.project_url || "";
+			const project_url = (entry.data?.project_url as string) || "";
 			return { title, description, icon, tags, project_url };
 		});
 	}

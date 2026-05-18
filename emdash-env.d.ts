@@ -5,6 +5,19 @@
 
 import type { ContentBylineCredit, PortableTextBlock } from "emdash";
 
+export interface ContactItem {
+  id: string;
+  slug: string | null;
+  status: string;
+  platform: string;
+  value: string;
+  icon: string;
+  createdAt: Date;
+  updatedAt: Date;
+  publishedAt: Date | null;
+  bylines?: ContentBylineCredit[];
+}
+
 export interface Page {
   id: string;
   slug: string | null;
@@ -31,9 +44,55 @@ export interface Post {
   bylines?: ContentBylineCredit[];
 }
 
+export interface Profile {
+  id: string;
+  slug: string | null;
+  status: string;
+  name: string;
+  role: string;
+  intro: string;
+  about_content: string;
+  resume_link: string;
+  createdAt: Date;
+  updatedAt: Date;
+  publishedAt: Date | null;
+  bylines?: ContentBylineCredit[];
+}
+
+export interface ProjectItem {
+  id: string;
+  slug: string | null;
+  status: string;
+  title: string;
+  description: string;
+  icon: string;
+  tags: string;
+  project_url?: string;
+  createdAt: Date;
+  updatedAt: Date;
+  publishedAt: Date | null;
+  bylines?: ContentBylineCredit[];
+}
+
+export interface SkillGroup {
+  id: string;
+  slug: string | null;
+  status: string;
+  category: string;
+  skills_list: string;
+  createdAt: Date;
+  updatedAt: Date;
+  publishedAt: Date | null;
+  bylines?: ContentBylineCredit[];
+}
+
 declare module "emdash" {
   interface EmDashCollections {
+    contact: ContactItem;
     pages: Page;
     posts: Post;
+    profile: Profile;
+    projects: ProjectItem;
+    skills: SkillGroup;
   }
 }
