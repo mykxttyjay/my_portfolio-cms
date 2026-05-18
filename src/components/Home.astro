@@ -9,7 +9,24 @@ import CloudIcon from '../assets/cloud.svg';
 		
 		<div class="illustration-placeholder">
 			<div class="character-box">
-				<p>Your Illustration Here</p>
+				<div class="glow-orb"></div>
+				<div class="dev-card">
+					<div class="card-header">
+						<span class="dot red"></span>
+						<span class="dot yellow"></span>
+						<span class="dot green"></span>
+					</div>
+					<div class="card-content">
+						<div class="code-line"><span class="keyword">const</span> <span class="variable">developer</span> = &#123;</div>
+						<div class="code-line indent"><span class="property">name</span>: <span class="string">"Angel Marie"</span>,</div>
+						<div class="code-line indent"><span class="property">role</span>: <span class="string">"IT Student"</span>,</div>
+						<div class="code-line indent"><span class="property">focus</span>: <span class="string">"Web Dev & Tech"</span></div>
+						<div class="code-line">&#125;;</div>
+					</div>
+				</div>
+				<div class="tech-badge badge-1"><i class="fa-solid fa-code"></i> Frontend</div>
+				<div class="tech-badge badge-2"><i class="fa-solid fa-database"></i> Database</div>
+				<div class="tech-badge badge-3"><i class="fa-solid fa-graduation-cap"></i> Scholar</div>
 			</div>
 		</div>
 		
@@ -31,7 +48,7 @@ import CloudIcon from '../assets/cloud.svg';
 		justify-content: center;
 		padding: 5rem 8%;
 		position: relative;
-		background-color: #ecdddf;
+		background-color: var(--light);
 		overflow: hidden;
 	}
 
@@ -52,7 +69,7 @@ import CloudIcon from '../assets/cloud.svg';
 	.portfolio-title {
 		font-size: 5rem;
 		font-weight: 700;
-		color: var(--secondary);
+		color: var(--primary);
 		margin-bottom: 2rem;
 		letter-spacing: 8px;
 		text-shadow: 0 4px 15px rgba(162, 136, 166, 0.2);
@@ -63,26 +80,132 @@ import CloudIcon from '../assets/cloud.svg';
 		justify-content: center;
 		align-items: center;
 		margin: 3rem 0;
-		min-height: 300px;
+		min-height: 320px;
+		position: relative;
 	}
 
 	.character-box {
-		width: 400px;
-		height: 300px;
-		background: linear-gradient(135deg, rgba(187, 155, 176, 0.3) 0%, rgba(204, 188, 188, 0.2) 100%);
-		border-radius: 20px;
+		width: 450px;
+		height: 320px;
+		position: relative;
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		border: 2px dashed var(--secondary);
+	}
+
+	.glow-orb {
+		position: absolute;
+		width: 300px;
+		height: 300px;
+		background: radial-gradient(circle, rgba(162, 136, 166, 0.4) 0%, transparent 70%);
+		border-radius: 50%;
+		z-index: 0;
+		filter: blur(15px);
+		animation: pulseGlow 8s infinite alternate;
+	}
+
+	@keyframes pulseGlow {
+		0% { transform: scale(1); opacity: 0.6; }
+		100% { transform: scale(1.1); opacity: 0.9; }
+	}
+
+	.dev-card {
+		background: rgba(255, 255, 255, 0.7);
+		backdrop-filter: blur(12px);
+		border: 1px solid rgba(255, 255, 255, 0.5);
+		border-radius: 20px;
+		width: 360px;
+		padding: 1.5rem;
+		box-shadow: 0 20px 40px rgba(162, 136, 166, 0.15), 0 0 0 1px rgba(255, 255, 255, 0.5) inset;
+		z-index: 2;
+		text-align: left;
+		transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+	}
+
+	.dev-card:hover {
+		transform: translateY(-8px) rotate(-1deg);
+		box-shadow: 0 30px 60px rgba(162, 136, 166, 0.25);
+	}
+
+	.card-header {
+		display: flex;
+		gap: 6px;
+		margin-bottom: 1.2rem;
+	}
+
+	.dot {
+		width: 10px;
+		height: 10px;
+		border-radius: 50%;
+	}
+
+	.dot.red { background: #ff5f56; }
+	.dot.yellow { background: #ffbd2e; }
+	.dot.green { background: #27c93f; }
+
+	.card-content {
+		font-family: 'Courier New', Courier, monospace;
+		font-size: 0.95rem;
+		line-height: 1.6;
+		color: var(--dark);
+	}
+
+	.code-line {
+		margin-bottom: 0.25rem;
+	}
+
+	.code-line.indent {
+		padding-left: 1.5rem;
+	}
+
+	.keyword { color: #85586f; font-weight: bold; }
+	.variable { color: var(--primary); }
+	.property { color: #bb9bb0; }
+	.string { color: #6b4f4f; }
+
+	.tech-badge {
+		position: absolute;
+		background: var(--white);
 		color: var(--primary);
-		font-size: 1.2rem;
+		padding: 0.6rem 1.2rem;
+		border-radius: 50px;
+		font-size: 0.85rem;
 		font-weight: 600;
+		box-shadow: 0 10px 25px rgba(162, 136, 166, 0.15);
+		border: 1px solid rgba(255, 255, 255, 0.8);
+		z-index: 3;
+		display: flex;
+		align-items: center;
+		gap: 8px;
+		animation: floatBadge 6s ease-in-out infinite;
+	}
+
+	.badge-1 {
+		top: 10%;
+		left: -15px;
+		animation-delay: 0s;
+	}
+
+	.badge-2 {
+		bottom: 15%;
+		right: -15px;
+		animation-delay: 2s;
+	}
+
+	.badge-3 {
+		top: -20px;
+		right: 20px;
+		animation-delay: 4s;
+	}
+
+	@keyframes floatBadge {
+		0%, 100% { transform: translateY(0); }
+		50% { transform: translateY(-10px); }
 	}
 
 	.welcome-text {
 		font-size: 1.5rem;
-		color: var(--secondary);
+		color: var(--primary);
 		font-weight: 600;
 		letter-spacing: 3px;
 		margin-top: 2rem;
@@ -146,9 +269,22 @@ import CloudIcon from '../assets/cloud.svg';
 		}
 
 		.character-box {
-			width: 300px;
-			height: 200px;
+			width: 100%;
+			height: 320px;
+			max-width: 320px;
 		}
+
+		.dev-card {
+			width: 100%;
+		}
+
+		.tech-badge {
+			padding: 0.4rem 0.8rem;
+			font-size: 0.75rem;
+		}
+
+		.badge-1 { left: -5px; }
+		.badge-2 { right: -5px; }
 
 		.welcome-text {
 			font-size: 1.2rem;

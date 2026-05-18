@@ -1,6 +1,13 @@
-<div class="divider">
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 200" preserveAspectRatio="none">
-    <path d="M0,100 Q80,40 160,100 T320,100 T480,100 T640,100 T800,100 T960,100 T1120,100 T1280,100 T1440,100 L1440,200 L0,200 Z" fill="#a288a6"/>
+---
+interface Props {
+  type?: 'light-to-dark' | 'dark-to-light';
+}
+const { type = 'light-to-dark' } = Astro.props;
+---
+
+<div class={`divider ${type}`}>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 100" preserveAspectRatio="none">
+    <path d="M0,50 Q80,20 160,50 T320,50 T480,50 T640,50 T800,50 T960,50 T1120,50 T1280,50 T1440,50 L1440,100 L0,100 Z" class="divider-path"/>
   </svg>
 </div>
 
@@ -10,29 +17,36 @@
     line-height: 0;
     margin: 0;
     padding: 0;
+    position: relative;
+    z-index: 5;
+    background-color: transparent;
   }
 
   svg {
     display: block;
     width: 100%;
     height: 80px;
+    margin-top: -1px; /* Prevents tiny pixel-wide gaps */
+    margin-bottom: -1px; /* Prevents tiny pixel-wide gaps */
   }
 
-  :global(section:has(+ .divider)) {
-    background-color: #f1e3e4;
+  .light-to-dark {
+    /* Above is light, below is dark. */
+    /* The SVG is filled with dark color, and transparent on top. */
+    background-color: var(--light);
   }
 
-  :global(.divider + section) {
-    background-color: #a288a6;
-    color: #ffffff;
+  .light-to-dark .divider-path {
+    fill: var(--primary); /* a288a6 */
   }
 
-  :global(.divider + section .heading) {
-    color: #ffffff;
+  .dark-to-light {
+    /* Above is dark, below is light. */
+    /* The SVG is filled with light color, and transparent on top. */
+    background-color: var(--primary);
   }
 
-  :global(.divider + section .heading span) {
-    -webkit-text-fill-color: #ffffff;
-    color: #ffffff;
+  .dark-to-light .divider-path {
+    fill: var(--light); /* f1e3e4 */
   }
 </style>

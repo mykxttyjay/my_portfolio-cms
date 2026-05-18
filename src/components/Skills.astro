@@ -5,49 +5,146 @@
 	<h2 class="heading">My <span>Skills</span></h2>
 	<div class="skills-container">
 		<div class="skill-box">
+			<div class="skill-icon">
+				<i class="fa-solid fa-code"></i>
+			</div>
 			<h3>Programming Languages</h3>
-			<p></p>
+			<div class="skill-list">
+				<span class="skill-pill">JavaScript</span>
+				<span class="skill-pill">HTML5</span>
+				<span class="skill-pill">CSS3</span>
+				<span class="skill-pill">Java</span>
+				<span class="skill-pill">Python</span>
+			</div>
 		</div>
 		<div class="skill-box">
+			<div class="skill-icon">
+				<i class="fa-solid fa-laptop-code"></i>
+			</div>
 			<h3>Web Technologies</h3>
-			<p></p>
+			<div class="skill-list">
+				<span class="skill-pill">React.js</span>
+				<span class="skill-pill">Astro</span>
+				<span class="skill-pill">Tailwind CSS</span>
+				<span class="skill-pill">Node.js</span>
+				<span class="skill-pill">Bootstrap</span>
+			</div>
 		</div>
 		<div class="skill-box">
-			<h3></h3>
-			<p></p>
+			<div class="skill-icon">
+				<i class="fa-solid fa-screwdriver-wrench"></i>
+			</div>
+			<h3>Tools & Databases</h3>
+			<div class="skill-list">
+				<span class="skill-pill">Figma</span>
+				<span class="skill-pill">Git & GitHub</span>
+				<span class="skill-pill">MongoDB</span>
+				<span class="skill-pill">MySQL</span>
+				<span class="skill-pill">Canva</span>
+			</div>
 		</div>
 	</div>
 </section>
 
 <style>
 	.skills {
-		background: var(--light);
+		background: var(--primary);
+		padding: 5rem 0;
+	}
+
+	.skills .heading {
+		color: var(--white);
+	}
+
+	.skills .heading span {
+		-webkit-text-fill-color: var(--accent);
+		color: var(--accent);
 	}
 
 	.skills-container {
 		display: grid;
 		grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-		gap: 2rem;
-		max-width: 1000px;
+		gap: 2.5rem;
+		max-width: 1100px;
 		margin: 0 auto;
 		padding: 0 2rem;
 	}
 
 	.skill-box {
-		background: var(--white);
-		padding: 2rem;
-		border-radius: 15px;
-		box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-		transition: transform 0.3s ease;
+		background: rgba(255, 255, 255, 0.08);
+		backdrop-filter: blur(12px);
+		border: 1px solid rgba(255, 255, 255, 0.15);
+		padding: 2.5rem 2rem;
+		border-radius: 24px;
+		box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(255, 255, 255, 0.05) inset;
+		transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), border-color 0.4s ease, box-shadow 0.4s ease;
+		text-align: center;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
 	}
 
 	.skill-box:hover {
-		transform: translateY(-10px);
+		transform: translateY(-8px);
+		box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(255, 255, 255, 0.1) inset;
+		border-color: rgba(255, 255, 255, 0.3);
+	}
+
+	.skill-icon {
+		width: 60px;
+		height: 60px;
+		background: rgba(255, 255, 255, 0.15);
+		border-radius: 50%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		color: var(--white);
+		font-size: 1.5rem;
+		margin-bottom: 1.5rem;
+		box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+		border: 1px solid rgba(255, 255, 255, 0.2);
+		transition: transform 0.3s ease;
+	}
+
+	.skill-box:hover .skill-icon {
+		transform: scale(1.1) rotate(5deg);
+		background: var(--white);
+		color: var(--primary);
 	}
 
 	.skill-box h3 {
-		font-size: 1.5rem;
+		font-size: 1.4rem;
+		color: var(--white);
+		margin-bottom: 1.5rem;
+		font-weight: 700;
+		letter-spacing: 0.5px;
+	}
+
+	.skill-list {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.6rem;
+		justify-content: center;
+		width: 100%;
+	}
+
+	.skill-pill {
+		background: rgba(255, 255, 255, 0.1);
+		border: 1px solid rgba(255, 255, 255, 0.15);
+		padding: 0.5rem 1rem;
+		border-radius: 50px;
+		font-size: 0.85rem;
+		font-weight: 600;
+		color: var(--white);
+		transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+		cursor: default;
+	}
+
+	.skill-pill:hover {
+		background: var(--white);
 		color: var(--primary);
-		margin-bottom: 1rem;
+		transform: translateY(-2px) scale(1.05);
+		box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+		border-color: transparent;
 	}
 </style>

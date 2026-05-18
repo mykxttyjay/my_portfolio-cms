@@ -319,4 +319,67 @@ import CloudIcon from '../assets/cloud.svg';
 			height: 250px;
 		}
 	}
+
+	.typing-text span::after {
+		content: '|';
+		animation: blink 0.7s infinite;
+		margin-left: 3px;
+		color: #ffffff;
+	}
+
+	@keyframes blink {
+		0%, 100% { opacity: 1; }
+		50% { opacity: 0; }
+	}
 </style>
+
+<script>
+	const words = ["IT Student", "Web Developer", "Graphic Designer", "Scholar"];
+	let i = 0;
+	let timer: number | any;
+
+	function typingEffect() {
+		let word = words[i].split("");
+		var loopTyping = function() {
+			if (word.length > 0) {
+				const span = document.querySelector('.typing-text span');
+				if (span) span.innerHTML += word.shift();
+			} else {
+				deletingEffect();
+				return false;
+			}
+			timer = setTimeout(loopTyping, 100);
+		};
+		loopTyping();
+	}
+
+	function deletingEffect() {
+		let word = words[i].split("");
+		var loopDeleting = function() {
+			if (word.length > 0) {
+				word.pop();
+				const span = document.querySelector('.typing-text span');
+				if (span) span.innerHTML = word.join("");
+			} else {
+				if (words.length > (i + 1)) {
+					i++;
+				} else {
+					i = 0;
+				}
+				setTimeout(typingEffect, 500);
+				return false;
+			}
+			timer = setTimeout(loopDeleting, 60);
+		};
+		setTimeout(loopDeleting, 2000);
+	}
+
+	// Start typing after component loads
+	document.addEventListener('DOMContentLoaded', () => {
+		typingEffect();
+	});
+	// Backup initialization in case DOMContentLoaded already fired
+	if (document.readyState === 'complete' || document.readyState === 'interactive') {
+		typingEffect();
+	}
+</script>

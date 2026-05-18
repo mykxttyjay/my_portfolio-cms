@@ -23,51 +23,67 @@
 
 <style>
 	.experience {
-		background: var(--white);
+		background: var(--light);
+		padding: 5rem 0;
 	}
 
 	.experience-container {
 		display: grid;
 		grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-		gap: 2rem;
+		gap: 2.5rem;
 		max-width: 1000px;
 		margin: 0 auto;
 		padding: 0 2rem;
 	}
 
 	.experience-box {
-		background: var(--light);
-		padding: 2rem;
-		border-radius: 15px;
-		box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-		transition: transform 0.3s ease;
+		background: var(--white);
+		padding: 2.5rem 2rem;
+		border-radius: 24px;
+		box-shadow: 0 10px 30px rgba(162, 136, 166, 0.06);
+		border: 1px solid rgba(162, 136, 166, 0.05);
+		transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
 	}
 
 	.experience-box:hover {
-		transform: translateY(-10px);
+		transform: translateY(-8px);
+		box-shadow: 0 20px 40px rgba(162, 136, 166, 0.12);
+		border-color: rgba(162, 136, 166, 0.15);
 	}
 
 	.experience-icon {
 		width: 60px;
 		height: 60px;
 		background: var(--gradient);
-		border-radius: 50%;
+		border-radius: 20px;
 		display: flex;
 		align-items: center;
 		justify-content: center;
 		color: var(--white);
 		font-size: 1.5rem;
-		margin-bottom: 1rem;
+		margin-bottom: 1.5rem;
+		box-shadow: 0 8px 20px rgba(162, 136, 166, 0.2);
+		transition: transform 0.3s ease, border-radius 0.3s ease;
+	}
+
+	.experience-box:hover .experience-icon {
+		transform: scale(1.1) rotate(8deg);
+		border-radius: 50%;
 	}
 
 	.experience-box h3 {
-		font-size: 1.3rem;
+		font-size: 1.4rem;
 		color: var(--dark);
 		margin-bottom: 1rem;
+		font-weight: 700;
 	}
 
 	.experience-box p {
-		color: #666;
-		line-height: 1.6;
+		color: #555;
+		line-height: 1.7;
+		font-size: 0.95rem;
 	}
 </style>
