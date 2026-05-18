@@ -1,5 +1,23 @@
 ---
 import CloudIcon from '../assets/cloud.svg';
+import { getEmDashCollection } from 'emdash';
+
+let name = "Angel Marie Sabido";
+let intro = "Aspiring IT professional with a strong work ethic and a passion for learning and growth in the technology field. Committed to developing technical skills and contributing positively to team environments. Eager to gain hands-on experience and continuously improve to deliver quality results in any task or project.";
+let aboutContent = "Driven by curiosity and a desire to make an impact, I aim to leverage my skills to support organizational goals, create innovative digital solutions, and grow as a well-rounded IT professional.";
+let resumeLink = "https://linkedin.com/in/gelmarie";
+
+try {
+	const { entries } = await getEmDashCollection('profile');
+	if (entries && entries.length > 0 && entries[0].data) {
+		name = entries[0].data.name || name;
+		intro = entries[0].data.intro || intro;
+		aboutContent = entries[0].data.about_content || aboutContent;
+		resumeLink = entries[0].data.resume_link || resumeLink;
+	}
+} catch (e) {
+	console.error('Error fetching profile from EmDash:', e);
+}
 ---
 
 <section class="about" id="about">
@@ -11,15 +29,15 @@ import CloudIcon from '../assets/cloud.svg';
 	</div>
 
 	<div class="about-content">
-		<h1 class="fade-in">Hi, I'm <span class="gradient-text">Angel Marie Sabido</span></h1>
+		<h1 class="fade-in">Hi, I'm <span class="gradient-text">{name}</span></h1>
 		<h3 class="typing-text fade-in-delay-1">I'm a <span></span></h3>
-		<p class="fade-in-delay-2">Aspiring IT professional with a strong work ethic and a passion for learning and growth in the technology field. Committed to developing technical skills and contributing positively to team environments. Eager to gain hands-on experience and continuously improve to deliver quality results in any task or project.</p>
+		<p class="fade-in-delay-2">{intro}</p>
 		<br />
-		<p class="fade-in-delay-2">Driven by curiosity and a desire to make an impact, I aim to leverage my skills to support organizational goals, create innovative digital solutions, and grow as a well-rounded IT professional.</p>
+		<p class="fade-in-delay-2">{aboutContent}</p>
 		<div class="btn-group fade-in-delay-3">
 			<a href="#contact" class="btn">Contact Me</a>
 			<a href="#projects" class="btn btn-secondary">View Projects</a>
-			<a href="#" class="btn btn-secondary" download><i class="fa-solid fa-download"></i> Download CV</a>
+			<a href={resumeLink} target="_blank" class="btn btn-secondary"><i class="fa-solid fa-download"></i> Download CV</a>
 		</div>
 		<div class="social-icons fade-in-delay-4">
 			<a href="https://www.linkedin.com/in/gelmarie" target="_blank" title="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>

@@ -1,64 +1,77 @@
 ---
+import { getEmDashCollection } from 'emdash';
+
+let skillsGroups = [
+	{
+		category: "Programming Languages",
+		icon: "fa-solid fa-code",
+		skills: ["JavaScript", "HTML5", "CSS3", "Java", "Python"]
+	},
+	{
+		category: "Web Technologies",
+		icon: "fa-solid fa-laptop-code",
+		skills: ["React.js", "Astro", "Tailwind CSS", "Node.js", "Bootstrap"]
+	},
+	{
+		category: "Tools & Databases",
+		icon: "fa-solid fa-screwdriver-wrench",
+		skills: ["Figma", "Git & GitHub", "MongoDB", "MySQL", "Canva"]
+	}
+];
+
+try {
+	const { entries } = await getEmDashCollection('skills');
+	if (entries && entries.length > 0) {
+		const iconMap: Record<string, string> = {
+			"Programming Languages": "fa-solid fa-code",
+			"Web Technologies": "fa-solid fa-laptop-code",
+			"Tools & Databases": "fa-solid fa-screwdriver-wrench"
+		};
+		skillsGroups = entries.map((entry) => {
+			const category = entry.data.category;
+			const skills_list = entry.data.skills_list;
+			const skills = skills_list ? skills_list.split(',').map((s: string) => s.trim()) : [];
+			const icon = iconMap[category] || "fa-solid fa-cube";
+			return { category, icon, skills };
+		});
+	}
+} catch (e) {
+	console.error('Error fetching skills from EmDash:', e);
+}
 ---
 
 <section class="skills" id="skills">
 	<h2 class="heading">My <span>Skills</span></h2>
 	<div class="skills-container">
-		<div class="skill-box">
-			<div class="skill-icon">
-				<i class="fa-solid fa-code"></i>
+		{skillsGroups.map((group) => (
+			<div class="skill-box">
+				<div class="skill-icon">
+					<i class={group.icon}></i>
+				</div>
+				<h3>{group.category}</h3>
+				<div class="skill-list">
+					{group.skills.map((skill) => (
+						<span class="skill-pill">{skill}</span>
+					))}
+				</div>
 			</div>
-			<h3>Programming Languages</h3>
-			<div class="skill-list">
-				<span class="skill-pill">JavaScript</span>
-				<span class="skill-pill">HTML5</span>
-				<span class="skill-pill">CSS3</span>
-				<span class="skill-pill">Java</span>
-				<span class="skill-pill">Python</span>
-			</div>
-		</div>
-		<div class="skill-box">
-			<div class="skill-icon">
-				<i class="fa-solid fa-laptop-code"></i>
-			</div>
-			<h3>Web Technologies</h3>
-			<div class="skill-list">
-				<span class="skill-pill">React.js</span>
-				<span class="skill-pill">Astro</span>
-				<span class="skill-pill">Tailwind CSS</span>
-				<span class="skill-pill">Node.js</span>
-				<span class="skill-pill">Bootstrap</span>
-			</div>
-		</div>
-		<div class="skill-box">
-			<div class="skill-icon">
-				<i class="fa-solid fa-screwdriver-wrench"></i>
-			</div>
-			<h3>Tools & Databases</h3>
-			<div class="skill-list">
-				<span class="skill-pill">Figma</span>
-				<span class="skill-pill">Git & GitHub</span>
-				<span class="skill-pill">MongoDB</span>
-				<span class="skill-pill">MySQL</span>
-				<span class="skill-pill">Canva</span>
-			</div>
-		</div>
+		))}
 	</div>
 </section>
 
 <style>
 	.skills {
-		background: var(--primary);
+		background: var(--light);
 		padding: 5rem 0;
 	}
 
 	.skills .heading {
-		color: var(--white);
+		color: var(--dark);
 	}
 
 	.skills .heading span {
-		-webkit-text-fill-color: var(--accent);
-		color: var(--accent);
+		-webkit-text-fill-color: var(--primary);
+		color: var(--primary);
 	}
 
 	.skills-container {
@@ -71,12 +84,11 @@
 	}
 
 	.skill-box {
-		background: rgba(255, 255, 255, 0.08);
-		backdrop-filter: blur(12px);
-		border: 1px solid rgba(255, 255, 255, 0.15);
+		background: var(--white);
+		border: 1px solid rgba(162, 136, 166, 0.05);
 		padding: 2.5rem 2rem;
 		border-radius: 24px;
-		box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(255, 255, 255, 0.05) inset;
+		box-shadow: 0 10px 30px rgba(162, 136, 166, 0.06);
 		transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), border-color 0.4s ease, box-shadow 0.4s ease;
 		text-align: center;
 		display: flex;
@@ -86,35 +98,37 @@
 
 	.skill-box:hover {
 		transform: translateY(-8px);
-		box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(255, 255, 255, 0.1) inset;
-		border-color: rgba(255, 255, 255, 0.3);
+		box-shadow: 0 20px 40px rgba(162, 136, 166, 0.12);
+		border-color: rgba(162, 136, 166, 0.15);
 	}
 
 	.skill-icon {
 		width: 60px;
 		height: 60px;
-		background: rgba(255, 255, 255, 0.15);
-		border-radius: 50%;
+		background: var(--light);
+		border-radius: 20px;
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		color: var(--white);
+		color: var(--primary);
 		font-size: 1.5rem;
 		margin-bottom: 1.5rem;
-		box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
-		border: 1px solid rgba(255, 255, 255, 0.2);
-		transition: transform 0.3s ease;
+		box-shadow: 0 5px 15px rgba(162, 136, 166, 0.08);
+		border: 1px solid rgba(162, 136, 166, 0.1);
+		transition: transform 0.3s ease, border-radius 0.3s ease, background 0.3s ease, color 0.3s ease;
 	}
 
 	.skill-box:hover .skill-icon {
 		transform: scale(1.1) rotate(5deg);
-		background: var(--white);
-		color: var(--primary);
+		border-radius: 50%;
+		background: var(--gradient);
+		color: var(--white);
+		border-color: transparent;
 	}
 
 	.skill-box h3 {
 		font-size: 1.4rem;
-		color: var(--white);
+		color: var(--dark);
 		margin-bottom: 1.5rem;
 		font-weight: 700;
 		letter-spacing: 0.5px;
@@ -129,22 +143,22 @@
 	}
 
 	.skill-pill {
-		background: rgba(255, 255, 255, 0.1);
-		border: 1px solid rgba(255, 255, 255, 0.15);
+		background: var(--light);
+		border: 1px solid rgba(162, 136, 166, 0.15);
 		padding: 0.5rem 1rem;
 		border-radius: 50px;
 		font-size: 0.85rem;
 		font-weight: 600;
-		color: var(--white);
+		color: var(--primary);
 		transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 		cursor: default;
 	}
 
 	.skill-pill:hover {
-		background: var(--white);
-		color: var(--primary);
+		background: var(--gradient);
+		color: var(--white);
 		transform: translateY(-2px) scale(1.05);
-		box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+		box-shadow: 0 8px 20px rgba(162, 136, 166, 0.2);
 		border-color: transparent;
 	}
 </style>

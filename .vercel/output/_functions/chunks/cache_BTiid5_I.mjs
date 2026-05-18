@@ -1,0 +1,4 @@
+function invalidateRedirectCache() {
+}
+
+export { invalidateRedirectCache };

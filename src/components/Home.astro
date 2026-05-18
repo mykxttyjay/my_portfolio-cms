@@ -1,5 +1,20 @@
 ---
 import CloudIcon from '../assets/cloud.svg';
+import { getEmDashCollection } from 'emdash';
+
+let name = "Angel Marie";
+let role = "IT Student";
+let focus = "Web Dev & Tech";
+
+try {
+	const { entries } = await getEmDashCollection('profile');
+	if (entries && entries.length > 0 && entries[0].data) {
+		name = entries[0].data.name || name;
+		role = entries[0].data.role || role;
+	}
+} catch (e) {
+	console.error('Error fetching profile from EmDash:', e);
+}
 ---
 
 <section class="home" id="home">
@@ -18,9 +33,9 @@ import CloudIcon from '../assets/cloud.svg';
 					</div>
 					<div class="card-content">
 						<div class="code-line"><span class="keyword">const</span> <span class="variable">developer</span> = &#123;</div>
-						<div class="code-line indent"><span class="property">name</span>: <span class="string">"Angel Marie"</span>,</div>
-						<div class="code-line indent"><span class="property">role</span>: <span class="string">"IT Student"</span>,</div>
-						<div class="code-line indent"><span class="property">focus</span>: <span class="string">"Web Dev & Tech"</span></div>
+						<div class="code-line indent"><span class="property">name</span>: <span class="string">"{name}"</span>,</div>
+						<div class="code-line indent"><span class="property">role</span>: <span class="string">"{role}"</span>,</div>
+						<div class="code-line indent"><span class="property">focus</span>: <span class="string">"{focus}"</span></div>
 						<div class="code-line">&#125;;</div>
 					</div>
 				</div>
