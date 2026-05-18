@@ -10,10 +10,10 @@ let resumeLink = "https://linkedin.com/in/gelmarie";
 try {
 	const { entries } = await getEmDashCollection('profile');
 	if (entries && entries.length > 0 && entries[0].data) {
-		name = entries[0].data.name || name;
-		intro = entries[0].data.intro || intro;
-		aboutContent = entries[0].data.about_content || aboutContent;
-		resumeLink = entries[0].data.resume_link || resumeLink;
+		name = (entries[0].data.name as string) || name;
+		intro = (entries[0].data.intro as string) || intro;
+		aboutContent = (entries[0].data.about_content as string) || aboutContent;
+		resumeLink = (entries[0].data.resume_link as string) || resumeLink;
 	}
 } catch (e) {
 	console.error('Error fetching profile from EmDash:', e);

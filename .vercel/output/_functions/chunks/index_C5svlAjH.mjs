@@ -1,7 +1,7 @@
 import { c as createComponent } from './astro-component_wp9zoKZU.mjs';
 import 'piccolore';
 import { T as createRenderInstruction, aw as generateCspDigest, bf as unescapeHTML, Q as renderTemplate, z as maybeRenderHead, a3 as addAttribute, b0 as renderHead } from './params-and-props_DwyEVPUa.mjs';
-import { s as spreadAttributes, r as renderComponent } from './entrypoint_2UBQPNzx.mjs';
+import { s as spreadAttributes, r as renderComponent } from './entrypoint_DMPhhK1r.mjs';
 import 'clsx';
 import './adapt-sandbox-entry_H5gl0boC.mjs';
 import 'better-sqlite3';

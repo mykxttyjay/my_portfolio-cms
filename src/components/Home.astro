@@ -9,8 +9,8 @@ let focus = "Web Dev & Tech";
 try {
 	const { entries } = await getEmDashCollection('profile');
 	if (entries && entries.length > 0 && entries[0].data) {
-		name = entries[0].data.name || name;
-		role = entries[0].data.role || role;
+		name = (entries[0].data.name as string) || name;
+		role = (entries[0].data.role as string) || role;
 	}
 } catch (e) {
 	console.error('Error fetching profile from EmDash:', e);
