@@ -7,4 +7,3 @@ node_modules
 .astro
 .vscode
 bun.lock
-dist
