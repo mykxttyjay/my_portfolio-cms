@@ -1,9 +1,8 @@
 .git
 .gitignore
 README.md
-node_modules
 .env.local
 .env.*.local
-.astro
 .vscode
 bun.lock
+
