@@ -2,7 +2,7 @@
 ---
 
 <section class="experience" id="experience">
-	<h2 class="heading">Experience / <span>OJT</span></h2>
+	<h2 class="heading">Experience</h2>
 	<div class="experience-container">
 		<div class="experience-box">
 			<div class="experience-icon">
@@ -23,8 +23,25 @@
 
 <style>
 	.experience {
-		background: var(--light);
+		background: #A31D1D;
 		padding: 5rem 0;
+		position: relative;
+		overflow: hidden;
+	}
+
+	.experience::before {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background-image: 
+			url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' result='noise' seed='2' /%3E%3CfeColorMatrix in='noise' type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100' height='100' fill='%23000000' filter='url(%23noiseFilter)' opacity='0.15'/%3E%3C/svg%3E");
+		background-size: 100px 100px;
+		pointer-events: none;
+		z-index: 0;
+		mix-blend-mode: overlay;
 	}
 
 	.experience-container {
@@ -34,14 +51,16 @@
 		max-width: 1000px;
 		margin: 0 auto;
 		padding: 0 2rem;
+		position: relative;
+		z-index: 1;
 	}
 
 	.experience-box {
-		background: var(--white);
+		background: white;
 		padding: 2.5rem 2rem;
 		border-radius: 24px;
-		box-shadow: 0 10px 30px rgba(162, 136, 166, 0.06);
-		border: 1px solid rgba(162, 136, 166, 0.05);
+		box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+		border: 1px solid rgba(163, 29, 29, 0.1);
 		transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
 		display: flex;
 		flex-direction: column;
@@ -50,22 +69,22 @@
 
 	.experience-box:hover {
 		transform: translateY(-8px);
-		box-shadow: 0 20px 40px rgba(162, 136, 166, 0.12);
-		border-color: rgba(162, 136, 166, 0.15);
+		box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+		border-color: rgba(163, 29, 29, 0.2);
 	}
 
 	.experience-icon {
 		width: 60px;
 		height: 60px;
-		background: var(--gradient);
+		background: linear-gradient(135deg, #A31D1D 0%, #8B1515 100%);
 		border-radius: 20px;
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		color: var(--white);
+		color: white;
 		font-size: 1.5rem;
 		margin-bottom: 1.5rem;
-		box-shadow: 0 8px 20px rgba(162, 136, 166, 0.2);
+		box-shadow: 0 8px 20px rgba(163, 29, 29, 0.3);
 		transition: transform 0.3s ease, border-radius 0.3s ease;
 	}
 
@@ -76,7 +95,7 @@
 
 	.experience-box h3 {
 		font-size: 1.4rem;
-		color: var(--dark);
+		color: #A31D1D;
 		margin-bottom: 1rem;
 		font-weight: 700;
 	}
@@ -85,5 +104,21 @@
 		color: #555;
 		line-height: 1.7;
 		font-size: 0.95rem;
+	}
+
+	.experience .heading {
+		color: #FEF9E1;
+		position: relative;
+		z-index: 1;
+		font-family: 'Poppins', sans-serif;
+		font-size: 60px;
+		font-weight: 900;
+		letter-spacing: 0px;
+		font-style: italic;
+	}
+
+	.experience .heading span {
+		-webkit-text-fill-color: #FEF9E1;
+		color: #FEF9E1;
 	}
 </style>

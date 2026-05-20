@@ -31,22 +31,22 @@ const { type = 'light-to-dark' } = Astro.props;
   }
 
   .light-to-dark {
-    /* Above is light, below is dark. */
-    /* The SVG is filled with dark color, and transparent on top. */
-    background-color: var(--light);
+    /* Above is light (cream), below is dark (red). */
+    /* The SVG is filled with red color. */
+    background-color: #fcf7e0;
   }
 
   .light-to-dark .divider-path {
-    fill: var(--primary); /* a288a6 */
+    fill: #a51e1e; /* Red */
   }
 
   .dark-to-light {
-    /* Above is dark, below is light. */
-    /* The SVG is filled with light color, and transparent on top. */
-    background-color: var(--primary);
+    /* Above is dark (red), below is light (cream). */
+    /* The SVG is filled with cream color. */
+    background-color:  #a51e1e;
   }
 
   .dark-to-light .divider-path {
-    fill: var(--light); /* f1e3e4 */
+    fill: #fcf7e0; /* Cream */
   }
 </style>

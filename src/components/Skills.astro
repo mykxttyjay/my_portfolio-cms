@@ -61,17 +61,41 @@ try {
 
 <style>
 	.skills {
-		background: var(--light);
+		background: #A31D1D;
 		padding: 5rem 0;
+		position: relative;
+		overflow: hidden;
+	}
+
+	.skills::before {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background-image: 
+			url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' result='noise' seed='2' /%3E%3CfeColorMatrix in='noise' type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100' height='100' fill='%23000000' filter='url(%23noiseFilter)' opacity='0.15'/%3E%3C/svg%3E");
+		background-size: 100px 100px;
+		pointer-events: none;
+		z-index: 0;
+		mix-blend-mode: overlay;
 	}
 
 	.skills .heading {
-		color: var(--dark);
+		color: #FEF9E1;
+		position: relative;
+		z-index: 1;
+		font-family: 'Poppins', sans-serif;
+		font-size: 60px;
+		font-weight: 900;
+		letter-spacing: 0px;
+		font-style: italic;
 	}
 
 	.skills .heading span {
-		-webkit-text-fill-color: var(--primary);
-		color: var(--primary);
+		-webkit-text-fill-color: #FEF9E1;
+		color: #FEF9E1;
 	}
 
 	.skills-container {
@@ -81,14 +105,16 @@ try {
 		max-width: 1100px;
 		margin: 0 auto;
 		padding: 0 2rem;
+		position: relative;
+		z-index: 1;
 	}
 
 	.skill-box {
-		background: var(--white);
-		border: 1px solid rgba(162, 136, 166, 0.05);
+		background: white;
+		border: 1px solid rgba(163, 29, 29, 0.1);
 		padding: 2.5rem 2rem;
 		border-radius: 24px;
-		box-shadow: 0 10px 30px rgba(162, 136, 166, 0.06);
+		box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
 		transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), border-color 0.4s ease, box-shadow 0.4s ease;
 		text-align: center;
 		display: flex;
@@ -98,37 +124,37 @@ try {
 
 	.skill-box:hover {
 		transform: translateY(-8px);
-		box-shadow: 0 20px 40px rgba(162, 136, 166, 0.12);
-		border-color: rgba(162, 136, 166, 0.15);
+		box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+		border-color: rgba(163, 29, 29, 0.2);
 	}
 
 	.skill-icon {
 		width: 60px;
 		height: 60px;
-		background: var(--light);
+		background: #f5f0f0;
 		border-radius: 20px;
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		color: var(--primary);
+		color: #A31D1D;
 		font-size: 1.5rem;
 		margin-bottom: 1.5rem;
-		box-shadow: 0 5px 15px rgba(162, 136, 166, 0.08);
-		border: 1px solid rgba(162, 136, 166, 0.1);
+		box-shadow: 0 5px 15px rgba(163, 29, 29, 0.08);
+		border: 1px solid rgba(163, 29, 29, 0.15);
 		transition: transform 0.3s ease, border-radius 0.3s ease, background 0.3s ease, color 0.3s ease;
 	}
 
 	.skill-box:hover .skill-icon {
 		transform: scale(1.1) rotate(5deg);
 		border-radius: 50%;
-		background: var(--gradient);
-		color: var(--white);
+		background: linear-gradient(135deg, #A31D1D 0%, #8B1515 100%);
+		color: #FEF9E1;
 		border-color: transparent;
 	}
 
 	.skill-box h3 {
 		font-size: 1.4rem;
-		color: var(--dark);
+		color: #A31D1D;
 		margin-bottom: 1.5rem;
 		font-weight: 700;
 		letter-spacing: 0.5px;
@@ -143,22 +169,22 @@ try {
 	}
 
 	.skill-pill {
-		background: var(--light);
-		border: 1px solid rgba(162, 136, 166, 0.15);
+		background: #f5f0f0;
+		border: 1px solid rgba(163, 29, 29, 0.2);
 		padding: 0.5rem 1rem;
 		border-radius: 50px;
 		font-size: 0.85rem;
 		font-weight: 600;
-		color: var(--primary);
+		color: #A31D1D;
 		transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 		cursor: default;
 	}
 
 	.skill-pill:hover {
-		background: var(--gradient);
-		color: var(--white);
+		background: linear-gradient(135deg, #A31D1D 0%, #8B1515 100%);
+		color: #FEF9E1;
 		transform: translateY(-2px) scale(1.05);
-		box-shadow: 0 8px 20px rgba(162, 136, 166, 0.2);
+		box-shadow: 0 8px 20px rgba(163, 29, 29, 0.2);
 		border-color: transparent;
 	}
 </style>
