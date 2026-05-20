@@ -2,20 +2,15 @@
 import CloudIcon from '../assets/cloud.svg';
 import { getEmDashCollection } from 'emdash';
 
-let name = "Angel Marie Sabido";
+let name = "Angel Marie";
 let role = "IT Student";
-let intro = "Aspiring IT professional with a strong work ethic and a passion for learning and growth in the technology field. Committed to developing technical skills and contributing positively to team environments. Eager to gain hands-on experience and continuously improve to deliver quality results in any task or project.";
-let aboutContent = "Driven by curiosity and a desire to make an impact, I aim to leverage my skills to support organizational goals, create innovative digital solutions, and grow as a well-rounded IT professional.";
-let resumeLink = "https://linkedin.com/in/gelmarie";
+let focus = "Web Dev & Tech";
 
 try {
 	const { entries } = await getEmDashCollection('profile');
 	if (entries && entries.length > 0 && entries[0].data) {
 		name = (entries[0].data.name as string) || name;
 		role = (entries[0].data.role as string) || role;
-		intro = (entries[0].data.intro as string) || intro;
-		aboutContent = (entries[0].data.about_content as string) || aboutContent;
-		resumeLink = (entries[0].data.resume_link as string) || resumeLink;
 	}
 } catch (e) {
 	console.error('Error fetching profile from EmDash:', e);
@@ -23,30 +18,34 @@ try {
 ---
 
 <section class="home" id="home">
-	<div class="home-img">
-		<div class="rotating-border"></div>
-		<div class="rotating-border-2"></div>
-		<img src="main.jpg" alt={name} />
-		<div class="img-glow"></div>
-	</div>
-
-	<div class="home-content">
-		<h1 class="fade-in">Hi, I'm <span class="gradient-text">{name}</span></h1>
-		<h3 class="typing-text fade-in-delay-1">I'm a <span></span></h3>
-		<p class="fade-in-delay-2">{intro}</p>
-		<br />
-		<p class="fade-in-delay-2">{aboutContent}</p>
-		<div class="btn-group fade-in-delay-3">
-			<a href="#contact" class="btn">Contact Me</a>
-			<a href="#projects" class="btn btn-secondary">View Projects</a>
-			<a href={resumeLink} target="_blank" class="btn btn-secondary"><i class="fa-solid fa-download"></i> Download CV</a>
+	<div class="home-container">
+		<div class="year">2026</div>
+		<h1 class="portfolio-title">PORTFOLIO</h1>
+		
+		<div class="illustration-placeholder">
+			<div class="character-box">
+				<div class="glow-orb"></div>
+				<div class="dev-card">
+					<div class="card-header">
+						<span class="dot red"></span>
+						<span class="dot yellow"></span>
+						<span class="dot green"></span>
+					</div>
+					<div class="card-content">
+						<div class="code-line"><span class="keyword">const</span> <span class="variable">developer</span> = &#123;</div>
+						<div class="code-line indent"><span class="property">name</span>: <span class="string">"{name}"</span>,</div>
+						<div class="code-line indent"><span class="property">role</span>: <span class="string">"{role}"</span>,</div>
+						<div class="code-line indent"><span class="property">focus</span>: <span class="string">"{focus}"</span></div>
+						<div class="code-line">&#125;;</div>
+					</div>
+				</div>
+				<div class="tech-badge badge-1"><i class="fa-solid fa-code"></i> Frontend</div>
+				<div class="tech-badge badge-2"><i class="fa-solid fa-database"></i> Database</div>
+				<div class="tech-badge badge-3"><i class="fa-solid fa-graduation-cap"></i> Scholar</div>
+			</div>
 		</div>
-		<div class="social-icons fade-in-delay-4">
-			<a href="https://www.linkedin.com/in/gelmarie" target="_blank" title="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
-			<a href="https://github.com/mykxttyjay" target="_blank" title="GitHub"><i class="fa-brands fa-github"></i></a>
-			<a href="https://twitter.com/mykxttyjay" target="_blank" title="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
-			<a href="https://www.instagram.com/gelmarieee" target="_blank" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
-		</div>
+		
+		<p class="welcome-text">WELCOME</p>
 	</div>
 
 	<div class="clouds">
@@ -61,175 +60,170 @@ try {
 		min-height: 100vh;
 		display: flex;
 		align-items: center;
-		justify-content: space-between;
+		justify-content: center;
 		padding: 5rem 8%;
-		gap: 2rem;
 		position: relative;
 		background-color: var(--light);
 		overflow: hidden;
 	}
 
-	.home-img {
-		position: relative;
-		flex: 1;
+	.home-container {
+		text-align: center;
+		z-index: 1;
+		width: 100%;
+	}
+
+	.year {
+		font-size: 1.2rem;
+		color: var(--primary);
+		font-weight: 600;
+		margin-bottom: 1rem;
+		letter-spacing: 2px;
+	}
+
+	.portfolio-title {
+		font-size: 5rem;
+		font-weight: 700;
+		color: var(--primary);
+		margin-bottom: 2rem;
+		letter-spacing: 8px;
+		text-shadow: 0 4px 15px rgba(162, 136, 166, 0.2);
+	}
+
+	.illustration-placeholder {
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		z-index: 1;
+		margin: 3rem 0;
+		min-height: 320px;
+		position: relative;
 	}
 
-	.home-img img {
+	.character-box {
+		width: 450px;
+		height: 320px;
+		position: relative;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.glow-orb {
+		position: absolute;
 		width: 300px;
 		height: 300px;
+		background: radial-gradient(circle, rgba(162, 136, 166, 0.4) 0%, transparent 70%);
 		border-radius: 50%;
-		object-fit: cover;
-		position: relative;
+		z-index: 0;
+		filter: blur(15px);
+		animation: pulseGlow 8s infinite alternate;
+	}
+
+	@keyframes pulseGlow {
+		0% { transform: scale(1); opacity: 0.6; }
+		100% { transform: scale(1.1); opacity: 0.9; }
+	}
+
+	.dev-card {
+		background: rgba(255, 255, 255, 0.7);
+		backdrop-filter: blur(12px);
+		border: 1px solid rgba(255, 255, 255, 0.5);
+		border-radius: 20px;
+		width: 360px;
+		padding: 1.5rem;
+		box-shadow: 0 20px 40px rgba(162, 136, 166, 0.15), 0 0 0 1px rgba(255, 255, 255, 0.5) inset;
 		z-index: 2;
-		box-shadow: 0 20px 60px rgba(162, 136, 166, 0.3), 0 0 40px rgba(187, 155, 176, 0.2);
-		border: 3px solid rgba(255, 255, 255, 0.8);
-		transition: transform 0.3s ease, box-shadow 0.3s ease;
+		text-align: left;
+		transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 	}
 
-	.home-img img:hover {
-		transform: scale(1.05);
-		box-shadow: 0 25px 70px rgba(162, 136, 166, 0.4), 0 0 50px rgba(187, 155, 176, 0.3);
+	.dev-card:hover {
+		transform: translateY(-8px) rotate(-1deg);
+		box-shadow: 0 30px 60px rgba(162, 136, 166, 0.25);
 	}
 
-	.rotating-border,
-	.rotating-border-2 {
-		position: absolute;
+	.card-header {
+		display: flex;
+		gap: 6px;
+		margin-bottom: 1.2rem;
+	}
+
+	.dot {
+		width: 10px;
+		height: 10px;
 		border-radius: 50%;
-		border: 2px solid transparent;
-		border-top-color: var(--primary);
-		border-right-color: var(--secondary);
-		animation: rotate 3s linear infinite;
 	}
 
-	.rotating-border {
-		width: 320px;
-		height: 320px;
-		top: 50%;
-		left: 50%;
-		transform: translate(-50%, -50%);
-	}
+	.dot.red { background: #ff5f56; }
+	.dot.yellow { background: #ffbd2e; }
+	.dot.green { background: #27c93f; }
 
-	.rotating-border-2 {
-		width: 350px;
-		height: 350px;
-		top: 50%;
-		left: 50%;
-		transform: translate(-50%, -50%);
-		animation: rotate 4s linear infinite reverse;
-		border-top-color: var(--secondary);
-		border-right-color: var(--accent);
-	}
-
-	@keyframes rotate {
-		from {
-			transform: translate(-50%, -50%) rotate(0deg);
-		}
-		to {
-			transform: translate(-50%, -50%) rotate(360deg);
-		}
-	}
-
-	.img-glow {
-		position: absolute;
-		width: 320px;
-		height: 320px;
-		background: radial-gradient(circle, rgba(162, 136, 166, 0.2) 0%, transparent 70%);
-		border-radius: 50%;
-		top: 50%;
-		left: 50%;
-		transform: translate(-50%, -50%);
-		filter: blur(20px);
-	}
-
-	.home-content {
-		flex: 1;
-		padding-left: 1rem;
-		z-index: 1;
-		animation: slideInLeft 0.8s ease-out;
-	}
-
-	@keyframes slideInLeft {
-		from {
-			opacity: 0;
-			transform: translateX(-50px);
-		}
-		to {
-			opacity: 1;
-			transform: translateX(0);
-		}
-	}
-
-	.home-content h1 {
-		font-size: 3.5rem;
-		font-weight: 700;
-		margin-bottom: 1rem;
-		line-height: 1.2;
+	.card-content {
+		font-family: 'Courier New', Courier, monospace;
+		font-size: 0.95rem;
+		line-height: 1.6;
 		color: var(--dark);
-		text-shadow: 0 2px 10px rgba(162, 136, 166, 0.1);
 	}
 
-	.gradient-text {
-		background: var(--gradient);
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
-		background-clip: text;
-		font-weight: 800;
+	.code-line {
+		margin-bottom: 0.25rem;
 	}
 
-	.typing-text {
-		font-size: 1.5rem;
+	.code-line.indent {
+		padding-left: 1.5rem;
+	}
+
+	.keyword { color: #85586f; font-weight: bold; }
+	.variable { color: var(--primary); }
+	.property { color: #bb9bb0; }
+	.string { color: #6b4f4f; }
+
+	.tech-badge {
+		position: absolute;
+		background: var(--white);
 		color: var(--primary);
-		margin-bottom: 1.5rem;
+		padding: 0.6rem 1.2rem;
+		border-radius: 50px;
+		font-size: 0.85rem;
 		font-weight: 600;
-		letter-spacing: 0.5px;
-	}
-
-	.home-content p {
-		font-size: 1rem;
-		line-height: 1.8;
-		color: var(--dark);
-		margin-bottom: 1rem;
-		font-weight: 500;
-		letter-spacing: 0.3px;
-	}
-
-	.btn-group {
-		display: flex;
-		gap: 1rem;
-		margin: 2rem 0;
-		flex-wrap: wrap;
-	}
-
-	.social-icons {
-		display: flex;
-		gap: 1.5rem;
-		margin-top: 2rem;
-	}
-
-	.social-icons a {
-		width: 50px;
-		height: 50px;
+		box-shadow: 0 10px 25px rgba(162, 136, 166, 0.15);
+		border: 1px solid rgba(255, 255, 255, 0.8);
+		z-index: 3;
 		display: flex;
 		align-items: center;
-		justify-content: center;
-		background: var(--gradient);
-		color: var(--white);
-		border-radius: 50%;
-		text-decoration: none;
-		font-size: 1.2rem;
-		transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
-		box-shadow: 0 8px 25px rgba(162, 136, 166, 0.35);
-		border: 2px solid rgba(255, 255, 255, 0.3);
+		gap: 8px;
+		animation: floatBadge 6s ease-in-out infinite;
 	}
 
-	.social-icons a:hover {
-		transform: translateY(-8px) scale(1.1);
-		box-shadow: 0 12px 35px rgba(162, 136, 166, 0.5);
-		border-color: rgba(255, 255, 255, 0.6);
+	.badge-1 {
+		top: 10%;
+		left: -15px;
+		animation-delay: 0s;
+	}
+
+	.badge-2 {
+		bottom: 15%;
+		right: -15px;
+		animation-delay: 2s;
+	}
+
+	.badge-3 {
+		top: -20px;
+		right: 20px;
+		animation-delay: 4s;
+	}
+
+	@keyframes floatBadge {
+		0%, 100% { transform: translateY(0); }
+		50% { transform: translateY(-10px); }
+	}
+
+	.welcome-text {
+		font-size: 1.5rem;
+		color: var(--primary);
+		font-weight: 600;
+		letter-spacing: 3px;
+		margin-top: 2rem;
 	}
 
 	.clouds {
@@ -281,108 +275,34 @@ try {
 
 	@media (max-width: 768px) {
 		.home {
-			flex-direction: column;
 			padding: 3rem 5%;
 		}
 
-		.home-content {
-			padding-left: 0;
-			margin-top: 2rem;
+		.portfolio-title {
+			font-size: 3rem;
+			letter-spacing: 4px;
 		}
 
-		.home-content h1 {
-			font-size: 2rem;
+		.character-box {
+			width: 100%;
+			height: 320px;
+			max-width: 320px;
 		}
 
-		.typing-text {
+		.dev-card {
+			width: 100%;
+		}
+
+		.tech-badge {
+			padding: 0.4rem 0.8rem;
+			font-size: 0.75rem;
+		}
+
+		.badge-1 { left: -5px; }
+		.badge-2 { right: -5px; }
+
+		.welcome-text {
 			font-size: 1.2rem;
 		}
-
-		.btn-group {
-			flex-direction: column;
-		}
-
-		.btn-group a {
-			width: 100%;
-			text-align: center;
-		}
-
-		.home-img img {
-			width: 200px;
-			height: 200px;
-		}
-
-		.rotating-border {
-			width: 220px;
-			height: 220px;
-		}
-
-		.rotating-border-2 {
-			width: 250px;
-			height: 250px;
-		}
-	}
-
-	.typing-text span::after {
-		content: '|';
-		animation: blink 0.7s infinite;
-		margin-left: 3px;
-		color: var(--primary);
-	}
-
-	@keyframes blink {
-		0%, 100% { opacity: 1; }
-		50% { opacity: 0; }
 	}
 </style>
-
-<script>
-	const words = ["IT Student", "Web Developer", "Graphic Designer", "Scholar"];
-	let i = 0;
-	let timer: number | any;
-
-	function typingEffect() {
-		let word = words[i].split("");
-		var loopTyping = function() {
-			if (word.length > 0) {
-				const span = document.querySelector('.typing-text span');
-				if (span) span.innerHTML += word.shift();
-			} else {
-				deletingEffect();
-				return false;
-			}
-			timer = setTimeout(loopTyping, 100);
-		};
-		loopTyping();
-	}
-
-	function deletingEffect() {
-		let word = words[i].split("");
-		var loopDeleting = function() {
-			if (word.length > 0) {
-				word.pop();
-				const span = document.querySelector('.typing-text span');
-				if (span) span.innerHTML = word.join("");
-			} else {
-				if (words.length > (i + 1)) {
-					i++;
-				} else {
-					i = 0;
-				}
-				setTimeout(typingEffect, 500);
-				return false;
-			}
-			timer = setTimeout(loopDeleting, 60);
-		};
-		setTimeout(loopDeleting, 2000);
-	}
-
-	// Start typing after component loads
-	document.addEventListener('DOMContentLoaded', () => {
-		typingEffect();
-	});
-	// Backup initialization in case DOMContentLoaded already fired
-	if (document.readyState === 'complete' || document.readyState === 'interactive') {
-		typingEffect();
-	}
-</script>

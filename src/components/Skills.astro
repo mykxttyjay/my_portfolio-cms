@@ -40,20 +40,18 @@ try {
 }
 ---
 
-<section class="skills bg-light py-20" id="skills">
-	<h2 class="heading text-4xl font-bold mb-12 text-center text-dark">
-		My <span class="gradient-text">Skills</span>
-	</h2>
-	<div class="skills-container grid grid-cols-[repeat(auto-fit,minmax(300px,1fr))] gap-10 max-w-[1100px] mx-auto px-8">
+<section class="skills" id="skills">
+	<h2 class="heading">My <span>Skills</span></h2>
+	<div class="skills-container">
 		{skillsGroups.map((group) => (
-			<div class="skill-box bg-white border border-primary/5 p-10 px-8 rounded-3xl shadow-[0_10px_30px_rgba(162,136,166,0.06)] transition-all duration-[400ms] ease-[cubic-bezier(0.175,0.885,0.32,1.275)] text-center flex flex-col items-center hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(162,136,166,0.12)] hover:border-primary/15">
-				<div class="skill-icon w-[60px] h-[60px] bg-light rounded-[20px] flex items-center justify-center text-primary text-2xl mb-6 shadow-[0_5px_15px_rgba(162,136,166,0.08)] border border-primary/10 transition-all duration-300 group-hover:scale-110 group-hover:rotate-[5deg] group-hover:rounded-full group-hover:bg-gradient-to-br group-hover:from-primary group-hover:to-secondary group-hover:text-white group-hover:border-transparent">
+			<div class="skill-box">
+				<div class="skill-icon">
 					<i class={group.icon}></i>
 				</div>
-				<h3 class="text-[1.4rem] text-dark mb-6 font-bold tracking-wide">{group.category}</h3>
-				<div class="skill-list flex flex-wrap gap-2.5 justify-center w-full">
+				<h3>{group.category}</h3>
+				<div class="skill-list">
 					{group.skills.map((skill) => (
-						<span class="skill-pill bg-light border border-primary/15 px-4 py-2 rounded-full text-[0.85rem] font-semibold text-primary transition-all duration-300 ease-[cubic-bezier(0.25,0.8,0.25,1)] cursor-default hover:bg-gradient-to-br hover:from-primary hover:to-secondary hover:text-white hover:-translate-y-0.5 hover:scale-105 hover:shadow-[0_8px_20px_rgba(162,136,166,0.2)] hover:border-transparent">{skill}</span>
+						<span class="skill-pill">{skill}</span>
 					))}
 				</div>
 			</div>
@@ -62,16 +60,105 @@ try {
 </section>
 
 <style>
-	.gradient-text {
+	.skills {
+		background: var(--light);
+		padding: 5rem 0;
+	}
+
+	.skills .heading {
+		color: var(--dark);
+	}
+
+	.skills .heading span {
 		-webkit-text-fill-color: var(--primary);
 		color: var(--primary);
+	}
+
+	.skills-container {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+		gap: 2.5rem;
+		max-width: 1100px;
+		margin: 0 auto;
+		padding: 0 2rem;
+	}
+
+	.skill-box {
+		background: var(--white);
+		border: 1px solid rgba(162, 136, 166, 0.05);
+		padding: 2.5rem 2rem;
+		border-radius: 24px;
+		box-shadow: 0 10px 30px rgba(162, 136, 166, 0.06);
+		transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), border-color 0.4s ease, box-shadow 0.4s ease;
+		text-align: center;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+
+	.skill-box:hover {
+		transform: translateY(-8px);
+		box-shadow: 0 20px 40px rgba(162, 136, 166, 0.12);
+		border-color: rgba(162, 136, 166, 0.15);
+	}
+
+	.skill-icon {
+		width: 60px;
+		height: 60px;
+		background: var(--light);
+		border-radius: 20px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		color: var(--primary);
+		font-size: 1.5rem;
+		margin-bottom: 1.5rem;
+		box-shadow: 0 5px 15px rgba(162, 136, 166, 0.08);
+		border: 1px solid rgba(162, 136, 166, 0.1);
+		transition: transform 0.3s ease, border-radius 0.3s ease, background 0.3s ease, color 0.3s ease;
 	}
 
 	.skill-box:hover .skill-icon {
 		transform: scale(1.1) rotate(5deg);
 		border-radius: 50%;
-		background: linear-gradient(135deg, #a288a6 0%, #bb9bb0 100%);
-		color: white;
+		background: var(--gradient);
+		color: var(--white);
+		border-color: transparent;
+	}
+
+	.skill-box h3 {
+		font-size: 1.4rem;
+		color: var(--dark);
+		margin-bottom: 1.5rem;
+		font-weight: 700;
+		letter-spacing: 0.5px;
+	}
+
+	.skill-list {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.6rem;
+		justify-content: center;
+		width: 100%;
+	}
+
+	.skill-pill {
+		background: var(--light);
+		border: 1px solid rgba(162, 136, 166, 0.15);
+		padding: 0.5rem 1rem;
+		border-radius: 50px;
+		font-size: 0.85rem;
+		font-weight: 600;
+		color: var(--primary);
+		transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+		cursor: default;
+	}
+
+	.skill-pill:hover {
+		background: var(--gradient);
+		color: var(--white);
+		transform: translateY(-2px) scale(1.05);
+		box-shadow: 0 8px 20px rgba(162, 136, 166, 0.2);
 		border-color: transparent;
 	}
 </style>
