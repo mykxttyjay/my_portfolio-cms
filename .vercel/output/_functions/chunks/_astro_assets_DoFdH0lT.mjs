@@ -1,5 +1,5 @@
 import { a as AstroError, b1 as NoImageMetadata, b2 as FailedToFetchRemoteImageDimensions, b3 as RemoteImageNotAllowed, aS as joinPaths, b4 as ExpectedImage, a$ as isRemotePath, b5 as LocalImageUsedWrongly, b6 as MissingImageDimension, b7 as UnsupportedImageFormat, b8 as IncompatibleDescriptorOptions, b9 as UnsupportedImageConversion, ba as InvalidImageService, bb as ExpectedImageOptions, bc as ExpectedNotESMImage, bd as ImageMissingAlt, z as maybeRenderHead, a3 as addAttribute, Q as renderTemplate, be as FontFamilyNotFound, bf as unescapeHTML, bg as MissingGetFontFileRequestUrl } from './params-and-props_DwyEVPUa.mjs';
-import { t as typeHandlers, a as types, i as isRemoteAllowed, s as spreadAttributes } from './entrypoint_hLvUP6A0.mjs';
+import { t as typeHandlers, a as types, i as isRemoteAllowed, s as spreadAttributes } from './entrypoint_B0ENIgBk.mjs';
 import * as mime from 'mrmime';
 import { c as createComponent } from './astro-component_wp9zoKZU.mjs';
 import 'clsx';
@@ -592,7 +592,7 @@ async function getConfiguredImageService() {
   if (!globalThis?.astroAsset?.imageService) {
     const { default: service } = await import(
       // @ts-expect-error
-      './sharp_8ZvWtZUq.mjs'
+      './sharp_DQSp2OUP.mjs'
     ).catch((e) => {
       const error = new AstroError(InvalidImageService);
       error.cause = e;

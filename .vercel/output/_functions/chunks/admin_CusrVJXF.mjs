@@ -1,8 +1,8 @@
 import { c as createComponent } from './astro-component_wp9zoKZU.mjs';
 import 'piccolore';
 import { a3 as addAttribute, Q as renderTemplate, b0 as renderHead } from './params-and-props_DwyEVPUa.mjs';
-import { r as renderComponent } from './entrypoint_hLvUP6A0.mjs';
-import { $ as $$Font } from './_astro_assets_DrsDoyUf.mjs';
+import { r as renderComponent } from './entrypoint_B0ENIgBk.mjs';
+import { $ as $$Font } from './_astro_assets_DoFdH0lT.mjs';
 import 'react';
 import 'react/jsx-runtime';
 
