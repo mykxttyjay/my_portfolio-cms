@@ -4,7 +4,6 @@ README.md
 node_modules
 .env.local
 .env.*.local
-dist
 .astro
 .vscode
 bun.lock
