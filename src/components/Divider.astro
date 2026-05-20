@@ -3,50 +3,14 @@ interface Props {
   type?: 'light-to-dark' | 'dark-to-light';
 }
 const { type = 'light-to-dark' } = Astro.props;
+
+// Determine colors based on type
+const bgColor = type === 'light-to-dark' ? 'bg-light' : 'bg-primary';
+const pathFill = type === 'light-to-dark' ? 'fill-primary' : 'fill-light';
 ---
 
-<div class={`divider ${type}`}>
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 100" preserveAspectRatio="none">
-    <path d="M0,50 Q80,20 160,50 T320,50 T480,50 T640,50 T800,50 T960,50 T1120,50 T1280,50 T1440,50 L1440,100 L0,100 Z" class="divider-path"/>
+<div class={`divider w-full leading-[0] m-0 p-0 relative z-[5] ${bgColor}`}>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 100" preserveAspectRatio="none" class="block w-full h-20 -mt-px -mb-px">
+    <path d="M0,50 Q80,20 160,50 T320,50 T480,50 T640,50 T800,50 T960,50 T1120,50 T1280,50 T1440,50 L1440,100 L0,100 Z" class={pathFill}/>
   </svg>
 </div>
-
-<style>
-  .divider {
-    width: 100%;
-    line-height: 0;
-    margin: 0;
-    padding: 0;
-    position: relative;
-    z-index: 5;
-    background-color: transparent;
-  }
-
-  svg {
-    display: block;
-    width: 100%;
-    height: 80px;
-    margin-top: -1px; /* Prevents tiny pixel-wide gaps */
-    margin-bottom: -1px; /* Prevents tiny pixel-wide gaps */
-  }
-
-  .light-to-dark {
-    /* Above is light, below is dark. */
-    /* The SVG is filled with dark color, and transparent on top. */
-    background-color: var(--light);
-  }
-
-  .light-to-dark .divider-path {
-    fill: var(--primary); /* a288a6 */
-  }
-
-  .dark-to-light {
-    /* Above is dark, below is light. */
-    /* The SVG is filled with light color, and transparent on top. */
-    background-color: var(--primary);
-  }
-
-  .dark-to-light .divider-path {
-    fill: var(--light); /* f1e3e4 */
-  }
-</style>

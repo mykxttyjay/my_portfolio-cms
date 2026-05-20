@@ -43,145 +43,42 @@ try {
 }
 ---
 
-<section class="projects" id="projects">
-	<h2 class="heading">My <span>Projects</span></h2>
-	<div class="projects-container">
+<section class="projects bg-primary py-20" id="projects">
+	<h2 class="heading text-4xl font-bold mb-12 text-center text-white">
+		My <span class="gradient-text-accent">Projects</span>
+	</h2>
+	<div class="projects-container grid grid-cols-[repeat(auto-fit,minmax(300px,1fr))] gap-10 max-w-[1200px] mx-auto px-8">
 		{projectsList.map((project) => {
 			const isLink = !!project.project_url;
-			return isLink ? (
-				<a href={project.project_url} target="_blank" class="project-card link-card">
-					<div class="project-icon">
+			const CardTag = isLink ? 'a' : 'div';
+			return (
+				<CardTag href={isLink ? project.project_url : undefined} target={isLink ? "_blank" : undefined} class="project-card bg-white/8 backdrop-blur-xl border border-white/15 p-10 px-8 rounded-3xl shadow-[0_15px_35px_rgba(0,0,0,0.1),0_0_0_1px_rgba(255,255,255,0.05)_inset] transition-all duration-[400ms] ease-[cubic-bezier(0.175,0.885,0.32,1.275)] flex flex-col items-start no-underline hover:-translate-y-2 hover:shadow-[0_25px_50px_rgba(0,0,0,0.2),0_0_0_1px_rgba(255,255,255,0.1)_inset] hover:border-white/30">
+					<div class="project-icon w-[60px] h-[60px] bg-white/15 rounded-[20px] flex items-center justify-center text-white text-2xl mb-6 border border-white/20 transition-all duration-300 group-hover:scale-110 group-hover:-rotate-[8deg] group-hover:rounded-full group-hover:bg-white group-hover:text-primary">
 						<i class={project.icon}></i>
 					</div>
-					<h3>{project.title}</h3>
-					<p>{project.description}</p>
-					<div class="project-tags">
+					<h3 class="text-[1.45rem] text-white mb-4 font-bold">{project.title}</h3>
+					<p class="text-white/85 leading-relaxed mb-6 text-[0.95rem]">{project.description}</p>
+					<div class="project-tags flex gap-2 flex-wrap mt-auto">
 						{project.tags.map((tag) => (
-							<span class="tag">{tag}</span>
+							<span class="tag px-3.5 py-1.5 bg-white/10 border border-white/15 rounded-full text-[0.8rem] font-semibold text-white transition-all duration-300 cursor-default hover:bg-white hover:text-primary hover:-translate-y-0.5 hover:shadow-[0_5px_15px_rgba(0,0,0,0.1)]">{tag}</span>
 						))}
 					</div>
-				</a>
-			) : (
-				<div class="project-card">
-					<div class="project-icon">
-						<i class={project.icon}></i>
-					</div>
-					<h3>{project.title}</h3>
-					<p>{project.description}</p>
-					<div class="project-tags">
-						{project.tags.map((tag) => (
-							<span class="tag">{tag}</span>
-						))}
-					</div>
-				</div>
+				</CardTag>
 			);
 		})}
 	</div>
 </section>
 
 <style>
-	.projects {
-		background: var(--primary);
-		padding: 5rem 0;
-	}
-
-	.projects .heading {
-		color: var(--white);
-	}
-
-	.projects .heading span {
+	.gradient-text-accent {
 		-webkit-text-fill-color: var(--accent);
 		color: var(--accent);
-	}
-
-	.projects-container {
-		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-		gap: 2.5rem;
-		max-width: 1200px;
-		margin: 0 auto;
-		padding: 0 2rem;
-	}
-
-	.project-card {
-		background: rgba(255, 255, 255, 0.08);
-		backdrop-filter: blur(12px);
-		border: 1px solid rgba(255, 255, 255, 0.15);
-		padding: 2.5rem 2rem;
-		border-radius: 24px;
-		box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(255, 255, 255, 0.05) inset;
-		transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), border-color 0.4s ease, box-shadow 0.4s ease;
-		display: flex;
-		flex-direction: column;
-		align-items: flex-start;
-		text-decoration: none;
-	}
-
-	.project-card:hover {
-		transform: translateY(-8px);
-		box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(255, 255, 255, 0.1) inset;
-		border-color: rgba(255, 255, 255, 0.3);
-	}
-
-	.project-icon {
-		width: 60px;
-		height: 60px;
-		background: rgba(255, 255, 255, 0.15);
-		border-radius: 20px;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		color: var(--white);
-		font-size: 1.5rem;
-		margin-bottom: 1.5rem;
-		border: 1px solid rgba(255, 255, 255, 0.2);
-		transition: transform 0.3s ease, border-radius 0.3s ease, background 0.3s ease;
 	}
 
 	.project-card:hover .project-icon {
 		transform: scale(1.1) rotate(-8deg);
 		border-radius: 50%;
-		background: var(--white);
+		background: white;
 		color: var(--primary);
-	}
-
-	.project-card h3 {
-		font-size: 1.45rem;
-		color: var(--white);
-		margin-bottom: 1rem;
-		font-weight: 700;
-	}
-
-	.project-card p {
-		color: rgba(255, 255, 255, 0.85);
-		line-height: 1.7;
-		margin-bottom: 1.5rem;
-		font-size: 0.95rem;
-	}
-
-	.project-tags {
-		display: flex;
-		gap: 0.5rem;
-		flex-wrap: wrap;
-		margin-top: auto; /* Push tags to the bottom of the card */
-	}
-
-	.tag {
-		padding: 0.4rem 0.9rem;
-		background: rgba(255, 255, 255, 0.1);
-		border: 1px solid rgba(255, 255, 255, 0.15);
-		border-radius: 50px;
-		font-size: 0.8rem;
-		font-weight: 600;
-		color: var(--white);
-		transition: all 0.3s ease;
-		cursor: default;
-	}
-
-	.tag:hover {
-		background: var(--white);
-		color: var(--primary);
-		transform: translateY(-2px);
-		box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 	}
 </style>

@@ -1,89 +1,36 @@
 ---
 ---
 
-<section class="experience" id="experience">
-	<h2 class="heading">Experience / <span>OJT</span></h2>
-	<div class="experience-container">
-		<div class="experience-box">
-			<div class="experience-icon">
+<section class="experience bg-light py-20" id="experience">
+	<h2 class="heading text-4xl font-bold mb-12 text-center text-dark">
+		Experience / <span class="gradient-text">OJT</span>
+	</h2>
+	<div class="experience-container grid grid-cols-[repeat(auto-fit,minmax(300px,1fr))] gap-10 max-w-[1000px] mx-auto px-8">
+		<div class="experience-box bg-white p-10 px-8 rounded-3xl shadow-[0_10px_30px_rgba(162,136,166,0.06)] border border-primary/5 transition-all duration-[400ms] ease-[cubic-bezier(0.175,0.885,0.32,1.275)] flex flex-col items-start hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(162,136,166,0.12)] hover:border-primary/15">
+			<div class="experience-icon w-[60px] h-[60px] bg-gradient-to-br from-primary to-secondary rounded-[20px] flex items-center justify-center text-white text-2xl mb-6 shadow-[0_8px_20px_rgba(162,136,166,0.2)] transition-all duration-300 group-hover:scale-110 group-hover:rotate-[8deg] group-hover:rounded-full">
 				<i class="fa-solid fa-briefcase"></i>
 			</div>
-			<h3>Web Development Internship</h3>
-			<p>Assisted in developing web applications and gained hands-on experience in software development. Worked with modern frameworks and collaborated with senior developers.</p>
+			<h3 class="text-[1.4rem] text-dark mb-4 font-bold">Web Development Internship</h3>
+			<p class="text-[#555] leading-relaxed text-[0.95rem]">Assisted in developing web applications and gained hands-on experience in software development. Worked with modern frameworks and collaborated with senior developers.</p>
 		</div>
-		<div class="experience-box">
-			<div class="experience-icon">
+		<div class="experience-box bg-white p-10 px-8 rounded-3xl shadow-[0_10px_30px_rgba(162,136,166,0.06)] border border-primary/5 transition-all duration-[400ms] ease-[cubic-bezier(0.175,0.885,0.32,1.275)] flex flex-col items-start hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(162,136,166,0.12)] hover:border-primary/15">
+			<div class="experience-icon w-[60px] h-[60px] bg-gradient-to-br from-primary to-secondary rounded-[20px] flex items-center justify-center text-white text-2xl mb-6 shadow-[0_8px_20px_rgba(162,136,166,0.2)] transition-all duration-300 group-hover:scale-110 group-hover:rotate-[8deg] group-hover:rounded-full">
 				<i class="fa-solid fa-laptop-code"></i>
 			</div>
-			<h3>Freelance Graphic Designer</h3>
-			<p>Created websites for small businesses and individuals, enhancing my skills in web design and development. Managed client relationships and delivered projects on time.</p>
+			<h3 class="text-[1.4rem] text-dark mb-4 font-bold">Freelance Graphic Designer</h3>
+			<p class="text-[#555] leading-relaxed text-[0.95rem]">Created websites for small businesses and individuals, enhancing my skills in web design and development. Managed client relationships and delivered projects on time.</p>
 		</div>
 	</div>
 </section>
 
 <style>
-	.experience {
-		background: var(--light);
-		padding: 5rem 0;
-	}
-
-	.experience-container {
-		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-		gap: 2.5rem;
-		max-width: 1000px;
-		margin: 0 auto;
-		padding: 0 2rem;
-	}
-
-	.experience-box {
-		background: var(--white);
-		padding: 2.5rem 2rem;
-		border-radius: 24px;
-		box-shadow: 0 10px 30px rgba(162, 136, 166, 0.06);
-		border: 1px solid rgba(162, 136, 166, 0.05);
-		transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
-		display: flex;
-		flex-direction: column;
-		align-items: flex-start;
-	}
-
-	.experience-box:hover {
-		transform: translateY(-8px);
-		box-shadow: 0 20px 40px rgba(162, 136, 166, 0.12);
-		border-color: rgba(162, 136, 166, 0.15);
-	}
-
-	.experience-icon {
-		width: 60px;
-		height: 60px;
-		background: var(--gradient);
-		border-radius: 20px;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		color: var(--white);
-		font-size: 1.5rem;
-		margin-bottom: 1.5rem;
-		box-shadow: 0 8px 20px rgba(162, 136, 166, 0.2);
-		transition: transform 0.3s ease, border-radius 0.3s ease;
+	.gradient-text {
+		-webkit-text-fill-color: var(--primary);
+		color: var(--primary);
 	}
 
 	.experience-box:hover .experience-icon {
 		transform: scale(1.1) rotate(8deg);
 		border-radius: 50%;
-	}
-
-	.experience-box h3 {
-		font-size: 1.4rem;
-		color: var(--dark);
-		margin-bottom: 1rem;
-		font-weight: 700;
-	}
-
-	.experience-box p {
-		color: #555;
-		line-height: 1.7;
-		font-size: 0.95rem;
 	}
 </style>
