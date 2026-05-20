@@ -7,6 +7,7 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const dbPath = path.resolve(__dirname, '.emdash', 'data.db');
 
 // https://astro.build/config
 export default defineConfig({
@@ -20,7 +21,7 @@ export default defineConfig({
     react(),
     emdash({
       database: sqlite({ 
-        url: `file:${path.join(__dirname, '.emdash', 'data.db')}` 
+        url: `file:${dbPath}` 
       }),
     }),
   ],
