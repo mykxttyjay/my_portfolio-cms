@@ -59,7 +59,7 @@ try {
 
 	<div class="home-content">
 		<h1 class="greeting">Hello, I'm <span class="name">Angel</span></h1>
-		<p class="subtitle">An <span class="typing-text"><span></span></span></p>
+		<p class="subtitle">A <span class="typing-text"><span></span></span></p>
 		<p class="description-text">
 			Welcome to my portfolio! I'm excited to share my journey, projects, and passion for technology with you. Let's explore what we can build together.
 		</p>
@@ -147,7 +147,7 @@ try {
 		font-weight: 900;
 		color: #FEF9E1;
 		margin-bottom: 0.5rem;
-		font-family: 'Montserrat', sans-serif;
+		font-family: 'Poppins', sans-serif;
 		letter-spacing: -1px;
 		font-style: italic;
 	}
@@ -360,7 +360,7 @@ try {
 		color: #A31D1D;
 		margin-bottom: 1.5rem;
 		letter-spacing: -0.5px;
-		font-family: 'Montserrat', sans-serif;
+		font-family: 'Poppins', sans-serif;
 		font-style: italic;
 	}
 
@@ -667,9 +667,9 @@ try {
 			if (currentCharIndex === 0) {
 				isDeleting = false;
 				currentWordIndex = (currentWordIndex + 1) % words.length;
-				typingTimer = setTimeout(typeWord, 300);
+				typingTimer = setTimeout(typeWord, 500);
 			} else {
-				typingTimer = setTimeout(typeWord, 30);
+				typingTimer = setTimeout(typeWord, 100);
 			}
 		} else {
 			// Typing mode
@@ -678,9 +678,9 @@ try {
 
 			if (currentCharIndex === currentWord.length) {
 				isDeleting = true;
-				typingTimer = setTimeout(typeWord, 1500);
+				typingTimer = setTimeout(typeWord, 2000);
 			} else {
-				typingTimer = setTimeout(typeWord, 50);
+				typingTimer = setTimeout(typeWord, 150);
 			}
 		}
 	}
