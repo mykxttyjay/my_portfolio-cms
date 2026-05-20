@@ -22,3 +22,8 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# EmDash database files
+data.db
+data.db-shm
+data.db-wal
