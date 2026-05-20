@@ -8,6 +8,10 @@
 	--gradient: linear-gradient(135deg, #a288a6 0%, #bb9bb0 100%);
 }
 
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;900&display=swap');
 
 * {

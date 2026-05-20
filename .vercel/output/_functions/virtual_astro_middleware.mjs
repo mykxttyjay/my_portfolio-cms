@@ -1,18 +1,18 @@
 import { d as defineMiddleware, ae as sequence } from './chunks/params-and-props_DwyEVPUa.mjs';
-import { d as decodeBase64url, O as OptionsRepository, e as encodeBase64url, M as MediaRepository, i as invalidateSiteSettingsCache, c as createNoopSandboxRunner, a as createRequestMetrics, r as runWithContext, g as getRequestContext, s as setI18nConfig, S as SchemaRegistry, b as createHookPipeline, f as definePlugin, E as EmailPipeline, h as runMigrations, P as PluginStateRepository, l as loadBundleFromR2, n as normalizeManifestRoute, j as resolveExclusiveHooks, k as requestCached, m as isSqlite, F as FTSManager, o as handleContentList, p as handleContentGet, q as handleContentGetIncludingTrashed, R as RevisionRepository, t as handleContentCreate, v as validateRev, u as validateIdentifier, w as handleContentUpdate, x as handleContentDelete, y as handleContentListTrashed, z as handleContentRestore, A as handleContentPermanentDelete, B as handleContentCountTrashed, C as handleContentDuplicate, D as handleContentPublish, G as handleContentUnpublish, H as handleContentSchedule, I as handleContentUnschedule, J as handleContentCountScheduled, K as handleContentDiscardDraft, L as handleContentCompare, N as handleContentTranslations, Q as handleMediaList, T as handleMediaGet, U as handleMediaCreate, V as handleMediaUpdate, W as handleMediaDelete, X as handleRevisionList, Y as handleRevisionGet, Z as handleRevisionRestore, _ as PluginRouteRegistry, $ as getTrustedProxyHeaders, a0 as after, a1 as sanitizeHeadersForSandbox, a2 as extractRequestMeta, a3 as CronExecutor, a4 as RedirectRepository, a5 as getCachedRedirects, a6 as setCachedRedirects, a7 as matchCachedPatterns } from './chunks/adapt-sandbox-entry_H5gl0boC.mjs';
-import { i as isInstrumentationEnabled, c as createRecorder, f as flushRecorder, g as getDb, k as kyselyLogOption } from './chunks/loader-ou_PXAjg_XDqWmGlU.mjs';
+import { d as decodeBase64url, O as OptionsRepository, e as encodeBase64url, M as MediaRepository, i as invalidateSiteSettingsCache, c as createNoopSandboxRunner, a as createRequestMetrics, r as runWithContext, g as getRequestContext, s as setI18nConfig, S as SchemaRegistry, b as createHookPipeline, f as definePlugin, E as EmailPipeline, h as runMigrations, P as PluginStateRepository, l as loadBundleFromR2, n as normalizeManifestRoute, j as resolveExclusiveHooks, k as requestCached, m as isSqlite, F as FTSManager, o as handleContentList, p as handleContentGet, q as handleContentGetIncludingTrashed, R as RevisionRepository, t as handleContentCreate, v as validateRev, u as validateIdentifier, w as handleContentUpdate, x as handleContentDelete, y as handleContentListTrashed, z as handleContentRestore, A as handleContentPermanentDelete, B as handleContentCountTrashed, C as handleContentDuplicate, D as handleContentPublish, G as handleContentUnpublish, H as handleContentSchedule, I as handleContentUnschedule, J as handleContentCountScheduled, K as handleContentDiscardDraft, L as handleContentCompare, N as handleContentTranslations, Q as handleMediaList, T as handleMediaGet, U as handleMediaCreate, V as handleMediaUpdate, W as handleMediaDelete, X as handleRevisionList, Y as handleRevisionGet, Z as handleRevisionRestore, _ as PluginRouteRegistry, $ as getTrustedProxyHeaders, a0 as after, a1 as sanitizeHeadersForSandbox, a2 as extractRequestMeta, a3 as CronExecutor, a4 as RedirectRepository, a5 as getCachedRedirects, a6 as setCachedRedirects, a7 as matchCachedPatterns } from './chunks/adapt-sandbox-entry_C2M6Z8Ap.mjs';
+import { i as isInstrumentationEnabled, c as createRecorder, f as flushRecorder, g as getDb, k as kyselyLogOption } from './chunks/loader-ou_PXAjg_C6kEC2mY.mjs';
 import 'better-sqlite3';
 import { Kysely, sql } from 'kysely';
 import 'image-size';
 import { h as hashString } from './chunks/zod-generator-CHnJUP2l_CRxOShwi.mjs';
 import '@emdash-cms/plugin-types';
-import { a as invalidateUrlPatternCache } from './chunks/query-yA3-rFji_DI0XfGdU.mjs';
+import { a as invalidateUrlPatternCache } from './chunks/query-yA3-rFji_DDWmMCXT.mjs';
 import mime from 'mime/lite';
 import { sha256 } from '@oslojs/crypto/sha2';
 import { encodeHexLowerCase } from '@oslojs/encoding';
 import 'piccolore';
 import 'clsx';
-import virtualConfig from './chunks/config_B3pgddBv.mjs';
+import virtualConfig from './chunks/config_Bn36CnMO.mjs';
 import { createRequestScopedDb, createDialect } from './chunks/dialect_5VqW4Yvc.mjs';
 import * as path from 'node:path';
 import { existsSync, createReadStream } from 'node:fs';
@@ -1378,9 +1378,9 @@ var EmDashRuntime = class EmDashRuntime2 {
           }
         })();
         if (collectionCount.count === 0 && !setupDone) {
-          const { applySeed } = await import('./chunks/adapt-sandbox-entry_H5gl0boC.mjs').then(n => n.at).then((n) => n.n);
-          const { loadSeed } = await import('./chunks/load-DR1VwFXR_GfZBQa89.mjs').then((n) => n.r);
-          const { validateSeed } = await import('./chunks/adapt-sandbox-entry_H5gl0boC.mjs').then(n => n.as).then((n) => n.n);
+          const { applySeed } = await import('./chunks/adapt-sandbox-entry_C2M6Z8Ap.mjs').then(n => n.at).then((n) => n.n);
+          const { loadSeed } = await import('./chunks/load-DR1VwFXR_CQtvCF8K.mjs').then((n) => n.r);
+          const { validateSeed } = await import('./chunks/adapt-sandbox-entry_C2M6Z8Ap.mjs').then(n => n.as).then((n) => n.n);
           const seed = await loadSeed();
           if (validateSeed(seed).valid) {
             await applySeed(db, seed, { onConflict: "skip" });
@@ -1769,7 +1769,7 @@ var EmDashRuntime = class EmDashRuntime2 {
     if (this.hooks.hasHooks("content:beforeSave")) processedData = (await this.hooks.runContentBeforeSave(body.data, collection, true)).content;
     processedData = await this.runSandboxedBeforeSave(processedData, collection, true);
     processedData = await this.normalizeMediaFields(collection, processedData);
-    const { validateContentData } = await import('./chunks/validation-Vc5DQkJa_DMzO0o4E.mjs');
+    const { validateContentData } = await import('./chunks/validation-Vc5DQkJa_MH_0zf6c.mjs');
     const validation = await validateContentData(this.db, collection, processedData, { partial: false });
     if (!validation.ok) return {
       success: false,
@@ -1785,7 +1785,7 @@ var EmDashRuntime = class EmDashRuntime2 {
     return result;
   }
   async handleContentUpdate(collection, id, body) {
-    const { ContentRepository } = await import('./chunks/adapt-sandbox-entry_H5gl0boC.mjs').then(n => n.aq).then((n) => n.n);
+    const { ContentRepository } = await import('./chunks/adapt-sandbox-entry_C2M6Z8Ap.mjs').then(n => n.aq).then((n) => n.n);
     const repo = new ContentRepository(this.db);
     const resolvedItem = await repo.findByIdOrSlug(collection, id);
     const resolvedId = resolvedItem?.id ?? id;
@@ -1812,7 +1812,7 @@ var EmDashRuntime = class EmDashRuntime2 {
       if (this.hooks.hasHooks("content:beforeSave")) processedData = (await this.hooks.runContentBeforeSave(bodyWithoutRev.data, collection, false)).content;
       processedData = await this.runSandboxedBeforeSave(processedData, collection, false);
       processedData = await this.normalizeMediaFields(collection, processedData);
-      const { validateContentData } = await import('./chunks/validation-Vc5DQkJa_DMzO0o4E.mjs');
+      const { validateContentData } = await import('./chunks/validation-Vc5DQkJa_MH_0zf6c.mjs');
       const validation = await validateContentData(this.db, collection, processedData, { partial: true });
       if (!validation.ok) return {
         success: false,
@@ -2470,7 +2470,7 @@ const onRequest$5 = defineMiddleware(async (context, next) => {
         if (!setupVerified) {
           const t0 = performance.now();
           try {
-            const { getDb: getDb2 } = await import('./chunks/loader-ou_PXAjg_XDqWmGlU.mjs').then(n => n.l).then((n) => n.i);
+            const { getDb: getDb2 } = await import('./chunks/loader-ou_PXAjg_C6kEC2mY.mjs').then(n => n.l).then((n) => n.i);
             await (await getDb2()).selectFrom("_emdash_migrations").selectAll().limit(1).execute();
             setupVerified = true;
           } catch {

@@ -27,3 +27,10 @@ pnpm-debug.log*
 data.db
 data.db-shm
 data.db-wal
+
+# EmDash database in .emdash directory
+.emdash/data.db
+.emdash/data.db-shm
+.emdash/data.db-wal
+
+

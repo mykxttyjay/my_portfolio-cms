@@ -3,7 +3,7 @@
 
 /// <reference types="emdash/locals" />
 
-import type { ContentBylineCredit, PortableTextBlock } from "emdash";
+import type { ContentBylineCredit } from "emdash";
 
 export interface ContactItem {
   id: string;
@@ -12,32 +12,6 @@ export interface ContactItem {
   platform: string;
   value: string;
   icon: string;
-  createdAt: Date;
-  updatedAt: Date;
-  publishedAt: Date | null;
-  bylines?: ContentBylineCredit[];
-}
-
-export interface Page {
-  id: string;
-  slug: string | null;
-  status: string;
-  title: string;
-  content?: PortableTextBlock[];
-  createdAt: Date;
-  updatedAt: Date;
-  publishedAt: Date | null;
-  bylines?: ContentBylineCredit[];
-}
-
-export interface Post {
-  id: string;
-  slug: string | null;
-  status: string;
-  title: string;
-  featured_image?: { id: string; src?: string; alt?: string; width?: number; height?: number; provider?: string; previewUrl?: string; meta?: Record<string, unknown> };
-  content?: PortableTextBlock[];
-  excerpt?: string;
   createdAt: Date;
   updatedAt: Date;
   publishedAt: Date | null;
@@ -89,8 +63,6 @@ export interface SkillGroup {
 declare module "emdash" {
   interface EmDashCollections {
     contact: ContactItem;
-    pages: Page;
-    posts: Post;
     profile: Profile;
     projects: ProjectItem;
     skills: SkillGroup;
