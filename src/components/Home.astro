@@ -1,22 +1,18 @@
 ---
 import CloudIcon from '../assets/cloud.svg';
-import { getEmDashCollection } from 'emdash';
+import { safeGetEmDashCollection } from '../utils/emdash-helper';
 
 let name = "Angel Marie Sabido";
 let intro = "Aspiring IT professional with a strong work ethic and a passion for learning and growth in the technology field. Committed to developing technical skills and contributing positively to team environments. Eager to gain hands-on experience and continuously improve to deliver quality results in any task or project.";
 let aboutContent = "Driven by curiosity and a desire to make an impact, I aim to leverage my skills to support organizational goals, create innovative digital solutions, and grow as a well-rounded IT professional.";
 let resumeLink = "https://linkedin.com/in/gelmarie";
 
-try {
-	const { entries } = await getEmDashCollection('profile');
-	if (entries && entries.length > 0 && entries[0].data) {
-		name = (entries[0].data.name as string) || name;
-		intro = (entries[0].data.intro as string) || intro;
-		aboutContent = (entries[0].data.about_content as string) || aboutContent;
-		resumeLink = (entries[0].data.resume_link as string) || resumeLink;
-	}
-} catch (e) {
-	console.error('Error fetching profile from EmDash:', e);
+const { entries } = await safeGetEmDashCollection('profile');
+if (entries && entries.length > 0 && entries[0].data) {
+	name = (entries[0].data.name as string) || name;
+	intro = (entries[0].data.intro as string) || intro;
+	aboutContent = (entries[0].data.about_content as string) || aboutContent;
+	resumeLink = (entries[0].data.resume_link as string) || resumeLink;
 }
 ---
 
@@ -59,13 +55,13 @@ try {
 
 	<div class="home-content">
 		<h1 class="greeting">Hello, I'm <span class="name">Angel</span></h1>
-		<p class="subtitle">A <span class="typing-text"><span></span></span></p>
+		<p class="subtitle"><span class="article">A</span> <span class="typing-text"><span></span></span></p>
 		<p class="description-text">
 			Welcome to my portfolio! I'm excited to share my journey, projects, and passion for technology with you. Let's explore what we can build together.
 		</p>
 		<div class="cta-buttons">
 			<a href="#about" class="btn btn-primary">Learn More</a>
-			<a href="#contact" class="btn btn-secondary">Get In Touch</a>
+			<a href="https://linkedin.com/in/gelmarie" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">View Resume</a>
 		</div>
 	</div>
 
@@ -653,8 +649,15 @@ try {
 	let isDeleting = false;
 	let typingTimer: number | any;
 
+	function getArticle(word: string): string {
+		const vowels = ['a', 'e', 'i', 'o', 'u'];
+		const firstLetter = word.charAt(0).toLowerCase();
+		return vowels.includes(firstLetter) ? 'An' : 'A';
+	}
+
 	function typeWord() {
 		const span = document.querySelector('.typing-text span');
+		const articleSpan = document.querySelector('.article');
 		if (!span) return;
 
 		const currentWord = words[currentWordIndex];
@@ -667,6 +670,10 @@ try {
 			if (currentCharIndex === 0) {
 				isDeleting = false;
 				currentWordIndex = (currentWordIndex + 1) % words.length;
+				// Update article when switching to next word
+				if (articleSpan) {
+					articleSpan.textContent = getArticle(words[currentWordIndex]);
+				}
 				typingTimer = setTimeout(typeWord, 500);
 			} else {
 				typingTimer = setTimeout(typeWord, 100);

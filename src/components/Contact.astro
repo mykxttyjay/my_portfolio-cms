@@ -1,5 +1,5 @@
 ---
-import { getEmDashCollection } from 'emdash';
+import { safeGetEmDashCollection } from '../utils/emdash-helper';
 
 let contactItems = [
 	{
@@ -19,18 +19,14 @@ let contactItems = [
 	}
 ];
 
-try {
-	const { entries } = await getEmDashCollection('contact');
-	if (entries && entries.length > 0) {
-		contactItems = entries.map((entry) => {
-			const platform = (entry.data?.platform as string) || "";
-			const value = (entry.data?.value as string) || "";
-			const icon = (entry.data?.icon as string) || "";
-			return { platform, value, icon };
-		});
-	}
-} catch (e) {
-	console.error('Error fetching contacts from EmDash:', e);
+const { entries } = await safeGetEmDashCollection('contact');
+if (entries && entries.length > 0) {
+	contactItems = entries.map((entry) => {
+		const platform = (entry.data?.platform as string) || "";
+		const value = (entry.data?.value as string) || "";
+		const icon = (entry.data?.icon as string) || "";
+		return { platform, value, icon };
+	});
 }
 ---
 

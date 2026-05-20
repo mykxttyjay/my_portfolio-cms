@@ -1,5 +1,5 @@
 ---
-import { getEmDashCollection } from 'emdash';
+import { safeGetEmDashCollection } from '../utils/emdash-helper';
 
 let skillsGroups = [
 	{
@@ -19,24 +19,20 @@ let skillsGroups = [
 	}
 ];
 
-try {
-	const { entries } = await getEmDashCollection('skills');
-	if (entries && entries.length > 0) {
-		const iconMap: Record<string, string> = {
-			"Programming Languages": "fa-solid fa-code",
-			"Web Technologies": "fa-solid fa-laptop-code",
-			"Tools & Databases": "fa-solid fa-screwdriver-wrench"
-		};
-		skillsGroups = entries.map((entry) => {
-			const category = entry.data.category;
-			const skills_list = entry.data.skills_list;
-			const skills = skills_list ? skills_list.split(',').map((s: string) => s.trim()) : [];
-			const icon = iconMap[category] || "fa-solid fa-cube";
-			return { category, icon, skills };
-		});
-	}
-} catch (e) {
-	console.error('Error fetching skills from EmDash:', e);
+const { entries } = await safeGetEmDashCollection('skills');
+if (entries && entries.length > 0) {
+	const iconMap: Record<string, string> = {
+		"Programming Languages": "fa-solid fa-code",
+		"Web Technologies": "fa-solid fa-laptop-code",
+		"Tools & Databases": "fa-solid fa-screwdriver-wrench"
+	};
+	skillsGroups = entries.map((entry) => {
+		const category = entry.data.category;
+		const skills_list = entry.data.skills_list;
+		const skills = skills_list ? skills_list.split(',').map((s: string) => s.trim()) : [];
+		const icon = iconMap[category] || "fa-solid fa-cube";
+		return { category, icon, skills };
+	});
 }
 ---
 

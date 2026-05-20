@@ -1,22 +1,18 @@
 ---
 import CloudIcon from '../assets/cloud.svg';
-import { getEmDashCollection } from 'emdash';
+import { safeGetEmDashCollection } from '../utils/emdash-helper';
 
 let name = "Angel Marie Sabido";
-let intro = "Aspiring IT professional with a strong work ethic and a passion for learning and growth in the technology field. Committed to developing technical skills and contributing positively to team environments. Eager to gain hands-on experience and continuously improve to deliver quality results in any task or project.";
+let intro = "Aspiring IT professional with a strong work ethic and passion for learning and growth in technology. Committed to developing technical skills and contributing positively to team environments. Eager to gain hands-on experience and continuously improve to deliver quality results.";
 let paragraph2 = "Throughout my academic journey, I've developed a solid foundation in various IT disciplines, from web development to database management. I'm particularly passionate about creating user-friendly digital solutions that solve real-world problems. My hands-on experience in different projects has taught me the importance of collaboration, attention to detail, and continuous learning in the ever-evolving tech landscape.";
 let paragraph3 = "Driven by curiosity and a desire to make an impact, I aim to leverage my skills to support organizational goals, create innovative digital solutions, and grow as a well-rounded IT professional. I'm excited about the opportunities ahead and committed to bringing dedication and enthusiasm to every project I undertake.";
 let resumeLink = "https://linkedin.com/in/gelmarie";
 
-try {
-	const { entries } = await getEmDashCollection('profile');
-	if (entries && entries.length > 0 && entries[0].data) {
-		name = (entries[0].data.name as string) || name;
-		intro = (entries[0].data.intro as string) || intro;
-		resumeLink = (entries[0].data.resume_link as string) || resumeLink;
-	}
-} catch (e) {
-	console.error('Error fetching profile from EmDash:', e);
+const { entries } = await safeGetEmDashCollection('profile');
+if (entries && entries.length > 0 && entries[0].data) {
+	name = (entries[0].data.name as string) || name;
+	intro = (entries[0].data.intro as string) || intro;
+	resumeLink = (entries[0].data.resume_link as string) || resumeLink;
 }
 ---
 
@@ -27,7 +23,7 @@ try {
 				<img src="https://images.unsplash.com/photo-1567484072688-2041f76a3fda?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Angel Marie Sabido" />
 			</div>
 			<div class="card-content">
-				<h3 class="card-name">Hi! It's {name.split(' ')[0]} here</h3>
+				<h3 class="card-name">Hi! It's {name}</h3>
 				<div class="card-info">
 					<div class="info-row">
 						<span class="label">Birthday:</span>
@@ -77,6 +73,28 @@ try {
 		<CloudIcon class="cloud-style cloud-3" />
 	</div>
 </section>
+
+<script>
+	function matchCardHeights() {
+		const aboutCard = document.querySelector('.about-card') as HTMLElement;
+		const aboutContainer = document.querySelector('.about-container') as HTMLElement;
+		
+		if (aboutCard && aboutContainer) {
+			const cardHeight = aboutCard.offsetHeight;
+			aboutContainer.style.setProperty('--card-height', `${cardHeight}px`);
+		}
+	}
+
+	// Run on load
+	if (document.readyState === 'loading') {
+		document.addEventListener('DOMContentLoaded', matchCardHeights);
+	} else {
+		matchCardHeights();
+	}
+
+	// Run on resize
+	window.addEventListener('resize', matchCardHeights);
+</script>
 
 <style>
 	.about {
@@ -136,7 +154,7 @@ try {
 		top: 15px;
 		left: 15px;
 		width: 550px;
-		height: calc(100% - 30px);
+		height: 92%;
 		background: #A31D1D;
 		border-radius: 15px;
 		transform: rotate(-7deg);
