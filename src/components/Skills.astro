@@ -37,7 +37,7 @@ if (entries && entries.length > 0) {
 ---
 
 <section class="skills" id="skills">
-	<h2 class="heading">My <span>Skills</span></h2>
+	<h2 class="heading"><span>Skills</span></h2>
 	<div class="skills-container">
 		{skillsGroups.map((group) => (
 			<div class="skill-box">
@@ -57,8 +57,8 @@ if (entries && entries.length > 0) {
 
 <style>
 	.skills {
-		background: #A31D1D;
-		padding: 5rem 0;
+		background: #FEF9E1;
+		padding: 3rem 0;
 		position: relative;
 		overflow: hidden;
 	}
@@ -79,7 +79,7 @@ if (entries && entries.length > 0) {
 	}
 
 	.skills .heading {
-		color: #FEF9E1;
+		color: #4A1215;
 		position: relative;
 		z-index: 1;
 		font-family: 'Playfair Display', Georgia, serif;
@@ -91,8 +91,8 @@ if (entries && entries.length > 0) {
 	}
 
 	.skills .heading span {
-		-webkit-text-fill-color: #FEF9E1;
-		color: #FEF9E1;
+		-webkit-text-fill-color: #4A1215;
+		color: #4A1215;
 	}
 
 	.skills-container {
@@ -107,22 +107,55 @@ if (entries && entries.length > 0) {
 	}
 
 	.skill-box {
-		background: white;
-		border: 1px solid rgba(163, 29, 29, 0.1);
+		background: #FCF8F2;
+		border: 3.5px solid #4A1215;
 		padding: 2.5rem 2rem;
-		border-radius: 24px;
-		box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-		transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), border-color 0.4s ease, box-shadow 0.4s ease;
+		border-radius: 2px;
+		box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15), -5px 5px 15px rgba(0, 0, 0, 0.1);
+		transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 		text-align: center;
 		display: flex;
 		flex-direction: column;
 		align-items: center;
+		position: relative;
+		overflow: visible;
+		transform: rotate(-2deg);
+	}
+
+	.skill-box:nth-child(2) {
+		transform: rotate(1deg);
+	}
+
+	.skill-box:nth-child(3) {
+		transform: rotate(-1.5deg);
 	}
 
 	.skill-box:hover {
-		transform: translateY(-8px);
-		box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
-		border-color: rgba(163, 29, 29, 0.2);
+		transform: rotate(0deg) translateY(-8px);
+		box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2), -8px 8px 20px rgba(0, 0, 0, 0.15);
+	}
+
+	.skill-box::before {
+		content: '';
+		position: absolute;
+		top: -8px;
+		left: 20%;
+		width: 60%;
+		height: 16px;
+		background: linear-gradient(90deg, rgba(163, 29, 29, 0.3) 0%, rgba(163, 29, 29, 0.5) 50%, rgba(163, 29, 29, 0.3) 100%);
+		border-radius: 2px;
+		box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+		transform: skewY(-2deg);
+		z-index: 10;
+	}
+
+	.skill-box::after {
+		content: none;
+	}
+
+	.skill-box:hover {
+		transform: rotate(0deg) translateY(-8px);
+		box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2), -8px 8px 20px rgba(0, 0, 0, 0.15);
 	}
 
 	.skill-icon {
@@ -155,6 +188,8 @@ if (entries && entries.length > 0) {
 		margin-bottom: 1.5rem;
 		font-weight: 700;
 		letter-spacing: 0.5px;
+		font-family: 'Playfair Display', Georgia, serif;
+		font-style: italic;
 	}
 
 	.skill-list {
@@ -167,7 +202,7 @@ if (entries && entries.length > 0) {
 
 	.skill-pill {
 		background: #f5f0f0;
-		border: 1px solid rgba(163, 29, 29, 0.2);
+		border: 2px solid #4A1215;
 		padding: 0.5rem 1rem;
 		border-radius: 50px;
 		font-size: 0.85rem;
@@ -178,10 +213,10 @@ if (entries && entries.length > 0) {
 	}
 
 	.skill-pill:hover {
-		background: linear-gradient(135deg, #A31D1D 0%, #8B1515 100%);
+		background: #A31D1D;
 		color: #FEF9E1;
 		transform: translateY(-2px) scale(1.05);
 		box-shadow: 0 8px 20px rgba(163, 29, 29, 0.2);
-		border-color: transparent;
+		border-color: #A31D1D;
 	}
 </style>

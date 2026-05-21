@@ -121,8 +121,44 @@ if (entries && entries.length > 0 && entries[0].data) {
 </section>
 
 <script>
-	// All elements are static — no scroll-driven movement
-	document.addEventListener('astro:page-load', () => {});
+	const initScrollConnect = () => {
+		const homeSection = document.querySelector('.home');
+		const aboutSection = document.querySelector('.about');
+		const letterPaper = document.querySelector('.letter-paper');
+		const combinedCard = document.querySelector('.combined-about-card');
+		
+		if (!homeSection || !aboutSection || !letterPaper || !combinedCard) return;
+
+		// Enable scroll transition after initial animation completes
+		setTimeout(() => {
+			letterPaper.classList.add('scroll-transition');
+		}, 6000);
+
+		const observer = new IntersectionObserver((entries) => {
+			entries.forEach(entry => {
+				if (entry.target === aboutSection) {
+					if (entry.isIntersecting) {
+						// About section visible - letter goes back, card comes out
+						homeSection.classList.add('scroll-connect');
+						aboutSection.classList.add('scroll-connect');
+						letterPaper.classList.add('letter-hidden');
+						combinedCard.classList.add('scroll-active');
+					} else {
+						// About section not visible - letter comes out, card goes back
+						homeSection.classList.remove('scroll-connect');
+						aboutSection.classList.remove('scroll-connect');
+						letterPaper.classList.remove('letter-hidden');
+						combinedCard.classList.remove('scroll-active');
+					}
+				}
+			});
+		}, { threshold: 0.2 });
+
+		observer.observe(aboutSection);
+	};
+
+	initScrollConnect();
+	document.addEventListener('astro:page-load', initScrollConnect);
 </script>
 
 <style>
@@ -135,6 +171,19 @@ if (entries && entries.length > 0 && entries[0].data) {
 		position: relative;
 		background-color: #8F1D21; /* Matches dark red binding holes background */
 		overflow: hidden;
+	}
+
+	.home.scroll-connect {
+		animation: home-connect 0.6s ease-out forwards;
+	}
+
+	@keyframes home-connect {
+		from {
+			opacity: 1;
+		}
+		to {
+			opacity: 1;
+		}
 	}
 
 	/* Crumpled paper noise + gradient overlay */
@@ -265,16 +314,29 @@ if (entries && entries.length > 0 && entries[0].data) {
 			animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
 		}
 		35% {
-			top: 15%; /* Pauses here, showing just title and capsule */
+			top: 15%;
 			animation-timing-function: linear;
 		}
 		65% {
-			top: 15%; /* Hold it here for a moment */
+			top: 15%;
 			animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
 		}
 		100% {
-			top: -5%; /* Fits within the container, no overflow below */
+			top: -5%;
 		}
+	}
+
+	.letter-paper.scroll-transition {
+		transition: top 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+		animation: none;
+	}
+
+	.home.scroll-connect .letter-paper.scroll-transition {
+		top: 60%;
+	}
+
+	.letter-paper.scroll-transition:not(.letter-hidden) {
+		top: -5%;
 	}
 
 	.notebook-top {

@@ -1,10 +1,9 @@
 ---
-import CloudIcon from '../assets/cloud.svg';
 import { safeGetEmDashCollection } from '../utils/emdash-helper';
 
 let name = "Angel Marie Sabido";
-let intro = "Hello! I am an aspiring IT professional with a strong work ethic and a deep passion for creating user-friendly digital solutions. Throughout my academic journey, I have built a solid foundation in web development, database management, and designing impactful technology that solves real-world problems.";
-let paragraph2 = "Driven by curiosity and a desire to make a meaningful impact, I thrive on collaboration, attention to detail, and continuous learning. I am eager to leverage my skills to support organizational goals and bring dedication and enthusiasm to every project I undertake.";
+let intro = "Hello! I am an aspiring IT professional with a strong work ethic and a deep passion for learning and growing in the technology space. Throughout my academic journey, I've built a solid foundation in various IT disciplines, from web development to database management. I am particularly passionate about creating user-friendly digital solutions that solve real-world problems, always eager to gain hands-on experience and continuously improve my craft.";
+let paragraph2 = "My hands-on experience across different projects has taught me the importance of collaboration, attention to detail, and continuous learning in our ever-evolving tech landscape. Driven by curiosity and a desire to make a meaningful impact, I aim to leverage my skills to support organizational goals and create innovative solutions. I am incredibly excited about the opportunities ahead and remain committed to bringing dedication and enthusiasm to every project I undertake.";
 let resumeLink = "https://linkedin.com/in/gelmarie";
 
 const { entries } = await safeGetEmDashCollection('profile');
@@ -13,123 +12,70 @@ if (entries && entries.length > 0 && entries[0].data) {
 	intro = (entries[0].data.intro as string) || intro;
 	resumeLink = (entries[0].data.resume_link as string) || resumeLink;
 }
-
-const currentDate = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
 ---
 
 <section class="about" id="about">
-	<div class="about-container">
-		<!-- Paperclip SVG on top left of the layout to tie it into a physical scrapbook desk -->
-		<div class="paperclip">
-			<svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-				<path d="M40 90 L40 30 A15 15 0 0 1 70 30 L70 70 A10 10 0 0 1 50 70 L50 40 A5 5 0 0 1 60 40 L60 65" stroke="#D4AF37" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
-			</svg>
+	<!-- Sparkles matching Home section -->
+	<div class="sparkles-container">
+		<div class="sparkle sparkle-1">
+			<svg viewBox="0 0 24 24"><path d="M12,2 L15,9 L22,12 L15,15 L12,22 L9,15 L2,12 L9,9 Z" /></svg>
 		</div>
+		<div class="sparkle sparkle-2">
+			<svg viewBox="0 0 24 24"><path d="M12,2 L14,10 L22,12 L14,14 L12,22 L10,14 L2,12 L10,10 Z" /></svg>
+		</div>
+		<div class="sparkle sparkle-3">
+			<svg viewBox="0 0 24 24"><path d="M12,2 L15,9 L22,12 L15,15 L12,22 L9,15 L2,12 L9,9 Z" /></svg>
+		</div>
+		<div class="sparkle sparkle-4">
+			<svg viewBox="0 0 24 24"><path d="M12,2 L14,10 L22,12 L14,14 L12,22 L10,14 L2,12 L10,10 Z" /></svg>
+		</div>
+	</div>
 
-		<div class="about-card-wrapper">
-			<div class="about-card">
+	<div class="about-container">
+		<div class="combined-about-card">
+			<!-- Profile Section -->
+			<div class="profile-section">
 				<div class="card-image">
 					<img src="https://images.unsplash.com/photo-1567484072688-2041f76a3fda?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Angel Marie Sabido" />
 				</div>
 				<div class="card-content">
 					<h3 class="card-name">Hi! It's {name}</h3>
-					<div class="card-info-grid">
-						<div class="info-pill">
-							<div class="info-icon"><i class="fa-regular fa-calendar-days"></i></div>
-							<div class="info-details">
-								<span class="info-label">Birthday</span>
-								<span class="info-value">September 30, 2003</span>
-							</div>
+					<div class="card-info">
+						<div class="info-row">
+							<span class="label">Birthday:</span>
+							<span class="value">September 30, 2003</span>
 						</div>
-						<div class="info-pill">
-							<div class="info-icon"><i class="fa-solid fa-graduation-cap"></i></div>
-							<div class="info-details">
-								<span class="info-label">Degree</span>
-								<span class="info-value">BS in Information Technology</span>
-							</div>
+						<div class="info-row">
+							<span class="label">Degree:</span>
+							<span class="value">BS in Information Technology</span>
 						</div>
-						<div class="info-pill">
-							<div class="info-icon"><i class="fa-solid fa-location-dot"></i></div>
-							<div class="info-details">
-								<span class="info-label">Location</span>
-								<span class="info-value">Lapu-Lapu City, Cebu</span>
-							</div>
+						<div class="info-row">
+							<span class="label">Location:</span>
+							<span class="value">Lapu-Lapu City, Cebu</span>
 						</div>
-						<div class="info-pill">
-							<div class="info-icon"><i class="fa-regular fa-envelope"></i></div>
-							<div class="info-details">
-								<span class="info-label">Email</span>
-								<span class="info-value">sabidoangel.uc@gmail.com</span>
-							</div>
+						<div class="info-row">
+							<span class="label">Email:</span>
+							<span class="value">sabidoangel.uc@gmail.com</span>
 						</div>
-						<div class="info-pill">
-							<div class="info-icon"><i class="fa-solid fa-phone"></i></div>
-							<div class="info-details">
-								<span class="info-label">Phone</span>
-								<span class="info-value">+63 954 291 7099</span>
-							</div>
-						</div>
-						<div class="info-pill">
-							<div class="info-icon"><i class="fa-solid fa-language"></i></div>
-							<div class="info-details">
-								<span class="info-label">Languages</span>
-								<span class="info-value">English, Filipino</span>
-							</div>
+						<div class="info-row">
+							<span class="label">Hobbies:</span>
+							<span class="value">Reading, Gaming, Coding</span>
 						</div>
 					</div>
 				</div>
 			</div>
-		</div>
 
-		<div class="about-content">
-			<div class="about-letter">
-				<!-- Vintage Postage Stamp -->
-				<div class="postage-stamp">
-					<div class="stamp-inner">
-						<span class="stamp-country">PHILIPPINES</span>
-						<i class="fa-solid fa-cloud-sun stamp-icon"></i>
-						<span class="stamp-text">CEBU</span>
-						<span class="stamp-value">20c</span>
-					</div>
-					<div class="stamp-cancel"></div>
-				</div>
-
+			<!-- Letter Section -->
+			<div class="letter-section">
 				<p class="letter-greeting">About Me</p>
 				<div class="letter-body">
 					<p class="about-text">
-						Hello! I am an <span class="highlight-marker">aspiring IT professional</span> with a strong work ethic and a deep passion for creating <span class="highlight-marker">user-friendly digital solutions</span>. Throughout my academic journey, I have built a solid foundation in web development, database management, and designing impactful technology that solves real-world problems.
+						{intro}
 					</p>
 					<p class="about-text">
-						Driven by curiosity and a desire to make a <span class="highlight-marker">meaningful impact</span>, I thrive on collaboration, attention to detail, and continuous learning. I am eager to leverage my skills to support organizational goals and bring dedication and enthusiasm to every project I undertake.
+						{paragraph2}
 					</p>
-
-					<!-- Core Competency Badges -->
-					<div class="focus-areas-container">
-						<span class="focus-title">Core Competencies</span>
-						<div class="focus-badges">
-							<div class="focus-badge">
-								<span class="badge-emoji">💻</span>
-								<span class="badge-text">Web Development</span>
-							</div>
-							<div class="focus-badge">
-								<span class="badge-emoji">🗄️</span>
-								<span class="badge-text">Database Systems</span>
-							</div>
-							<div class="focus-badge">
-								<span class="badge-emoji">🎨</span>
-								<span class="badge-text">UI/UX Design</span>
-							</div>
-							<div class="focus-badge">
-								<span class="badge-emoji">💡</span>
-								<span class="badge-text">Problem Solving</span>
-							</div>
-						</div>
-					</div>
 				</div>
-
-				<!-- Watermark Envelope Icon -->
-				<div class="letter-watermark">✉</div>
-
 				<div class="letter-footer">
 					<p class="letter-closing">Warmly,</p>
 					<p class="letter-signature">{name}</p>
@@ -139,33 +85,42 @@ const currentDate = new Date().toLocaleDateString('en-US', { year: 'numeric', mo
 	</div>
 
 	<div class="clouds">
-		<CloudIcon class="cloud-style cloud-1" />
-		<CloudIcon class="cloud-style cloud-2" />
-		<CloudIcon class="cloud-style cloud-3" />
+		<svg class="cloud-style cloud-1" viewBox="0 0 100 50" xmlns="http://www.w3.org/2000/svg">
+			<path d="M20,30 Q20,15 35,15 Q40,5 50,5 Q65,5 70,20 Q85,20 85,30 Z" fill="currentColor"/>
+		</svg>
+		<svg class="cloud-style cloud-2" viewBox="0 0 100 50" xmlns="http://www.w3.org/2000/svg">
+			<path d="M20,30 Q20,15 35,15 Q40,5 50,5 Q65,5 70,20 Q85,20 85,30 Z" fill="currentColor"/>
+		</svg>
+		<svg class="cloud-style cloud-3" viewBox="0 0 100 50" xmlns="http://www.w3.org/2000/svg">
+			<path d="M20,30 Q20,15 35,15 Q40,5 50,5 Q65,5 70,20 Q85,20 85,30 Z" fill="currentColor"/>
+		</svg>
 	</div>
 </section>
 
 <script>
-	const initWriting = () => {
-		const greeting = document.querySelector('.letter-greeting');
-		if (greeting) {
-			const observer = new IntersectionObserver((entries) => {
-				entries.forEach(entry => {
+	const initScrollConnect = () => {
+		const aboutSection = document.querySelector('.about');
+		const combinedCard = document.querySelector('.combined-about-card');
+		
+		if (!aboutSection || !combinedCard) return;
+
+		const observer = new IntersectionObserver((entries) => {
+			entries.forEach(entry => {
+				if (entry.target === aboutSection) {
 					if (entry.isIntersecting) {
-						greeting.classList.add('write-active');
-						observer.unobserve(entry.target);
+						combinedCard.classList.add('scroll-active');
+					} else {
+						combinedCard.classList.remove('scroll-active');
 					}
-				});
-			}, { threshold: 0.05 });
-			observer.observe(greeting);
-		}
+				}
+			});
+		}, { threshold: 0.2 });
+
+		observer.observe(aboutSection);
 	};
 
-	// Initialize immediately
-	initWriting();
-
-	// Support View Transitions
-	document.addEventListener('astro:page-load', initWriting);
+	initScrollConnect();
+	document.addEventListener('astro:page-load', initScrollConnect);
 </script>
 
 <style>
@@ -174,9 +129,9 @@ const currentDate = new Date().toLocaleDateString('en-US', { year: 'numeric', mo
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		padding: 5rem 8%;
+		padding: 0 8% 5rem 8%;
 		position: relative;
-		background-color: #FEF9E1;
+		background-color: #8F1D21;
 		overflow: hidden;
 	}
 
@@ -188,10 +143,10 @@ const currentDate = new Date().toLocaleDateString('en-US', { year: 'numeric', mo
 		width: 100%;
 		height: 100%;
 		background-image: 
-			url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' result='noise' seed='2' /%3E%3CfeColorMatrix in='noise' type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100' height='100' fill='%23000000' filter='url(%23noiseFilter)' opacity='0.08'/%3E%3C/svg%3E");
-		background-size: 100px 100px;
+			url("data:image/svg+xml,%3Csvg viewBox='0 0 150 150' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.03' numOctaves='4' result='noise' seed='1' /%3E%3CfeColorMatrix in='noise' type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' fill='%23000000' filter='url(%23noiseFilter)' opacity='0.12'/%3E%3C/svg%3E");
+		background-size: 150px 150px;
 		pointer-events: none;
-		z-index: 0;
+		z-index: 2;
 		mix-blend-mode: overlay;
 	}
 
@@ -202,116 +157,155 @@ const currentDate = new Date().toLocaleDateString('en-US', { year: 'numeric', mo
 		left: 0;
 		width: 100%;
 		height: 100%;
-		background-image: 
-			url("data:image/svg+xml,%3Csvg viewBox='0 0 150 150' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise2'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='5' result='noise' seed='1' /%3E%3CfeColorMatrix in='noise' type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='150' height='150' fill='%23000000' filter='url(%23noise2)' opacity='0.06'/%3E%3C/svg%3E");
-		background-size: 150px 150px;
+		background: radial-gradient(circle at 50% 50%, rgba(155, 30, 34, 0.4) 0%, rgba(90, 14, 17, 0.85) 100%);
 		pointer-events: none;
 		z-index: 1;
-		mix-blend-mode: multiply;
+	}
+
+	.sparkles-container {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		pointer-events: none;
+		z-index: 12;
+		overflow: hidden;
+	}
+
+	.sparkle {
+		position: absolute;
+		opacity: 0.85;
+		color: #FFF2D4;
+		filter: drop-shadow(0 0 8px rgba(255, 242, 212, 0.8));
+		pointer-events: none;
+		transform-origin: center;
+	}
+
+	.sparkle svg {
+		width: 100%;
+		height: 100%;
+		fill: currentColor;
+		display: block;
+		transform-origin: center;
+	}
+
+	.sparkle-1 {
+		top: 15%;
+		left: 10%;
+		width: 28px;
+		height: 28px;
+		animation: twinkle-1 4s ease-in-out infinite;
+	}
+
+	.sparkle-2 {
+		top: 25%;
+		right: 12%;
+		width: 22px;
+		height: 22px;
+		animation: twinkle-2 3.5s ease-in-out infinite;
+	}
+
+	.sparkle-3 {
+		top: 70%;
+		left: 8%;
+		width: 24px;
+		height: 24px;
+		animation: twinkle-1 3.8s ease-in-out infinite;
+	}
+
+	.sparkle-4 {
+		top: 75%;
+		right: 15%;
+		width: 20px;
+		height: 20px;
+		animation: twinkle-2 4.2s ease-in-out infinite;
+	}
+
+	@keyframes twinkle-1 {
+		0%, 100% {
+			transform: scale(0.6) translateY(0) rotate(0deg);
+			opacity: 0.4;
+		}
+		50% {
+			transform: scale(1.1) translateY(-15px) rotate(180deg);
+			opacity: 1;
+		}
+	}
+
+	@keyframes twinkle-2 {
+		0%, 100% {
+			transform: scale(0.8) translateY(0) rotate(0deg);
+			opacity: 0.5;
+		}
+		50% {
+			transform: scale(1.2) translateY(-25px) rotate(-90deg);
+			opacity: 1;
+		}
 	}
 
 	.about-container {
 		display: flex;
-		gap: 5rem;
-		align-items: flex-start;
-		max-width: 1350px;
+		justify-content: center;
+		align-items: center;
 		width: 100%;
 		z-index: 2;
 		position: relative;
 	}
 
-	/* Skeuomorphic Paperclip Elements */
-	.paperclip {
-		position: absolute;
-		top: -30px;
-		left: 450px;
-		width: 48px;
-		height: 75px;
-		z-index: 10;
-		transform: rotate(-15deg);
-		filter: drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.25));
-		pointer-events: none;
-	}
-
-	/* Polaroid Bio Card Wrapper & 3D Hover Effects */
-	.about-card-wrapper {
-		flex: 0 0 420px;
-		position: relative;
-		z-index: 1;
-		animation: slideInLeft 0.8s ease-out;
-		perspective: 1000px;
-	}
-
-	.about-card-wrapper::before {
-		content: '';
-		position: absolute;
-		top: 15px;
-		left: 15px;
-		width: 100%;
-		height: 100%;
-		background: #A31D1D;
-		border-radius: 15px;
-		transform: rotate(-5deg);
-		z-index: 0;
-		transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
-	}
-
-	.about-card-wrapper:hover::before {
-		transform: rotate(-8deg) scale(1.02);
-	}
-
-	.about-card {
-		background: white;
-		border-radius: 15px;
-		box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
+	.combined-about-card {
+		width: 1100px;
+		max-width: 95%;
+		display: grid;
+		grid-template-columns: 1.05fr 1.20fr;
+		gap: 0;
+		background: #FCF8F2;
+		border: 3.5px solid #4A1215;
+		border-radius: 16px;
+		box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
 		overflow: hidden;
+		transform: translateY(0);
+		opacity: 1;
+		transition: all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
 		position: relative;
-		z-index: 1;
-		border: 1px solid rgba(163, 29, 29, 0.06);
-		transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.5s cubic-bezier(0.25, 1, 0.5, 1);
-		transform-style: preserve-3d;
+		z-index: 10;
 	}
 
-	.about-card-wrapper:hover .about-card {
-		transform: translateY(-8px) rotateX(3deg) rotateY(-3deg);
-		box-shadow: 0 30px 70px rgba(163, 29, 29, 0.12);
+	.combined-about-card::after {
+		content: none;
 	}
 
-	@keyframes slideInLeft {
-		from {
-			opacity: 0;
-			transform: translateX(-50px) rotate(0deg);
-		}
-		to {
-			opacity: 1;
-			transform: translateX(0) rotate(0deg);
-		}
+	.combined-about-card.scroll-active {
+		transform: translateY(0);
+		opacity: 1;
 	}
 
-	/* Polaroid styled image */
+	.profile-section {
+		display: flex;
+		flex-direction: column;
+		background: #FFFDF8;
+		padding: 3rem 1.5rem 2rem 1.5rem;
+	}
+
+	.letter-section {
+		background: #FFFDF8;
+		padding: 3rem 3rem 3.5rem 3rem;
+		position: relative;
+		overflow: hidden;
+		display: flex;
+		flex-direction: column;
+		justify-content: flex-start;
+	}
+
 	.card-image {
 		position: relative;
 		width: 100%;
 		height: 280px;
 		overflow: hidden;
-		background: #FEF9E1;
-	}
-
-	/* Polaroid Washi Tape overlay */
-	.card-image::before {
-		content: '';
-		position: absolute;
-		top: -15px;
-		left: 50%;
-		transform: translateX(-50%) rotate(-4deg);
-		width: 110px;
-		height: 32px;
-		background: rgba(254, 249, 225, 0.65);
-		backdrop-filter: blur(1.5px);
-		box-shadow: 0 2px 4px rgba(0,0,0,0.04);
-		border-left: 1px dashed rgba(0,0,0,0.08);
-		border-right: 1px dashed rgba(0,0,0,0.08);
-		z-index: 5;
+		margin-bottom: 2rem;
+		display: flex;
+		align-items: center;
+		justify-content: center;
 	}
 
 	.card-image img {
@@ -319,6 +313,9 @@ const currentDate = new Date().toLocaleDateString('en-US', { year: 'numeric', mo
 		height: 100%;
 		object-fit: cover;
 		transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+		border: 3.5px solid #4A1215;
+		border-radius: 6px;
+		box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 	}
 
 	.about-card:hover .card-image img {
@@ -326,319 +323,84 @@ const currentDate = new Date().toLocaleDateString('en-US', { year: 'numeric', mo
 	}
 
 	.card-content {
-		padding: 1.8rem;
-		background: #FFFDF8;
+		padding: 2rem;
 	}
 
 	.card-name {
 		font-family: 'Playfair Display', Georgia, serif;
-		font-size: 1.6rem;
+		font-size: 1.875rem;
 		font-weight: 700;
 		color: #A31D1D;
 		margin-bottom: 1.5rem;
 		font-style: italic;
-		text-align: center;
-		padding-bottom: 1.2rem;
-		border-bottom: 2px dashed rgba(163, 29, 29, 0.12);
+		padding-bottom: 1.5rem;
+		border-bottom: 2px dashed rgba(163, 29, 29, 0.15);
 	}
 
-	/* Info pills grid layout */
-	.card-info-grid {
-		display: grid;
-		grid-template-columns: 1fr;
+	.card-info {
+		margin-bottom: 1.5rem;
+		padding-bottom: 0;
+	}
+
+	.info-row {
+		display: flex;
+		align-items: center;
+		margin-bottom: 1.2rem;
+		font-size: 0.95rem;
 		gap: 0.8rem;
-	}
-
-	.info-pill {
-		display: flex;
-		align-items: center;
-		gap: 1rem;
-		background: white;
-		border: 1px solid rgba(163, 29, 29, 0.06);
-		padding: 0.6rem 1rem;
-		border-radius: 12px;
-		transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
-	}
-
-	.info-pill:hover {
-		transform: translateY(-2px);
-		box-shadow: 0 6px 15px rgba(163, 29, 29, 0.05);
-		border-color: rgba(163, 29, 29, 0.2);
-		background: #FFFDF8;
-	}
-
-	.info-icon {
-		background: rgba(163, 29, 29, 0.05);
-		color: #A31D1D;
-		width: 36px;
-		height: 36px;
+		padding: 0.8rem;
+		background: rgba(163, 29, 29, 0.03);
 		border-radius: 8px;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		font-size: 1rem;
-		flex-shrink: 0;
 		transition: all 0.3s ease;
 	}
 
-	.info-pill:hover .info-icon {
-		background: #A31D1D;
-		color: white;
+	.info-row:hover {
+		background: rgba(163, 29, 29, 0.08);
+		transform: translateX(4px);
 	}
 
-	.info-details {
-		display: flex;
-		flex-direction: column;
-		gap: 0.1rem;
+	.info-row::before {
+		content: none;
 	}
 
-	.info-label {
-		font-size: 0.7rem;
-		text-transform: uppercase;
-		letter-spacing: 0.8px;
-		color: rgba(163, 29, 29, 0.55);
+	.info-row .label {
 		font-weight: 700;
+		color: #A31D1D;
+		flex-shrink: 0;
+		min-width: 80px;
 	}
 
-	.info-value {
-		font-size: 0.9rem;
+	.info-row::after {
+		content: none;
+	}
+
+	.info-row .value {
 		color: #A31D1D;
 		font-weight: 600;
-		line-height: 1.2;
-	}
-
-	.about-content {
-		flex: 1;
-		animation: slideInRight 0.8s ease-out;
-	}
-
-	@keyframes slideInRight {
-		from {
-			opacity: 0;
-			transform: translateX(50px);
-		}
-		to {
-			opacity: 1;
-			transform: translateX(0);
-		}
-	}
-
-	/* Stationery Parchment Note Box Frame */
-	.about-letter {
-		margin-top: -2rem;
-		background: #FFFDF8;
-		padding: 3rem 4.5rem 3.5rem 4.5rem;
-		border-radius: 16px;
-		box-shadow: 
-			0 20px 50px rgba(0, 0, 0, 0.04), 
-			0 4px 15px rgba(163, 29, 29, 0.02),
-			inset 0 0 40px rgba(163, 29, 29, 0.01);
-		border: 1px solid rgba(163, 29, 29, 0.08);
-		position: relative;
-		overflow: hidden;
-		transition: transform 0.3s ease, box-shadow 0.3s ease;
-	}
-
-	.about-letter:hover {
-		transform: translateY(-2px);
-		box-shadow: 
-			0 25px 60px rgba(0, 0, 0, 0.06), 
-			0 6px 20px rgba(163, 29, 29, 0.03);
-	}
-
-	/* Inner elegant double frame for stationery look */
-	.about-letter::after {
-		content: '';
-		position: absolute;
-		top: 14px;
-		left: 14px;
-		right: 14px;
-		bottom: 14px;
-		border: 1px solid rgba(163, 29, 29, 0.04);
-		border-radius: 12px;
-		pointer-events: none;
-		z-index: 1;
-	}
-
-	.about-letter::before {
-		content: '';
-		position: absolute;
-		top: 0;
-		bottom: 0;
-		left: 2.5rem;
-		width: 1px;
-		background: rgba(163, 29, 29, 0.15);
-		pointer-events: none;
-		z-index: 2;
-	}
-
-	.letter-watermark {
-		position: absolute;
-		bottom: 1.5rem;
-		right: 2.5rem;
-		font-size: 7rem;
-		color: rgba(163, 29, 29, 0.025);
-		font-family: serif;
-		pointer-events: none;
-		transform: rotate(-10deg);
-		z-index: 0;
+		text-align: right;
+		flex-shrink: 1;
 	}
 
 	.letter-greeting {
-		font-family: 'Dancing Script', cursive;
-		font-size: 60px; /* Enlarge font size to 60px */
+		font-family: 'Playfair Display', Georgia, serif;
+		font-size: 3.5rem;
 		color: #A31D1D;
 		margin-top: 0;
 		margin-bottom: 1.8rem;
 		padding-left: 1.5rem;
 		font-weight: 700;
 		line-height: 1.2;
-		position: relative;
-		display: inline-block;
-		white-space: nowrap;
-		z-index: 2;
-	}
-
-	/* Elegant Cursive Hand-written Animation Setup */
-	.letter-greeting::after {
-		content: '';
-		position: absolute;
-		top: 0;
-		right: 0;
-		bottom: 0;
-		left: 1.5rem;
-		background-color: #FFFDF8; /* Matches letter paper background */
-		border-left: 3px solid rgba(163, 29, 29, 0.85); /* Pen Tip */
-		pointer-events: none;
-		z-index: 3;
-	}
-
-	.letter-greeting.write-active::after {
-		animation: reveal-write 2.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-	}
-
-	@keyframes reveal-write {
-		0% {
-			left: 1.5rem;
-		}
-		90% {
-			left: 100%;
-			opacity: 1;
-			border-left: 3px solid rgba(163, 29, 29, 0.85);
-		}
-		100% {
-			left: 100%;
-			opacity: 0;
-			border-left: 3px solid transparent;
-		}
-	}
-
-	/* Cebu Vintage Postage Stamp */
-	.postage-stamp {
-		position: absolute;
-		top: 2rem;
-		right: 2.2rem;
-		width: 75px;
-		height: 90px;
-		background: #FFFDF8;
-		padding: 5px;
-		filter: drop-shadow(2px 3px 6px rgba(0,0,0,0.12)) rotate(4deg);
-		z-index: 5;
-		border: 8px solid white;
-		outline: 1px dashed rgba(163, 29, 29, 0.15);
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		pointer-events: none;
-	}
-
-	/* Scalloped perforated stamp borders */
-	.postage-stamp::before {
-		content: '';
-		position: absolute;
-		top: -10px; left: -10px; right: -10px; bottom: -10px;
-		background-image: 
-			radial-gradient(circle, #FEF9E1 4px, transparent 5px),
-			radial-gradient(circle, #FEF9E1 4px, transparent 5px);
-		background-size: 10px 10px;
-		background-position: 0 0, 5px 5px;
-		z-index: -1;
-	}
-
-	.stamp-inner {
-		border: 1px dashed rgba(163, 29, 29, 0.35);
-		width: 100%;
-		height: 100%;
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		justify-content: space-between;
-		padding: 4px 2px;
-		color: #A31D1D;
-		font-family: serif;
-		font-weight: bold;
-	}
-
-	.stamp-country {
-		font-size: 7px;
-		letter-spacing: 0.5px;
-		font-family: 'Poppins', sans-serif;
-		font-weight: 700;
-	}
-
-	.stamp-icon {
-		font-size: 1.1rem;
-		margin: 2px 0;
-		color: #D4AF37; /* Metallic gold icon */
-	}
-
-	.stamp-value {
-		font-size: 8px;
-		align-self: flex-end;
-		font-family: 'Playfair Display', serif;
-	}
-
-	.stamp-text {
-		font-size: 8px;
-		letter-spacing: 0.5px;
-		text-transform: uppercase;
-	}
-
-	/* Circular postmark ink overlay */
-	.stamp-cancel {
-		position: absolute;
-		width: 80px;
-		height: 80px;
-		border: 1px double rgba(0, 0, 0, 0.18);
-		border-radius: 50%;
-		top: -15px;
-		right: -15px;
-		pointer-events: none;
-		transform: rotate(-15deg);
-	}
-
-	.stamp-cancel::before {
-		content: 'CEBU MUNICIPAL';
-		position: absolute;
-		top: 50%;
-		left: 50%;
-		transform: translate(-50%, -50%) rotate(15deg);
-		font-size: 6px;
-		color: rgba(0, 0, 0, 0.15);
-		font-family: 'Poppins', sans-serif;
-		font-weight: 800;
+		font-style: italic;
 		letter-spacing: 1px;
 	}
 
 	.letter-body {
 		padding-left: 1.5rem;
 		margin-bottom: 2.5rem;
-		z-index: 2;
-		position: relative;
 	}
 
 	.about-text {
-		font-size: 22px;
+		font-size: 1.15rem;
 		line-height: 1.9;
 		color: #5a3a5a;
 		margin-bottom: 1.5rem;
@@ -651,84 +413,6 @@ const currentDate = new Date().toLocaleDateString('en-US', { year: 'numeric', mo
 		margin-bottom: 0;
 	}
 
-	/* Highlights markers styling */
-	.highlight-marker {
-		position: relative;
-		font-weight: 700;
-		color: #3b1e3b;
-		z-index: 1;
-		display: inline-block;
-	}
-
-	.highlight-marker::after {
-		content: '';
-		position: absolute;
-		bottom: 2px;
-		left: 0;
-		width: 100%;
-		height: 10px;
-		background: rgba(212, 175, 55, 0.22);
-		z-index: -1;
-		transform: scaleX(0);
-		transform-origin: left;
-		transition: transform 1.2s cubic-bezier(0.25, 1, 0.5, 1) 0.5s;
-	}
-
-	.letter-greeting.write-active ~ .letter-body .highlight-marker::after {
-		transform: scaleX(1);
-	}
-
-	/* Core competency badges */
-	.focus-areas-container {
-		margin-top: 2.2rem;
-		display: flex;
-		flex-direction: column;
-		gap: 0.8rem;
-	}
-
-	.focus-title {
-		font-size: 0.8rem;
-		font-weight: 700;
-		text-transform: uppercase;
-		letter-spacing: 1px;
-		color: rgba(163, 29, 29, 0.6);
-	}
-
-	.focus-badges {
-		display: flex;
-		flex-wrap: wrap;
-		gap: 0.6rem;
-	}
-
-	.focus-badge {
-		background: rgba(163, 29, 29, 0.03);
-		border: 1px solid rgba(163, 29, 29, 0.08);
-		border-radius: 50px;
-		padding: 0.4rem 0.9rem;
-		display: flex;
-		align-items: center;
-		gap: 0.4rem;
-		transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
-		cursor: default;
-	}
-
-	.focus-badge:hover {
-		background: rgba(163, 29, 29, 0.08);
-		transform: translateY(-2px);
-		border-color: rgba(163, 29, 29, 0.22);
-		box-shadow: 0 4px 10px rgba(163, 29, 29, 0.05);
-	}
-
-	.focus-badge .badge-emoji {
-		font-size: 0.9rem;
-	}
-
-	.focus-badge .badge-text {
-		font-size: 0.8rem;
-		font-weight: 650;
-		color: #A31D1D;
-	}
-
 	.letter-footer {
 		padding-left: 1.5rem;
 		display: flex;
@@ -737,8 +421,6 @@ const currentDate = new Date().toLocaleDateString('en-US', { year: 'numeric', mo
 		margin-top: 2rem;
 		border-top: 1px dashed rgba(163, 29, 29, 0.1);
 		padding-top: 1.5rem;
-		z-index: 2;
-		position: relative;
 	}
 
 	.letter-closing {
@@ -758,28 +440,6 @@ const currentDate = new Date().toLocaleDateString('en-US', { year: 'numeric', mo
 		transform: rotate(-3deg);
 		margin-right: 1.5rem;
 		text-shadow: 1px 1px 2px rgba(163, 29, 29, 0.15);
-	}
-
-	.resume-link {
-		display: inline-flex;
-		align-items: center;
-		gap: 0.8rem;
-		color: #A31D1D;
-		text-decoration: none;
-		font-weight: 700;
-		font-size: 1.1rem;
-		transition: all 0.3s ease;
-		padding: 0.5rem 1rem;
-		border-radius: 50px;
-	}
-
-	.resume-link:hover {
-		transform: translateX(10px);
-		color: #8B1515;
-	}
-
-	.resume-link i {
-		font-size: 0.9rem;
 	}
 
 	.clouds {
@@ -829,39 +489,24 @@ const currentDate = new Date().toLocaleDateString('en-US', { year: 'numeric', mo
 		}
 	}
 
-	@media (max-width: 1120px) {
-		.about-container {
-			gap: 3rem;
-		}
-
-		.about-card-wrapper {
-			flex: 0 0 360px;
-		}
-
-		.paperclip {
-			left: 380px;
-		}
-	}
-
 	@media (max-width: 1024px) {
 		.about-container {
 			gap: 2rem;
 		}
 
 		.about-card-wrapper {
-			flex: 0 0 320px;
+			flex: 1;
+			width: 100%;
+			max-width: 400px;
+			margin: 0 auto;
+		}
+
+		.about-title {
+			font-size: 2.8rem;
 		}
 
 		.about-text {
-			font-size: 1.1rem;
-		}
-
-		.paperclip {
-			display: none;
-		}
-
-		.postage-stamp {
-			display: none;
+			font-size: 1rem;
 		}
 	}
 
@@ -872,14 +517,13 @@ const currentDate = new Date().toLocaleDateString('en-US', { year: 'numeric', mo
 
 		.about-container {
 			flex-direction: column;
-			gap: 2.5rem;
-			align-items: center;
+			gap: 2rem;
 		}
 
 		.about-card-wrapper {
 			flex: 1;
 			width: 100%;
-			max-width: 440px;
+			max-width: 400px;
 			margin: 0 auto;
 		}
 
@@ -887,28 +531,21 @@ const currentDate = new Date().toLocaleDateString('en-US', { year: 'numeric', mo
 			transform: rotate(-4deg);
 		}
 
-		@keyframes slideInLeft {
-			from {
-				opacity: 0;
-				transform: translateY(-30px);
-			}
-			to {
-				opacity: 1;
-				transform: translateY(0);
-			}
+		.about-content {
+			text-align: center;
 		}
 
-		.about-content {
-			width: 100%;
+		.about-title {
+			font-size: 2rem;
 		}
 
 		.about-letter {
 			text-align: left;
-			padding: 2.5rem 3rem;
+			padding: 2rem 3rem;
 		}
 
 		.about-text {
-			font-size: 1.1rem;
+			font-size: 1rem;
 		}
 
 		.resume-link {
@@ -922,7 +559,7 @@ const currentDate = new Date().toLocaleDateString('en-US', { year: 'numeric', mo
 		}
 
 		.card-image {
-			height: 240px;
+			height: 250px;
 		}
 
 		.card-content {
@@ -930,22 +567,11 @@ const currentDate = new Date().toLocaleDateString('en-US', { year: 'numeric', mo
 		}
 
 		.card-name {
-			font-size: 1.3rem;
+			font-size: 1.2rem;
 		}
 
-		.card-info-grid {
-			gap: 0.6rem;
-		}
-
-		.info-pill {
-			padding: 0.5rem 0.8rem;
-			border-radius: 10px;
-		}
-
-		.info-icon {
-			width: 32px;
-			height: 32px;
-			font-size: 0.9rem;
+		.about-title {
+			font-size: 1.8rem;
 		}
 
 		.about-letter {
@@ -956,13 +582,13 @@ const currentDate = new Date().toLocaleDateString('en-US', { year: 'numeric', mo
 			left: 1.2rem;
 		}
 
-		.letter-greeting, .letter-body, .letter-footer {
+		.letter-header, .letter-greeting, .letter-body, .letter-footer {
 			padding-left: 0.5rem;
 		}
 
 		.about-text {
 			text-indent: 1.5rem;
-			font-size: 1rem;
+			font-size: 0.95rem;
 			line-height: 1.8;
 		}
 
@@ -971,7 +597,7 @@ const currentDate = new Date().toLocaleDateString('en-US', { year: 'numeric', mo
 		}
 
 		.letter-greeting {
-			font-size: 2.6rem; /* Scaled for mobile */
+			font-size: 2.1rem;
 			margin-bottom: 1.2rem;
 		}
 	}
