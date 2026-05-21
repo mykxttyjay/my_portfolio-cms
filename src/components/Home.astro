@@ -16,6 +16,28 @@ if (entries && entries.length > 0 && entries[0].data) {
 	<!-- Background Crumpled Texture & Vignette Overlay -->
 	<div class="crumpled-overlay"></div>
 
+	<!-- Minimal floating sparkling diamonds -->
+	<div class="sparkles-container">
+		<div class="sparkle sparkle-1">
+			<svg viewBox="0 0 24 24"><path d="M12,2 L15,9 L22,12 L15,15 L12,22 L9,15 L2,12 L9,9 Z" /></svg>
+		</div>
+		<div class="sparkle sparkle-2">
+			<svg viewBox="0 0 24 24"><path d="M12,2 L14,10 L22,12 L14,14 L12,22 L10,14 L2,12 L10,10 Z" /></svg>
+		</div>
+		<div class="sparkle sparkle-3">
+			<svg viewBox="0 0 24 24"><path d="M12,2 L15,9 L22,12 L15,15 L12,22 L9,15 L2,12 L9,9 Z" /></svg>
+		</div>
+		<div class="sparkle sparkle-4">
+			<svg viewBox="0 0 24 24"><path d="M12,2 L14,10 L22,12 L14,14 L12,22 L10,14 L2,12 L10,10 Z" /></svg>
+		</div>
+		<div class="sparkle sparkle-5">
+			<svg viewBox="0 0 24 24"><path d="M12,2 L15,9 L22,12 L15,15 L12,22 L9,15 L2,12 L9,9 Z" /></svg>
+		</div>
+		<div class="sparkle sparkle-6">
+			<svg viewBox="0 0 24 24"><path d="M12,2 L14,10 L22,12 L14,14 L12,22 L10,14 L2,12 L10,10 Z" /></svg>
+		</div>
+	</div>
+
 	<!-- Centered envelope with letter inside -->
 	<div class="envelope-container">
 		
@@ -216,7 +238,7 @@ if (entries && entries.length > 0 && entries[0].data) {
 		width: 100%;
 		height: 100%;
 		z-index: 10;
-		clip-path: inset(-200% -20% 0 -20%);
+		clip-path: inset(-200% -20% 4% -20%);
 	}
 
 	.letter-paper {
@@ -230,7 +252,7 @@ if (entries && entries.length > 0 && entries[0].data) {
 		border-radius: 16px 16px 0 0;
 		width: 92%;
 		left: 4%;
-		height: 102%;
+		height: 100.5%;
 		top: 60%;
 		transform: translateY(0);
 		animation: slide-up-letter 2.5s forwards;
@@ -251,7 +273,7 @@ if (entries && entries.length > 0 && entries[0].data) {
 			animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
 		}
 		100% {
-			top: -2%; /* Fits within the container, no overflow below */
+			top: -5%; /* Fits within the container, no overflow below */
 		}
 	}
 
@@ -279,7 +301,7 @@ if (entries && entries.length > 0 && entries[0].data) {
 		font-size: 5rem;
 		font-weight: 900;
 		color: #4A1215;
-		margin-bottom: 1.5rem;
+		margin-bottom: 2rem;
 		font-family: 'Playfair Display', Georgia, serif;
 		letter-spacing: -1px;
 		line-height: 1.05;
@@ -292,7 +314,7 @@ if (entries && entries.length > 0 && entries[0].data) {
 		background-color: #631B20;
 		font-weight: 700;
 		font-style: italic;
-		margin-bottom: 1.2rem;
+		margin-bottom: 2.8rem;
 		padding: 0.6rem 2.5rem;
 		border: 2.5px solid #4A1215;
 		border-radius: 50px;
@@ -414,5 +436,158 @@ if (entries && entries.length > 0 && entries[0].data) {
 			width: 65px;
 			height: 65px;
 		}
+	}
+
+	/* Minimal Floating Sparkling Diamonds */
+	.sparkles-container {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		pointer-events: none;
+		z-index: 12;
+		overflow: hidden;
+	}
+
+	.sparkle {
+		position: absolute;
+		opacity: 0;
+		color: #FFF2D4; /* Champagne gold */
+		filter: drop-shadow(0 0 8px rgba(255, 242, 212, 0.8));
+		pointer-events: none;
+		transform-origin: center;
+		/* Sync fade-in with the letter rising up (4.2s delay) */
+		animation: sparkle-fade-in 1.5s cubic-bezier(0.25, 1, 0.5, 1) 4.2s forwards;
+	}
+
+	@keyframes sparkle-fade-in {
+		0% {
+			opacity: 0;
+		}
+		100% {
+			opacity: 0.85;
+		}
+	}
+
+	.sparkle svg {
+		width: 100%;
+		height: 100%;
+		fill: currentColor;
+		display: block;
+		transform-origin: center;
+	}
+
+	.sparkle-1 {
+		top: 15%;
+		left: 10%;
+		width: 28px;
+		height: 28px;
+	}
+	.sparkle-1 svg {
+		animation: twinkle-1 4s ease-in-out 4.2s infinite;
+	}
+
+	.sparkle-2 {
+		top: 25%;
+		right: 12%;
+		width: 22px;
+		height: 22px;
+	}
+	.sparkle-2 svg {
+		animation: twinkle-2 3.5s ease-in-out 4.2s infinite;
+	}
+
+	.sparkle-3 {
+		top: 45%;
+		left: 14%;
+		width: 18px;
+		height: 18px;
+	}
+	.sparkle-3 svg {
+		animation: twinkle-3 5s ease-in-out 4.2s infinite;
+	}
+
+	.sparkle-4 {
+		top: 55%;
+		right: 8%;
+		width: 32px;
+		height: 32px;
+	}
+	.sparkle-4 svg {
+		animation: twinkle-4 4.5s ease-in-out 4.2s infinite;
+	}
+
+	.sparkle-5 {
+		top: 70%;
+		left: 8%;
+		width: 24px;
+		height: 24px;
+	}
+	.sparkle-5 svg {
+		animation: twinkle-1 3.8s ease-in-out 4.2s infinite;
+	}
+
+	.sparkle-6 {
+		top: 75%;
+		right: 15%;
+		width: 20px;
+		height: 20px;
+	}
+	.sparkle-6 svg {
+		animation: twinkle-2 4.2s ease-in-out 4.2s infinite;
+	}
+
+	@keyframes twinkle-1 {
+		0%, 100% {
+			transform: scale(0.6) translateY(0) rotate(0deg);
+			opacity: 0.4;
+		}
+		50% {
+			transform: scale(1.1) translateY(-15px) rotate(180deg);
+			opacity: 1;
+		}
+	}
+
+	@keyframes twinkle-2 {
+		0%, 100% {
+			transform: scale(0.8) translateY(0) rotate(0deg);
+			opacity: 0.5;
+		}
+		50% {
+			transform: scale(1.2) translateY(-25px) rotate(-90deg);
+			opacity: 1;
+		}
+	}
+
+	@keyframes twinkle-3 {
+		0%, 100% {
+			transform: scale(0.5) translateY(0) rotate(0deg);
+			opacity: 0.3;
+		}
+		50% {
+			transform: scale(1) translateY(-10px) rotate(120deg);
+			opacity: 0.9;
+		}
+	}
+
+	@keyframes twinkle-4 {
+		0%, 100% {
+			transform: scale(0.7) translateY(0) rotate(0deg);
+			opacity: 0.5;
+		}
+		50% {
+			transform: scale(1.3) translateY(-20px) rotate(45deg);
+			opacity: 1;
+		}
+	}
+
+	@media (max-width: 768px) {
+		.sparkle-1 { left: 4%; top: 10%; width: 18px; height: 18px; }
+		.sparkle-2 { right: 4%; top: 20%; width: 14px; height: 14px; }
+		.sparkle-3 { left: 3%; top: 40%; width: 12px; height: 12px; }
+		.sparkle-4 { right: 3%; top: 50%; width: 20px; height: 20px; }
+		.sparkle-5 { left: 5%; top: 68%; width: 16px; height: 16px; }
+		.sparkle-6 { right: 5%; top: 78%; width: 14px; height: 14px; }
 	}
 </style>

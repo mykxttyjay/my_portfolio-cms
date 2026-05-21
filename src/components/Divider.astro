@@ -1,11 +1,12 @@
 ---
 interface Props {
   type?: 'light-to-dark' | 'dark-to-light';
+  class?: string;
 }
-const { type = 'light-to-dark' } = Astro.props;
+const { type = 'light-to-dark', class: className } = Astro.props;
 ---
 
-<div class={`divider ${type}`}>
+<div class={`divider ${type} ${className || ''}`}>
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 100" preserveAspectRatio="none">
     <path d="M0,30 L20,35 L35,28 L55,40 L70,32 L90,38 L110,25 L130,35 L145,28 L165,40 L185,30 L200,38 L220,32 L240,40 L255,28 L275,35 L295,30 L310,38 L330,32 L350,40 L365,28 L385,35 L405,30 L420,38 L440,32 L460,40 L475,28 L495,35 L515,30 L530,38 L550,32 L570,40 L585,28 L605,35 L625,30 L640,38 L660,32 L680,40 L695,28 L715,35 L735,30 L750,38 L770,32 L790,40 L805,28 L825,35 L845,30 L860,38 L880,32 L900,40 L915,28 L935,35 L955,30 L970,38 L990,32 L1010,40 L1025,28 L1045,35 L1065,30 L1080,38 L1100,32 L1120,40 L1135,28 L1155,35 L1175,30 L1190,38 L1210,32 L1230,40 L1245,28 L1265,35 L1285,30 L1300,38 L1320,32 L1340,40 L1355,28 L1375,35 L1395,30 L1410,38 L1430,32 L1440,35 L1440,100 L0,100 Z" class="divider-path"/>
   </svg>
@@ -33,20 +34,25 @@ const { type = 'light-to-dark' } = Astro.props;
   .light-to-dark {
     /* Above is light (cream), below is dark (red). */
     /* The SVG is filled with red color. */
-    background-color: #fcf7e0;
+    background-color: #FEF9E1;
   }
 
   .light-to-dark .divider-path {
-    fill: #a51e1e; /* Red */
+    fill: #A31D1D; /* Section Red */
   }
 
   .dark-to-light {
     /* Above is dark (red), below is light (cream). */
     /* The SVG is filled with cream color. */
-    background-color:  #a51e1e;
+    background-color: #A31D1D;
   }
 
   .dark-to-light .divider-path {
-    fill: #fcf7e0; /* Cream */
+    fill: #FEF9E1; /* Cream */
+  }
+
+  /* Special style to match Home section's dark bottom vignette */
+  .home-divider {
+    background-color: #5A0E11 !important;
   }
 </style>
