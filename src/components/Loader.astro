@@ -1,164 +1,232 @@
----
----
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Enhanced Loader</title>
 
+<style>
+/* =========================
+   LOADER CONTAINER
+========================= */
+.loader-container {
+	position: fixed;
+	inset: 0;
+	background: radial-gradient(circle at top, #B22222, #6E0F0F);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	z-index: 9999;
+	transition: opacity 0.8s ease, transform 0.8s ease;
+	overflow: hidden;
+}
+
+.loader-container.hidden {
+	opacity: 0;
+	transform: scale(1.05);
+	pointer-events: none;
+}
+
+/* ambient glow */
+.loader-container::before {
+	content: '';
+	position: absolute;
+	width: 500px;
+	height: 500px;
+	background: rgba(255,255,255,0.08);
+	filter: blur(100px);
+	border-radius: 50%;
+	animation: floatGlow 4s ease-in-out infinite;
+}
+
+@keyframes floatGlow {
+	0%, 100% { transform: translateY(0); }
+	50% { transform: translateY(-40px); }
+}
+
+.loader-content {
+	text-align: center;
+	z-index: 2;
+}
+
+/* =========================
+   ENVELOPE
+========================= */
+.envelope-loader {
+	width: 130px;
+	height: 90px;
+	position: relative;
+	margin-bottom: 1.5rem;
+	animation: envelopeFloat 2.5s ease-in-out infinite;
+}
+
+@keyframes envelopeFloat {
+	0%, 100% { transform: translateY(0); }
+	50% { transform: translateY(-15px); }
+}
+
+/* shadow */
+.envelope-shadow {
+	position: absolute;
+	bottom: -10px;
+	left: 50%;
+	transform: translateX(-50%);
+	width: 70%;
+	height: 10px;
+	background: rgba(0,0,0,0.25);
+	filter: blur(8px);
+	border-radius: 50%;
+}
+
+/* body */
+.envelope-body {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	background: #FEF9E1;
+	border-radius: 6px;
+	box-shadow: 0 20px 40px rgba(0,0,0,0.35);
+}
+
+/* flap */
+.envelope-flap {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	background: #E8DCC8;
+	clip-path: polygon(0 0, 50% 55%, 100% 0);
+	transform-origin: top;
+	animation: flapWave 2.5s ease-in-out infinite;
+}
+
+@keyframes flapWave {
+	0%, 100% { transform: rotateX(0deg); }
+	50% { transform: rotateX(-160deg); }
+}
+
+/* letter */
+.letter {
+	position: absolute;
+	width: 75%;
+	height: 65%;
+	background: white;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	border-radius: 0;
+	box-shadow: 0 10px 20px rgba(0,0,0,0.25);
+	animation: letterRise 2.5s ease-in-out infinite;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+@keyframes letterRise {
+	0%, 100% { transform: translate(-50%, -50%); }
+	50% { transform: translate(-50%, -85%); }
+}
+
+.letter-line {
+	width: 60%;
+	height: 3px;
+	background: #B22222;
+	margin: 8px auto;
+	border-radius: 2px;
+	opacity: 0.8;
+}
+
+.letter-line.short {
+	width: 40%;
+}
+
+/* =========================
+   LETTER UNFOLD ANIMATION
+========================= */
+@keyframes letterUnfold {
+	0% {
+		transform: translate(-50%, -50%) scale(1);
+		opacity: 1;
+		border-radius: 4px;
+	}
+	50% {
+		transform: translate(-50%, -50%) scale(3);
+		opacity: 1;
+		border-radius: 0;
+	}
+	100% {
+		transform: translate(-50%, -50%) scale(20);
+		opacity: 0;
+		border-radius: 0;
+	}
+}
+</style>
+</head>
+
+<body>
+
+<!-- =========================
+     LOADER
+========================= -->
 <div id="loader" class="loader-container">
+
 	<div class="loader-content">
+
 		<div class="envelope-loader">
-			<div class="envelope-flap-loader"></div>
-			<div class="envelope-body-loader"></div>
-			<div class="letter-loader"></div>
+			<div class="envelope-shadow"></div>
+			<div class="envelope-body"></div>
+			<div class="envelope-flap"></div>
+
+			<div class="letter">
+				<div class="letter-line"></div>
+				<div class="letter-line short"></div>
+			</div>
 		</div>
-		<h2 class="loader-text">Welcome...</h2>
+
 	</div>
 </div>
 
-<style>
-	.loader-container {
-		position: fixed;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: 100%;
-		background: linear-gradient(135deg, #A31D1D 0%, #8B1515 100%);
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		z-index: 9999;
-		transition: opacity 0.5s ease, visibility 0.5s ease;
-	}
-
-	.loader-container.hidden {
-		opacity: 0;
-		visibility: hidden;
-	}
-
-	.loader-content {
-		text-align: center;
-	}
-
-	.envelope-loader {
-		width: 120px;
-		height: 80px;
-		position: relative;
-		margin: 0 auto 2rem;
-		animation: envelopeBounce 1.5s ease-in-out infinite;
-	}
-
-	.envelope-body-loader {
-		width: 100%;
-		height: 100%;
-		background: #FEF9E1;
-		border-radius: 0;
-		position: absolute;
-		bottom: 0;
-		box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-	}
-
-	.envelope-flap-loader {
-		width: 100%;
-		height: 50%;
-		background: #E8DCC8;
-		position: absolute;
-		top: 0;
-		clip-path: polygon(0 0, 50% 100%, 100% 0);
-		transform-origin: top center;
-		animation: flapOpen 1.5s ease-in-out infinite;
-		z-index: 2;
-	}
-
-	.letter-loader {
-		width: 80%;
-		height: 60%;
-		background: white;
-		position: absolute;
-		top: 50%;
-		left: 50%;
-		transform: translate(-50%, -50%);
-		border-radius: 0;
-		box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-		animation: letterSlide 1.5s ease-in-out infinite;
-	}
-
-	.letter-loader::before {
-		content: '';
-		position: absolute;
-		width: 60%;
-		height: 3px;
-		background: #A31D1D;
-		top: 30%;
-		left: 20%;
-		border-radius: 2px;
-	}
-
-	.letter-loader::after {
-		content: '';
-		position: absolute;
-		width: 60%;
-		height: 3px;
-		background: #A31D1D;
-		top: 50%;
-		left: 20%;
-		border-radius: 2px;
-	}
-
-	.loader-text {
-		font-size: 1.5rem;
-		font-weight: 700;
-		color: #FEF9E1;
-		font-family: 'Poppins', sans-serif;
-		letter-spacing: 2px;
-		animation: textPulse 1.5s ease-in-out infinite;
-	}
-
-	@keyframes envelopeBounce {
-		0%, 100% {
-			transform: translateY(0);
-		}
-		50% {
-			transform: translateY(-20px);
-		}
-	}
-
-	@keyframes flapOpen {
-		0%, 100% {
-			transform: rotateX(0deg);
-		}
-		50% {
-			transform: rotateX(-180deg);
-		}
-	}
-
-	@keyframes letterSlide {
-		0%, 100% {
-			transform: translate(-50%, -50%);
-		}
-		50% {
-			transform: translate(-50%, -80%);
-		}
-	}
-
-	@keyframes textPulse {
-		0%, 100% {
-			opacity: 1;
-		}
-		50% {
-			opacity: 0.5;
-		}
-	}
-</style>
-
 <script>
-	// Hide loader when page is fully loaded
-	window.addEventListener('load', () => {
-		const loader = document.getElementById('loader');
-		if (loader) {
+/* =========================
+   LOADER EXIT LOGIC
+========================= */
+window.addEventListener('load', () => {
+	const loader = document.getElementById('loader');
+	const letter = document.querySelector('.letter');
+	const envelopeLoader = document.querySelector('.envelope-loader');
+
+	// wait for animation + progress bar to complete
+	setTimeout(() => {
+		if (!loader || !letter || !envelopeLoader) return;
+
+		// Hide envelope elements except letter
+		envelopeLoader.style.animation = 'none';
+		document.querySelector('.envelope-flap')?.remove();
+		document.querySelector('.envelope-body')?.remove();
+		document.querySelector('.envelope-shadow')?.remove();
+
+		// Make letter expand to full screen
+		letter.style.animation = 'letterUnfold 1.2s ease-in-out forwards';
+		
+		// Change loader background to match letter
+		setTimeout(() => {
+			loader.style.background = 'white';
+		}, 400);
+
+		// After unfold animation, fade out loader
+		setTimeout(() => {
+			loader.classList.add('hidden');
+
+			// remove from DOM after fade out
 			setTimeout(() => {
-				loader.classList.add('hidden');
-				// Remove from DOM after transition
-				setTimeout(() => {
-					loader.remove();
-				}, 500);
-			}, 3000); // Show loader for 3 seconds
-		}
-	});
+				loader.remove();
+			}, 500);
+		}, 1200);
+
+	}, 2800);
+});
 </script>
+
+</body>
+</html>
