@@ -11,4 +11,24 @@ export default defineConfig({
     },
   }),
   integrations: [react()],
+  vite: {
+    plugins: [
+      {
+        name: 'emdash-virtual-modules',
+        resolveId(id) {
+          if (id.startsWith('virtual:emdash/')) {
+            return '\0' + id;
+          }
+        },
+        load(id) {
+          if (id.startsWith('\0virtual:emdash/')) {
+            return `export default {};`;
+          }
+        },
+      },
+    ],
+    ssr: {
+      noExternal: ['emdash'],
+    },
+  },
 });
