@@ -11,7 +11,7 @@ export default {
 				light: '#f1e3e4',
 			},
 			fontFamily: {
-				sans: ['Poppins', 'Segoe UI', 'sans-serif'],
+				sans: ['Playfair Display', 'Georgia', 'Segoe UI', 'sans-serif'],
 			},
 		},
 	},

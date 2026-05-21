@@ -1,76 +1,107 @@
 ---
-import CloudIcon from '../assets/cloud.svg';
 import { safeGetEmDashCollection } from '../utils/emdash-helper';
 
-let name = "Angel Marie Sabido";
-let intro = "Aspiring IT professional with a strong work ethic and a passion for learning and growth in the technology field. Committed to developing technical skills and contributing positively to team environments. Eager to gain hands-on experience and continuously improve to deliver quality results in any task or project.";
-let aboutContent = "Driven by curiosity and a desire to make an impact, I aim to leverage my skills to support organizational goals, create innovative digital solutions, and grow as a well-rounded IT professional.";
-let resumeLink = "https://linkedin.com/in/gelmarie";
+let name = "Angel";
+let role = "A Designer & Developer";
+let intro = "Welcome to my portfolio! I'm excited to share my journey, projects, and passion for technology with you. Let's explore what we can build together.";
 
 const { entries } = await safeGetEmDashCollection('profile');
 if (entries && entries.length > 0 && entries[0].data) {
 	name = (entries[0].data.name as string) || name;
 	intro = (entries[0].data.intro as string) || intro;
-	aboutContent = (entries[0].data.about_content as string) || aboutContent;
-	resumeLink = (entries[0].data.resume_link as string) || resumeLink;
 }
 ---
 
 <section class="home" id="home">
-	<div class="mail-card-container">
-		<div class="mail-envelope" id="mailEnvelope">
-			<!-- Envelope back -->
-			<div class="envelope-back"></div>
-			
-			<!-- Envelope front with flap -->
-			<div class="envelope-front">
-				<div class="envelope-flap"></div>
-				<div class="envelope-body"></div>
-			</div>
-			
-			<!-- Letter paper inside envelope -->
+	<!-- Background Crumpled Texture & Vignette Overlay -->
+	<div class="crumpled-overlay"></div>
+
+	<!-- Centered envelope with letter inside -->
+	<div class="envelope-container">
+		
+		<!-- 1. Envelope Back Flap (behind the letter) -->
+		<div class="envelope-back">
+			<svg viewBox="0 0 650 400" preserveAspectRatio="none">
+				<!-- Triangular open flap pointing up, slightly darker cream for depth shadow -->
+				<path d="M 5,395 L 5,180 L 325,5 L 645,180 L 645,395 Z" fill="#EADFCB" stroke="#4A1215" stroke-width="4.5" stroke-linejoin="round" />
+			</svg>
+		</div>
+
+		<!-- 2. Letter paper wrapper (clips bottom) -->
+		<div class="letter-wrapper">
 			<div class="letter-paper">
-				<div class="letter-content">
-					<h2>Welcome!</h2>
-					<p class="description">
-						I'm Angel, an aspiring IT professional passionate about web development and creating innovative digital solutions.
-					</p>
-					<p class="description">
-						With a strong foundation in programming and web technologies, I'm eager to contribute to meaningful projects and grow as a developer.
-					</p>
-					<p class="description">
-						Let's connect and explore how we can create something amazing together!
-					</p>
-				</div>
+			<!-- Notebook Perforated Top Edge -->
+			<div class="notebook-top">
+				<svg class="notebook-tear-svg" viewBox="0 0 600 35" preserveAspectRatio="none">
+					<!-- Punched spiral binding holes (filled with background red to look cut-out) -->
+					<g fill="#8F1D21" stroke="#4A1215" stroke-width="2.5">
+						<circle cx="30" cy="12" r="6" />
+						<circle cx="60" cy="12" r="6" />
+						<circle cx="90" cy="12" r="6" />
+						<circle cx="120" cy="12" r="6" />
+						<circle cx="150" cy="12" r="6" />
+						<circle cx="180" cy="12" r="6" />
+						<circle cx="210" cy="12" r="6" />
+						<circle cx="240" cy="12" r="6" />
+						<circle cx="270" cy="12" r="6" />
+						<circle cx="300" cy="12" r="6" />
+						<circle cx="330" cy="12" r="6" />
+						<circle cx="360" cy="12" r="6" />
+						<circle cx="390" cy="12" r="6" />
+						<circle cx="420" cy="12" r="6" />
+						<circle cx="450" cy="12" r="6" />
+						<circle cx="480" cy="12" r="6" />
+						<circle cx="510" cy="12" r="6" />
+						<circle cx="540" cy="12" r="6" />
+						<circle cx="570" cy="12" r="6" />
+					</g>
+					<!-- Dotted tear line below holes -->
+					<line x1="15" y1="28" x2="585" y2="28" stroke="#4A1215" stroke-width="2.5" stroke-dasharray="5,6" stroke-linecap="round" />
+				</svg>
 			</div>
+
+			<!-- Letter Contents -->
+			<div class="letter-content">
+				<h1 class="letter-title">Hello, I'm {name}</h1>
+				<div class="letter-role-capsule">{role}</div>
+				<p class="letter-description">{intro}</p>
+			</div>
+			</div>
+		</div>
+
+		<!-- 3. Envelope Front Body pocket (Covers bottom of letter) -->
+		<div class="envelope-body">
+			<svg class="envelope-front-svg" viewBox="0 0 650 220" preserveAspectRatio="none">
+				<!-- Outer pocket fold (covers the letter bottom) -->
+				<path d="M 5,215 L 5,5 L 325,120 L 645,5 L 645,215 Z" fill="#FCF8F2" stroke="#4A1215" stroke-width="4.5" stroke-linejoin="round" />
+				<!-- Crease lines meeting in the center seal -->
+				<path d="M 5,215 L 325,120" stroke="#4A1215" stroke-width="4" stroke-linecap="round" />
+				<path d="M 645,215 L 325,120" stroke="#4A1215" stroke-width="4" stroke-linecap="round" />
+			</svg>
 			
-			<!-- Red wax seal -->
+			<!-- 4. Wax Seal in the center of folds (Mathematically locked to intersection) -->
 			<div class="wax-seal">
-				<div class="seal-inner">
-					<i class="fa-solid fa-star"></i>
-				</div>
+				<svg viewBox="0 0 120 120" class="wax-seal-svg">
+					<!-- Melted organic outer wax circle -->
+					<path d="M 60,6 C 92,3 116,21 114,56 C 112,88 95,116 63,114 C 29,112 4,93 6,57 C 8,23 28,9 60,6 Z" fill="#8F1D21" stroke="#4A1215" stroke-width="4.5" stroke-linejoin="round" />
+					<!-- Stamped inner ridge -->
+					<circle cx="60" cy="60" r="41" fill="#A12227" stroke="#4A1215" stroke-width="3" />
+					<!-- Glossy reflection -->
+					<path d="M 33,33 A 28,28 0 0 1 87,33" fill="none" stroke="rgba(255, 255, 255, 0.2)" stroke-width="4.5" stroke-linecap="round" />
+					<!-- Embossed Star in center -->
+					<polygon points="60,36 66,50 81,50 69,60 74,75 60,66 46,75 51,60 39,50 54,50" fill="#5A0E11" stroke="#4A1215" stroke-width="3" stroke-linejoin="round" />
+				</svg>
 			</div>
 		</div>
 	</div>
 
-	<div class="home-content">
-		<h1 class="greeting">Hello, I'm <span class="name">Angel</span></h1>
-		<p class="subtitle"><span class="article">A</span> <span class="typing-text"><span></span></span></p>
-		<p class="description-text">
-			Welcome to my portfolio! I'm excited to share my journey, projects, and passion for technology with you. Let's explore what we can build together.
-		</p>
-		<div class="cta-buttons">
-			<a href="#about" class="btn btn-primary">Learn More</a>
-			<a href="https://linkedin.com/in/gelmarie" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">View Resume</a>
-		</div>
-	</div>
-
-	<div class="clouds">
-		<CloudIcon class="cloud-style cloud-1" />
-		<CloudIcon class="cloud-style cloud-2" />
-		<CloudIcon class="cloud-style cloud-3" />
 	</div>
 </section>
+
+<script>
+	// All elements are static — no scroll-driven movement
+	document.addEventListener('astro:page-load', () => {});
+</script>
 
 <style>
 	.home {
@@ -78,13 +109,13 @@ if (entries && entries.length > 0 && entries[0].data) {
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		padding: 5rem 8%;
-		gap: 4rem;
+		padding: 6rem 2rem 4rem;
 		position: relative;
-		background-color: #A31D1D;
+		background-color: #8F1D21; /* Matches dark red binding holes background */
 		overflow: hidden;
 	}
 
+	/* Crumpled paper noise + gradient overlay */
 	.home::before {
 		content: '';
 		position: absolute;
@@ -93,630 +124,295 @@ if (entries && entries.length > 0 && entries[0].data) {
 		width: 100%;
 		height: 100%;
 		background-image: 
-			url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' result='noise' seed='2' /%3E%3CfeColorMatrix in='noise' type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100' height='100' fill='%23000000' filter='url(%23noiseFilter)' opacity='0.15'/%3E%3C/svg%3E");
-		background-size: 100px 100px;
+			url("data:image/svg+xml,%3Csvg viewBox='0 0 150 150' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.03' numOctaves='4' result='noise' seed='1' /%3E%3CfeColorMatrix in='noise' type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' fill='%23000000' filter='url(%23noiseFilter)' opacity='0.12'/%3E%3C/svg%3E");
+		background-size: 150px 150px;
 		pointer-events: none;
-		z-index: 1;
+		z-index: 2;
 		mix-blend-mode: overlay;
 	}
 
-	.home::after {
-		content: '';
+	.crumpled-overlay {
 		position: absolute;
 		top: 0;
 		left: 0;
 		width: 100%;
 		height: 100%;
-		background-image: 
-			url("data:image/svg+xml,%3Csvg viewBox='0 0 150 150' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise2'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='5' result='noise' seed='1' /%3E%3CfeColorMatrix in='noise' type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='150' height='150' fill='%23000000' filter='url(%23noise2)' opacity='0.12'/%3E%3C/svg%3E");
-		background-size: 150px 150px;
+		background: radial-gradient(circle at 50% 50%, rgba(155, 30, 34, 0.4) 0%, rgba(90, 14, 17, 0.85) 100%);
 		pointer-events: none;
-		z-index: 2;
-		mix-blend-mode: multiply;
+		z-index: 1;
 	}
 
-	.mail-card-container {
-		flex: 0 0 auto;
-		z-index: 3;
+	.envelope-top-flap {
+		position: absolute;
+		top: 45%; 
+		left: 0;
+		width: 100%;
+		height: 45%; 
+		z-index: 20;
+		transform-origin: top center;
+		transform-style: preserve-3d;
+		animation: open-flap 1.2s cubic-bezier(0.4, 0, 0.2, 1) 3s forwards, push-back 0.1s linear 4.2s forwards;
 	}
 
-	.home-content {
-		flex: 1;
-		z-index: 3;
-		position: relative;
-		animation: slideInRight 0.8s ease-out;
+	@keyframes open-flap {
+		0% { transform: rotateX(0deg); }
+		100% { transform: rotateX(180deg); }
 	}
 
-	@keyframes slideInRight {
-		from {
-			opacity: 0;
-			transform: translateX(50px);
-		}
-		to {
-			opacity: 1;
-			transform: translateX(0);
-		}
+	@keyframes push-back {
+		to { z-index: 5; }
 	}
 
-	.greeting {
-		font-size: 3.5rem;
-		font-weight: 900;
-		color: #FEF9E1;
-		margin-bottom: 0.5rem;
-		font-family: 'Poppins', sans-serif;
-		letter-spacing: -1px;
-		font-style: italic;
-	}
-
-	.greeting .name {
-		color: #FEF9E1;
-	}
-
-	.subtitle {
-		font-size: 1.5rem;
-		color: #FEF9E1;
-		font-weight: 600;
-		margin-bottom: 1.5rem;
-		font-style: italic;
-	}
-
-	.typing-text span::after {
-		content: '|';
-		animation: blink 0.7s infinite;
-		margin-left: 3px;
-		color: #FEF9E1;
-	}
-
-	@keyframes blink {
-		0%, 100% { opacity: 1; }
-		50% { opacity: 0; }
-	}
-
-	.description-text {
-		font-size: 1.1rem;
-		color: #FEF9E1;
-		line-height: 1.8;
-		margin-bottom: 2.5rem;
-		font-weight: 500;
-		max-width: 500px;
-	}
-
-	.cta-buttons {
-		display: flex;
-		gap: 1.5rem;
-		flex-wrap: wrap;
-	}
-
-	.btn {
-		padding: 1rem 2rem;
-		border-radius: 50px;
-		font-weight: 700;
-		font-size: 1rem;
-		text-decoration: none;
-		transition: all 0.3s ease;
-		display: inline-flex;
-		align-items: center;
-		justify-content: center;
-		cursor: pointer;
-		border: none;
-		font-family: 'Poppins', sans-serif;
-	}
-
-	.btn-primary {
-		background: #FEF9E1;
-		color: #A31D1D;
-		box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-	}
-
-	.btn-primary:hover {
-		transform: translateY(-3px);
-		box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
-		background: #F5F0D9;
-	}
-
-	.btn-secondary {
-		background: transparent;
-		color: #FEF9E1;
-		border: 2px solid #FEF9E1;
-	}
-
-	.btn-secondary:hover {
-		background: #FEF9E1;
-		color: #A31D1D;
-		transform: translateY(-3px);
-		box-shadow: 0 10px 30px rgba(254, 249, 225, 0.3);
-	}
-
-	.home::after {
-		content: '';
+	.flap-outside, .flap-inside {
 		position: absolute;
 		top: 0;
 		left: 0;
 		width: 100%;
 		height: 100%;
-		background-image: 
-			url("data:image/svg+xml,%3Csvg viewBox='0 0 150 150' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise2'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='5' result='noise' seed='1' /%3E%3CfeColorMatrix in='noise' type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='150' height='150' fill='%23000000' filter='url(%23noise2)' opacity='0.12'/%3E%3C/svg%3E");
-		background-size: 150px 150px;
-		pointer-events: none;
-		z-index: 2;
-		mix-blend-mode: multiply;
+		backface-visibility: hidden;
 	}
 
-	.mail-envelope {
-		width: 900px;
-		height: 600px;
+	.flap-inside {
+		transform: rotateX(180deg);
+	}
+
+	.flap-outside svg, .flap-inside svg {
+		width: 100%;
+		height: 100%;
+	}
+	
+	.flap-outside {
+		filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.15));
+	}
+
+	.envelope-container {
+		width: 1100px;
+		max-width: 95%;
+		aspect-ratio: 650 / 400;
 		position: relative;
-		cursor: pointer;
-		overflow: visible;
-		z-index: 3;
-		transition: all 0.4s ease;
-	}
-
-	.mail-envelope:hover {
-		transform: translateY(30px);
-	}
-
-	.mail-envelope:hover .envelope-flap {
-		transform: rotateX(-180deg);
-	}
-
-	.mail-envelope:hover .letter-paper {
-		opacity: 1;
-		visibility: visible;
-		transform: translate(-50%, -80%);
+		z-index: 10;
+		margin: 0 auto;
 	}
 
 	.envelope-back {
 		position: absolute;
+		top: 0;
+		left: 0;
 		width: 100%;
 		height: 100%;
-		background: linear-gradient(135deg, #FEF9E1 0%, #F5F0D9 100%);
-		border-radius: 0;
-		box-shadow: 0 40px 100px rgba(0, 0, 0, 0.2);
-		z-index: 1;
+		z-index: 8;
 	}
 
-	.envelope-front {
-		position: absolute;
+	.envelope-back svg {
 		width: 100%;
 		height: 100%;
-		z-index: 2;
+		filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.15));
 	}
 
-	.envelope-flap {
+	.letter-wrapper {
 		position: absolute;
+		top: 0;
+		left: 0;
 		width: 100%;
-		height: 50%;
-		background: linear-gradient(135deg, #E8DCC8 0%, #D9CDBA 100%);
-		clip-path: polygon(0 0, 50% 100%, 100% 0);
-		border-radius: 0;
-		box-shadow: 0 -20px 50px rgba(0, 0, 0, 0.15);
-		transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-		transform-origin: top center;
-		z-index: 3;
-		transform: rotateX(0deg);
+		height: 100%;
+		z-index: 10;
+		clip-path: inset(-200% -20% 0 -20%);
+	}
+
+	.letter-paper {
+		background: #FCF8F2;
+		border: 3.5px solid #4A1215;
+		border-bottom: none;
+		padding: 2.5rem 1.8rem 2rem;
+		text-align: center;
+		box-shadow: 0 -8px 20px rgba(0, 0, 0, 0.15);
+		position: absolute;
+		border-radius: 16px 16px 0 0;
+		width: 92%;
+		left: 4%;
+		height: 102%;
+		top: 60%;
+		transform: translateY(0);
+		animation: slide-up-letter 2.5s forwards;
+		animation-delay: 4.2s;
+	}
+
+	@keyframes slide-up-letter {
+		0% {
+			top: 60%;
+			animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+		}
+		35% {
+			top: 15%; /* Pauses here, showing just title and capsule */
+			animation-timing-function: linear;
+		}
+		65% {
+			top: 15%; /* Hold it here for a moment */
+			animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+		}
+		100% {
+			top: -2%; /* Fits within the container, no overflow below */
+		}
+	}
+
+	.notebook-top {
+		width: 100%;
+		margin-bottom: 0.8rem;
+		margin-top: -0.2rem;
+	}
+
+	.notebook-tear-svg {
+		width: 100%;
+		height: 28px;
+	}
+
+	.letter-content {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: flex-start;
+		height: auto;
+		padding-top: 0.2rem;
+	}
+
+	.letter-title {
+		font-size: 5rem;
+		font-weight: 900;
+		color: #4A1215;
+		margin-bottom: 1.5rem;
+		font-family: 'Playfair Display', Georgia, serif;
+		letter-spacing: -1px;
+		line-height: 1.05;
+		text-shadow: 0 2px 8px rgba(74, 18, 21, 0.08);
+	}
+
+	.letter-role-capsule {
+		font-size: 1.5rem;
+		color: #FCF8F2;
+		background-color: #631B20;
+		font-weight: 700;
+		font-style: italic;
+		margin-bottom: 1.2rem;
+		padding: 0.6rem 2.5rem;
+		border: 2.5px solid #4A1215;
+		border-radius: 50px;
+		display: inline-block;
+		font-family: 'Playfair Display', Georgia, serif;
+		box-shadow: 0 6px 16px rgba(74, 18, 21, 0.25);
+		letter-spacing: 0.3px;
+	}
+
+	.letter-description {
+		font-size: 1.6rem;
+		line-height: 1.6;
+		color: #4A1215;
+		max-width: 920px;
+		margin: 0 auto;
+		font-family: 'EB Garamond', Georgia, serif;
+		font-weight: 500;
+		letter-spacing: 0.1px;
 	}
 
 	.envelope-body {
 		position: absolute;
+		bottom: 0;
+		left: 0;
 		width: 100%;
-		height: 100%;
-		background: linear-gradient(135deg, #FEF9E1 0%, #F5F0D9 100%);
-		border-radius: 0;
-		z-index: 1;
-		box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.1);
+		height: 55%;
+		z-index: 15;
+		filter: drop-shadow(0 10px 25px rgba(0, 0, 0, 0.3));
 	}
 
-	.letter-paper {
+	.envelope-front-svg {
 		position: absolute;
-		width: 85%;
-		height: 65%;
-		background: #f5f0f0;
-		border-radius: 0;
-		box-shadow: 
-			-15px 20px 30px rgba(0, 0, 0, 0.15),
-			15px 20px 30px rgba(0, 0, 0, 0.15);
-		top: 48%;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+	}
+
+	.wax-seal {
+		width: 140px;
+		height: 140px;
+		position: absolute;
+		top: 54.5%;
 		left: 50%;
 		transform: translate(-50%, -50%);
-		z-index: 4;
-		padding: 3rem 2.5rem;
-		box-sizing: border-box;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		transition: all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-		overflow: hidden;
-		opacity: 0;
-		visibility: hidden;
-		perspective: 1000px;
+		filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.35));
+		opacity: 1;
+		z-index: 25;
 	}
 
-	.letter-content {
-		text-align: center;
-		width: 100%;
-		position: relative;
-		animation: letterSlideIn 0.8s ease-out forwards;
-	}
-
-	@keyframes letterSlideIn {
-		from {
-			opacity: 0;
-			transform: translateY(20px);
-		}
-		to {
-			opacity: 1;
-			transform: translateY(0);
-		}
-	}
-
-	.letter-content h2 {
-		font-size: 2.5rem;
-		font-weight: 900;
-		color: #A31D1D;
-		margin-bottom: 1.5rem;
-		letter-spacing: -0.5px;
-		font-family: 'Poppins', sans-serif;
-		font-style: italic;
-	}
-
-	.letter-content .subtitle {
-		font-size: 1.8rem;
-		color: #A31D1D;
-		font-weight: 700;
-		margin-bottom: 2rem;
-		font-style: italic;
-	}
-
-	.divider {
-		width: 100px;
-		height: 3px;
-		background: linear-gradient(90deg, transparent, #A31D1D, transparent);
-		margin: 2rem auto;
-		animation: expandWidth 0.8s ease-out 0.3s both;
-	}
-
-	.letter-content .description {
-		font-size: 1rem;
-		line-height: 1.8;
-		color: #A31D1D;
-		margin-bottom: 1.2rem;
-		font-weight: 500;
-		animation: letterFadeInScale 0.8s ease-out 0.4s both;
-	}
-
-	@keyframes letterFadeInScale {
-		from {
-			opacity: 0;
-			transform: scale(0.95) translateY(10px);
-		}
-		to {
-			opacity: 1;
-			transform: scale(1) translateY(0);
-		}
-	}
-
-	@keyframes expandWidth {
-		from {
-			width: 0;
-			opacity: 0;
-		}
-		to {
-			width: 100px;
-			opacity: 1;
-		}
-	}
-
-	.wax-seal {
-		position: absolute;
-		bottom: 15%;
-		left: 50%;
-		transform: translateX(-50%);
-		width: 120px;
-		height: 120px;
-		z-index: 5;
-		filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.3));
-	}
-
-	.seal-inner {
-		position: relative;
+	.wax-seal-svg {
 		width: 100%;
 		height: 100%;
-		background: linear-gradient(135deg, #C41E3A 0%, #A31D1D 50%, #8B1515 100%);
-		border-radius: 50%;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		font-size: 3.5rem;
-		color: #fff;
-		box-shadow: 
-			inset -2px -2px 5px rgba(0, 0, 0, 0.3),
-			inset 2px 2px 5px rgba(255, 255, 255, 0.2),
-			0 10px 25px rgba(0, 0, 0, 0.4);
-		border: 2px solid rgba(255, 255, 255, 0.1);
 	}
 
-	.seal-inner::before {
-		content: '';
-		position: absolute;
-		width: 100%;
-		height: 100%;
-		border-radius: 50%;
-		background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.15), transparent 50%);
-		pointer-events: none;
-	}
-
-	.wax-seal {
-		animation: sealBounce 2.5s ease-in-out infinite;
-	}
-
-	@keyframes sealBounce {
-		0%, 100% { transform: translateX(-50%) translateY(0); }
-		50% { transform: translateX(-50%) translateY(-15px); }
-	}
-
-	.clouds {
-		position: absolute;
-		bottom: -80px;
-		left: 0;
-		right: 0;
-		height: 120px;
-		z-index: 1;
-		pointer-events: none;
-		width: 100%;
-		overflow: hidden;
-	}
-
-	.cloud-style {
-		position: absolute;
-		bottom: 0;
-		width: 100px;
-		height: auto;
-		fill: rgba(162, 136, 166, 0.1);
-		opacity: 0.6;
-	}
-
-	.cloud-1 {
-		left: 5%;
-		animation: moveClouds 60s linear infinite;
-	}
-
-	.cloud-2 {
-		left: 35%;
-		animation: moveClouds 80s linear infinite reverse;
-		width: 120px;
-	}
-
-	.cloud-3 {
-		left: 65%;
-		animation: moveClouds 100s linear infinite;
-		width: 90px;
-	}
-
-	@keyframes moveClouds {
-		from {
-			transform: translateX(0);
-		}
-		to {
-			transform: translateX(100vw);
-		}
-	}
-
+	/* Responsive Text and Proportions Sizes */
 	@media (max-width: 768px) {
 		.home {
-			padding: 2rem 5%;
+			padding: 4rem 1.5rem 3rem;
 		}
 
-		.home::before {
-			width: 300px;
-			height: 300px;
-			top: -20%;
-			right: -15%;
+		.letter-title {
+			font-size: 1.8rem;
 		}
 
-		.home::after {
-			width: 250px;
-			height: 250px;
-			bottom: -15%;
-			left: -10%;
+		.letter-role-capsule {
+			font-size: 0.85rem;
+			padding: 0.25rem 1.1rem;
 		}
 
-		.mail-envelope {
-			width: 100%;
-			max-width: 500px;
-			height: 400px;
-		}
-
-		.envelope-back {
-			border-radius: 0 0 30px 30px;
-		}
-
-		.envelope-flap {
-			border-radius: 30px 30px 0 0;
+		.letter-description {
+			font-size: 0.85rem;
+			max-width: 340px;
 		}
 
 		.letter-paper {
-			width: 90%;
-			height: 65%;
-			padding: 2rem;
+			padding: 1rem 1.5rem 0.8rem;
 		}
 
-		.mail-envelope.open .letter-paper {
-			transform: translate(-50%, -140%);
-		}
-
-		.letter-content h2 {
-			font-size: 2rem;
-		}
-
-		.letter-content .subtitle {
-			font-size: 1.3rem;
-		}
-
-		.letter-content .description {
-			font-size: 1rem;
-		}
-
-		.seal {
+		.wax-seal {
 			width: 80px;
 			height: 80px;
-			font-size: 2.5rem;
-			bottom: -40px;
 		}
 	}
 
 	@media (max-width: 480px) {
-		.mail-envelope {
-			height: 350px;
+		.home {
+			padding: 3rem 1rem 2rem;
+		}
+
+		.letter-title {
+			font-size: 1.35rem;
+			margin-bottom: 0.2rem;
+		}
+
+		.letter-role-capsule {
+			font-size: 0.75rem;
+			padding: 0.2rem 0.8rem;
+			margin-bottom: 0.4rem;
+			border-width: 1.5px;
+		}
+
+		.letter-description {
+			font-size: 0.7rem;
+			line-height: 1.4;
+			max-width: 240px;
 		}
 
 		.letter-paper {
-			width: 90%;
-			height: 60%;
-			padding: 1.5rem;
+			padding: 0.8rem 1rem 0.5rem;
+			border-width: 2.5px;
 		}
 
-		.mail-envelope.open .letter-paper {
-			transform: translate(-50%, -130%);
+		.notebook-tear-svg {
+			height: 18px;
 		}
 
-		.letter-content h2 {
-			font-size: 1.5rem;
-		}
-
-		.letter-content .subtitle {
-			font-size: 1.1rem;
-		}
-
-		.letter-content .description {
-			font-size: 0.9rem;
-			line-height: 1.5;
-		}
-
-		.seal {
-			width: 70px;
-			height: 70px;
-			font-size: 2rem;
-		}
-	}
-
-	.typing-text span::after {
-		content: '|';
-		animation: blink 0.7s infinite;
-		margin-left: 3px;
-		color: #a288a6;
-	}
-
-	@keyframes blink {
-		0%, 100% { opacity: 1; }
-		50% { opacity: 0; }
-	}
-
-	.fade-in {
-		animation: fadeIn 0.8s ease-out;
-	}
-
-	.fade-in-delay-1 {
-		animation: fadeIn 0.8s ease-out 0.2s both;
-	}
-
-	.fade-in-delay-2 {
-		animation: fadeIn 0.8s ease-out 0.4s both;
-	}
-
-	.fade-in-delay-3 {
-		animation: fadeIn 0.8s ease-out 0.6s both;
-	}
-
-	.fade-in-delay-4 {
-		animation: fadeIn 0.8s ease-out 0.8s both;
-	}
-
-	@keyframes fadeIn {
-		from {
-			opacity: 0;
-		}
-		to {
-			opacity: 1;
+		.wax-seal {
+			width: 65px;
+			height: 65px;
 		}
 	}
 </style>
-
-<script>
-	const words = ["IT Student", "Web Developer", "Graphic Designer", "UI/UX Designer"];
-	let currentWordIndex = 0;
-	let currentCharIndex = 0;
-	let isDeleting = false;
-	let typingTimer: number | any;
-
-	function getArticle(word: string): string {
-		const vowels = ['a', 'e', 'i', 'o', 'u'];
-		const firstLetter = word.charAt(0).toLowerCase();
-		return vowels.includes(firstLetter) ? 'An' : 'A';
-	}
-
-	function typeWord() {
-		const span = document.querySelector('.typing-text span');
-		const articleSpan = document.querySelector('.article');
-		if (!span) return;
-
-		const currentWord = words[currentWordIndex];
-		
-		if (isDeleting) {
-			// Deleting mode
-			span.innerHTML = currentWord.substring(0, currentCharIndex - 1);
-			currentCharIndex--;
-
-			if (currentCharIndex === 0) {
-				isDeleting = false;
-				currentWordIndex = (currentWordIndex + 1) % words.length;
-				// Update article when switching to next word
-				if (articleSpan) {
-					articleSpan.textContent = getArticle(words[currentWordIndex]);
-				}
-				typingTimer = setTimeout(typeWord, 500);
-			} else {
-				typingTimer = setTimeout(typeWord, 100);
-			}
-		} else {
-			// Typing mode
-			span.innerHTML = currentWord.substring(0, currentCharIndex + 1);
-			currentCharIndex++;
-
-			if (currentCharIndex === currentWord.length) {
-				isDeleting = true;
-				typingTimer = setTimeout(typeWord, 2000);
-			} else {
-				typingTimer = setTimeout(typeWord, 150);
-			}
-		}
-	}
-
-	// Envelope interaction - removed click handler, using CSS hover instead
-	function initEnvelope() {
-		const mailEnvelope = document.getElementById('mailEnvelope');
-		if (mailEnvelope) {
-			// Hover is now handled by CSS
-			// No click handler needed
-		}
-	}
-
-	// Scroll animation for envelope - REMOVED
-	// Envelope now only opens on hover via CSS
-	function initScrollAnimation() {
-		// Scroll animation disabled - envelope only responds to hover
-	}
-
-	// Start typing after component loads
-	document.addEventListener('DOMContentLoaded', () => {
-		typeWord();
-		initEnvelope();
-		initScrollAnimation();
-	});
-	// Backup initialization in case DOMContentLoaded already fired
-	if (document.readyState === 'complete' || document.readyState === 'interactive') {
-		typeWord();
-		initEnvelope();
-		initScrollAnimation();
-	}
-</script>

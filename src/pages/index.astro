@@ -1,9 +1,9 @@
 ---
+import '@fontsource/dancing-script';
 import '../styles/global.css';
 import Home from '../components/Home.astro';
 import Divider from '../components/Divider.astro';
 import About from '../components/About.astro';
-import Education from '../components/Education.astro';
 import Skills from '../components/Skills.astro';
 import Experience from '../components/Experience.astro';
 import Projects from '../components/Projects.astro';
@@ -17,7 +17,7 @@ import Loader from '../components/Loader.astro';
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-		<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+		<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap" rel="stylesheet" />
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
@@ -28,7 +28,6 @@ import Loader from '../components/Loader.astro';
 		<Home />
 		<Divider type="dark-to-light" />
 		<About />
-		<Education />
 		<Divider type="light-to-dark" />
 		<Skills />
 		<Divider type="dark-to-light" />
