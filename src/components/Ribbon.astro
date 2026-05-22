@@ -1,0 +1,214 @@
+---
+const services = [
+	"Web Development",
+	"Graphic Design",
+	"UI/UX Design",
+	"Frontend Development",
+	"Responsive Design",
+];
+---
+
+<div class="ribbon-container">
+	<div class="ribbon">
+		<div class="ribbon-content">
+			{services.map((service, index) => (
+				<>
+					<span class="service-item">{service}</span>
+					{index < services.length - 1 && <span class="separator">✦</span>}
+				</>
+			))}
+			<span class="separator">✦</span>
+			{/* Duplicate for seamless loop */}
+			{services.map((service, index) => (
+				<>
+					<span class="service-item">{service}</span>
+					{index < services.length - 1 && <span class="separator">✦</span>}
+				</>
+			))}
+		</div>
+	</div>
+</div>
+
+<style>
+	.ribbon-container {
+		width: 100%;
+		overflow: hidden;
+		position: relative;
+		z-index: 10;
+		background-color: transparent;
+	}
+
+	.ribbon-container::before {
+		content: none;
+	}
+
+	.ribbon-container::after {
+		content: none;
+	}
+
+	.ribbon {
+		padding: 1.2rem 0;
+		position: relative;
+		box-shadow: 
+			0 6px 12px rgba(0, 0, 0, 0.3),
+			inset 0 3px 0 rgba(255, 255, 255, 0.4),
+			inset 0 -3px 0 rgba(0, 0, 0, 0.3);
+		width: 110%;
+		margin-left: -5%;
+	}
+
+	.ribbon-back {
+		background: linear-gradient(135deg, #E8B44C 0%, #D4A03A 50%, #E8B44C 100%);
+		border-top: 4px solid #4A1215;
+		border-bottom: 4px solid #4A1215;
+		transform: rotate(0deg) translateY(0);
+		z-index: 2;
+		opacity: 0.85;
+		outline: 2px solid #4A1215;
+		outline-offset: -6px;
+	}
+
+	.ribbon-front {
+		background: linear-gradient(135deg, #F5C451 0%, #E8B44C 50%, #F5C451 100%);
+		border-top: 4px solid #4A1215;
+		border-bottom: 4px solid #4A1215;
+		transform: rotate(0deg) translateY(0);
+		z-index: 3;
+		outline: 2px solid #4A1215;
+		outline-offset: -6px;
+	}
+
+	.ribbon::before,
+	.ribbon::after {
+		content: '';
+		position: absolute;
+		top: 0;
+		width: 0;
+		height: 0;
+		border-style: solid;
+		z-index: 1;
+	}
+
+	.ribbon-front::before {
+		left: -30px;
+		border-width: 0 0 70px 30px;
+		border-color: transparent transparent #C89F3D transparent;
+	}
+
+	.ribbon-front::after {
+		right: -30px;
+		border-width: 70px 30px 0 0;
+		border-color: #C89F3D transparent transparent transparent;
+	}
+
+	.ribbon-back::before {
+		left: -28px;
+		border-width: 0 0 68px 28px;
+		border-color: transparent transparent #B88F35 transparent;
+	}
+
+	.ribbon-back::after {
+		right: -28px;
+		border-width: 68px 28px 0 0;
+		border-color: #B88F35 transparent transparent transparent;
+	}
+
+	.ribbon::before,
+	.ribbon::after {
+		content: '';
+		position: absolute;
+		top: 0;
+		width: 0;
+		height: 0;
+		border-style: solid;
+	}
+
+	.ribbon::before {
+		left: 0;
+		border-width: 0 0 60px 30px;
+		border-color: transparent transparent #8B6F47 transparent;
+		transform: translateX(-30px);
+	}
+
+	.ribbon::after {
+		right: 0;
+		border-width: 60px 30px 0 0;
+		border-color: #8B6F47 transparent transparent transparent;
+		transform: translateX(30px);
+	}
+
+	.ribbon-content {
+		display: flex;
+		align-items: center;
+		gap: 2rem;
+		animation: scroll-ribbon 30s linear infinite;
+		white-space: nowrap;
+	}
+
+	.service-item {
+		font-family: 'Playfair Display', Georgia, serif;
+		font-size: 1.3rem;
+		font-weight: 700;
+		color: #4A1215;
+		text-transform: uppercase;
+		letter-spacing: 2px;
+		font-style: italic;
+		text-shadow: 
+			1px 1px 0 rgba(255, 255, 255, 0.5),
+			2px 2px 4px rgba(0, 0, 0, 0.2);
+		transition: transform 0.3s ease;
+	}
+
+	.separator {
+		color: #8B6F47;
+		font-size: 1rem;
+		opacity: 0.8;
+	}
+
+	@keyframes scroll-ribbon {
+		0% {
+			transform: translateX(0);
+		}
+		100% {
+			transform: translateX(-50%);
+		}
+	}
+
+	.ribbon-content:hover {
+		animation-play-state: paused;
+	}
+
+	@media (max-width: 768px) {
+		.ribbon {
+			padding: 1rem 0;
+			transform: rotate(-1.5deg);
+		}
+
+		.service-item {
+			font-size: 1rem;
+			letter-spacing: 1px;
+		}
+
+		.separator {
+			font-size: 0.8rem;
+		}
+
+		.ribbon-content {
+			gap: 1.5rem;
+		}
+	}
+
+	@media (max-width: 480px) {
+		.ribbon {
+			padding: 0.8rem 0;
+		}
+
+		.service-item {
+			font-size: 0.85rem;
+		}
+
+		.ribbon-content {
+			gap: 1rem;
+		}
+	}
+</style>

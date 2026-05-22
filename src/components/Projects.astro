@@ -313,7 +313,7 @@ const row2List = [...row2Base, ...row2Base, ...row2Base];
 
 <style>
 	.projects {
-		background: #FEF9E1;
+		background: #F5F0E8;
 		padding: 3rem 0 4rem 0;
 		position: relative;
 		overflow: hidden;
@@ -327,15 +327,15 @@ const row2List = [...row2Base, ...row2Base, ...row2Base];
 		width: 100%;
 		height: 100%;
 		background-image: 
-			url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' result='noise' seed='2' /%3E%3CfeColorMatrix in='noise' type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100' height='100' fill='%23000000' filter='url(%23noiseFilter)' opacity='0.04'/%3E%3C/svg%3E");
-		background-size: 100px 100px;
+			url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='crumple'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.04' numOctaves='5' result='noise' seed='3' /%3E%3CfeDisplacementMap in='SourceGraphic' in2='noise' scale='8' xChannelSelector='R' yChannelSelector='G'/%3E%3C/filter%3E%3Crect width='200' height='200' fill='%23F5F0E8' filter='url(%23crumple)' opacity='0.4'/%3E%3C/svg%3E");
+		background-size: 200px 200px;
 		pointer-events: none;
 		z-index: 0;
-		mix-blend-mode: overlay;
+		mix-blend-mode: multiply;
 	}
 
 	.projects .heading {
-		color: #A31D1D;
+		color: #4A1215;
 		position: relative;
 		z-index: 2;
 		font-family: 'Playfair Display', Georgia, serif;
@@ -348,8 +348,8 @@ const row2List = [...row2Base, ...row2Base, ...row2Base];
 	}
 
 	.projects .heading span {
-		-webkit-text-fill-color: #A31D1D;
-		color: #A31D1D;
+		-webkit-text-fill-color: #4A1215;
+		color: #4A1215;
 	}
 
 	.projects-carousel-container {
