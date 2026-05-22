@@ -1,6 +1,4 @@
 ---
-import { safeGetEmDashCollection } from '../utils/emdash-helper';
-
 // Function to generate a beautiful deterministic gradient based on a string
 function getDeterministicTheme(str: string, index: number) {
 	const gradients = [
@@ -16,7 +14,7 @@ function getDeterministicTheme(str: string, index: number) {
 	return gradients[index % gradients.length];
 }
 
-const defaultProjects = [
+const projectsList = [
 	{
 		title: "Patio Time Bar",
 		description: "A premium, responsive website template for restaurants, bars, and outdoor dining lounges featuring online menus and booking forms.",
@@ -63,24 +61,6 @@ const defaultProjects = [
 		theme: { bg: "linear-gradient(135deg, #00c6ff 0%, #0072ff 100%)", text: "#ffffff", label: "PLUMBING EXPERTS" }
 	}
 ];
-
-let projectsList = [];
-const { entries } = await safeGetEmDashCollection('projects');
-if (entries && entries.length > 0) {
-	projectsList = entries.map((entry, index) => {
-		const title = (entry.data?.title as string) || "";
-		const description = (entry.data?.description as string) || "";
-		const icon = (entry.data?.icon as string) || "fa-solid fa-code";
-		const tags_str = (entry.data?.tags as string) || "";
-		const tags = tags_str ? tags_str.split(',').map((t: string) => t.trim()) : [];
-		const project_url = (entry.data?.project_url as string) || "";
-		const screenshot_url = project_url ? `https://image.thum.io/get/width/880/crop/540/${project_url}` : "";
-		const theme = getDeterministicTheme(title, index);
-		return { title, description, icon, tags, project_url, screenshot_url, theme };
-	});
-} else {
-	projectsList = defaultProjects;
-}
 
 // Stagger them into row1 and row2
 const row1Base = projectsList.filter((_, i) => i % 2 === 0);

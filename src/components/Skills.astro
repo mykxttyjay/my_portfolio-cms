@@ -1,7 +1,5 @@
  ---
-import { safeGetEmDashCollection } from '../utils/emdash-helper';
-
-let skillsGroups = [
+const skillsGroups = [
 	{
 		category: "Programming Languages",
 		icon: "fa-solid fa-code",
@@ -18,22 +16,6 @@ let skillsGroups = [
 		skills: ["Figma", "Git & GitHub", "MongoDB", "MySQL", "Canva"]
 	}
 ];
-
-const { entries } = await safeGetEmDashCollection('skills');
-if (entries && entries.length > 0) {
-	const iconMap: Record<string, string> = {
-		"Programming Languages": "fa-solid fa-code",
-		"Web Technologies": "fa-solid fa-laptop-code",
-		"Tools & Databases": "fa-solid fa-screwdriver-wrench"
-	};
-	skillsGroups = entries.map((entry) => {
-		const category = (entry.data.category as string) || "";
-		const skills_list = (entry.data.skills_list as string) || "";
-		const skills = skills_list ? skills_list.split(',').map((s: string) => s.trim()) : [];
-		const icon = iconMap[category] || "fa-solid fa-cube";
-		return { category, icon, skills };
-	});
-}
 ---
 
 <section class="skills" id="skills">

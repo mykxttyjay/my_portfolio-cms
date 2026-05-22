@@ -1,17 +1,7 @@
 ---
-import { safeGetEmDashCollection } from '../utils/emdash-helper';
-
-let name = "Angel Marie Sabido";
-let intro = "Hello! I am an aspiring IT professional with a strong work ethic and a deep passion for learning and growing in the technology space. Throughout my academic journey, I've built a solid foundation in various IT disciplines, from web development to database management. I am particularly passionate about creating user-friendly digital solutions that solve real-world problems, always eager to gain hands-on experience and continuously improve my craft.";
-let paragraph2 = "My hands-on experience across different projects has taught me the importance of collaboration, attention to detail, and continuous learning in our ever-evolving tech landscape. Driven by curiosity and a desire to make a meaningful impact, I aim to leverage my skills to support organizational goals and create innovative solutions. I am incredibly excited about the opportunities ahead and remain committed to bringing dedication and enthusiasm to every project I undertake.";
-let resumeLink = "https://linkedin.com/in/gelmarie";
-
-const { entries } = await safeGetEmDashCollection('profile');
-if (entries && entries.length > 0 && entries[0].data) {
-	name = (entries[0].data.name as string) || name;
-	intro = (entries[0].data.intro as string) || intro;
-	resumeLink = (entries[0].data.resume_link as string) || resumeLink;
-}
+const name = "Angel Marie Sabido";
+const intro = "Hello! I am an aspiring IT professional with a strong work ethic and a deep passion for learning and growing in the technology space. Throughout my academic journey, I've built a solid foundation in various IT disciplines, from web development to database management. I am particularly passionate about creating user-friendly digital solutions that solve real-world problems, always eager to gain hands-on experience and continuously improve my craft.";
+const paragraph2 = "My hands-on experience across different projects has taught me the importance of collaboration, attention to detail, and continuous learning in our ever-evolving tech landscape. Driven by curiosity and a desire to make a meaningful impact, I aim to leverage my skills to support organizational goals and create innovative solutions. I am incredibly excited about the opportunities ahead and remain committed to bringing dedication and enthusiasm to every project I undertake.";
 ---
 
 <section class="about" id="about">

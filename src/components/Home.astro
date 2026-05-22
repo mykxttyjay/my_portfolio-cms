@@ -1,15 +1,7 @@
 ---
-import { safeGetEmDashCollection } from '../utils/emdash-helper';
-
-let name = "Angel";
-let role = "A Designer & Developer";
-let intro = "Welcome to my portfolio! I'm excited to share my journey, projects, and passion for technology with you. Let's explore what we can build together.";
-
-const { entries } = await safeGetEmDashCollection('profile');
-if (entries && entries.length > 0 && entries[0].data) {
-	name = (entries[0].data.name as string) || name;
-	intro = (entries[0].data.intro as string) || intro;
-}
+const name = "Angel";
+const role = "A Designer & Developer";
+const intro = "Welcome to my portfolio! I'm excited to share my journey, projects, and passion for technology with you. Let's explore what we can build together.";
 ---
 
 <section class="home" id="home">
