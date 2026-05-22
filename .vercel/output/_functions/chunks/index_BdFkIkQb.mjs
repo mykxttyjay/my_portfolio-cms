@@ -1,6 +1,6 @@
-import { c as createComponent } from './astro-component_CrIqSUz_.mjs';
+import { c as createComponent } from './astro-component_BmXjQwov.mjs';
 import 'piccolore';
-import { c as createRenderInstruction, m as maybeRenderHead, r as renderTemplate, a as addAttribute, b as renderHead, d as renderComponent } from './entrypoint_BN1Kgsk1.mjs';
+import { c as createRenderInstruction, m as maybeRenderHead, r as renderTemplate, a as addAttribute, b as renderHead, d as renderComponent } from './entrypoint_Ct_ugyMv.mjs';
 import 'clsx';
 
 async function renderScript(result, id) {
@@ -19,7 +19,7 @@ async function renderScript(result, id) {
 
 async function safeGetEmDashCollection(collectionName) {
   try {
-    const { getEmDashCollection } = await import('./index_r_S8oXUf.mjs').then(n => n.i);
+    const { getEmDashCollection } = await import('./index_CDyyuj2W.mjs').then(n => n.i);
     const result = await getEmDashCollection(collectionName);
     return result;
   } catch (e) {

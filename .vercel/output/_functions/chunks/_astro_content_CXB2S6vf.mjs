@@ -2,7 +2,7 @@ import 'html-escaper';
 import 'neotraverse/modern';
 import * as z from 'zod/v4';
 export { z };
-import './entrypoint_BN1Kgsk1.mjs';
+import './entrypoint_Ct_ugyMv.mjs';
 import 'piccolore';
 import 'clsx';
 
@@ -250,7 +250,7 @@ function createGetLiveEntry({
 
 // astro-head-inject
 
-const liveCollections = (await import('./live.config_DZhlgl5p.mjs')).collections;
+const liveCollections = (await import('./live.config_BXGAUGu9.mjs')).collections;
 
 const getLiveCollection = createGetLiveCollection({
 	liveCollections,
