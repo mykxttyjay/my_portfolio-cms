@@ -1,21 +1,16 @@
 import { defineConfig } from 'astro/config';
-import vercel from '@astrojs/vercel/serverless';
 import react from '@astrojs/react';
 
+// ✅ SAFE STATIC CONFIG (for Vercel + portfolio)
 export default defineConfig({
   output: 'static',
 
-  adapter: vercel({
-    webAnalytics: {
-      enabled: true,
-    },
-  }),
-
   integrations: [react()],
 
+  // ❌ REMOVE all server/Vercel/EmDash SSR hacks
   vite: {
     ssr: {
-      noExternal: ['emdash', '@emdash-cms/auth'],
+      noExternal: [],
     },
   },
 });
