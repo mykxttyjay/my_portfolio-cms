@@ -5,17 +5,23 @@ import { fileURLToPath } from 'url';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const projectRoot = path.resolve(__dirname, '..');
 
-// Check if we're in a Vercel environment
-const isVercel = process.env.VERCEL === '1';
+console.log('Post-build script started...');
 
-if (isVercel) {
-  console.log('Running in Vercel environment...');
+// The Vercel adapter creates the output in .vercel/output/functions/_render.func
+// We need to ensure the entry.mjs is accessible at the root level for Vercel's runtime
+
+const renderFuncDir = path.join(projectRoot, '.vercel/output/functions/_render.func');
+const distServerDir = path.join(projectRoot, '.vercel/output/functions/_render.func/dist/server');
+
+if (fs.existsSync(distServerDir)) {
+  console.log('✓ Found Vercel render function directory');
   
-  // The .vercel/output structure is created by Astro's Vercel adapter
-  // No additional copying is needed - Vercel handles the file structure
-  console.log('✓ Vercel adapter will handle the output structure');
+  // List files in the dist/server directory for debugging
+  const files = fs.readdirSync(distServerDir);
+  console.log('Files in dist/server:', files);
 } else {
-  console.log('Running in local environment - skipping Vercel-specific post-build steps');
+  console.log('⚠ Vercel render function directory not found at:', distServerDir);
+  console.log('This is expected in local development. Vercel will handle this during deployment.');
 }
 
 console.log('Post-build script completed successfully!');

@@ -17150,7 +17150,7 @@ function stableStringify(value) {
 	return JSON.stringify(ordered);
 }
 async function getEmDashCollectionUncached(type, filter) {
-	const { getLiveCollection } = await import('./_astro_content_BPnlQKQe.mjs');
+	const { getLiveCollection } = await import('./_astro_content_3woUdinF.mjs');
 	const ctx = getRequestContext();
 	const resolvedLocale = filter?.locale ?? ctx?.locale ?? (void 0);
 	const result = await getLiveCollection(COLLECTION_NAME, {
@@ -17207,7 +17207,7 @@ async function getEmDashCollectionUncached(type, filter) {
 * ```
 */
 async function getEmDashEntry(type, id, options) {
-	const { getLiveEntry } = await import('./_astro_content_BPnlQKQe.mjs');
+	const { getLiveEntry } = await import('./_astro_content_3woUdinF.mjs');
 	const ctx = getRequestContext();
 	const preview = ctx?.preview;
 	const isEditMode = ctx?.editMode ?? false;
