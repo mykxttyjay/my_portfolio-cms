@@ -5,10 +5,11 @@ import Home from '../components/Home.astro';
 import Divider from '../components/Divider.astro';
 import About from '../components/About.astro';
 import Skills from '../components/Skills.astro';
-import Experience from '../components/Experience.astro';
+import Education from '../components/Education.astro';
 import Projects from '../components/Projects.astro';
 import Contact from '../components/Contact.astro';
 import Loader from '../components/Loader.astro';
+import Footer from '../components/Footer.astro';
 ---
 
 <html lang="en">
@@ -21,7 +22,7 @@ import Loader from '../components/Loader.astro';
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
-		<title>My Portfolio</title>
+		<title>Angel Marie Sabido - Portfolio</title>
 	</head>
 	<body>
 		<Loader />
@@ -29,12 +30,13 @@ import Loader from '../components/Loader.astro';
 		<About />
 		<Divider type="red-to-red" />
 		<Skills />
-		<Divider type="smooth-cream" />
+		<Divider type="red-to-red" />
 		<Projects />
-		<Divider type="smooth-cream" />
-		<Experience />
-		<Divider type="cream-to-red" />
+		<Divider type="red-to-red" />
+		<Education />
+		<Divider type="red-to-red" />
 		<Contact />
+		<Footer />
 
 		<script>
 			window.onbeforeunload = function () {
