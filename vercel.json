@@ -1,6 +1,6 @@
 {
   "buildCommand": "npm run build",
-  "outputDirectory": ".vercel/output",
+  "outputDirectory": "dist",
   "installCommand": "npm install",
   "env": {
     "NODE_ENV": "production"
