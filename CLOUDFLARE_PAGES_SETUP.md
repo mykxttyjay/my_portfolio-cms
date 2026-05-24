@@ -3,49 +3,47 @@
 ## Overview
 Your portfolio is configured as a **static site** and is ready to deploy to Cloudflare Pages.
 
-## Configuration Files
+## Configuration
 
-### `wrangler.json`
-This file tells Cloudflare Pages where to find your built static files:
-```json
-{
-  "name": "angelmariesabido",
-  "type": "javascript",
-  "pages_build_output_dir": "dist"
-}
-```
-
-### `astro.config.mjs`
-Your Astro config is set to `output: 'static'`, which means:
-- No server-side rendering
-- All pages are pre-built as HTML files
-- Perfect for Cloudflare Pages static hosting
+Your site uses:
+- **Build command**: `bun run build`
+- **Build output directory**: `dist`
+- **Framework**: Astro (static output)
 
 ## Deployment Steps
 
-1. **Push to GitHub**
+1. **Push to GitHub** (already done ✓)
    ```bash
    git add .
-   git commit -m "Update portfolio with Emdash CMS integration"
+   git commit -m "Update portfolio"
    git push origin main
    ```
 
 2. **Connect to Cloudflare Pages**
    - Go to [Cloudflare Dashboard](https://dash.cloudflare.com)
    - Navigate to **Pages**
-   - Click **Create a project**
-   - Select your GitHub repository
-   - Build settings should auto-detect:
-     - **Build command**: `bun run build`
-     - **Build output directory**: `dist`
+   - Click **Create a project** → **Connect to Git**
+   - Select your GitHub repository (`mykxttyjay/my_portfolio`)
+   - Click **Begin setup**
+
+3. **Configure Build Settings**
+   - **Project name**: `angelmariesabido` (or your preferred name)
+   - **Production branch**: `main`
+   - **Build command**: `bun run build`
+   - **Build output directory**: `dist`
    - Click **Save and Deploy**
+
+4. **Wait for Deployment**
+   - Cloudflare will automatically build and deploy your site
+   - You'll get a URL like `https://angelmariesabido.pages.dev`
 
 ## Important Notes
 
-- ✅ Your site is **static** - no KV namespaces or server bindings needed
+- ✅ Your site is **static** - no server needed
 - ✅ Build output is in the `dist/` folder
 - ✅ All Emdash data is baked into the HTML at build time
-- ✅ No need for the Cloudflare adapter
+- ✅ No need for wrangler or worker configuration
+- ✅ Cloudflare Pages will automatically redeploy when you push to GitHub
 
 ## Updating Content
 
@@ -55,13 +53,6 @@ To update your portfolio content:
 2. Run `bun run build` locally to test
 3. Push changes to GitHub
 4. Cloudflare Pages will automatically rebuild and deploy
-
-## Troubleshooting
-
-If you see KV namespace errors during deployment:
-- These can be safely ignored for static sites
-- Your site will still deploy correctly
-- The error occurs because Cloudflare tries to add optional features that aren't needed
 
 ## Local Development
 
@@ -76,3 +67,11 @@ bun run dev
 ```
 
 Then visit `http://localhost:3000` in your browser.
+
+## Troubleshooting
+
+If deployment fails:
+1. Check that `dist/` folder contains `index.html`
+2. Verify build command runs successfully locally: `bun run build`
+3. Check Cloudflare Pages deployment logs for specific errors
+4. Ensure GitHub repository is public or Cloudflare has access
