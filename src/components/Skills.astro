@@ -21,7 +21,7 @@ const skillsGroups = skillsData.map((skill) => ({
 				</div>
 				<h3>{group.category}</h3>
 				<div class="skill-list">
-					{group.skills.map((skill) => (
+					{group.skills.map((skill: string) => (
 						<span class="skill-pill">{skill}</span>
 					))}
 				</div>
