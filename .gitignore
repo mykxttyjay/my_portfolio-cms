@@ -31,3 +31,8 @@ data.db-wal
 # EmDash database in .emdash directory (but keep the main one for deployment)
 .emdash/data.db-shm
 .emdash/data.db-wal
+
+# Wrangler/Cloudflare Workers files
+.wrangler/
+wrangler.jsonc
+wrangler.json
