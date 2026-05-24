@@ -1,7 +1,6 @@
 {
   "name": "angelmariesabido",
   "type": "javascript",
-  "main": "src/index.ts",
   "compatibility_date": "2024-12-16",
   "pages_build_output_dir": "dist"
 }
