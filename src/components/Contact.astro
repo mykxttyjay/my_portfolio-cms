@@ -1,258 +1,466 @@
 ﻿---
-const contactItems = [
-{
-platform: "Email",
-value: "sabidoangel.uc@gmail.com",
-icon: "fa-solid fa-envelope"
-},
-{
-platform: "Phone",
-value: "+63 954 291 7099",
-icon: "fa-solid fa-phone"
-},
-{
-platform: "Location",
-value: "Lapu-Lapu City, Cebu 6015, Philippines",
-icon: "fa-solid fa-location-dot"
-}
-];
+import { getContact } from '../lib/emdash';
+
+const contactData = getContact();
 ---
 
 <section class="contact" id="contact">
-<div class="contact-wrapper">
-<div class="contact-card-container">
-<div class="contact-envelope">
-<div class="envelope-back"></div>
-<div class="envelope-front">
-<div class="envelope-flap"></div>
-<div class="envelope-body"></div>
-</div>
-<div class="contact-letter">
-<h2 class="contact-title">Thank You</h2>
-<p class="contact-subtitle">get in touch!</p>
-<div class="contact-details">
-<div class="contact-item">
-<i class="fa-solid fa-phone"></i>
-<span>+63 954 291 7099</span>
-</div>
-<div class="contact-item">
-<i class="fa-solid fa-envelope"></i>
-<span>sabidoangel.uc@gmail.com</span>
-</div>
-<div class="contact-item">
-<i class="fa-brands fa-instagram"></i>
-<span>@angel_sabido</span>
-</div>
-<div class="contact-item">
-<i class="fa-brands fa-linkedin"></i>
-<span>Angel Marie Sabido</span>
-</div>
-</div>
-</div>
-<div class="wax-seal">
-<div class="seal-inner">
-<i class="fa-solid fa-heart"></i>
-</div>
-</div>
-</div>
-</div>
-</div>
+	<!-- Background Crumpled Texture & Vignette Overlay -->
+	<div class="crumpled-overlay"></div>
+
+	<div class="contact-content">
+		<!-- Centered envelope with letter inside -->
+		<div class="envelope-container">
+			
+			<!-- 1. Closing Flap (triangle above envelope that folds down) -->
+			<div class="envelope-flap-closing">
+				<svg viewBox="0 0 650 200" preserveAspectRatio="none">
+					<!-- Triangular flap - same width as envelope, positioned above -->
+					<path d="M 5,200 L 325,0 L 645,200 Z" fill="#EADFCB" stroke="#4A1215" stroke-width="4.5" stroke-linejoin="round" />
+				</svg>
+				<!-- Thank You text on triangle -->
+				<div class="flap-text">
+					<h2 class="flap-title">Thank You</h2>
+				</div>
+			</div>
+
+			<!-- 2. Envelope Back Body (white rectangle) -->
+			<div class="envelope-back">
+				<svg viewBox="0 0 650 200" preserveAspectRatio="none">
+					<!-- Envelope back pocket - rectangular bottom -->
+					<path d="M 5,0 L 5,195 L 645,195 L 645,0 Z" fill="#FCF8F2" stroke="#4A1215" stroke-width="4.5" stroke-linejoin="round" />
+				</svg>
+			</div>
+
+			<!-- 3. Envelope Front Body pocket (front flap with crease lines) -->
+			<div class="envelope-body">
+				<svg class="envelope-front-svg" viewBox="0 0 650 200" preserveAspectRatio="none">
+					<!-- Front flap triangles -->
+					<path d="M 5,0 L 325,100 L 5,200 Z" fill="#FCF8F2" stroke="#4A1215" stroke-width="4.5" stroke-linejoin="round" />
+					<path d="M 645,0 L 325,100 L 645,200 Z" fill="#FCF8F2" stroke="#4A1215" stroke-width="4.5" stroke-linejoin="round" />
+					<!-- Crease lines -->
+					<path d="M 5,0 L 325,100" stroke="#4A1215" stroke-width="3" stroke-linecap="round" />
+					<path d="M 645,0 L 325,100" stroke="#4A1215" stroke-width="3" stroke-linecap="round" />
+					<path d="M 5,200 L 325,100" stroke="#4A1215" stroke-width="3" stroke-linecap="round" />
+					<path d="M 645,200 L 325,100" stroke="#4A1215" stroke-width="3" stroke-linecap="round" />
+				</svg>
+				
+				<!-- Wax Seal in the center -->
+				<div class="wax-seal">
+					<svg viewBox="0 0 120 120" class="wax-seal-svg">
+						<!-- Melted organic outer wax circle -->
+						<path d="M 60,6 C 92,3 116,21 114,56 C 112,88 95,116 63,114 C 29,112 4,93 6,57 C 8,23 28,9 60,6 Z" fill="#8F1D21" stroke="#4A1215" stroke-width="4.5" stroke-linejoin="round" />
+						<!-- Stamped inner ridge -->
+						<circle cx="60" cy="60" r="41" fill="#A12227" stroke="#4A1215" stroke-width="3" />
+						<!-- Glossy reflection -->
+						<path d="M 33,33 A 28,28 0 0 1 87,33" fill="none" stroke="rgba(255, 255, 255, 0.2)" stroke-width="4.5" stroke-linecap="round" />
+						<!-- Embossed Star in center -->
+						<polygon points="60,36 66,50 81,50 69,60 74,75 60,66 46,75 51,60 39,50 54,50" fill="#5A0E11" stroke="#4A1215" stroke-width="3" stroke-linejoin="round" />
+					</svg>
+				</div>
+			</div>
+
+			<!-- 4. Contact info on envelope body -->
+			<div class="envelope-text">
+				<p class="envelope-subtitle">get in touch!</p>
+				<div class="contact-details">
+					{contactData.map((contact) => (
+						<div class="contact-item">
+							<i class={contact.icon}></i>
+							<span>{contact.value}</span>
+						</div>
+					))}
+				</div>
+			</div>
+		</div>
+
+		<!-- Contact Details Outside the Card - Hidden initially, shown after closing -->
+		<div class="contact-info">
+			<h2 class="contact-title">Thank You</h2>
+			<p class="contact-subtitle">get in touch!</p>
+			<div class="contact-details">
+				{contactData.map((contact) => (
+					<div class="contact-item">
+						<i class={contact.icon}></i>
+						<span>{contact.value}</span>
+					</div>
+				))}
+			</div>
+		</div>
+	</div>
 </section>
 
+<script>
+	const initContactScroll = () => {
+		const contactSection = document.querySelector('.contact');
+		const envelopeFlapClosing = document.querySelector('.contact .envelope-flap-closing');
+		
+		if (!contactSection || !envelopeFlapClosing) return;
+
+		const observer = new IntersectionObserver((entries) => {
+			entries.forEach(entry => {
+				if (entry.target === contactSection) {
+					if (entry.isIntersecting) {
+						// Contact section visible - close the flap
+						envelopeFlapClosing.classList.add('flap-closed');
+					} else {
+						// Contact section not visible - open the flap
+						envelopeFlapClosing.classList.remove('flap-closed');
+					}
+				}
+			});
+		}, { threshold: 0.3 });
+
+		observer.observe(contactSection);
+	};
+
+	initContactScroll();
+	document.addEventListener('astro:page-load', initContactScroll);
+</script>
+
 <style>
-.contact {
-background: #8F1D21;
-padding: 3rem 0;
-position: relative;
-overflow: hidden;
-display: flex;
-align-items: center;
-justify-content: center;
-min-height: 100vh;
-}
+	.contact {
+		min-height: 100vh;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		padding: 6rem 2rem 4rem;
+		position: relative;
+		background-color: #8F1D21;
+		overflow: hidden;
+	}
 
-.contact::before {
-content: '';
-position: absolute;
-top: 0;
-left: 0;
-width: 100%;
-height: 100%;
-background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 150 150' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.03' numOctaves='4' result='noise' seed='1' /%3E%3CfeColorMatrix in='noise' type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' fill='%23000000' filter='url(%23noiseFilter)' opacity='0.12'/%3E%3C/svg%3E");
-background-size: 150px 150px;
-pointer-events: none;
-z-index: 2;
-mix-blend-mode: overlay;
-}
+	/* Crumpled paper noise + gradient overlay */
+	.contact::before {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background-image: 
+			url("data:image/svg+xml,%3Csvg viewBox='0 0 150 150' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.03' numOctaves='4' result='noise' seed='1' /%3E%3CfeColorMatrix in='noise' type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' fill='%23000000' filter='url(%23noiseFilter)' opacity='0.12'/%3E%3C/svg%3E");
+		background-size: 150px 150px;
+		pointer-events: none;
+		z-index: 2;
+		mix-blend-mode: overlay;
+	}
 
-.contact::after {
-content: '';
-position: absolute;
-top: 0;
-left: 0;
-width: 100%;
-height: 100%;
-background: radial-gradient(circle at 50% 50%, rgba(155, 30, 34, 0.4) 0%, rgba(90, 14, 17, 0.85) 100%);
-pointer-events: none;
-z-index: 1;
-}
+	.crumpled-overlay {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background: radial-gradient(circle at 50% 50%, rgba(155, 30, 34, 0.4) 0%, rgba(90, 14, 17, 0.85) 100%);
+		pointer-events: none;
+		z-index: 1;
+	}
 
-.contact-wrapper {
-display: flex;
-align-items: center;
-justify-content: center;
-z-index: 3;
-position: relative;
-}
+	.contact-content {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 3rem;
+		z-index: 10;
+		position: relative;
+	}
 
-.contact-card-container {
-flex: 0 0 auto;
-z-index: 3;
-}
+	.envelope-container {
+		width: 1100px;
+		max-width: 95%;
+		position: relative;
+		z-index: 10;
+		margin: 0 auto;
+		height: 400px;
+	}
 
-.contact-envelope {
-width: 900px;
-height: 600px;
-position: relative;
-cursor: default;
-overflow: visible;
-z-index: 3;
-}
+	.envelope-flap-closing {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 200px;
+		z-index: 20;
+		filter: drop-shadow(0 10px 25px rgba(0, 0, 0, 0.3));
+		transform-origin: bottom center;
+		transform: rotateX(0deg);
+		transition: transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+		transform-style: preserve-3d;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
 
-.envelope-back {
-position: absolute;
-width: 100%;
-height: 100%;
-background: linear-gradient(135deg, #FEF9E1 0%, #F5F0D9 100%);
-border-radius: 0;
-box-shadow: 0 40px 100px rgba(0, 0, 0, 0.2);
-z-index: 1;
-}
+	.envelope-flap-closing.flap-closed {
+		transform: rotateX(180deg);
+	}
 
-.envelope-front {
-position: absolute;
-width: 100%;
-height: 100%;
-z-index: 2;
-}
+	.flap-text {
+		position: absolute;
+		text-align: center;
+		z-index: 25;
+	}
 
-.envelope-flap {
-position: absolute;
-width: 100%;
-height: 50%;
-background: linear-gradient(135deg, #E8DCC8 0%, #D9CDBA 100%);
-clip-path: polygon(0 0, 50% 100%, 100% 0);
-border-radius: 0;
-box-shadow: 0 -20px 50px rgba(0, 0, 0, 0.15);
-z-index: 3;
-}
+	.flap-title {
+		font-size: 4rem;
+		font-weight: 900;
+		color: #4A1215;
+		font-family: 'Playfair Display', Georgia, serif;
+		letter-spacing: -1px;
+		text-shadow: 0 2px 8px rgba(74, 18, 21, 0.15);
+		margin: 0;
+	}
 
-.envelope-body {
-position: absolute;
-width: 100%;
-height: 100%;
-background: linear-gradient(135deg, #FEF9E1 0%, #F5F0D9 100%);
-border-radius: 0;
-z-index: 1;
-box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.1);
-}
+	.envelope-text {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		z-index: 12;
+		text-align: center;
+	}
 
-.contact-letter {
-position: absolute;
-width: 85%;
-height: 70%;
-top: 50%;
-left: 50%;
-transform: translate(-50%, -50%);
-z-index: 4;
-text-align: center;
-display: flex;
-flex-direction: column;
-align-items: center;
-justify-content: center;
-padding: 2rem;
-box-sizing: border-box;
-}
+	.envelope-subtitle {
+		font-size: 1.2rem;
+		color: #4A1215;
+		font-style: italic;
+		margin-bottom: 1.5rem;
+		font-weight: 600;
+		font-family: 'Playfair Display', Georgia, serif;
+	}
 
-.contact-title {
-font-size: 3.5rem;
-font-weight: 700;
-color: #A31D1D;
-margin-bottom: 0.5rem;
-font-family: 'Playfair Display', Georgia, serif;
-letter-spacing: 1px;
-font-style: italic;
-text-shadow: 2px 2px 4px rgba(163, 29, 29, 0.1);
-}
+	.envelope-text .contact-details {
+		display: flex;
+		flex-direction: column;
+		gap: 0.8rem;
+	}
 
-.contact-subtitle {
-font-size: 1.2rem;
-color: #A31D1D;
-font-style: italic;
-margin-bottom: 1.5rem;
-font-weight: 600;
-}
+	.envelope-text .contact-item {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 0.8rem;
+		font-size: 0.95rem;
+		color: #4A1215;
+		font-weight: 600;
+	}
 
-.contact-details {
-display: flex;
-flex-direction: column;
-gap: 0.8rem;
-}
+	.envelope-text .contact-item i {
+		font-size: 1rem;
+		color: #A31D1D;
+	}
 
-.contact-item {
-display: flex;
-align-items: center;
-justify-content: center;
-gap: 0.8rem;
-font-size: 0.95rem;
-color: #A31D1D;
-font-weight: 600;
-}
+	.envelope-back {
+		position: absolute;
+		top: 200px;
+		left: 0;
+		width: 100%;
+		height: 200px;
+		z-index: 8;
+	}
 
-.contact-item i {
-font-size: 1rem;
-color: #A31D1D;
-}
+	.envelope-back svg {
+		width: 100%;
+		height: 100%;
+		filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.15));
+	}
 
-.wax-seal {
-position: absolute;
-bottom: 15%;
-left: 50%;
-transform: translateX(-50%);
-width: 120px;
-height: 120px;
-z-index: 5;
-filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.3));
-animation: sealBounce 2.5s ease-in-out infinite;
-}
+	.envelope-body {
+		position: absolute;
+		top: 200px;
+		left: 0;
+		width: 100%;
+		height: 200px;
+		z-index: 15;
+		filter: drop-shadow(0 10px 25px rgba(0, 0, 0, 0.3));
+	}
 
-.seal-inner {
-position: relative;
-width: 100%;
-height: 100%;
-background: linear-gradient(135deg, #C41E3A 0%, #A31D1D 50%, #8B1515 100%);
-border-radius: 50%;
-display: flex;
-align-items: center;
-justify-content: center;
-font-size: 3.5rem;
-color: #fff;
-box-shadow: inset -2px -2px 5px rgba(0, 0, 0, 0.3), inset 2px 2px 5px rgba(255, 255, 255, 0.2), 0 10px 25px rgba(0, 0, 0, 0.4);
-border: 2px solid rgba(255, 255, 255, 0.1);
-}
+	.wax-seal {
+		width: 140px;
+		height: 140px;
+		position: absolute;
+		top: 54.5%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.35));
+		opacity: 1;
+		z-index: 25;
+	}
 
-.seal-inner::before {
-content: '';
-position: absolute;
-width: 100%;
-height: 100%;
-border-radius: 50%;
-background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.15), transparent 50%);
-pointer-events: none;
-}
+	.wax-seal-svg {
+		width: 100%;
+		height: 100%;
+	}
 
-@keyframes sealBounce {
-0%, 100% { transform: translateX(-50%) translateY(0); }
-50% { transform: translateX(-50%) translateY(-15px); }
-}
+	/* Contact Info Outside Card */
+	.contact-info {
+		text-align: center;
+		z-index: 10;
+		position: relative;
+		opacity: 0;
+		transition: opacity 0.8s ease-in-out 0.8s;
+	}
+
+	.contact-info.show {
+		opacity: 1;
+	}
+
+	.contact-title {
+		font-size: 5rem;
+		font-weight: 900;
+		color: #FCF8F2;
+		margin-bottom: 1rem;
+		font-family: 'Playfair Display', Georgia, serif;
+		letter-spacing: -1px;
+		line-height: 1.05;
+		text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+	}
+
+	.contact-subtitle {
+		font-size: 1.5rem;
+		color: #FFF2D4;
+		font-style: italic;
+		margin-bottom: 2rem;
+		font-weight: 600;
+		font-family: 'Playfair Display', Georgia, serif;
+	}
+
+	.contact-details {
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
+	}
+
+	.contact-item {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 1rem;
+		font-size: 1.2rem;
+		color: #FCF8F2;
+		font-weight: 500;
+		font-family: 'EB Garamond', Georgia, serif;
+		letter-spacing: 0.1px;
+	}
+
+	.contact-item i {
+		font-size: 1.4rem;
+		color: #FFF2D4;
+		width: 30px;
+		text-align: center;
+	}
+
+	/* Responsive Text and Proportions Sizes */
+	@media (max-width: 768px) {
+		.contact {
+			padding: 4rem 1.5rem 3rem;
+		}
+
+		.contact-content {
+			gap: 2rem;
+		}
+
+		.letter-title {
+			font-size: 1.8rem;
+		}
+
+		.letter-role-capsule {
+			font-size: 0.85rem;
+			padding: 0.25rem 1.1rem;
+		}
+
+		.letter-description {
+			font-size: 0.85rem;
+			max-width: 340px;
+		}
+
+		.letter-paper {
+			padding: 1rem 1.5rem 0.8rem;
+		}
+
+		.contact-title {
+			font-size: 2.5rem;
+		}
+
+		.contact-subtitle {
+			font-size: 1rem;
+		}
+
+		.contact-item {
+			font-size: 0.95rem;
+		}
+
+		.wax-seal {
+			width: 80px;
+			height: 80px;
+		}
+	}
+
+	@media (max-width: 480px) {
+		.contact {
+			padding: 3rem 1rem 2rem;
+		}
+
+		.contact-content {
+			gap: 1.5rem;
+		}
+
+		.letter-title {
+			font-size: 1.35rem;
+			margin-bottom: 0.2rem;
+		}
+
+		.letter-role-capsule {
+			font-size: 0.75rem;
+			padding: 0.2rem 0.8rem;
+			margin-bottom: 0.4rem;
+			border-width: 1.5px;
+		}
+
+		.letter-description {
+			font-size: 0.7rem;
+			line-height: 1.4;
+			max-width: 240px;
+		}
+
+		.letter-paper {
+			padding: 0.8rem 1rem 0.5rem;
+			border-width: 2.5px;
+		}
+
+		.notebook-tear-svg {
+			height: 18px;
+		}
+
+		.contact-title {
+			font-size: 1.8rem;
+			margin-bottom: 0.5rem;
+		}
+
+		.contact-subtitle {
+			font-size: 0.85rem;
+			margin-bottom: 1rem;
+		}
+
+		.contact-item {
+			font-size: 0.75rem;
+			gap: 0.6rem;
+		}
+
+		.contact-item i {
+			font-size: 1rem;
+			width: 24px;
+		}
+
+		.wax-seal {
+			width: 65px;
+			height: 65px;
+		}
+	}
 </style>

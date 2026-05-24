@@ -1,21 +1,14 @@
- ---
-const skillsGroups = [
-	{
-		category: "Programming Languages",
-		icon: "fa-solid fa-code",
-		skills: ["JavaScript", "HTML5", "CSS3", "Java", "Python"]
-	},
-	{
-		category: "Web Technologies",
-		icon: "fa-solid fa-laptop-code",
-		skills: ["React.js", "Astro", "Tailwind CSS", "Node.js", "Bootstrap"]
-	},
-	{
-		category: "Tools & Databases",
-		icon: "fa-solid fa-screwdriver-wrench",
-		skills: ["Figma", "Git & GitHub", "MongoDB", "MySQL", "Canva"]
-	}
-];
+---
+import { getSkills } from '../lib/emdash';
+
+const skillsData = getSkills();
+
+// Transform Emdash data into the format needed for display
+const skillsGroups = skillsData.map((skill) => ({
+	category: skill.category,
+	icon: "fa-solid fa-code", // Default icon, can be customized per category
+	skills: skill.skills_list ? skill.skills_list.split(',').map((s: string) => s.trim()) : []
+}));
 ---
 
 <section class="skills" id="skills">

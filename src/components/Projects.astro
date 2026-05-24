@@ -1,4 +1,6 @@
 ---
+import { getProjects } from '../lib/emdash';
+
 // Function to generate a beautiful deterministic gradient based on a string
 function getDeterministicTheme(str: string, index: number) {
 	const gradients = [
@@ -14,53 +16,18 @@ function getDeterministicTheme(str: string, index: number) {
 	return gradients[index % gradients.length];
 }
 
-const projectsList = [
-	{
-		title: "Patio Time Bar",
-		description: "A premium, responsive website template for restaurants, bars, and outdoor dining lounges featuring online menus and booking forms.",
-		icon: "fa-solid fa-glass-martini-alt",
-		tags: ["HTML", "CSS", "JavaScript"],
-		project_url: "https://phase-2-patiotimebar.vercel.app/",
-		screenshot_url: "https://image.thum.io/get/width/880/crop/540/https://phase-2-patiotimebar.vercel.app/",
-		theme: { bg: "linear-gradient(135deg, #e65c00 0%, #f9d423 100%)", text: "#ffffff", label: "PATIO TIME BAR" }
-	},
-	{
-		title: "Auto Dealer Portal",
-		description: "Sleek automotive dealership template featuring high-impact vehicle inventory grids, dynamic filters, and a test drive scheduler.",
-		icon: "fa-solid fa-car",
-		tags: ["Next.js", "Tailwind", "UI/UX"],
-		project_url: "https://phase-3-dealertemplate.vercel.app/",
-		screenshot_url: "https://image.thum.io/get/width/880/crop/540/https://phase-3-dealertemplate.vercel.app/",
-		theme: { bg: "linear-gradient(135deg, #141e30 0%, #243b55 100%)", text: "#ffffff", label: "CAR DEALER PORTAL" }
-	},
-	{
-		title: "Electrician Services",
-		description: "A clean, high-converting professional contractor website for electrical diagnostics, emergency repair, and solar installations.",
-		icon: "fa-solid fa-bolt",
-		tags: ["Astro", "Tailwind", "SEO"],
-		project_url: "https://electrician-templatev2.vercel.app/",
-		screenshot_url: "https://image.thum.io/get/width/880/crop/540/https://electrician-templatev2.vercel.app/",
-		theme: { bg: "linear-gradient(135deg, #f7b733 0%, #fc4a1a 100%)", text: "#ffffff", label: "ELECTRICIAN TEMPLATE V2" }
-	},
-	{
-		title: "HVAC Climate Co.",
-		description: "Heating, ventilation, and air conditioning service landing page with scheduled bookings, emergency hotlines, and quote calculator.",
-		icon: "fa-solid fa-snowflake",
-		tags: ["Responsive", "Astro", "CSS"],
-		project_url: "https://hvac-template-rbep.vercel.app/",
-		screenshot_url: "https://image.thum.io/get/width/880/crop/540/https://hvac-template-rbep.vercel.app/",
-		theme: { bg: "linear-gradient(135deg, #2193b0 0%, #6dd5ed 100%)", text: "#ffffff", label: "HVAC CLIMATE CO." }
-	},
-	{
-		title: "Plumbing Experts",
-		description: "Modern service layout for plumbing contractors, featuring leak detection, residential drainage, emergency pipeline service booking.",
-		icon: "fa-solid fa-faucet-drip",
-		tags: ["Astro", "SEO", "Responsive"],
-		project_url: "https://plumbing-template-henna.vercel.app/",
-		screenshot_url: "https://image.thum.io/get/width/880/crop/540/https://plumbing-template-henna.vercel.app/",
-		theme: { bg: "linear-gradient(135deg, #00c6ff 0%, #0072ff 100%)", text: "#ffffff", label: "PLUMBING EXPERTS" }
-	}
-];
+const projectsData = getProjects();
+
+// Transform Emdash data into the format needed for display
+const projectsList = projectsData.map((project, index) => ({
+	title: project.title,
+	description: project.description,
+	icon: project.icon || "fa-solid fa-code",
+	tags: project.tags ? project.tags.split(',').map((t: string) => t.trim()) : [],
+	project_url: project.project_url || "",
+	screenshot_url: "", // Emdash doesn't provide screenshots, so we'll use gradient backgrounds
+	theme: getDeterministicTheme(project.title, index)
+}));
 
 // Stagger them into row1 and row2
 const row1Base = projectsList.filter((_, i) => i % 2 === 0);

@@ -1,7 +1,10 @@
 ---
-const name = "Angel";
-const role = "A Designer & Developer";
-const intro = "Welcome to my portfolio! I'm excited to share my journey, projects, and passion for technology with you. Let's explore what we can build together.";
+import { getProfile } from '../lib/emdash';
+
+const profile = getProfile();
+const name = profile?.name?.split(' ')[0] || "Angel";
+const role = profile?.role || "A Designer & Developer";
+const intro = profile?.intro || "Welcome to my portfolio! I'm excited to share my journey, projects, and passion for technology with you. Let's explore what we can build together.";
 ---
 
 <section class="home" id="home">
