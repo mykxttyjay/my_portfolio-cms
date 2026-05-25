@@ -134,9 +134,22 @@ export const contact = [
 
 ## 🌐 Deployment
 
-### Vercel Deployment
+This is a static Astro site that can be deployed to any static hosting platform.
 
-The site is configured for Vercel deployment:
+### Recommended: Vercel
+- Seamless deployment with automatic builds from GitHub
+- Excellent performance and global CDN
+- Generous free tier (100GB bandwidth/month)
+- Official Astro adapter with great support
+- Simple setup: connect repo → automatic deployments
+
+### Other Options
+- **Netlify**: Similar to Vercel with drag-and-drop deployment
+- **Cloudflare Pages**: Fast global CDN with unlimited bandwidth
+- **GitHub Pages**: Free hosting for public repositories
+- **Render**: Simple deployment with automatic SSL
+
+### Deploy to Vercel
 
 ```bash
 # Build the project
@@ -157,31 +170,6 @@ Or connect your GitHub repository to Vercel for automatic deployments.
 | `npm run build` | Build production site to `./dist/` |
 | `npm run preview` | Preview production build locally |
 | `npm run astro` | Run Astro CLI commands |
-
-## 🎯 Final Recommendation
-
-### For a simple Astro portfolio (static site), I recommend **Vercel**.
-
-### For Astro + EmDash CMS, I recommend **Cloudflare Pages/Workers**.
-
-**Reason:**
-
-**Vercel for Static Astro Sites:**
-- Seamless deployment with automatic builds from GitHub
-- Excellent performance and global CDN
-- Generous free tier (100GB bandwidth/month)
-- Official Astro adapter with great support
-- Simple setup: connect repo → automatic deployments
-- Perfect for portfolios without CMS requirements
-
-**Cloudflare Pages/Workers for EmDash CMS:**
-- EmDash is built specifically for Cloudflare's infrastructure
-- Vercel does NOT support EmDash due to SQLite database limitations in serverless environments
-- Cloudflare D1 (SQLite at the edge) provides persistent database storage
-- Plugin sandbox security features only work on Cloudflare
-- Free tier includes D1 database and R2 storage
-- Best performance and compatibility for EmDash projects
-
 
 ## 📄 License
 
