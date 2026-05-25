@@ -44,7 +44,7 @@ const tools = toolsData?.skills_list ? toolsData.skills_list.split(',').map((s: 
 		</div>
 		<div class="skills-right">
 			<div class="skills-container">
-				{tools.map((tool) => (
+				{tools.map((tool: any) => (
 					<div class="skill-stamp">
 						<div class="stamp-icon">
 							<i class={tool.icon}></i>
@@ -56,7 +56,7 @@ const tools = toolsData?.skills_list ? toolsData.skills_list.split(',').map((s: 
 				))}
 			</div>
 			<div class="skills-list">
-				{skills.map((skill) => (
+				{skills.map((skill: any) => (
 					<div class="skill-line">{skill.name}</div>
 				))}
 			</div>
@@ -67,7 +67,7 @@ const tools = toolsData?.skills_list ? toolsData.skills_list.split(',').map((s: 
 <style>
 	.skills {
 		background: #F5F0E8;
-		padding: 3rem 0;
+		padding: 3rem 0 5rem 0;
 		position: relative;
 		overflow: hidden;
 		border: 20px solid transparent;
