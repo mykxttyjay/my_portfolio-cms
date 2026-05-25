@@ -1,6 +1,6 @@
 export const profile = {
 	name: "Angel Marie Sabido",
-	role: "A Designer & Developer",
+	role: "Designer & Developer",
 	intro: "Welcome to my portfolio! I'm excited to share my journey, projects, and passion for technology with you. Let's explore together what we can build together.",
 	about_content: "I am currently pursuing a Bachelor of Science in Information Technology (BSIT). My journey in tech started with a curiosity for how things work on the web, which blossomed into a passion for clean coding and sleek interface designs. I love bridging the gap between aesthetics and functionality.",
 	resume_link: "https://linkedin.com/in/gelmarie"
