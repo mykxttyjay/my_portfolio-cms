@@ -158,28 +158,32 @@ Or connect your GitHub repository to Vercel for automatic deployments.
 | `npm run preview` | Preview production build locally |
 | `npm run astro` | Run Astro CLI commands |
 
-## 👤 Author
-
-**Angel Marie Sabido**
-- LinkedIn: [linkedin.com/in/gelmarie](https://linkedin.com/in/gelmarie)
-- GitHub: [@mykxttyjay](https://github.com/mykxttyjay)
-- Twitter: [@mykxttyjay](https://twitter.com/mykxttyjay)
-- Instagram: [@gelmarieee](https://www.instagram.com/gelmarieee)
-
 ## 🎯 Final Recommendation
 
-### For a simple Astro portfolio, I recommend **Vercel**.
+### For a simple Astro portfolio (static site), I recommend **Vercel**.
 
-### For Astro + EmDash CMS, I recommend **Vercel**.
+### For Astro + EmDash CMS, I recommend **Cloudflare Pages/Workers**.
 
 **Reason:**
-- Vercel provides seamless deployment with automatic builds from GitHub
-- Perfect for static Astro sites with excellent performance
-- Free tier is generous for personal portfolios (100GB bandwidth/month)
+
+**Vercel for Static Astro Sites:**
+- Seamless deployment with automatic builds from GitHub
+- Excellent performance and global CDN
+- Generous free tier (100GB bandwidth/month)
 - Official Astro adapter with great support
-- If using EmDash CMS, Vercel's serverless functions work perfectly with SQLite databases
-- Simple deployment process: connect repo → automatic deployments
-- Excellent developer experience with preview deployments for PRs
+- Simple setup: connect repo → automatic deployments
+- Perfect for portfolios without CMS requirements
+
+**Cloudflare Pages/Workers for EmDash CMS:**
+- EmDash is built specifically for Cloudflare's infrastructure
+- Vercel does NOT support EmDash due to SQLite database limitations in serverless environments
+- Cloudflare D1 (SQLite at the edge) provides persistent database storage
+- Plugin sandbox security features only work on Cloudflare
+- Free tier includes D1 database and R2 storage
+- Best performance and compatibility for EmDash projects
+
+**Note:** This portfolio is a static site, so Vercel is the recommended choice.
+
 
 ## 📄 License
 
@@ -187,5 +191,5 @@ This project is open source and available for personal use.
 
 ---
 
-**Built with ❤️ using Astro**
+
 
