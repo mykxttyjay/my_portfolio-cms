@@ -1,7 +1,6 @@
 ---
-import { getProfile } from '../lib/emdash';
+import { profile } from '../data/portfolio';
 
-const profile = getProfile();
 const name = profile?.name?.split(' ')[0] || "Angel";
 const role = profile?.role || "A Designer & Developer";
 const intro = profile?.intro || "Welcome to my portfolio! I'm excited to share my journey, projects, and passion for technology with you. Let's explore what we can build together.";

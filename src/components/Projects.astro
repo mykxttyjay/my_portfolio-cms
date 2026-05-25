@@ -1,5 +1,5 @@
 ---
-import { getProjects } from '../lib/emdash';
+import { projects as projectsData } from '../data/portfolio';
 
 // Function to generate a beautiful deterministic gradient based on a string
 function getDeterministicTheme(str: string, index: number) {
@@ -16,9 +16,8 @@ function getDeterministicTheme(str: string, index: number) {
 	return gradients[index % gradients.length];
 }
 
-const projectsData = getProjects();
 
-// Transform Emdash data into the format needed for display
+// Transform data into the format needed for display
 const projectsList = projectsData.map((project, index) => {
 	// Generate screenshot URL from the project URL using a free screenshot service
 	let screenshotUrl = "";
