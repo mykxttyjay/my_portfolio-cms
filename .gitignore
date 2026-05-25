@@ -23,14 +23,7 @@ pnpm-debug.log*
 # jetbrains setting folder
 .idea/
 
-# EmDash database files
-data.db
-data.db-shm
-data.db-wal
 
-# EmDash database in .emdash directory (but keep the main one for deployment)
-.emdash/data.db-shm
-.emdash/data.db-wal
 
 # Wrangler/Cloudflare Workers files
 .wrangler/
