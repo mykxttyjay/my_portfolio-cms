@@ -6,25 +6,29 @@ const skillsData = getSkills();
 // Flatten all skills into individual cards with icons
 const skillIcons: Record<string, string> = {
 	'Web Development': 'fa-solid fa-code',
+	'Web Design': 'fa-solid fa-paintbrush',
 	'UI/UX Design': 'fa-solid fa-pen-nib',
 	'Graphic Design': 'fa-solid fa-palette',
 	'Quality Assurance': 'fa-solid fa-check-circle',
 	'PHP': 'fa-brands fa-php',
 	'Astro': 'fa-solid fa-rocket',
 	'Tailwind CSS': 'fa-solid fa-wind',
-	'C#': 'fa-solid fa-hashtag'
+	'Java': 'fa-brands fa-java'
 };
 
-const allSkills = skillsData.flatMap((skill) => 
-	skill.skills_list ? skill.skills_list.split(',').map((s: string) => ({
-		name: s.trim(),
-		icon: skillIcons[s.trim()] || 'fa-solid fa-code'
-	})) : []
-);
+// Get Core Skills and Tools separately
+const coreSkillsData = skillsData.find(s => s.category === 'Core Skills');
+const toolsData = skillsData.find(s => s.category === 'Tools');
 
-// Separate skills and tools
-const skills = allSkills.slice(0, 4); // First 4 are skills
-const tools = allSkills.slice(4, 8); // Next 4 are tools
+const skills = coreSkillsData?.skills_list ? coreSkillsData.skills_list.split(',').map((s: string) => ({
+	name: s.trim(),
+	icon: skillIcons[s.trim()] || 'fa-solid fa-code'
+})) : [];
+
+const tools = toolsData?.skills_list ? toolsData.skills_list.split(',').map((s: string) => ({
+	name: s.trim(),
+	icon: skillIcons[s.trim()] || 'fa-solid fa-code'
+})) : [];
 ---
 
 <section class="skills" id="skills">
@@ -34,7 +38,7 @@ const tools = allSkills.slice(4, 8); // Next 4 are tools
 			<p class="skills-description">
 				My expertise spans across web development, design, and quality assurance. 
 				I specialize in creating user-centered digital experiences through thoughtful 
-				design and robust development. Each project is an opportunity to blend creativity 
+				design and reliable development. Each project is an opportunity to blend creativity 
 				with technical precision, delivering solutions that are both functional and visually compelling.
 			</p>
 		</div>
@@ -145,15 +149,18 @@ const tools = allSkills.slice(4, 8); // Next 4 are tools
 		display: flex;
 		flex-direction: column;
 		gap: 1.5rem;
+		width: 100%;
 	}
 
 	.skill-line {
 		font-family: 'Playfair Display', Georgia, serif;
-		font-size: 1.2rem;
+		font-size: 23px;
 		color: #4A1215;
 		padding-bottom: 0.5rem;
 		border-bottom: 1px solid rgba(74, 18, 21, 0.3);
 		font-style: italic;
+		width: 100%;
+		font-weight: 700;
 	}
 
 	.skills .heading {
@@ -227,8 +234,8 @@ const tools = allSkills.slice(4, 8); // Next 4 are tools
 		overflow: visible;
 		aspect-ratio: 1/1;
 		transform: rotate(0deg);
-		width: 80px;
-		height: 80px;
+		width: 112px;
+		height: 112px;
 		margin-bottom: 1rem;
 	}
 
@@ -239,14 +246,22 @@ const tools = allSkills.slice(4, 8); // Next 4 are tools
 		background: #FFFEF8;
 		z-index: -1;
 		clip-path: polygon(
-			0% 4px,
-			4px 0%, 8px 4px, 12px 0%, 16px 4px, 20px 0%, 24px 4px, 28px 0%, 32px 4px, 36px 0%, 40px 4px, 44px 0%, 48px 4px, 52px 0%, 56px 4px, 60px 0%, 64px 4px, 68px 0%, 72px 4px, 76px 0%, 80px 4px, 84px 0%, 88px 4px, 92px 0%, 96px 4px, 100px 0%,
-			calc(100% - 4px) 0%,
-			100% 4px, calc(100% - 4px) 8px, 100% 12px, calc(100% - 4px) 16px, 100% 20px, calc(100% - 4px) 24px, 100% 28px, calc(100% - 4px) 32px, 100% 36px, calc(100% - 4px) 40px, 100% 44px, calc(100% - 4px) 48px, 100% 52px, calc(100% - 4px) 56px, 100% 60px, calc(100% - 4px) 64px, 100% 68px, calc(100% - 4px) 72px, 100% 76px, calc(100% - 4px) 80px, 100% 84px, calc(100% - 4px) 88px, 100% 92px, calc(100% - 4px) 96px, 100% 100px,
-			100% calc(100% - 4px),
-			calc(100% - 4px) 100%, calc(100% - 8px) calc(100% - 4px), calc(100% - 12px) 100%, calc(100% - 16px) calc(100% - 4px), calc(100% - 20px) 100%, calc(100% - 24px) calc(100% - 4px), calc(100% - 28px) 100%, calc(100% - 32px) calc(100% - 4px), calc(100% - 36px) 100%, calc(100% - 40px) calc(100% - 4px), calc(100% - 44px) 100%, calc(100% - 48px) calc(100% - 4px), calc(100% - 52px) 100%, calc(100% - 56px) calc(100% - 4px), calc(100% - 60px) 100%, calc(100% - 64px) calc(100% - 4px), calc(100% - 68px) 100%, calc(100% - 72px) calc(100% - 4px), calc(100% - 76px) 100%, calc(100% - 80px) calc(100% - 4px), calc(100% - 84px) 100%, calc(100% - 88px) calc(100% - 4px), calc(100% - 92px) 100%, calc(100% - 96px) calc(100% - 4px), calc(100% - 100px) 100%,
-			4px 100%,
-			0% calc(100% - 4px), 4px calc(100% - 8px), 0% calc(100% - 12px), 4px calc(100% - 16px), 0% calc(100% - 20px), 4px calc(100% - 24px), 0% calc(100% - 28px), 4px calc(100% - 32px), 0% calc(100% - 36px), 4px calc(100% - 40px), 0% calc(100% - 44px), 4px calc(100% - 48px), 0% calc(100% - 52px), 4px calc(100% - 56px), 0% calc(100% - 60px), 4px calc(100% - 64px), 0% calc(100% - 68px), 4px calc(100% - 72px), 0% calc(100% - 76px), 4px calc(100% - 80px), 0% calc(100% - 84px), 4px calc(100% - 88px), 0% calc(100% - 92px), 4px calc(100% - 96px), 0% calc(100% - 100px)
+			/* Top edge - wavy */
+			0% 4px, 4px 0%, 8px 4px, 12px 0%, 16px 4px, 20px 0%, 24px 4px, 28px 0%, 32px 4px, 36px 0%, 40px 4px, 44px 0%, 48px 4px, 52px 0%, 56px 4px, 60px 0%, 64px 4px, 68px 0%, 72px 4px, 76px 0%, 80px 4px, 84px 0%, 88px 4px, 92px 0%, 96px 4px, 100px 0%, 104px 4px, 108px 0%, 112px 4px, 116px 0%, 120px 4px, 124px 0%, 128px 4px,
+			/* Top-right corner - wavy transition */
+			calc(100% - 4px) 0%, 100% 0%, 100% 4px,
+			/* Right edge - wavy */
+			calc(100% - 4px) 8px, 100% 12px, calc(100% - 4px) 16px, 100% 20px, calc(100% - 4px) 24px, 100% 28px, calc(100% - 4px) 32px, 100% 36px, calc(100% - 4px) 40px, 100% 44px, calc(100% - 4px) 48px, 100% 52px, calc(100% - 4px) 56px, 100% 60px, calc(100% - 4px) 64px, 100% 68px, calc(100% - 4px) 72px, 100% 76px, calc(100% - 4px) 80px, 100% 84px, calc(100% - 4px) 88px, 100% 92px, calc(100% - 4px) 96px, 100% 100px, calc(100% - 4px) 104px, 100% 108px, calc(100% - 4px) 112px, 100% 116px, calc(100% - 4px) 120px, 100% 124px, calc(100% - 4px) 128px,
+			/* Bottom-right corner - wavy transition */
+			100% calc(100% - 4px), 100% 100%, calc(100% - 4px) 100%,
+			/* Bottom edge - wavy */
+			calc(100% - 8px) calc(100% - 4px), calc(100% - 12px) 100%, calc(100% - 16px) calc(100% - 4px), calc(100% - 20px) 100%, calc(100% - 24px) calc(100% - 4px), calc(100% - 28px) 100%, calc(100% - 32px) calc(100% - 4px), calc(100% - 36px) 100%, calc(100% - 40px) calc(100% - 4px), calc(100% - 44px) 100%, calc(100% - 48px) calc(100% - 4px), calc(100% - 52px) 100%, calc(100% - 56px) calc(100% - 4px), calc(100% - 60px) 100%, calc(100% - 64px) calc(100% - 4px), calc(100% - 68px) 100%, calc(100% - 72px) calc(100% - 4px), calc(100% - 76px) 100%, calc(100% - 80px) calc(100% - 4px), calc(100% - 84px) 100%, calc(100% - 88px) calc(100% - 4px), calc(100% - 92px) 100%, calc(100% - 96px) calc(100% - 4px), calc(100% - 100px) 100%, calc(100% - 104px) calc(100% - 4px), calc(100% - 108px) 100%, calc(100% - 112px) calc(100% - 4px), calc(100% - 116px) 100%, calc(100% - 120px) calc(100% - 4px), calc(100% - 124px) 100%, calc(100% - 128px) calc(100% - 4px),
+			/* Bottom-left corner - wavy transition */
+			4px 100%, 0% 100%, 0% calc(100% - 4px),
+			/* Left edge - wavy */
+			4px calc(100% - 8px), 0% calc(100% - 12px), 4px calc(100% - 16px), 0% calc(100% - 20px), 4px calc(100% - 24px), 0% calc(100% - 28px), 4px calc(100% - 32px), 0% calc(100% - 36px), 4px calc(100% - 40px), 0% calc(100% - 44px), 4px calc(100% - 48px), 0% calc(100% - 52px), 4px calc(100% - 56px), 0% calc(100% - 60px), 4px calc(100% - 64px), 0% calc(100% - 68px), 4px calc(100% - 72px), 0% calc(100% - 76px), 4px calc(100% - 80px), 0% calc(100% - 84px), 4px calc(100% - 88px), 0% calc(100% - 92px), 4px calc(100% - 96px), 0% calc(100% - 100px), 4px calc(100% - 104px), 0% calc(100% - 108px), 4px calc(100% - 112px), 0% calc(100% - 116px), 4px calc(100% - 120px), 0% calc(100% - 124px), 4px calc(100% - 128px),
+			/* Top-left corner - wavy transition */
+			0% 4px, 0% 0%
 		);
 		box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 	}
@@ -298,7 +313,7 @@ const tools = allSkills.slice(4, 8); // Next 4 are tools
 	}
 
 	.stamp-content {
-		font-size: 0.65rem;
+		font-size: 11px;
 		font-weight: 700;
 		color: #4A1215;
 		letter-spacing: 0.2px;

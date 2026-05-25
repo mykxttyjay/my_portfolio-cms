@@ -14,12 +14,18 @@
 		</div>
 		<div class="experience-container">
 			<div class="experience-box">
-				<h3>Web Development Internship</h3>
-				<p>Assisted in developing web applications and gained hands-on experience in software development. Worked with modern frameworks and collaborated with senior developers.</p>
+				<div class="experience-header-row">
+					<h3>Web Development Internship</h3>
+					<p class="date">January 2026 - Present</p>
+				</div>
+				<p class="company">N-Compass TV</p>
 			</div>
 			<div class="experience-box">
-				<h3>Accenture Academy Salesforce</h3>
-				<p>Created websites for small businesses and individuals, enhancing my skills in web design and development. Managed client relationships and delivered projects on time.</p>
+				<div class="experience-header-row">
+					<h3>Academy Technology Salesforce</h3>
+					<p class="date">February 2026 - April 2026</p>
+				</div>
+				<p class="company">Accenture</p>
 			</div>
 		</div>
 	</div>
@@ -116,7 +122,7 @@
 
 	.experience-container {
 		display: grid;
-		grid-template-columns: repeat(2, 1fr);
+		grid-template-columns: 1fr;
 		gap: 2rem;
 		position: relative;
 		z-index: 1;
@@ -127,27 +133,55 @@
 
 	.experience-box {
 		background: #FFFEF8;
-		padding: 1.5rem;
+		padding: 2rem;
 		border-radius: 0;
-		box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-		border: 2px solid #4A1215;
-		transition: transform 0.3s ease, box-shadow 0.3s ease;
+		box-shadow: none;
+		border: none;
+		transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 		display: flex;
 		flex-direction: column;
 		align-items: flex-start;
-		justify-content: center;
+		justify-content: flex-start;
 		position: relative;
-		max-width: 200px;
-		aspect-ratio: 1/1;
+		width: 100%;
+		max-width: 100%;
+		aspect-ratio: auto;
+		overflow: visible;
+	}
+
+	.experience-box::before {
+		content: '';
+		position: absolute;
+		inset: -8px;
+		background: #FFFEF8;
+		z-index: -1;
+		clip-path: polygon(
+			/* Top edge - wavy */
+			0% 4px, 4px 0%, 8px 4px, 12px 0%, 16px 4px, 20px 0%, 24px 4px, 28px 0%, 32px 4px, 36px 0%, 40px 4px, 44px 0%, 48px 4px, 52px 0%, 56px 4px, 60px 0%, 64px 4px, 68px 0%, 72px 4px, 76px 0%, 80px 4px, 84px 0%, 88px 4px, 92px 0%, 96px 4px, 100px 0%, 104px 4px, 108px 0%, 112px 4px, 116px 0%, 120px 4px, 124px 0%, 128px 4px, 132px 0%, 136px 4px, 140px 0%, 144px 4px, 148px 0%, 152px 4px, 156px 0%, 160px 4px, 164px 0%, 168px 4px, 172px 0%, 176px 4px, 180px 0%, 184px 4px, 188px 0%, 192px 4px, 196px 0%, 200px 4px, 204px 0%, 208px 4px, 212px 0%, 216px 4px, 220px 0%, 224px 4px, 228px 0%, 232px 4px, 236px 0%, 240px 4px, 244px 0%, 248px 4px, 252px 0%, 256px 4px, 260px 0%, 264px 4px, 268px 0%, 272px 4px, 276px 0%, 280px 4px, 284px 0%, 288px 4px, 292px 0%, 296px 4px, 300px 0%, 304px 4px, 308px 0%, 312px 4px, 316px 0%, 320px 4px, 324px 0%, 328px 4px, 332px 0%, 336px 4px, 340px 0%, 344px 4px, 348px 0%, 352px 4px, 356px 0%, 360px 4px, 364px 0%, 368px 4px, 372px 0%, 376px 4px, 380px 0%, 384px 4px, 388px 0%, 392px 4px, 396px 0%, 400px 4px,
+			/* Top-right corner - wavy transition */
+			calc(100% - 4px) 0%, 100% 0%, 100% 4px,
+			/* Right edge - wavy */
+			calc(100% - 4px) 8px, 100% 12px, calc(100% - 4px) 16px, 100% 20px, calc(100% - 4px) 24px, 100% 28px, calc(100% - 4px) 32px, 100% 36px, calc(100% - 4px) 40px, 100% 44px, calc(100% - 4px) 48px, 100% 52px, calc(100% - 4px) 56px, 100% 60px, calc(100% - 4px) 64px, 100% 68px, calc(100% - 4px) 72px, 100% 76px, calc(100% - 4px) 80px, 100% 84px, calc(100% - 4px) 88px, 100% 92px, calc(100% - 4px) 96px, 100% 100px, calc(100% - 4px) 104px, 100% 108px, calc(100% - 4px) 112px, 100% 116px, calc(100% - 4px) 120px, 100% 124px, calc(100% - 4px) 128px, 100% 132px, calc(100% - 4px) 136px, 100% 140px, calc(100% - 4px) 144px, 100% 148px, calc(100% - 4px) 152px, 100% 156px, calc(100% - 4px) 160px, 100% 164px, calc(100% - 4px) 168px, 100% 172px, calc(100% - 4px) 176px, 100% 180px,
+			/* Bottom-right corner - wavy transition */
+			100% calc(100% - 4px), 100% 100%, calc(100% - 4px) 100%,
+			/* Bottom edge - wavy */
+			calc(100% - 8px) calc(100% - 4px), calc(100% - 12px) 100%, calc(100% - 16px) calc(100% - 4px), calc(100% - 20px) 100%, calc(100% - 24px) calc(100% - 4px), calc(100% - 28px) 100%, calc(100% - 32px) calc(100% - 4px), calc(100% - 36px) 100%, calc(100% - 40px) calc(100% - 4px), calc(100% - 44px) 100%, calc(100% - 48px) calc(100% - 4px), calc(100% - 52px) 100%, calc(100% - 56px) calc(100% - 4px), calc(100% - 60px) 100%, calc(100% - 64px) calc(100% - 4px), calc(100% - 68px) 100%, calc(100% - 72px) calc(100% - 4px), calc(100% - 76px) 100%, calc(100% - 80px) calc(100% - 4px), calc(100% - 84px) 100%, calc(100% - 88px) calc(100% - 4px), calc(100% - 92px) 100%, calc(100% - 96px) calc(100% - 4px), calc(100% - 100px) 100%, calc(100% - 104px) calc(100% - 4px), calc(100% - 108px) 100%, calc(100% - 112px) calc(100% - 4px), calc(100% - 116px) 100%, calc(100% - 120px) calc(100% - 4px), calc(100% - 124px) 100%, calc(100% - 128px) calc(100% - 4px), calc(100% - 132px) 100%, calc(100% - 136px) calc(100% - 4px), calc(100% - 140px) 100%, calc(100% - 144px) calc(100% - 4px), calc(100% - 148px) 100%, calc(100% - 152px) calc(100% - 4px), calc(100% - 156px) 100%, calc(100% - 160px) calc(100% - 4px), calc(100% - 164px) 100%, calc(100% - 168px) calc(100% - 4px), calc(100% - 172px) 100%, calc(100% - 176px) calc(100% - 4px), calc(100% - 180px) 100%, calc(100% - 184px) calc(100% - 4px), calc(100% - 188px) 100%, calc(100% - 192px) calc(100% - 4px), calc(100% - 196px) 100%, calc(100% - 200px) calc(100% - 4px), calc(100% - 204px) 100%, calc(100% - 208px) calc(100% - 4px), calc(100% - 212px) 100%, calc(100% - 216px) calc(100% - 4px), calc(100% - 220px) 100%, calc(100% - 224px) calc(100% - 4px), calc(100% - 228px) 100%, calc(100% - 232px) calc(100% - 4px), calc(100% - 236px) 100%, calc(100% - 240px) calc(100% - 4px), calc(100% - 244px) 100%, calc(100% - 248px) calc(100% - 4px), calc(100% - 252px) 100%, calc(100% - 256px) calc(100% - 4px), calc(100% - 260px) 100%, calc(100% - 264px) calc(100% - 4px), calc(100% - 268px) 100%, calc(100% - 272px) calc(100% - 4px), calc(100% - 276px) 100%, calc(100% - 280px) calc(100% - 4px), calc(100% - 284px) 100%, calc(100% - 288px) calc(100% - 4px), calc(100% - 292px) 100%, calc(100% - 296px) calc(100% - 4px), calc(100% - 300px) 100%, calc(100% - 304px) calc(100% - 4px), calc(100% - 308px) 100%, calc(100% - 312px) calc(100% - 4px), calc(100% - 316px) 100%, calc(100% - 320px) calc(100% - 4px), calc(100% - 324px) 100%, calc(100% - 328px) calc(100% - 4px), calc(100% - 332px) 100%, calc(100% - 336px) calc(100% - 4px), calc(100% - 340px) 100%, calc(100% - 344px) calc(100% - 4px), calc(100% - 348px) 100%, calc(100% - 352px) calc(100% - 4px), calc(100% - 356px) 100%, calc(100% - 360px) calc(100% - 4px), calc(100% - 364px) 100%, calc(100% - 368px) calc(100% - 4px), calc(100% - 372px) 100%, calc(100% - 376px) calc(100% - 4px), calc(100% - 380px) 100%, calc(100% - 384px) calc(100% - 4px), calc(100% - 388px) 100%, calc(100% - 392px) calc(100% - 4px), calc(100% - 396px) 100%, calc(100% - 400px) calc(100% - 4px),
+			/* Bottom-left corner - wavy transition */
+			4px 100%, 0% 100%, 0% calc(100% - 4px),
+			/* Left edge - wavy */
+			4px calc(100% - 8px), 0% calc(100% - 12px), 4px calc(100% - 16px), 0% calc(100% - 20px), 4px calc(100% - 24px), 0% calc(100% - 28px), 4px calc(100% - 32px), 0% calc(100% - 36px), 4px calc(100% - 40px), 0% calc(100% - 44px), 4px calc(100% - 48px), 0% calc(100% - 52px), 4px calc(100% - 56px), 0% calc(100% - 60px), 4px calc(100% - 64px), 0% calc(100% - 68px), 4px calc(100% - 72px), 0% calc(100% - 76px), 4px calc(100% - 80px), 0% calc(100% - 84px), 4px calc(100% - 88px), 0% calc(100% - 92px), 4px calc(100% - 96px), 0% calc(100% - 100px), 4px calc(100% - 104px), 0% calc(100% - 108px), 4px calc(100% - 112px), 0% calc(100% - 116px), 4px calc(100% - 120px), 0% calc(100% - 124px), 4px calc(100% - 128px), 0% calc(100% - 132px), 4px calc(100% - 136px), 0% calc(100% - 140px), 4px calc(100% - 144px), 0% calc(100% - 148px), 4px calc(100% - 152px), 0% calc(100% - 156px), 4px calc(100% - 160px), 0% calc(100% - 164px), 4px calc(100% - 168px), 0% calc(100% - 172px), 4px calc(100% - 176px), 0% calc(100% - 180px),
+			/* Top-left corner - wavy transition */
+			0% 4px, 0% 0%
+		);
 	}
 
 	.experience-box:hover {
-		transform: translateY(-4px);
-		box-shadow: 0 8px 20px rgba(74, 18, 21, 0.2);
+		transform: translateY(-8px) scale(1.02);
+		box-shadow: 0 12px 30px rgba(0, 0, 0, 0.18), -6px 6px 15px rgba(0, 0, 0, 0.12);
 	}
 
 	.experience-box h3 {
-		font-size: 1rem;
+		font-size: 23px;
 		color: #4A1215;
 		margin-bottom: 0.8rem;
 		font-weight: 700;
@@ -155,12 +189,34 @@
 		font-style: italic;
 	}
 
-	.experience-box p {
+	.experience-header-row {
+		display: flex;
+		justify-content: space-between;
+		align-items: flex-start;
+		width: 100%;
+		margin-bottom: 0.8rem;
+	}
+
+	.experience-header-row h3 {
+		margin-bottom: 0;
+		flex: 1;
+	}
+
+	.experience-box .company {
 		color: #4A1215;
-		line-height: 1.5;
-		font-size: 0.75rem;
+		font-size: 19px;
 		font-family: 'EB Garamond', Georgia, serif;
-		text-align: justify;
+		margin-bottom: 0;
+	}
+
+	.experience-box .date {
+		color: #4A1215;
+		font-size: 19px;
+		font-family: 'EB Garamond', Georgia, serif;
+		text-align: right;
+		margin-bottom: 0;
+		white-space: nowrap;
+		margin-left: 1rem;
 	}
 
 	@media (max-width: 1024px) {
