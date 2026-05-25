@@ -182,8 +182,6 @@ Or connect your GitHub repository to Vercel for automatic deployments.
 - Free tier includes D1 database and R2 storage
 - Best performance and compatibility for EmDash projects
 
-**Note:** This portfolio is a static site, so Vercel is the recommended choice.
-
 
 ## 📄 License
 
