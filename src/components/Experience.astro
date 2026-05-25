@@ -2,21 +2,31 @@
 ---
 
 <section class="experience" id="experience">
-	<h2 class="heading">Experience</h2>
-	<div class="experience-container">
-		<div class="experience-box">
-			<div class="experience-icon">
-				<i class="fa-solid fa-briefcase"></i>
-			</div>
-			<h3>Web Development Internship</h3>
-			<p>Assisted in developing web applications and gained hands-on experience in software development. Worked with modern frameworks and collaborated with senior developers.</p>
+	<div class="experience-content">
+		<div class="experience-header">
+			<h2 class="heading"><span>Experience</span></h2>
+			<p class="experience-description">
+				My professional journey includes hands-on experience in web development and design, 
+				where I've collaborated with teams and clients to deliver impactful digital solutions. 
+				From internships to freelance projects, each opportunity has shaped my approach to 
+				problem-solving and strengthened my expertise in building user-centered apps.
+			</p>
 		</div>
-		<div class="experience-box">
-			<div class="experience-icon">
-				<i class="fa-solid fa-laptop-code"></i>
+		<div class="experience-container">
+			<div class="experience-box">
+				<div class="experience-icon">
+					<i class="fa-solid fa-briefcase"></i>
+				</div>
+				<h3>Web Development Internship</h3>
+				<p>Assisted in developing web applications and gained hands-on experience in software development. Worked with modern frameworks and collaborated with senior developers.</p>
 			</div>
-			<h3>Freelance Graphic Designer</h3>
-			<p>Created websites for small businesses and individuals, enhancing my skills in web design and development. Managed client relationships and delivered projects on time.</p>
+			<div class="experience-box">
+				<div class="experience-icon">
+					<i class="fa-solid fa-laptop-code"></i>
+				</div>
+				<h3>Freelance Graphic Designer</h3>
+				<p>Created websites for small businesses and individuals, enhancing my skills in web design and development. Managed client relationships and delivered projects on time.</p>
+			</div>
 		</div>
 	</div>
 </section>
@@ -27,6 +37,16 @@
 		padding: 3rem 0;
 		position: relative;
 		overflow: hidden;
+		border: 20px solid transparent;
+		border-image: repeating-linear-gradient(
+			45deg,
+			#2C3E50 0px,
+			#2C3E50 15px,
+			#C0392B 15px,
+			#C0392B 30px,
+			#F5F0E8 30px,
+			#F5F0E8 45px
+		) 20;
 	}
 
 	.experience::before {
@@ -44,15 +64,71 @@
 		mix-blend-mode: overlay;
 	}
 
-	.experience-container {
-		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-		gap: 2.5rem;
-		max-width: 1000px;
-		margin: 0 auto;
-		padding: 0 2rem;
+	.experience-content {
+		display: flex;
+		align-items: flex-start;
+		gap: 3rem;
+		margin-left: 96px;
+		padding: 0 2rem 0 0;
+		position: relative;
+	}
+
+	.experience-content::after {
+		content: '';
+		position: absolute;
+		left: 40%;
+		top: 0;
+		bottom: 0;
+		width: 2px;
+		background: linear-gradient(
+			to bottom,
+			transparent 0%,
+			#4A1215 10%,
+			#4A1215 90%,
+			transparent 100%
+		);
+		opacity: 0.3;
+		transform: translateX(-50%);
+	}
+
+	.experience-header {
+		margin: 0;
+		padding: 0 3rem 0 0;
+		text-align: left;
 		position: relative;
 		z-index: 1;
+		flex-shrink: 0;
+		width: 40%;
+	}
+
+	.experience .heading {
+		color: #4A1215;
+		position: relative;
+		z-index: 1;
+		font-family: 'Playfair Display', Georgia, serif;
+		font-size: 3.5rem;
+		font-weight: 700;
+		letter-spacing: 1px;
+		font-style: italic;
+		text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+		text-align: left;
+		margin-bottom: 0.5rem;
+	}
+
+	.experience .heading span {
+		-webkit-text-fill-color: #4A1215;
+		color: #4A1215;
+	}
+
+	.experience-container {
+		display: flex;
+		flex-direction: column;
+		gap: 2.5rem;
+		position: relative;
+		z-index: 1;
+		flex: 1;
+		width: 60%;
+		padding-left: 3rem;
 	}
 
 	.experience-box {
@@ -106,6 +182,27 @@
 		font-size: 0.95rem;
 	}
 
+	@media (max-width: 1024px) {
+		.experience-content {
+			flex-direction: column;
+		}
+
+		.experience-content::after {
+			display: none;
+		}
+
+		.experience-header {
+			width: 100%;
+			margin: 0 0 2rem 0;
+			padding: 0;
+		}
+
+		.experience-container {
+			width: 100%;
+			padding-left: 0;
+		}
+	}
+
 	.experience .heading {
 		color: #4A1215;
 		position: relative;
@@ -119,7 +216,32 @@
 	}
 
 	.experience .heading span {
-		-webkit-text-fill-color: #FEF9E1;
-		color: #FEF9E1;
+		-webkit-text-fill-color: #4A1215;
+		color: #4A1215;
+	}
+
+	.experience-description {
+		color: #4A1215;
+		font-size: 20px;
+		line-height: 1.6;
+		font-family: 'Playfair Display', Georgia, serif;
+		opacity: 0.85;
+		margin-bottom: calc(20px * 1.6 * 5);
+		position: relative;
+	}
+
+	.experience-description::after {
+		content: '';
+		position: absolute;
+		bottom: calc(-20px * 1.6 * 5);
+		left: 0;
+		width: 100%;
+		height: calc(20px * 1.6 * 4);
+		background: 
+			linear-gradient(to right, #4A1215 0%, #4A1215 100%) 0 calc(20px * 1.1) / 100% 1px no-repeat,
+			linear-gradient(to right, #4A1215 0%, #4A1215 100%) 0 calc(20px * 1.1 + 20px * 1.6) / 100% 1px no-repeat,
+			linear-gradient(to right, #4A1215 0%, #4A1215 100%) 0 calc(20px * 1.1 + 20px * 1.6 * 2) / 100% 1px no-repeat,
+			linear-gradient(to right, #4A1215 0%, #4A1215 100%) 0 calc(20px * 1.1 + 20px * 1.6 * 3) / 100% 1px no-repeat;
+		opacity: 0.3;
 	}
 </style>

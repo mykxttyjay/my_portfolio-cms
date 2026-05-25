@@ -3,30 +3,58 @@ import { getSkills } from '../lib/emdash';
 
 const skillsData = getSkills();
 
-// Transform Emdash data into the format needed for display
-const skillsGroups = skillsData.map((skill) => ({
-	category: skill.category,
-	icon: "fa-solid fa-code", // Default icon, can be customized per category
-	skills: skill.skills_list ? skill.skills_list.split(',').map((s: string) => s.trim()) : []
-}));
+// Flatten all skills into individual cards with icons
+const skillIcons: Record<string, string> = {
+	'JavaScript': 'fa-brands fa-js',
+	'HTML5': 'fa-brands fa-html5',
+	'CSS3': 'fa-brands fa-css3-alt',
+	'Java': 'fa-brands fa-java',
+	'Python': 'fa-brands fa-python',
+	'React.js': 'fa-brands fa-react',
+	'Astro': 'fa-solid fa-rocket',
+	'Tailwind CSS': 'fa-solid fa-wind',
+	'Node.js': 'fa-brands fa-node-js',
+	'Bootstrap': 'fa-brands fa-bootstrap',
+	'Figma': 'fa-brands fa-figma',
+	'Git': 'fa-brands fa-git-alt',
+	'GitHub': 'fa-brands fa-github',
+	'MongoDB': 'fa-solid fa-database',
+	'MySQL': 'fa-solid fa-database',
+	'Canva': 'fa-solid fa-palette'
+};
+
+const allSkills = skillsData.flatMap((skill) => 
+	skill.skills_list ? skill.skills_list.split(',').map((s: string) => ({
+		name: s.trim(),
+		icon: skillIcons[s.trim()] || 'fa-solid fa-code'
+	})) : []
+).slice(0, 12); // Limit to 12 skills (3 rows of 4)
 ---
 
 <section class="skills" id="skills">
-	<h2 class="heading"><span>Skills</span></h2>
-	<div class="skills-container">
-		{skillsGroups.map((group) => (
-			<div class="skill-box">
-				<div class="skill-icon">
-					<i class={group.icon}></i>
+	<div class="skills-content">
+		<div class="skills-header">
+			<h2 class="heading"><span>Skills</span></h2>
+			<p class="skills-description">
+				A collection of technologies and tools I work with to bring ideas to life. 
+				From front-end frameworks to back-end databases, these are the building blocks 
+				I use to create seamless digital experiences. Each skill represents countless 
+				hours of learning, practice, and real-world application in various projects 
+				and collaborative endeavors.
+			</p>
+		</div>
+		<div class="skills-container">
+			{allSkills.map((skill) => (
+				<div class="skill-stamp">
+					<div class="stamp-icon">
+						<i class={skill.icon}></i>
+					</div>
+					<div class="stamp-content">
+						{skill.name}
+					</div>
 				</div>
-				<h3>{group.category}</h3>
-				<div class="skill-list">
-					{group.skills.map((skill: string) => (
-						<span class="skill-pill">{skill}</span>
-					))}
-				</div>
-			</div>
-		))}
+			))}
+		</div>
 	</div>
 </section>
 
@@ -36,6 +64,16 @@ const skillsGroups = skillsData.map((skill) => ({
 		padding: 3rem 0;
 		position: relative;
 		overflow: hidden;
+		border: 20px solid transparent;
+		border-image: repeating-linear-gradient(
+			45deg,
+			#2C3E50 0px,
+			#2C3E50 15px,
+			#C0392B 15px,
+			#C0392B 30px,
+			#F5F0E8 30px,
+			#F5F0E8 45px
+		) 20;
 	}
 
 	.skills::before {
@@ -53,6 +91,43 @@ const skillsGroups = skillsData.map((skill) => ({
 		mix-blend-mode: overlay;
 	}
 
+	.skills-content {
+		display: flex;
+		align-items: flex-start;
+		gap: 3rem;
+		margin-left: 96px;
+		padding: 0 2rem 0 0;
+		position: relative;
+	}
+
+	.skills-content::after {
+		content: '';
+		position: absolute;
+		left: 40%;
+		top: 0;
+		bottom: 0;
+		width: 2px;
+		background: linear-gradient(
+			to bottom,
+			transparent 0%,
+			#4A1215 10%,
+			#4A1215 90%,
+			transparent 100%
+		);
+		opacity: 0.3;
+		transform: translateX(-50%);
+	}
+
+	.skills-header {
+		margin: 0;
+		padding: 0 3rem 0 0;
+		text-align: left;
+		position: relative;
+		z-index: 1;
+		flex-shrink: 0;
+		width: 40%;
+	}
+
 	.skills .heading {
 		color: #4A1215;
 		position: relative;
@@ -63,6 +138,8 @@ const skillsGroups = skillsData.map((skill) => ({
 		letter-spacing: 1px;
 		font-style: italic;
 		text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+		text-align: left;
+		margin-bottom: 0.5rem;
 	}
 
 	.skills .heading span {
@@ -70,128 +147,189 @@ const skillsGroups = skillsData.map((skill) => ({
 		color: #4A1215;
 	}
 
-	.skills-container {
-		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-		gap: 2.5rem;
-		max-width: 1100px;
-		margin: 0 auto;
-		padding: 0 2rem;
+	.skills-description {
+		color: #4A1215;
+		font-size: 20px;
+		line-height: 1.6;
+		font-family: 'Playfair Display', Georgia, serif;
+		opacity: 0.85;
+		margin-bottom: calc(20px * 1.6 * 5);
 		position: relative;
-		z-index: 1;
 	}
 
-	.skill-box {
+	.skills-description::after {
+		content: '';
+		position: absolute;
+		bottom: calc(-20px * 1.6 * 5);
+		left: 0;
+		width: 100%;
+		height: calc(20px * 1.6 * 4);
+		background: 
+			linear-gradient(to right, #4A1215 0%, #4A1215 100%) 0 calc(20px * 1.1) / 100% 1px no-repeat,
+			linear-gradient(to right, #4A1215 0%, #4A1215 100%) 0 calc(20px * 1.1 + 20px * 1.6) / 100% 1px no-repeat,
+			linear-gradient(to right, #4A1215 0%, #4A1215 100%) 0 calc(20px * 1.1 + 20px * 1.6 * 2) / 100% 1px no-repeat,
+			linear-gradient(to right, #4A1215 0%, #4A1215 100%) 0 calc(20px * 1.1 + 20px * 1.6 * 3) / 100% 1px no-repeat;
+		opacity: 0.3;
+	}
+
+	.skills-container {
+		display: grid;
+		grid-template-columns: repeat(4, 1fr);
+		gap: 1rem;
+		position: relative;
+		z-index: 1;
+		flex: 1;
+		width: 60%;
+		padding-left: 3rem;
+	}
+
+	.skill-stamp {
 		background: #FCF8F2;
-		border: 3.5px solid #4A1215;
-		padding: 2.5rem 2rem;
-		border-radius: 2px;
-		box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15), -5px 5px 15px rgba(0, 0, 0, 0.1);
+		border: none;
+		padding: 1rem 0.6rem;
+		border-radius: 0;
+		box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1), -2px 2px 6px rgba(0, 0, 0, 0.08);
 		transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 		text-align: center;
 		display: flex;
 		flex-direction: column;
 		align-items: center;
+		justify-content: center;
 		position: relative;
 		overflow: visible;
-		transform: rotate(-2deg);
+		aspect-ratio: 3/4;
+		transform: rotate(0deg);
+		max-width: 100px;
+		margin: 0 auto;
 	}
 
-	.skill-box:nth-child(2) {
-		transform: rotate(1deg);
-	}
-
-	.skill-box:nth-child(3) {
-		transform: rotate(-1.5deg);
-	}
-
-	.skill-box:hover {
-		transform: rotate(0deg) translateY(-8px);
-		box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2), -8px 8px 20px rgba(0, 0, 0, 0.15);
-	}
-
-	.skill-box::before {
+	.skill-stamp::before {
 		content: '';
 		position: absolute;
-		top: -8px;
-		left: 20%;
-		width: 60%;
-		height: 16px;
-		background: linear-gradient(90deg, rgba(163, 29, 29, 0.3) 0%, rgba(163, 29, 29, 0.5) 50%, rgba(163, 29, 29, 0.3) 100%);
-		border-radius: 2px;
-		box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-		transform: skewY(-2deg);
-		z-index: 10;
+		inset: -8px;
+		background: #FFFEF8;
+		z-index: -1;
+		mask: 
+			radial-gradient(circle at 50% 0%, transparent 0%, transparent 40%, black 40%) 0 0 / 16px 10px repeat-x,
+			radial-gradient(circle at 50% 100%, transparent 0%, transparent 40%, black 40%) 0 100% / 16px 10px repeat-x,
+			radial-gradient(circle at 0% 50%, transparent 0%, transparent 40%, black 40%) 0 0 / 10px 16px repeat-y,
+			radial-gradient(circle at 100% 50%, transparent 0%, transparent 40%, black 40%) 100% 0 / 10px 16px repeat-y;
+		mask-composite: intersect;
+		-webkit-mask: 
+			radial-gradient(circle at 50% 0%, transparent 0%, transparent 40%, black 40%) 0 0 / 16px 10px repeat-x,
+			radial-gradient(circle at 50% 100%, transparent 0%, transparent 40%, black 40%) 0 100% / 16px 10px repeat-x,
+			radial-gradient(circle at 0% 50%, transparent 0%, transparent 40%, black 40%) 0 0 / 10px 16px repeat-y,
+			radial-gradient(circle at 100% 50%, transparent 0%, transparent 40%, black 40%) 100% 0 / 10px 16px repeat-y;
+		-webkit-mask-composite: source-in;
+		box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 	}
 
-	.skill-box::after {
-		content: none;
+	.skill-stamp:nth-child(2n) {
+		transform: rotate(0deg);
 	}
 
-	.skill-box:hover {
-		transform: rotate(0deg) translateY(-8px);
-		box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2), -8px 8px 20px rgba(0, 0, 0, 0.15);
+	.skill-stamp:nth-child(3n) {
+		transform: rotate(0deg);
 	}
 
-	.skill-icon {
-		width: 60px;
-		height: 60px;
+	.skill-stamp:nth-child(4n) {
+		transform: rotate(0deg);
+	}
+
+	.skill-stamp:nth-child(5n) {
+		transform: rotate(0deg);
+	}
+
+	.skill-stamp:hover {
+		transform: rotate(0deg) translateY(-8px) scale(1.05);
+		box-shadow: 0 12px 30px rgba(0, 0, 0, 0.18), -6px 6px 15px rgba(0, 0, 0, 0.12);
+	}
+
+	.stamp-icon {
+		width: 35px;
+		height: 35px;
 		background: #f5f0f0;
-		border-radius: 20px;
+		border-radius: 50%;
 		display: flex;
 		align-items: center;
 		justify-content: center;
 		color: #A31D1D;
-		font-size: 1.5rem;
-		margin-bottom: 1.5rem;
-		box-shadow: 0 5px 15px rgba(163, 29, 29, 0.08);
-		border: 1px solid rgba(163, 29, 29, 0.15);
-		transition: transform 0.3s ease, border-radius 0.3s ease, background 0.3s ease, color 0.3s ease;
+		font-size: 1.2rem;
+		margin-bottom: 0.5rem;
+		box-shadow: 0 3px 8px rgba(163, 29, 29, 0.1);
+		border: 2px solid rgba(163, 29, 29, 0.2);
+		transition: all 0.3s ease;
+		position: relative;
+		z-index: 2;
 	}
 
-	.skill-box:hover .skill-icon {
-		transform: scale(1.1) rotate(5deg);
-		border-radius: 50%;
+	.skill-stamp:hover .stamp-icon {
+		transform: scale(1.15) rotate(10deg);
 		background: linear-gradient(135deg, #A31D1D 0%, #8B1515 100%);
 		color: #FEF9E1;
 		border-color: transparent;
 	}
 
-	.skill-box h3 {
-		font-size: 1.4rem;
-		color: #A31D1D;
-		margin-bottom: 1.5rem;
+	.stamp-content {
+		font-size: 0.6rem;
 		font-weight: 700;
-		letter-spacing: 0.5px;
+		color: #4A1215;
+		letter-spacing: 0.2px;
 		font-family: 'Playfair Display', Georgia, serif;
-		font-style: italic;
+		text-transform: uppercase;
+		line-height: 1.2;
+		position: relative;
+		z-index: 2;
 	}
 
-	.skill-list {
-		display: flex;
-		flex-wrap: wrap;
-		gap: 0.6rem;
-		justify-content: center;
-		width: 100%;
+	@media (max-width: 1024px) {
+		.skills-content {
+			flex-direction: column;
+		}
+
+		.skills-content::after {
+			display: none;
+		}
+
+		.skills-header {
+			width: 100%;
+			margin: 0 0 2rem 0;
+			padding: 0;
+		}
+
+		.skills-container {
+			width: 100%;
+			padding-left: 0;
+			grid-template-columns: repeat(3, 1fr);
+			gap: 1.2rem;
+		}
 	}
 
-	.skill-pill {
-		background: #f5f0f0;
-		border: 2px solid #4A1215;
-		padding: 0.5rem 1rem;
-		border-radius: 50px;
-		font-size: 0.85rem;
-		font-weight: 600;
-		color: #A31D1D;
-		transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-		cursor: default;
+	@media (max-width: 768px) {
+		.skills-container {
+			grid-template-columns: repeat(3, 1fr);
+			gap: 1rem;
+		}
 	}
 
-	.skill-pill:hover {
-		background: #A31D1D;
-		color: #FEF9E1;
-		transform: translateY(-2px) scale(1.05);
-		box-shadow: 0 8px 20px rgba(163, 29, 29, 0.2);
-		border-color: #A31D1D;
+	@media (max-width: 480px) {
+		.skills-container {
+			grid-template-columns: repeat(2, 1fr);
+			gap: 0.8rem;
+		}
+		
+		.skill-stamp {
+			padding: 1rem 0.5rem;
+		}
+		
+		.stamp-icon {
+			width: 40px;
+			height: 40px;
+			font-size: 1.1rem;
+		}
+		
+		.stamp-content {
+			font-size: 0.8rem;
+		}
 	}
 </style>

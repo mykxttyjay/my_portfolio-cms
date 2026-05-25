@@ -4,6 +4,7 @@ interface Props {
   class?: string;
 }
 const { type = 'light-to-dark', class: className } = Astro.props;
+const isSmooth = type === 'cream-reverse' || type === 'cream-to-cream';
 ---
 
 <div class={`divider ${type} ${className || ''}`}>
@@ -20,9 +21,23 @@ const { type = 'light-to-dark', class: className } = Astro.props;
           <feMergeNode in="SourceGraphic"/>
         </feMerge>
       </filter>
+      <filter id="tear-shadow-bottom" x="-50%" y="-50%" width="200%" height="200%">
+        <feGaussianBlur in="SourceAlpha" stdDeviation="6"/>
+        <feOffset dx="0" dy="-4" result="offsetblur"/>
+        <feComponentTransfer>
+          <feFuncA type="linear" slope="0.6"/>
+        </feComponentTransfer>
+        <feMerge>
+          <feMergeNode/>
+          <feMergeNode in="SourceGraphic"/>
+        </feMerge>
+      </filter>
     </defs>
-    <!-- Paper tear with bigger, more dramatic jagged edges -->
-    <path d="M0,35 L12,28 L20,40 L32,25 L45,38 L58,22 L70,42 L85,28 L98,45 L112,30 L125,40 L140,25 L155,38 L168,32 L180,45 L195,28 L210,42 L225,30 L238,48 L252,32 L268,45 L282,28 L295,40 L310,25 L325,42 L340,30 L355,45 L368,28 L382,40 L398,25 L412,42 L425,35 L440,48 L455,30 L470,42 L485,28 L498,45 L512,32 L528,48 L542,30 L555,42 L570,25 L585,40 L600,28 L615,45 L628,32 L642,48 L658,30 L672,42 L685,28 L700,45 L715,32 L730,48 L745,30 L758,42 L772,25 L788,40 L802,28 L815,45 L830,32 L845,48 L860,30 L875,42 L888,28 L902,45 L918,32 L932,48 L945,30 L960,42 L975,28 L990,45 L1005,32 L1018,48 L1032,30 L1048,42 L1062,28 L1075,45 L1090,32 L1105,48 L1120,30 L1135,42 L1148,28 L1162,45 L1178,32 L1192,48 L1205,30 L1220,42 L1235,28 L1250,45 L1265,32 L1278,48 L1292,30 L1308,42 L1322,28 L1335,45 L1350,32 L1365,48 L1380,30 L1395,42 L1408,28 L1422,45 L1440,35 L1440,80 L0,80 Z" class="divider-path" filter="url(#tear-shadow)"/>
+    {isSmooth ? (
+      <path d="M0,40 Q15,25 30,40 T60,40 Q75,25 90,40 T120,40 Q135,25 150,40 T180,40 Q195,25 210,40 T240,40 Q255,25 270,40 T300,40 Q315,25 330,40 T360,40 Q375,25 390,40 T420,40 Q435,25 450,40 T480,40 Q495,25 510,40 T540,40 Q555,25 570,40 T600,40 Q615,25 630,40 T660,40 Q675,25 690,40 T720,40 Q735,25 750,40 T780,40 Q795,25 810,40 T840,40 Q855,25 870,40 T900,40 Q915,25 930,40 T960,40 Q975,25 990,40 T1020,40 Q1035,25 1050,40 T1080,40 Q1095,25 1110,40 T1140,40 Q1155,25 1170,40 T1200,40 Q1215,25 1230,40 T1260,40 Q1275,25 1290,40 T1320,40 Q1335,25 1350,40 T1380,40 Q1395,25 1410,40 T1440,40 L1440,80 L0,80 Z" class="divider-path" filter="url(#tear-shadow)"/>
+    ) : (
+      <path d="M0,35 L12,28 L20,40 L32,25 L45,38 L58,22 L70,42 L85,28 L98,45 L112,30 L125,40 L140,25 L155,38 L168,32 L180,45 L195,28 L210,42 L225,30 L238,48 L252,32 L268,45 L282,28 L295,40 L310,25 L325,42 L340,30 L355,45 L368,28 L382,40 L398,25 L412,42 L425,35 L440,48 L455,30 L470,42 L485,28 L498,45 L512,32 L528,48 L542,30 L555,42 L570,25 L585,40 L600,28 L615,45 L628,32 L642,48 L658,30 L672,42 L685,28 L700,45 L715,32 L730,48 L745,30 L758,42 L772,25 L788,40 L802,28 L815,45 L830,32 L845,48 L860,30 L875,42 L888,28 L902,45 L918,32 L932,48 L945,30 L960,42 L975,28 L990,45 L1005,32 L1018,48 L1032,30 L1048,42 L1062,28 L1075,45 L1090,32 L1105,48 L1120,30 L1135,42 L1148,28 L1162,45 L1178,32 L1192,48 L1205,30 L1220,42 L1235,28 L1250,45 L1265,32 L1278,48 L1292,30 L1308,42 L1322,28 L1335,45 L1350,32 L1365,48 L1380,30 L1395,42 L1408,28 L1422,45 L1440,35 L1440,80 L0,80 Z" class="divider-path" filter="url(#tear-shadow)"/>
+    )}
   </svg>
 </div>
 
@@ -66,13 +81,11 @@ const { type = 'light-to-dark', class: className } = Astro.props;
   }
 
   .light-to-dark {
-    /* Above is light (cream), below is dark (red). */
-    /* The SVG is filled with red color. */
     background: linear-gradient(to bottom, #FEF9E1 0%, #FEF9E1 50%, #A31D1D 100%);
   }
 
   .light-to-dark .divider-path {
-    fill: #A31D1D; /* Section Red */
+    fill: #A31D1D;
   }
 
   .red-to-red {
@@ -83,7 +96,6 @@ const { type = 'light-to-dark', class: className } = Astro.props;
     fill: #F5F0E8;
   }
 
-  /* Cream to red transition (before Contact section) */
   .cream-to-red {
     background: linear-gradient(to bottom, #F5F0E9 0%, #F5F0E9 50%, #8F1D21 100%);
   }
@@ -92,7 +104,6 @@ const { type = 'light-to-dark', class: className } = Astro.props;
     fill: #8F1D21;
   }
 
-  /* Smooth transition for same color sections (Skills, Projects, Experience) */
   .cream-to-cream {
     background: linear-gradient(to bottom, #F5F0E8 0%, #F5F0E8 50%, #F1EAE0 100%);
   }
@@ -101,7 +112,6 @@ const { type = 'light-to-dark', class: className } = Astro.props;
     fill: #F1EAE0;
   }
 
-  /* Reverse cream transition (darker top, lighter bottom) */
   .cream-reverse {
     background: linear-gradient(to bottom, #F1EAE0 0%, #F1EAE0 50%, #F5F0E8 100%);
   }
@@ -123,26 +133,14 @@ const { type = 'light-to-dark', class: className } = Astro.props;
     animation: wave-connect 0.8s ease-out forwards;
   }
 
-  /* Cream to red transition (Experience to Contact) */
-  .cream-to-red {
-    background: linear-gradient(to bottom, #FEF9E1 0%, #FEF9E1 50%, #8F1D21 100%);
-  }
-
-  .cream-to-red .divider-path {
-    fill: #8F1D21;
-  }
-
   .dark-to-light {
-    /* Above is dark (red), below is light (cream). */
-    /* The SVG is filled with cream color. */
     background-color: #A31D1D;
   }
 
   .dark-to-light .divider-path {
-    fill: #FEF9E1; /* Cream */
+    fill: #FEF9E1;
   }
 
-  /* Special style to match Home section's dark bottom vignette */
   .home-divider {
     background-color: #5A0E11 !important;
   }
