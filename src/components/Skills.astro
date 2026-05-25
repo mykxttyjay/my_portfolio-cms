@@ -5,21 +5,14 @@ const skillsData = getSkills();
 
 // Flatten all skills into individual cards with icons
 const skillIcons: Record<string, string> = {
+	'Web Development': 'fa-solid fa-code',
+	'UI/UX Design': 'fa-solid fa-pen-nib',
+	'Graphic Design': 'fa-solid fa-palette',
+	'Quality Assurance': 'fa-solid fa-check-circle',
 	'PHP': 'fa-brands fa-php',
-	'HTML5': 'fa-brands fa-html5',
-	'CSS3': 'fa-brands fa-css3-alt',
-	'Java': 'fa-brands fa-java',
-	'Python': 'fa-brands fa-python',
-	'React.js': 'fa-brands fa-react',
 	'Astro': 'fa-solid fa-rocket',
 	'Tailwind CSS': 'fa-solid fa-wind',
-	'Node.js': 'fa-brands fa-node-js',
-	'Canva': 'fa-solid fa-palette',
-	'Figma': 'fa-brands fa-figma',
-	'Git': 'fa-brands fa-git-alt',
-	'GitHub': 'fa-brands fa-github',
-	'MongoDB': 'fa-solid fa-database',
-	'MySQL': 'fa-solid fa-database'
+	'C#': 'fa-solid fa-hashtag'
 };
 
 const allSkills = skillsData.flatMap((skill) => 
@@ -27,7 +20,11 @@ const allSkills = skillsData.flatMap((skill) =>
 		name: s.trim(),
 		icon: skillIcons[s.trim()] || 'fa-solid fa-code'
 	})) : []
-).slice(0, 12); // Limit to 12 skills (3 rows of 4)
+);
+
+// Separate skills and tools
+const skills = allSkills.slice(0, 4); // First 4 are skills
+const tools = allSkills.slice(4, 8); // Next 4 are tools
 ---
 
 <section class="skills" id="skills">
@@ -35,24 +32,30 @@ const allSkills = skillsData.flatMap((skill) =>
 		<div class="skills-header">
 			<h2 class="heading"><span>Skills</span></h2>
 			<p class="skills-description">
-				A collection of technologies and tools I work with to bring ideas to life. 
-				From front-end frameworks to back-end databases, these are the building blocks 
-				I use to create seamless digital experiences. Each skill represents countless 
-				hours of learning, practice, and real-world application in various projects 
-				and collaborative endeavors.
+				My expertise spans across web development, design, and quality assurance. 
+				I specialize in creating user-centered digital experiences through thoughtful 
+				design and robust development. Each project is an opportunity to blend creativity 
+				with technical precision, delivering solutions that are both functional and visually compelling.
 			</p>
 		</div>
-		<div class="skills-container">
-			{allSkills.map((skill) => (
-				<div class="skill-stamp">
-					<div class="stamp-icon">
-						<i class={skill.icon}></i>
+		<div class="skills-right">
+			<div class="skills-container">
+				{tools.map((tool) => (
+					<div class="skill-stamp">
+						<div class="stamp-icon">
+							<i class={tool.icon}></i>
+						</div>
+						<div class="stamp-content">
+							{tool.name}
+						</div>
 					</div>
-					<div class="stamp-content">
-						{skill.name}
-					</div>
-				</div>
-			))}
+				))}
+			</div>
+			<div class="skills-list">
+				{skills.map((skill) => (
+					<div class="skill-line">{skill.name}</div>
+				))}
+			</div>
 		</div>
 	</div>
 </section>
@@ -127,6 +130,32 @@ const allSkills = skillsData.flatMap((skill) =>
 		width: 40%;
 	}
 
+	.skills-right {
+		display: flex;
+		flex-direction: column;
+		gap: 2rem;
+		flex: 1;
+		width: 60%;
+		padding-left: 3rem;
+		position: relative;
+		z-index: 1;
+	}
+
+	.skills-list {
+		display: flex;
+		flex-direction: column;
+		gap: 1.5rem;
+	}
+
+	.skill-line {
+		font-family: 'Playfair Display', Georgia, serif;
+		font-size: 1.2rem;
+		color: #4A1215;
+		padding-bottom: 0.5rem;
+		border-bottom: 1px solid rgba(74, 18, 21, 0.3);
+		font-style: italic;
+	}
+
 	.skills .heading {
 		color: #4A1215;
 		position: relative;
@@ -174,19 +203,18 @@ const allSkills = skillsData.flatMap((skill) =>
 	.skills-container {
 		display: grid;
 		grid-template-columns: repeat(4, 1fr);
-		column-gap: 4px;
-		row-gap: 1rem;
+		gap: 1.5rem;
 		position: relative;
 		z-index: 1;
-		flex: 1;
-		width: 60%;
-		padding-left: 3rem;
+		justify-content: end;
+		margin-left: auto;
+		width: fit-content;
 	}
 
 	.skill-stamp {
 		background: #FCF8F2;
 		border: none;
-		padding: 1rem 0.6rem;
+		padding: 0.8rem 0.5rem 0.8rem 0.8rem;
 		border-radius: 0;
 		box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1), -2px 2px 6px rgba(0, 0, 0, 0.08);
 		transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -197,10 +225,10 @@ const allSkills = skillsData.flatMap((skill) =>
 		justify-content: center;
 		position: relative;
 		overflow: visible;
-		aspect-ratio: 3/4;
+		aspect-ratio: 1/1;
 		transform: rotate(0deg);
-		width: 120px;
-		height: 160px;
+		width: 80px;
+		height: 80px;
 		margin-bottom: 1rem;
 	}
 
@@ -245,16 +273,16 @@ const allSkills = skillsData.flatMap((skill) =>
 	}
 
 	.stamp-icon {
-		width: 35px;
-		height: 35px;
+		width: 28px;
+		height: 28px;
 		background: #f5f0f0;
 		border-radius: 50%;
 		display: flex;
 		align-items: center;
 		justify-content: center;
 		color: #A31D1D;
-		font-size: 1.2rem;
-		margin-bottom: 0.5rem;
+		font-size: 0.9rem;
+		margin-bottom: 0.4rem;
 		box-shadow: 0 3px 8px rgba(163, 29, 29, 0.1);
 		border: 2px solid rgba(163, 29, 29, 0.2);
 		transition: all 0.3s ease;
@@ -270,7 +298,7 @@ const allSkills = skillsData.flatMap((skill) =>
 	}
 
 	.stamp-content {
-		font-size: 0.6rem;
+		font-size: 0.5rem;
 		font-weight: 700;
 		color: #4A1215;
 		letter-spacing: 0.2px;

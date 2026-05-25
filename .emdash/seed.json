@@ -151,32 +151,22 @@
 		"skills": [
 			{
 				"id": "skills-1",
-				"slug": "prog-langs",
+				"slug": "core-skills",
 				"status": "published",
-				"title": "Programming Languages",
+				"title": "Core Skills",
 				"data": {
-					"category": "Programming Languages",
-					"skills_list": "PHP, HTML5, CSS3, Java, Python"
+					"category": "Core Skills",
+					"skills_list": "Web Development, Graphic Design, UI/UX Design, Quality Assurance"
 				}
 			},
 			{
 				"id": "skills-2",
-				"slug": "web-techs",
+				"slug": "tools",
 				"status": "published",
-				"title": "Web Technologies",
+				"title": "Tools",
 				"data": {
-					"category": "Web Technologies",
-					"skills_list": "React.js, Astro, Tailwind CSS, Node.js, Canva"
-				}
-			},
-			{
-				"id": "skills-3",
-				"slug": "tools-dbs",
-				"status": "published",
-				"title": "Tools & Databases",
-				"data": {
-					"category": "Tools & Databases",
-					"skills_list": "Figma, Git & GitHub, MongoDB, MySQL, Canva"
+					"category": "Tools",
+					"skills_list": "PHP, Astro, Tailwind CSS, C#"
 				}
 			}
 		],

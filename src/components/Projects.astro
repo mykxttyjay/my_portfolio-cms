@@ -368,21 +368,16 @@ const row2List = [...row2Base, ...row2Base, ...row2Base];
 		position: relative;
 		width: 440px;
 		height: 270px;
-		border-radius: 0;
+		border-radius: 12px;
 		background: #FFFEF8;
 		box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 		overflow: hidden;
 		display: flex;
 		flex-direction: column;
 		cursor: pointer;
-		transition: transform 0.45s cubic-bezier(0.175, 0.885, 0.32, 1.2), box-shadow 0.4s ease;
+		transition: none;
 		user-select: none;
 		border: 2px solid #4A1215;
-	}
-
-	.project-mockup-card:hover {
-		transform: translateY(-4px);
-		box-shadow: 0 12px 30px rgba(74, 18, 21, 0.25);
 	}
 
 	/* Browser Chrome Styles - Modified to look like letter header */
@@ -461,13 +456,8 @@ const row2List = [...row2Base, ...row2Base, ...row2Base];
 		object-fit: cover;
 		object-position: top center;
 		display: block;
-		transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+		transition: none;
 		filter: brightness(0.97);
-	}
-
-	.project-mockup-card:hover .mockup-screenshot {
-		transform: scale(1.04);
-		filter: brightness(0.85) blur(1px);
 	}
 
 	.canvas-content {
@@ -487,11 +477,7 @@ const row2List = [...row2Base, ...row2Base, ...row2Base];
 		margin-bottom: 0.2rem;
 		color: #A31D1D;
 		opacity: 0.9;
-		transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.3);
-	}
-
-	.project-mockup-card:hover .canvas-icon {
-		transform: scale(1.1);
+		transition: none;
 	}
 
 	.canvas-content h4 {
@@ -520,6 +506,7 @@ const row2List = [...row2Base, ...row2Base, ...row2Base];
 		padding: 2rem;
 		z-index: 10;
 		border: 2px solid #4A1215;
+		border-radius: 12px;
 	}
 
 	.project-mockup-card:hover .project-detail-overlay {
