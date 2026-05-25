@@ -156,7 +156,7 @@
 				"title": "Programming Languages",
 				"data": {
 					"category": "Programming Languages",
-					"skills_list": "JavaScript, HTML5, CSS3, Java, Python"
+					"skills_list": "PHP, HTML5, CSS3, Java, Python"
 				}
 			},
 			{
@@ -166,7 +166,7 @@
 				"title": "Web Technologies",
 				"data": {
 					"category": "Web Technologies",
-					"skills_list": "React.js, Astro, Tailwind CSS, Node.js, Bootstrap"
+					"skills_list": "React.js, Astro, Tailwind CSS, Node.js, Canva"
 				}
 			},
 			{
@@ -191,7 +191,8 @@
 					"description": "A modern and interactive portfolio website built with Astro and styled using Tailwind CSS. Features dynamic animations and a premium glassmorphic UI.",
 					"icon": "fa-solid fa-code",
 					"tags": "Astro, React, Tailwind CSS",
-					"project_url": "https://github.com/mykxttyjay/my_portfolio"
+					"project_url": "https://phase-2-patiotimebar.vercel.app/",
+					"screenshot_url": "/screenshots/patiotimebar.png"
 				}
 			},
 			{
@@ -204,7 +205,8 @@
 					"description": "A fully responsive e-commerce landing page created with pure HTML, CSS, and modern JavaScript. Emphasizes clean grid layouts and elegant product cards.",
 					"icon": "fa-solid fa-cart-shopping",
 					"tags": "JavaScript, HTML, CSS",
-					"project_url": "https://github.com/mykxttyjay"
+					"project_url": "https://phase-3-dealertemplate.vercel.app/",
+					"screenshot_url": "/screenshots/dealertemplate.png"
 				}
 			},
 			{
@@ -217,7 +219,36 @@
 					"description": "A sleek and intuitive dashboard application to organize tasks and boost daily productivity. Built using React and local storage integrations.",
 					"icon": "fa-solid fa-list-check",
 					"tags": "React, LocalStorage, CSS",
-					"project_url": "https://github.com/mykxttyjay"
+					"project_url": "https://electrician-templatev2.vercel.app/",
+					"screenshot_url": "/screenshots/electrician.png"
+				}
+			},
+			{
+				"id": "project-4",
+				"slug": "hvac-template",
+				"status": "published",
+				"title": "HVAC Template",
+				"data": {
+					"title": "HVAC Template",
+					"description": "A professional HVAC service website template with modern design and responsive layout. Built for heating and cooling businesses.",
+					"icon": "fa-solid fa-temperature-half",
+					"tags": "HTML, CSS, JavaScript",
+					"project_url": "https://hvac-template-rbep.vercel.app/",
+					"screenshot_url": "/screenshots/hvac.png"
+				}
+			},
+			{
+				"id": "project-5",
+				"slug": "plumbing-template",
+				"status": "published",
+				"title": "Plumbing Template",
+				"data": {
+					"title": "Plumbing Template",
+					"description": "A clean and professional plumbing service website template featuring service showcases and contact forms.",
+					"icon": "fa-solid fa-wrench",
+					"tags": "HTML, CSS, JavaScript",
+					"project_url": "https://plumbing-template-henna.vercel.app/",
+					"screenshot_url": "/screenshots/plumbing.png"
 				}
 			}
 		],

@@ -5,7 +5,7 @@ const skillsData = getSkills();
 
 // Flatten all skills into individual cards with icons
 const skillIcons: Record<string, string> = {
-	'JavaScript': 'fa-brands fa-js',
+	'PHP': 'fa-brands fa-php',
 	'HTML5': 'fa-brands fa-html5',
 	'CSS3': 'fa-brands fa-css3-alt',
 	'Java': 'fa-brands fa-java',
@@ -14,13 +14,12 @@ const skillIcons: Record<string, string> = {
 	'Astro': 'fa-solid fa-rocket',
 	'Tailwind CSS': 'fa-solid fa-wind',
 	'Node.js': 'fa-brands fa-node-js',
-	'Bootstrap': 'fa-brands fa-bootstrap',
+	'Canva': 'fa-solid fa-palette',
 	'Figma': 'fa-brands fa-figma',
 	'Git': 'fa-brands fa-git-alt',
 	'GitHub': 'fa-brands fa-github',
 	'MongoDB': 'fa-solid fa-database',
-	'MySQL': 'fa-solid fa-database',
-	'Canva': 'fa-solid fa-palette'
+	'MySQL': 'fa-solid fa-database'
 };
 
 const allSkills = skillsData.flatMap((skill) => 
@@ -175,7 +174,8 @@ const allSkills = skillsData.flatMap((skill) =>
 	.skills-container {
 		display: grid;
 		grid-template-columns: repeat(4, 1fr);
-		gap: 1rem;
+		column-gap: 4px;
+		row-gap: 1rem;
 		position: relative;
 		z-index: 1;
 		flex: 1;
@@ -199,8 +199,9 @@ const allSkills = skillsData.flatMap((skill) =>
 		overflow: visible;
 		aspect-ratio: 3/4;
 		transform: rotate(0deg);
-		max-width: 100px;
-		margin: 0 auto;
+		width: 120px;
+		height: 160px;
+		margin-bottom: 1rem;
 	}
 
 	.skill-stamp::before {
@@ -209,18 +210,16 @@ const allSkills = skillsData.flatMap((skill) =>
 		inset: -8px;
 		background: #FFFEF8;
 		z-index: -1;
-		mask: 
-			radial-gradient(circle at 50% 0%, transparent 0%, transparent 40%, black 40%) 0 0 / 16px 10px repeat-x,
-			radial-gradient(circle at 50% 100%, transparent 0%, transparent 40%, black 40%) 0 100% / 16px 10px repeat-x,
-			radial-gradient(circle at 0% 50%, transparent 0%, transparent 40%, black 40%) 0 0 / 10px 16px repeat-y,
-			radial-gradient(circle at 100% 50%, transparent 0%, transparent 40%, black 40%) 100% 0 / 10px 16px repeat-y;
-		mask-composite: intersect;
-		-webkit-mask: 
-			radial-gradient(circle at 50% 0%, transparent 0%, transparent 40%, black 40%) 0 0 / 16px 10px repeat-x,
-			radial-gradient(circle at 50% 100%, transparent 0%, transparent 40%, black 40%) 0 100% / 16px 10px repeat-x,
-			radial-gradient(circle at 0% 50%, transparent 0%, transparent 40%, black 40%) 0 0 / 10px 16px repeat-y,
-			radial-gradient(circle at 100% 50%, transparent 0%, transparent 40%, black 40%) 100% 0 / 10px 16px repeat-y;
-		-webkit-mask-composite: source-in;
+		clip-path: polygon(
+			0% 4px,
+			4px 0%, 8px 4px, 12px 0%, 16px 4px, 20px 0%, 24px 4px, 28px 0%, 32px 4px, 36px 0%, 40px 4px, 44px 0%, 48px 4px, 52px 0%, 56px 4px, 60px 0%, 64px 4px, 68px 0%, 72px 4px, 76px 0%, 80px 4px, 84px 0%, 88px 4px, 92px 0%, 96px 4px, 100px 0%,
+			calc(100% - 4px) 0%,
+			100% 4px, calc(100% - 4px) 8px, 100% 12px, calc(100% - 4px) 16px, 100% 20px, calc(100% - 4px) 24px, 100% 28px, calc(100% - 4px) 32px, 100% 36px, calc(100% - 4px) 40px, 100% 44px, calc(100% - 4px) 48px, 100% 52px, calc(100% - 4px) 56px, 100% 60px, calc(100% - 4px) 64px, 100% 68px, calc(100% - 4px) 72px, 100% 76px, calc(100% - 4px) 80px, 100% 84px, calc(100% - 4px) 88px, 100% 92px, calc(100% - 4px) 96px, 100% 100px,
+			100% calc(100% - 4px),
+			calc(100% - 4px) 100%, calc(100% - 8px) calc(100% - 4px), calc(100% - 12px) 100%, calc(100% - 16px) calc(100% - 4px), calc(100% - 20px) 100%, calc(100% - 24px) calc(100% - 4px), calc(100% - 28px) 100%, calc(100% - 32px) calc(100% - 4px), calc(100% - 36px) 100%, calc(100% - 40px) calc(100% - 4px), calc(100% - 44px) 100%, calc(100% - 48px) calc(100% - 4px), calc(100% - 52px) 100%, calc(100% - 56px) calc(100% - 4px), calc(100% - 60px) 100%, calc(100% - 64px) calc(100% - 4px), calc(100% - 68px) 100%, calc(100% - 72px) calc(100% - 4px), calc(100% - 76px) 100%, calc(100% - 80px) calc(100% - 4px), calc(100% - 84px) 100%, calc(100% - 88px) calc(100% - 4px), calc(100% - 92px) 100%, calc(100% - 96px) calc(100% - 4px), calc(100% - 100px) 100%,
+			4px 100%,
+			0% calc(100% - 4px), 4px calc(100% - 8px), 0% calc(100% - 12px), 4px calc(100% - 16px), 0% calc(100% - 20px), 4px calc(100% - 24px), 0% calc(100% - 28px), 4px calc(100% - 32px), 0% calc(100% - 36px), 4px calc(100% - 40px), 0% calc(100% - 44px), 4px calc(100% - 48px), 0% calc(100% - 52px), 4px calc(100% - 56px), 0% calc(100% - 60px), 4px calc(100% - 64px), 0% calc(100% - 68px), 4px calc(100% - 72px), 0% calc(100% - 76px), 4px calc(100% - 80px), 0% calc(100% - 84px), 4px calc(100% - 88px), 0% calc(100% - 92px), 4px calc(100% - 96px), 0% calc(100% - 100px)
+		);
 		box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 	}
 

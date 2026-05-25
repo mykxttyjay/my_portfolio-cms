@@ -19,15 +19,25 @@ function getDeterministicTheme(str: string, index: number) {
 const projectsData = getProjects();
 
 // Transform Emdash data into the format needed for display
-const projectsList = projectsData.map((project, index) => ({
-	title: project.title,
-	description: project.description,
-	icon: project.icon || "fa-solid fa-code",
-	tags: project.tags ? project.tags.split(',').map((t: string) => t.trim()) : [],
-	project_url: project.project_url || "",
-	screenshot_url: "", // Emdash doesn't provide screenshots, so we'll use gradient backgrounds
-	theme: getDeterministicTheme(project.title, index)
-}));
+const projectsList = projectsData.map((project, index) => {
+	// Generate screenshot URL from the project URL using a free screenshot service
+	let screenshotUrl = "";
+	if (project.project_url) {
+		// Use Microlink API for free screenshots
+		const encodedUrl = encodeURIComponent(project.project_url);
+		screenshotUrl = `https://api.microlink.io/?url=${encodedUrl}&screenshot=true&meta=false&embed=screenshot.url`;
+	}
+	
+	return {
+		title: project.title,
+		description: project.description,
+		icon: project.icon || "fa-solid fa-code",
+		tags: project.tags ? project.tags.split(',').map((t: string) => t.trim()) : [],
+		project_url: project.project_url || "",
+		screenshot_url: screenshotUrl,
+		theme: getDeterministicTheme(project.title, index)
+	};
+});
 
 // Stagger them into row1 and row2
 const row1Base = projectsList.filter((_, i) => i % 2 === 0);
@@ -39,7 +49,7 @@ const row2List = [...row2Base, ...row2Base, ...row2Base];
 ---
 
 <section class="projects" id="projects">
-	<h2 class="heading">My <span>Projects</span></h2>
+	<h2 class="heading"><span>Projects</span></h2>
 	
 	<div class="projects-carousel-container">
 		<!-- Row 1: moves left as you scroll down -->
@@ -281,7 +291,7 @@ const row2List = [...row2Base, ...row2Base, ...row2Base];
 <style>
 	.projects {
 		background: #F5F0E8;
-		padding: 3rem 0 4rem 0;
+		padding: 3rem 0;
 		position: relative;
 		overflow: hidden;
 	}
@@ -311,7 +321,7 @@ const row2List = [...row2Base, ...row2Base, ...row2Base];
 		letter-spacing: -1px;
 		font-style: italic;
 		text-align: center;
-		margin-bottom: 4rem;
+		margin-bottom: 1rem;
 	}
 
 	.projects .heading span {
@@ -358,69 +368,63 @@ const row2List = [...row2Base, ...row2Base, ...row2Base];
 		position: relative;
 		width: 440px;
 		height: 270px;
-		border-radius: 18px;
-		background: #ffffff;
-		box-shadow: 0 12px 35px rgba(0, 0, 0, 0.07), 0 0 0 1px rgba(0, 0, 0, 0.04);
+		border-radius: 0;
+		background: #FFFEF8;
+		box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 		overflow: hidden;
 		display: flex;
 		flex-direction: column;
 		cursor: pointer;
 		transition: transform 0.45s cubic-bezier(0.175, 0.885, 0.32, 1.2), box-shadow 0.4s ease;
 		user-select: none;
+		border: 2px solid #4A1215;
 	}
 
 	.project-mockup-card:hover {
-		transform: translateY(-8px) scale(1.02);
-		box-shadow: 0 25px 50px rgba(163, 29, 29, 0.12), 0 0 0 1px rgba(163, 29, 29, 0.08);
+		transform: translateY(-4px);
+		box-shadow: 0 12px 30px rgba(74, 18, 21, 0.25);
 	}
 
-	/* Browser Chrome Styles */
+	/* Browser Chrome Styles - Modified to look like letter header */
 	.browser-header {
-		height: 34px;
-		background: #fdfaf0;
+		height: 40px;
+		background: #FFFEF8;
 		display: flex;
 		align-items: center;
 		padding: 0 1.2rem;
-		border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+		border-bottom: 2px solid #4A1215;
 		position: relative;
 		z-index: 3;
 	}
 
 	.browser-dots {
-		display: flex;
-		gap: 6px;
+		display: none;
 	}
-
-	.browser-dots .dot {
-		width: 9px;
-		height: 9px;
-		border-radius: 50%;
-		display: inline-block;
-	}
-
-	.browser-dots .dot.red { background: #ff5f56; }
-	.browser-dots .dot.yellow { background: #ffbd2e; }
-	.browser-dots .dot.green { background: #27c93f; }
 
 	.browser-address {
-		position: absolute;
-		left: 50%;
-		top: 50%;
-		transform: translate(-50%, -50%);
-		font-size: 0.72rem;
-		color: #92846d;
-		font-family: monospace;
-		background: rgba(0, 0, 0, 0.03);
-		padding: 2px 16px;
-		border-radius: 6px;
-		width: 190px;
-		text-align: center;
+		position: static;
+		transform: none;
+		font-size: 0.75rem;
+		color: #4A1215;
+		font-family: 'Playfair Display', Georgia, serif;
+		font-style: italic;
+		background: transparent;
+		padding: 0;
+		border-radius: 0;
+		width: auto;
+		text-align: left;
 		white-space: nowrap;
 		overflow: hidden;
 		text-overflow: ellipsis;
+		font-weight: 600;
 	}
 
-	/* Mock Website Canvas */
+	.browser-address::before {
+		content: 'To: ';
+		font-weight: 700;
+	}
+
+	/* Mock Website Canvas - Letter content area */
 	.mockup-canvas {
 		flex: 1;
 		display: flex;
@@ -428,18 +432,26 @@ const row2List = [...row2Base, ...row2Base, ...row2Base];
 		justify-content: center;
 		position: relative;
 		overflow: hidden;
-		padding: 0;
+		padding: 1rem;
 		z-index: 2;
+		background: #FFFEF8;
 	}
 
 	.mockup-canvas:not(:has(.mockup-screenshot))::before {
 		content: '';
 		position: absolute;
 		inset: 0;
-		opacity: 0.05;
-		background-image: radial-gradient(#000 1px, transparent 1px);
-		background-size: 16px 16px;
+		opacity: 0.03;
+		background-image: 
+			repeating-linear-gradient(
+				0deg,
+				transparent,
+				transparent 31px,
+				#4A1215 31px,
+				#4A1215 32px
+			);
 		z-index: 1;
+		pointer-events: none;
 	}
 
 	/* Real screenshot image fills the card canvas */
@@ -464,49 +476,50 @@ const row2List = [...row2Base, ...row2Base, ...row2Base];
 		flex-direction: column;
 		align-items: center;
 		justify-content: center;
-		gap: 0.6rem;
+		gap: 0.8rem;
 		width: 90%;
 		z-index: 2;
+		padding: 1rem;
 	}
 
 	.canvas-icon {
-		font-size: 2.2rem;
+		font-size: 2.5rem;
 		margin-bottom: 0.2rem;
+		color: #A31D1D;
 		opacity: 0.9;
 		transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.3);
 	}
 
 	.project-mockup-card:hover .canvas-icon {
-		transform: scale(1.18) rotate(-8deg);
+		transform: scale(1.1);
 	}
 
 	.canvas-content h4 {
 		font-family: 'Playfair Display', serif;
-		font-size: 1.25rem;
-		font-weight: 800;
+		font-size: 1.3rem;
+		font-weight: 700;
 		line-height: 1.3;
-		letter-spacing: -0.2px;
-		text-transform: uppercase;
+		letter-spacing: 0.5px;
+		color: #4A1215;
 		margin: 0;
 		font-style: italic;
-		text-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 	}
 
-	/* Hover Detail Overlay with smooth blur */
+	/* Hover Detail Overlay with letter styling */
 	.project-detail-overlay {
 		position: absolute;
 		inset: 0;
-		background: rgba(163, 29, 29, 0.97); /* Crimson red overlay */
-		backdrop-filter: blur(10px);
+		background: rgba(255, 254, 248, 0.98);
+		backdrop-filter: blur(5px);
 		opacity: 0;
 		visibility: hidden;
 		transition: opacity 0.35s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.35s;
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		padding: 2.2rem 2rem;
+		padding: 2rem;
 		z-index: 10;
-		border-radius: 18px;
+		border: 2px solid #4A1215;
 	}
 
 	.project-mockup-card:hover .project-detail-overlay {
@@ -515,7 +528,7 @@ const row2List = [...row2Base, ...row2Base, ...row2Base];
 	}
 
 	.overlay-content {
-		color: #ffffff;
+		color: #4A1215;
 		display: flex;
 		flex-direction: column;
 		gap: 0.6rem;
@@ -529,8 +542,9 @@ const row2List = [...row2Base, ...row2Base, ...row2Base];
 		font-size: 0.65rem;
 		font-weight: 700;
 		letter-spacing: 2px;
-		color: #fcf7e0;
+		color: #A31D1D;
 		opacity: 0.8;
+		font-family: 'Playfair Display', serif;
 	}
 
 	.overlay-content h3 {
@@ -538,16 +552,17 @@ const row2List = [...row2Base, ...row2Base, ...row2Base];
 		font-size: 1.5rem;
 		font-weight: 700;
 		margin: 0 0 0.1rem 0;
-		color: #ffffff;
+		color: #4A1215;
 		font-style: italic;
 	}
 
 	.overlay-content p {
-		font-family: 'Playfair Display', Georgia, serif;
-		font-size: 0.82rem;
-		line-height: 1.55;
+		font-family: 'EB Garamond', Georgia, serif;
+		font-size: 0.9rem;
+		line-height: 1.6;
 		margin: 0 0 0.4rem 0;
-		color: rgba(255, 255, 255, 0.9);
+		color: #4A1215;
+		text-align: justify;
 	}
 
 	.project-tags {
@@ -558,42 +573,45 @@ const row2List = [...row2Base, ...row2Base, ...row2Base];
 
 	.tag {
 		padding: 0.25rem 0.75rem;
-		background: rgba(255, 255, 255, 0.15);
-		border: 1px solid rgba(255, 255, 255, 0.18);
-		border-radius: 50px;
-		font-size: 0.72rem;
+		background: transparent;
+		border: 1.5px solid #4A1215;
+		border-radius: 0;
+		font-size: 0.7rem;
 		font-weight: 600;
-		color: #ffffff;
+		color: #4A1215;
 		transition: all 0.2s ease;
+		font-family: 'Playfair Display', serif;
 	}
 
 	.tag:hover {
-		background: #ffffff;
-		color: #a31d1d;
+		background: #4A1215;
+		color: #FFFEF8;
 		transform: translateY(-1px);
 	}
 
 	.project-btn {
 		margin-top: 0.8rem;
 		align-self: flex-start;
-		padding: 0.45rem 1.1rem;
-		background: #ffffff;
-		color: #a31d1d;
+		padding: 0.5rem 1.2rem;
+		background: #A31D1D;
+		color: #FFFEF8;
 		font-size: 0.8rem;
 		font-weight: 700;
-		border-radius: 30px;
+		border-radius: 0;
 		text-decoration: none;
 		display: inline-flex;
 		align-items: center;
 		gap: 0.4rem;
-		box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+		box-shadow: 0 4px 10px rgba(74, 18, 21, 0.2);
 		transition: all 0.25s ease;
+		font-family: 'Playfair Display', serif;
+		border: 2px solid #4A1215;
 	}
 
 	.project-btn:hover {
-		background: #fdfaf0;
+		background: #4A1215;
 		transform: translateY(-2px);
-		box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+		box-shadow: 0 6px 15px rgba(74, 18, 21, 0.3);
 	}
 
 	@media (max-width: 992px) {
