@@ -1,5 +1,5 @@
 ---
-import { profile } from '../data/portfolio';
+// No imports needed - all data is hardcoded below
 ---
 
 <section id="contact" class="contact-section">
@@ -34,7 +34,7 @@ import { profile } from '../data/portfolio';
 							<i class="fa-solid fa-file-lines"></i>
 							<div class="contact-details">
 								<span class="contact-label">Resume</span>
-								<a href={profile.resume_link} target="_blank" rel="noopener noreferrer" class="contact-value contact-link">View My Resume</a>
+								<a href="/resume.pdf" target="_blank" rel="noopener noreferrer" class="contact-value contact-link">View My Resume</a>
 							</div>
 						</div>
 					</div>
@@ -357,13 +357,18 @@ import { profile } from '../data/portfolio';
 
 	.contact-link {
 		color: #8b7355;
-		text-decoration: underline;
-		transition: none;
+		text-decoration: none;
+		transition: all 0.3s ease;
+		font-weight: 600;
+		position: relative;
+		cursor: pointer;
+		display: inline-block;
 	}
 
 	.contact-link:hover {
-		color: #8b7355;
+		color: #4A1215;
 		text-decoration: underline;
+		transform: translateX(4px);
 	}
 
 	@media (max-width: 768px) {

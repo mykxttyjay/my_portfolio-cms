@@ -1,5 +1,5 @@
 ---
-import { skills as skillsData } from '../data/portfolio';
+// No imports needed - all data is hardcoded below
 
 // Flatten all skills into individual cards with icons
 const skillIcons: Record<string, string> = {
@@ -14,19 +14,19 @@ const skillIcons: Record<string, string> = {
 	'Java': 'fa-brands fa-java'
 };
 
-// Get Core Skills and Tools separately
-const coreSkillsData = skillsData.find(s => s.category === 'Core Skills');
-const toolsData = skillsData.find(s => s.category === 'Tools');
+const coreSkillsList = "Web Development, Graphic Design, Web Design, UI/UX Design, Quality Assurance";
+const toolsList = "PHP, Astro, Tailwind CSS, Java";
+const skillsDescription = "My expertise spans across web development, design, and quality assurance. I specialize in creating user-centered digital experiences through thoughtful design and reliable development. Each project is an opportunity to blend creativity with technical precision, delivering solutions that are both functional and visually compelling.";
 
-const skills = coreSkillsData?.skills_list ? coreSkillsData.skills_list.split(',').map((s: string) => ({
+const skills = coreSkillsList.split(',').map((s: string) => ({
 	name: s.trim(),
 	icon: skillIcons[s.trim()] || 'fa-solid fa-code'
-})) : [];
+}));
 
-const tools = toolsData?.skills_list ? toolsData.skills_list.split(',').map((s: string) => ({
+const tools = toolsList.split(',').map((s: string) => ({
 	name: s.trim(),
 	icon: skillIcons[s.trim()] || 'fa-solid fa-code'
-})) : [];
+}));
 ---
 
 <section class="skills" id="skills">
@@ -34,10 +34,7 @@ const tools = toolsData?.skills_list ? toolsData.skills_list.split(',').map((s: 
 		<div class="skills-header">
 			<h2 class="heading"><span>Skills</span></h2>
 			<p class="skills-description">
-				My expertise spans across web development, design, and quality assurance. 
-				I specialize in creating user-centered digital experiences through thoughtful 
-				design and reliable development. Each project is an opportunity to blend creativity 
-				with technical precision, delivering solutions that are both functional and visually compelling.
+				{skillsDescription}
 			</p>
 		</div>
 		<div class="skills-right">

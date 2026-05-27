@@ -71,14 +71,13 @@ my_portfolio/
 │   │   ├── Projects.astro
 │   │   ├── Ribbon.astro
 │   │   └── Skills.astro
-│   ├── data/
-│   │   └── portfolio.ts
 │   ├── pages/
 │   │   └── index.astro
 │   └── styles/
 │       └── global.css
 ├── public/
-│   └── portfolio.png
+│   ├── portfolio.png
+│   └── resume.pdf
 ├── astro.config.mjs
 ├── package.json
 └── README.md
@@ -86,51 +85,16 @@ my_portfolio/
 
 ## 📝 Content Management
 
-All content is managed through `src/data/portfolio.ts`:
+All content is hardcoded directly in the component files for simplicity:
 
-### Data Structure
+- **Home** (`src/components/Home.astro`) - Name, role, intro text
+- **About** (`src/components/About.astro`) - Profile info, about paragraphs
+- **Skills** (`src/components/Skills.astro`) - Skills list and description
+- **Projects** (`src/components/Projects.astro`) - Project details and links
+- **Experience** (`src/components/Experience.astro`) - Work experience
+- **Contact** (`src/components/Contact.astro`) - Email and resume link
 
-```typescript
-// Profile information
-export const profile = {
-  name: "Your Name",
-  role: "Your Role",
-  intro: "Your introduction",
-  about_content: "About you",
-  // ... more fields
-}
-
-// Skills organized by category
-export const skills = [
-  {
-    category: "Core Skills",
-    skills_list: "Skill 1, Skill 2, ..."
-  },
-  // ... more categories
-]
-
-// Projects with details
-export const projects = [
-  {
-    title: "Project Name",
-    description: "Description",
-    tags: "tag1, tag2",
-    project_url: "https://...",
-    icon: "fa-solid fa-icon"
-  },
-  // ... more projects
-]
-
-// Contact information
-export const contact = [
-  {
-    platform: "Email",
-    value: "your@email.com",
-    icon: "fa-solid fa-envelope"
-  },
-  // ... more contacts
-]
-```
+To update content, simply edit the respective component file.
 
 ## 🌐 Deployment
 
