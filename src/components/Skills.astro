@@ -340,8 +340,16 @@ const tools = skillsData.filter(s => s.category === 'tools')
 	}
 
 	@media (max-width: 1024px) {
+		.skills {
+			padding: 3rem 0 4rem 0;
+			border-width: 15px;
+		}
+
 		.skills-content {
 			flex-direction: column;
+			margin-left: 0;
+			padding: 0 4%;
+			gap: 2rem;
 		}
 
 		.skills-content::after {
@@ -350,43 +358,156 @@ const tools = skillsData.filter(s => s.category === 'tools')
 
 		.skills-header {
 			width: 100%;
-			margin: 0 0 2rem 0;
+			margin: 0;
 			padding: 0;
+			text-align: center;
+		}
+
+		.skills .heading {
+			font-size: 3rem;
+			text-align: center;
+		}
+
+		.skills-description {
+			font-size: 18px;
+			text-align: center;
+		}
+
+		.skills-right {
+			width: 100%;
+			padding-left: 0;
+			padding-right: 0;
 		}
 
 		.skills-container {
 			width: 100%;
-			padding-left: 0;
-			grid-template-columns: repeat(3, 1fr);
+			margin: 0 auto;
+			justify-content: center;
+			grid-template-columns: repeat(4, 1fr);
 			gap: 1.2rem;
+		}
+
+		.skill-stamp {
+			width: 100px;
+			height: 100px;
 		}
 	}
 
 	@media (max-width: 768px) {
+		.skills {
+			padding: 2.5rem 0 3.5rem 0;
+			border-width: 12px;
+		}
+
+		.skills-content {
+			padding: 0 3%;
+		}
+
+		.skills .heading {
+			font-size: 2.5rem;
+		}
+
+		.skills-description {
+			font-size: 16px;
+			margin-bottom: calc(16px * 1.6 * 4);
+		}
+
+		.skills-description::after {
+			bottom: calc(-16px * 1.6 * 4);
+			height: calc(16px * 1.6 * 3);
+			background: 
+				linear-gradient(to right, #4A1215 0%, #4A1215 100%) 0 calc(16px * 1.1) / 100% 1px no-repeat,
+				linear-gradient(to right, #4A1215 0%, #4A1215 100%) 0 calc(16px * 1.1 + 16px * 1.6) / 100% 1px no-repeat,
+				linear-gradient(to right, #4A1215 0%, #4A1215 100%) 0 calc(16px * 1.1 + 16px * 1.6 * 2) / 100% 1px no-repeat;
+		}
+
 		.skills-container {
 			grid-template-columns: repeat(3, 1fr);
 			gap: 1rem;
 		}
+
+		.skill-stamp {
+			width: 90px;
+			height: 90px;
+			padding: 0.6rem;
+		}
+
+		.stamp-icon {
+			width: 24px;
+			height: 24px;
+			font-size: 0.8rem;
+		}
+
+		.stamp-content {
+			font-size: 10px;
+		}
+
+		.skill-line {
+			font-size: 18px;
+			gap: 1.2rem;
+		}
 	}
 
 	@media (max-width: 480px) {
+		.skills {
+			padding: 2rem 0 3rem 0;
+			border-width: 10px;
+		}
+
+		.skills-content {
+			padding: 0 2%;
+		}
+
+		.skills .heading {
+			font-size: 2rem;
+			margin-bottom: 0.3rem;
+		}
+
+		.skills-description {
+			font-size: 14px;
+			line-height: 1.5;
+			margin-bottom: calc(14px * 1.5 * 3);
+		}
+
+		.skills-description::after {
+			bottom: calc(-14px * 1.5 * 3);
+			height: calc(14px * 1.5 * 2);
+			background: 
+				linear-gradient(to right, #4A1215 0%, #4A1215 100%) 0 calc(14px * 1.1) / 100% 1px no-repeat,
+				linear-gradient(to right, #4A1215 0%, #4A1215 100%) 0 calc(14px * 1.1 + 14px * 1.5) / 100% 1px no-repeat;
+		}
+
 		.skills-container {
 			grid-template-columns: repeat(2, 1fr);
 			gap: 0.8rem;
 		}
 		
 		.skill-stamp {
-			padding: 1rem 0.5rem;
+			width: 80px;
+			height: 80px;
+			padding: 0.5rem;
+			margin-bottom: 0.8rem;
+		}
+
+		.skill-stamp::before {
+			inset: -6px;
 		}
 		
 		.stamp-icon {
-			width: 40px;
-			height: 40px;
-			font-size: 1.1rem;
+			width: 22px;
+			height: 22px;
+			font-size: 0.7rem;
+			margin-bottom: 0.3rem;
 		}
 		
 		.stamp-content {
-			font-size: 0.8rem;
+			font-size: 9px;
+		}
+
+		.skill-line {
+			font-size: 16px;
+			gap: 1rem;
+			padding-bottom: 0.4rem;
 		}
 	}
 </style>

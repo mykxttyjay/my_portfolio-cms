@@ -250,8 +250,16 @@ import experienceData from '../data/experience.json'
 	}
 
 	@media (max-width: 1024px) {
+		.experience {
+			padding: 3rem 0 4rem 0;
+			border-width: 15px;
+		}
+
 		.experience-content {
 			flex-direction: column;
+			margin-left: 0;
+			padding: 0 4%;
+			gap: 2rem;
 		}
 
 		.experience-content::after {
@@ -260,13 +268,142 @@ import experienceData from '../data/experience.json'
 
 		.experience-header {
 			width: 100%;
-			margin: 0 0 2rem 0;
+			margin: 0;
 			padding: 0;
+			text-align: center;
+		}
+
+		.experience .heading {
+			font-size: 3rem;
+			text-align: center;
+		}
+
+		.experience-description {
+			font-size: 18px;
+			text-align: center;
 		}
 
 		.experience-container {
 			width: 100%;
 			padding-left: 0;
+			padding-right: 0;
+		}
+	}
+
+	@media (max-width: 768px) {
+		.experience {
+			padding: 2.5rem 0 3.5rem 0;
+			border-width: 12px;
+		}
+
+		.experience-content {
+			padding: 0 3%;
+		}
+
+		.experience .heading {
+			font-size: 2.5rem;
+		}
+
+		.experience-description {
+			font-size: 16px;
+			margin-bottom: calc(16px * 1.6 * 4);
+		}
+
+		.experience-description::after {
+			bottom: calc(-16px * 1.6 * 4);
+			height: calc(16px * 1.6 * 3);
+			background: 
+				linear-gradient(to right, #4A1215 0%, #4A1215 100%) 0 calc(16px * 1.1) / 100% 1px no-repeat,
+				linear-gradient(to right, #4A1215 0%, #4A1215 100%) 0 calc(16px * 1.1 + 16px * 1.6) / 100% 1px no-repeat,
+				linear-gradient(to right, #4A1215 0%, #4A1215 100%) 0 calc(16px * 1.1 + 16px * 1.6 * 2) / 100% 1px no-repeat;
+		}
+
+		.experience-container {
+			gap: 1.5rem;
+		}
+
+		.experience-box {
+			padding: 1.5rem;
+		}
+
+		.experience-box::before {
+			inset: -6px;
+		}
+
+		.experience-box h3 {
+			font-size: 18px;
+		}
+
+		.experience-box .company,
+		.experience-box .date {
+			font-size: 16px;
+		}
+
+		.experience-header-row {
+			flex-direction: column;
+			align-items: flex-start;
+			gap: 0.5rem;
+		}
+
+		.experience-box .date {
+			text-align: left;
+			margin-left: 0;
+		}
+	}
+
+	@media (max-width: 480px) {
+		.experience {
+			padding: 2rem 0 3rem 0;
+			border-width: 10px;
+		}
+
+		.experience-content {
+			padding: 0 2%;
+		}
+
+		.experience .heading {
+			font-size: 2rem;
+			margin-bottom: 0.3rem;
+		}
+
+		.experience-description {
+			font-size: 14px;
+			line-height: 1.5;
+			margin-bottom: calc(14px * 1.5 * 3);
+		}
+
+		.experience-description::after {
+			bottom: calc(-14px * 1.5 * 3);
+			height: calc(14px * 1.5 * 2);
+			background: 
+				linear-gradient(to right, #4A1215 0%, #4A1215 100%) 0 calc(14px * 1.1) / 100% 1px no-repeat,
+				linear-gradient(to right, #4A1215 0%, #4A1215 100%) 0 calc(14px * 1.1 + 14px * 1.5) / 100% 1px no-repeat;
+		}
+
+		.experience-container {
+			gap: 1.2rem;
+		}
+
+		.experience-box {
+			padding: 1.2rem;
+		}
+
+		.experience-box::before {
+			inset: -5px;
+		}
+
+		.experience-box h3 {
+			font-size: 16px;
+			margin-bottom: 0.5rem;
+		}
+
+		.experience-box .company,
+		.experience-box .date {
+			font-size: 14px;
+		}
+
+		.experience-header-row {
+			margin-bottom: 0.5rem;
 		}
 	}
 

@@ -512,19 +512,21 @@ const fullName = `${firstName} ${lastName}`
 	}
 
 	@media (max-width: 1024px) {
-		.about-container {
-			gap: 2rem;
+		.combined-about-card {
+			grid-template-columns: 1fr;
+			max-width: 600px;
 		}
 
-		.about-card-wrapper {
-			flex: 1;
-			width: 100%;
-			max-width: 400px;
-			margin: 0 auto;
+		.profile-section {
+			padding: 2rem 1.5rem;
 		}
 
-		.about-title {
-			font-size: 2.8rem;
+		.letter-section {
+			padding: 2rem 2rem 2.5rem 2rem;
+		}
+
+		.letter-greeting {
+			font-size: 2.5rem;
 		}
 
 		.about-text {
@@ -534,54 +536,17 @@ const fullName = `${firstName} ${lastName}`
 
 	@media (max-width: 768px) {
 		.about {
-			padding: 3rem 5%;
+			padding: 3rem 4% 4rem 4%;
+			min-height: auto;
 		}
 
-		.about-container {
-			flex-direction: column;
-			gap: 2rem;
-		}
-
-		.about-card-wrapper {
-			flex: 1;
-			width: 100%;
-			max-width: 400px;
-			margin: 0 auto;
-		}
-
-		.about-card-wrapper::before {
-			transform: rotate(-4deg);
-		}
-
-		.about-content {
-			text-align: center;
-		}
-
-		.about-title {
-			font-size: 2rem;
-		}
-
-		.about-letter {
-			text-align: left;
-			padding: 2rem 3rem;
-		}
-
-		.about-text {
-			font-size: 1rem;
-		}
-
-		.resume-link {
-			justify-content: center;
-		}
-	}
-
-	@media (max-width: 480px) {
-		.about {
-			padding: 2rem 4%;
+		.combined-about-card {
+			max-width: 100%;
 		}
 
 		.card-image {
-			height: 250px;
+			height: 240px;
+			margin-bottom: 1.5rem;
 		}
 
 		.card-content {
@@ -589,38 +554,163 @@ const fullName = `${firstName} ${lastName}`
 		}
 
 		.card-name {
-			font-size: 1.2rem;
+			font-size: 1.5rem;
+			margin-bottom: 1.2rem;
+			padding-bottom: 1.2rem;
 		}
 
-		.about-title {
-			font-size: 1.8rem;
+		.info-row {
+			font-size: 0.85rem;
+			padding: 0.6rem;
+			margin-bottom: 0.8rem;
 		}
 
-		.about-letter {
-			padding: 1.5rem 1.8rem;
+		.info-row .label {
+			min-width: 70px;
+			font-size: 0.8rem;
 		}
 
-		.about-letter::before {
-			left: 1.2rem;
+		.info-row .value {
+			font-size: 0.85rem;
 		}
 
-		.letter-header, .letter-greeting, .letter-body, .letter-footer {
-			padding-left: 0.5rem;
+		.letter-greeting {
+			font-size: 2rem;
+			margin-bottom: 1.5rem;
+			padding-left: 1rem;
+		}
+
+		.letter-body {
+			padding-left: 1rem;
+			margin-bottom: 2rem;
 		}
 
 		.about-text {
-			text-indent: 1.5rem;
 			font-size: 0.95rem;
-			line-height: 1.8;
+			line-height: 1.7;
+			text-indent: 1.5rem;
+		}
+
+		.letter-footer {
+			padding-left: 1rem;
+			padding-right: 1rem;
+			margin-top: 1.5rem;
+			padding-top: 1.2rem;
+		}
+
+		.letter-closing {
+			font-size: 1.3rem;
 		}
 
 		.letter-signature {
 			font-size: 2.2rem;
+			margin-right: 1rem;
+		}
+
+		.sparkle-1, .sparkle-2, .sparkle-3, .sparkle-4 {
+			width: 16px;
+			height: 16px;
+		}
+	}
+
+	@media (max-width: 480px) {
+		.about {
+			padding: 2rem 3% 3rem 3%;
+		}
+
+		.combined-about-card {
+			border-width: 2.5px;
+		}
+
+		.profile-section {
+			padding: 1.5rem 1rem;
+		}
+
+		.letter-section {
+			padding: 1.5rem 1.2rem 2rem 1.2rem;
+		}
+
+		.card-image {
+			height: 200px;
+			margin-bottom: 1.2rem;
+			padding: 0 0.3rem;
+		}
+
+		.card-image::before {
+			inset: -6px;
+			border-width: 2px;
+		}
+
+		.card-image img {
+			border-width: 2px;
+		}
+
+		.card-content {
+			padding: 1rem;
+		}
+
+		.card-name {
+			font-size: 1.2rem;
+			margin-bottom: 1rem;
+			padding-bottom: 1rem;
+		}
+
+		.info-row {
+			font-size: 0.75rem;
+			padding: 0.5rem;
+			margin-bottom: 0.6rem;
+			flex-direction: column;
+			align-items: flex-start;
+			gap: 0.3rem;
+		}
+
+		.info-row .label {
+			min-width: auto;
+			font-size: 0.7rem;
+		}
+
+		.info-row .value {
+			font-size: 0.75rem;
+			text-align: left;
 		}
 
 		.letter-greeting {
-			font-size: 2.1rem;
-			margin-bottom: 1.2rem;
+			font-size: 1.6rem;
+			margin-bottom: 1rem;
+			padding-left: 0.5rem;
+		}
+
+		.letter-body {
+			padding-left: 0.5rem;
+			margin-bottom: 1.5rem;
+		}
+
+		.about-text {
+			font-size: 0.85rem;
+			line-height: 1.6;
+			text-indent: 1rem;
+			margin-bottom: 1rem;
+		}
+
+		.letter-footer {
+			padding-left: 0.5rem;
+			padding-right: 0.5rem;
+			margin-top: 1rem;
+			padding-top: 1rem;
+		}
+
+		.letter-closing {
+			font-size: 1.1rem;
+		}
+
+		.letter-signature {
+			font-size: 1.8rem;
+			margin-right: 0.5rem;
+		}
+
+		.sparkle-1, .sparkle-2, .sparkle-3, .sparkle-4 {
+			width: 12px;
+			height: 12px;
 		}
 	}
 </style>
