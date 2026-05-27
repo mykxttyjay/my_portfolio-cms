@@ -1,7 +1,7 @@
 ---
 import profileData from '../data/profile.json'
 
-const { firstName, lastName, birthday, degree, location, email, interests, aboutParagraph1, aboutParagraph2 } = profileData
+const { firstName, lastName, birthday, degree, location, email, specialization, aboutParagraph1, aboutParagraph2 } = profileData
 const fullName = `${firstName} ${lastName}`
 ---
 
@@ -27,7 +27,7 @@ const fullName = `${firstName} ${lastName}`
 			<!-- Profile Section -->
 			<div class="profile-section">
 				<div class="card-image">
-					<img src="https://images.unsplash.com/photo-1567484072688-2041f76a3fda?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt={fullName} />
+					<img src="/profile.jpg" alt={fullName} />
 				</div>
 				<div class="card-content">
 					<h3 class="card-name">Hi! It's {fullName}</h3>
@@ -49,8 +49,8 @@ const fullName = `${firstName} ${lastName}`
 							<span class="value">{email}</span>
 						</div>
 						<div class="info-row">
-							<span class="label">Interests:</span>
-							<span class="value">{interests}</span>
+							<span class="label">Specialization:</span>
+							<span class="value">{specialization}</span>
 						</div>
 					</div>
 				</div>
@@ -292,11 +292,12 @@ const fullName = `${firstName} ${lastName}`
 		position: relative;
 		width: 100%;
 		height: 280px;
-		overflow: hidden;
+		overflow: visible;
 		margin-bottom: 2rem;
 		display: flex;
 		align-items: center;
 		justify-content: center;
+		padding: 0 0.5rem;
 	}
 
 	.card-image img {
@@ -304,9 +305,38 @@ const fullName = `${firstName} ${lastName}`
 		height: 100%;
 		object-fit: cover;
 		transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
-		border: 3.5px solid #4A1215;
-		border-radius: 6px;
+		border: 2.5px solid #4A1215;
+		border-radius: 0;
+		box-shadow: none;
+		position: relative;
+	}
+
+	.card-image::before {
+		content: '';
+		position: absolute;
+		inset: -8px;
+		background: #FFFEF8;
+		z-index: -1;
+		clip-path: polygon(
+			/* Top edge - wavy */
+			0% 4px, 4px 0%, 8px 4px, 12px 0%, 16px 4px, 20px 0%, 24px 4px, 28px 0%, 32px 4px, 36px 0%, 40px 4px, 44px 0%, 48px 4px, 52px 0%, 56px 4px, 60px 0%, 64px 4px, 68px 0%, 72px 4px, 76px 0%, 80px 4px, 84px 0%, 88px 4px, 92px 0%, 96px 4px, 100px 0%, 104px 4px, 108px 0%, 112px 4px, 116px 0%, 120px 4px, 124px 0%, 128px 4px, 132px 0%, 136px 4px, 140px 0%, 144px 4px, 148px 0%, 152px 4px, 156px 0%, 160px 4px, 164px 0%, 168px 4px, 172px 0%, 176px 4px, 180px 0%, 184px 4px, 188px 0%, 192px 4px, 196px 0%, 200px 4px, 204px 0%, 208px 4px, 212px 0%, 216px 4px, 220px 0%, 224px 4px, 228px 0%, 232px 4px, 236px 0%, 240px 4px, 244px 0%, 248px 4px, 252px 0%, 256px 4px, 260px 0%, 264px 4px, 268px 0%, 272px 4px, 276px 0%, 280px 4px,
+			/* Top-right corner */
+			calc(100% - 4px) 0%, 100% 0%, 100% 4px,
+			/* Right edge - wavy */
+			calc(100% - 4px) 8px, 100% 12px, calc(100% - 4px) 16px, 100% 20px, calc(100% - 4px) 24px, 100% 28px, calc(100% - 4px) 32px, 100% 36px, calc(100% - 4px) 40px, 100% 44px, calc(100% - 4px) 48px, 100% 52px, calc(100% - 4px) 56px, 100% 60px, calc(100% - 4px) 64px, 100% 68px, calc(100% - 4px) 72px, 100% 76px, calc(100% - 4px) 80px, 100% 84px, calc(100% - 4px) 88px, 100% 92px, calc(100% - 4px) 96px, 100% 100px, calc(100% - 4px) 104px, 100% 108px, calc(100% - 4px) 112px, 100% 116px, calc(100% - 4px) 120px, 100% 124px, calc(100% - 4px) 128px, 100% 132px, calc(100% - 4px) 136px, 100% 140px, calc(100% - 4px) 144px, 100% 148px, calc(100% - 4px) 152px, 100% 156px, calc(100% - 4px) 160px, 100% 164px, calc(100% - 4px) 168px, 100% 172px, calc(100% - 4px) 176px, 100% 180px, calc(100% - 4px) 184px, 100% 188px, calc(100% - 4px) 192px, 100% 196px, calc(100% - 4px) 200px, 100% 204px, calc(100% - 4px) 208px, 100% 212px, calc(100% - 4px) 216px, 100% 220px, calc(100% - 4px) 224px, 100% 228px, calc(100% - 4px) 232px, 100% 236px, calc(100% - 4px) 240px, 100% 244px, calc(100% - 4px) 248px, 100% 252px, calc(100% - 4px) 256px, 100% 260px, calc(100% - 4px) 264px, 100% 268px, calc(100% - 4px) 272px, 100% 276px, calc(100% - 4px) 280px,
+			/* Bottom-right corner */
+			100% calc(100% - 4px), 100% 100%, calc(100% - 4px) 100%,
+			/* Bottom edge - wavy */
+			calc(100% - 8px) calc(100% - 4px), calc(100% - 12px) 100%, calc(100% - 16px) calc(100% - 4px), calc(100% - 20px) 100%, calc(100% - 24px) calc(100% - 4px), calc(100% - 28px) 100%, calc(100% - 32px) calc(100% - 4px), calc(100% - 36px) 100%, calc(100% - 40px) calc(100% - 4px), calc(100% - 44px) 100%, calc(100% - 48px) calc(100% - 4px), calc(100% - 52px) 100%, calc(100% - 56px) calc(100% - 4px), calc(100% - 60px) 100%, calc(100% - 64px) calc(100% - 4px), calc(100% - 68px) 100%, calc(100% - 72px) calc(100% - 4px), calc(100% - 76px) 100%, calc(100% - 80px) calc(100% - 4px), calc(100% - 84px) 100%, calc(100% - 88px) calc(100% - 4px), calc(100% - 92px) 100%, calc(100% - 96px) calc(100% - 4px), calc(100% - 100px) 100%, calc(100% - 104px) calc(100% - 4px), calc(100% - 108px) 100%, calc(100% - 112px) calc(100% - 4px), calc(100% - 116px) 100%, calc(100% - 120px) calc(100% - 4px), calc(100% - 124px) 100%, calc(100% - 128px) calc(100% - 4px), calc(100% - 132px) 100%, calc(100% - 136px) calc(100% - 4px), calc(100% - 140px) 100%, calc(100% - 144px) calc(100% - 4px), calc(100% - 148px) 100%, calc(100% - 152px) calc(100% - 4px), calc(100% - 156px) 100%, calc(100% - 160px) calc(100% - 4px), calc(100% - 164px) 100%, calc(100% - 168px) calc(100% - 4px), calc(100% - 172px) 100%, calc(100% - 176px) calc(100% - 4px), calc(100% - 180px) 100%, calc(100% - 184px) calc(100% - 4px), calc(100% - 188px) 100%, calc(100% - 192px) calc(100% - 4px), calc(100% - 196px) 100%, calc(100% - 200px) calc(100% - 4px), calc(100% - 204px) 100%, calc(100% - 208px) calc(100% - 4px), calc(100% - 212px) 100%, calc(100% - 216px) calc(100% - 4px), calc(100% - 220px) 100%, calc(100% - 224px) calc(100% - 4px), calc(100% - 228px) 100%, calc(100% - 232px) calc(100% - 4px), calc(100% - 236px) 100%, calc(100% - 240px) calc(100% - 4px), calc(100% - 244px) 100%, calc(100% - 248px) calc(100% - 4px), calc(100% - 252px) 100%, calc(100% - 256px) calc(100% - 4px), calc(100% - 260px) 100%, calc(100% - 264px) calc(100% - 4px), calc(100% - 268px) 100%, calc(100% - 272px) calc(100% - 4px), calc(100% - 276px) 100%, calc(100% - 280px) calc(100% - 4px),
+			/* Bottom-left corner */
+			4px 100%, 0% 100%, 0% calc(100% - 4px),
+			/* Left edge - wavy */
+			4px calc(100% - 8px), 0% calc(100% - 12px), 4px calc(100% - 16px), 0% calc(100% - 20px), 4px calc(100% - 24px), 0% calc(100% - 28px), 4px calc(100% - 32px), 0% calc(100% - 36px), 4px calc(100% - 40px), 0% calc(100% - 44px), 4px calc(100% - 48px), 0% calc(100% - 52px), 4px calc(100% - 56px), 0% calc(100% - 60px), 4px calc(100% - 64px), 0% calc(100% - 68px), 4px calc(100% - 72px), 0% calc(100% - 76px), 4px calc(100% - 80px), 0% calc(100% - 84px), 4px calc(100% - 88px), 0% calc(100% - 92px), 4px calc(100% - 96px), 0% calc(100% - 100px), 4px calc(100% - 104px), 0% calc(100% - 108px), 4px calc(100% - 112px), 0% calc(100% - 116px), 4px calc(100% - 120px), 0% calc(100% - 124px), 4px calc(100% - 128px), 0% calc(100% - 132px), 4px calc(100% - 136px), 0% calc(100% - 140px), 4px calc(100% - 144px), 0% calc(100% - 148px), 4px calc(100% - 152px), 0% calc(100% - 156px), 4px calc(100% - 160px), 0% calc(100% - 164px), 4px calc(100% - 168px), 0% calc(100% - 172px), 4px calc(100% - 176px), 0% calc(100% - 180px), 4px calc(100% - 184px), 0% calc(100% - 188px), 4px calc(100% - 192px), 0% calc(100% - 196px), 4px calc(100% - 200px), 0% calc(100% - 204px), 4px calc(100% - 208px), 0% calc(100% - 212px), 4px calc(100% - 216px), 0% calc(100% - 220px), 4px calc(100% - 224px), 0% calc(100% - 228px), 4px calc(100% - 232px), 0% calc(100% - 236px), 4px calc(100% - 240px), 0% calc(100% - 244px), 4px calc(100% - 248px), 0% calc(100% - 252px), 4px calc(100% - 256px), 0% calc(100% - 260px), 4px calc(100% - 264px), 0% calc(100% - 268px), 4px calc(100% - 272px), 0% calc(100% - 276px), 4px calc(100% - 280px),
+			/* Top-left corner */
+			0% 4px, 0% 0%
+		);
 		box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+		border: 2.5px solid #4A1215;
 	}
 
 	.about-card:hover .card-image img {
@@ -325,7 +355,7 @@ const fullName = `${firstName} ${lastName}`
 		margin-bottom: 1.5rem;
 		font-style: italic;
 		padding-bottom: 1.5rem;
-		border-bottom: 2px dashed rgba(163, 29, 29, 0.15);
+		border-bottom: 2px dashed rgba(163, 29, 29, 0.4);
 	}
 
 	.card-info {
@@ -375,7 +405,7 @@ const fullName = `${firstName} ${lastName}`
 	.letter-greeting {
 		font-family: 'Playfair Display', Georgia, serif;
 		font-size: 3.5rem;
-		color: #A31D1D;
+		color: #4A1215;
 		margin-top: 0;
 		margin-bottom: 1.8rem;
 		padding-left: 1.5rem;
@@ -406,11 +436,12 @@ const fullName = `${firstName} ${lastName}`
 
 	.letter-footer {
 		padding-left: 1.5rem;
+		padding-right: 1.5rem;
 		display: flex;
 		flex-direction: column;
 		align-items: flex-end;
 		margin-top: 2rem;
-		border-top: 1px dashed rgba(163, 29, 29, 0.1);
+		border-top: 2px dashed rgba(163, 29, 29, 0.4);
 		padding-top: 1.5rem;
 	}
 
@@ -428,7 +459,7 @@ const fullName = `${firstName} ${lastName}`
 		color: #A31D1D;
 		font-weight: 700;
 		line-height: 1;
-		transform: rotate(-3deg);
+		transform: rotate(0deg);
 		margin-right: 1.5rem;
 		text-shadow: 1px 1px 2px rgba(163, 29, 29, 0.15);
 	}
