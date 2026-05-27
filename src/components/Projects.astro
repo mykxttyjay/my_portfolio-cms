@@ -1,5 +1,7 @@
 ---
-import projectsData from '../data/projects.json'
+import { getProjects } from '../lib/cms'
+
+const projectsData = await getProjects()
 
 // Function to generate a beautiful deterministic gradient based on a string
 function getDeterministicTheme(str: string, index: number) {

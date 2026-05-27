@@ -1,6 +1,7 @@
 ---
-import profileData from '../data/profile.json'
+import { getProfile } from '../lib/cms'
 
+const profileData = await getProfile()
 const { firstName, lastName, birthday, degree, location, email, specialization, aboutParagraph1, aboutParagraph2 } = profileData
 const fullName = `${firstName} ${lastName}`
 ---

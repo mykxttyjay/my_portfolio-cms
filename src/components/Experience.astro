@@ -1,5 +1,7 @@
 ---
-import experienceData from '../data/experience.json'
+import { getExperience } from '../lib/cms'
+
+const experienceData = await getExperience()
 ---
 
 <section class="experience" id="experience">

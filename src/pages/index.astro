@@ -11,8 +11,9 @@ import Ribbon from '../components/Ribbon.astro';
 import Contact from '../components/Contact.astro';
 import Loader from '../components/Loader.astro';
 import Footer from '../components/Footer.astro';
-import profileData from '../data/profile.json';
+import { getProfile } from '../lib/cms';
 
+const profileData = await getProfile();
 const siteTitle = `${profileData.firstName} ${profileData.lastName} - ${profileData.title} Portfolio`;
 const siteDescription = `${profileData.firstName} ${profileData.lastName} is a ${profileData.title} specializing in ${profileData.specialization}. Explore my portfolio showcasing web development projects, design work, and technical expertise in creating user-centered digital experiences.`;
 const siteKeywords = 'web developer, graphic designer, portfolio, web development, UI/UX design, frontend developer, Lapu-Lapu City, Cebu, Philippines, IT graduate';

@@ -1,7 +1,8 @@
 ---
-import profileData from '../data/profile.json'
-import skillsData from '../data/skills.json'
+import { getProfile, getSkills } from '../lib/cms'
 
+const profileData = await getProfile()
+const skillsData = await getSkills()
 const { skillsDescription } = profileData
 
 const coreSkills = skillsData.filter(s => s.category === 'core')

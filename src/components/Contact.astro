@@ -1,6 +1,7 @@
 ---
-import contactData from '../data/contact.json'
+import { getContact } from '../lib/cms'
 
+const contactData = await getContact()
 const { email, resumeLink } = contactData
 ---
 
