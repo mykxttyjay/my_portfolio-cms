@@ -1,4 +1,5 @@
 ---
+import experienceData from '../data/experience.json'
 ---
 
 <section class="experience" id="experience">
@@ -13,20 +14,15 @@
 			</p>
 		</div>
 		<div class="experience-container">
-			<div class="experience-box">
-				<div class="experience-header-row">
-					<h3>Web Development Internship</h3>
-					<p class="date">January 2026 - May 2026</p>
+			{experienceData.map((exp) => (
+				<div class="experience-box">
+					<div class="experience-header-row">
+						<h3>{exp.title}</h3>
+						<p class="date">{exp.date}</p>
+					</div>
+					<p class="company">{exp.company}</p>
 				</div>
-				<p class="company">N-Compass TV</p>
-			</div>
-			<div class="experience-box">
-				<div class="experience-header-row">
-					<h3>Academy Technology Salesforce</h3>
-					<p class="date">February 2026 - April 2026</p>
-				</div>
-				<p class="company">Accenture</p>
-			</div>
+			))}
 		</div>
 	</div>
 </section>

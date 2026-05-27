@@ -1,5 +1,7 @@
 ---
-// No imports needed - all data is hardcoded below
+import contactData from '../data/contact.json'
+
+const { email, resumeLink } = contactData
 ---
 
 <section id="contact" class="contact-section">
@@ -27,14 +29,14 @@
 							<i class="fa-solid fa-envelope"></i>
 							<div class="contact-details">
 								<span class="contact-label">Email</span>
-								<span class="contact-value">sabidoangel.uc@gmail.com</span>
+								<span class="contact-value">{email}</span>
 							</div>
 						</div>
 						<div class="contact-item">
 							<i class="fa-solid fa-file-lines"></i>
 							<div class="contact-details">
 								<span class="contact-label">Resume</span>
-								<a href="/resume.pdf" target="_blank" rel="noopener noreferrer" class="contact-value contact-link">View My Resume</a>
+								<a href={resumeLink} target="_blank" rel="noopener noreferrer" class="contact-value contact-link">View My Resume</a>
 							</div>
 						</div>
 					</div>

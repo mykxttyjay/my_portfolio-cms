@@ -1,0 +1,37 @@
+[
+  {
+    "title": "Patio Time Bar",
+    "description": "A vibrant and inviting patio bar website featuring outdoor dining experiences. Showcases menu items, ambiance, and booking options with a modern, responsive design.",
+    "link": "https://phase-2-patiotimebar.vercel.app/",
+    "icon": "utensils",
+    "tags": ["Astro", "React", "Tailwind CSS"]
+  },
+  {
+    "title": "Dealer Template",
+    "description": "A professional automotive dealer website template with sleek design and inventory showcase. Features vehicle listings, search functionality, and contact forms for car dealerships.",
+    "link": "https://phase-3-dealertemplate.vercel.app/",
+    "icon": "car",
+    "tags": ["JavaScript", "HTML", "CSS"]
+  },
+  {
+    "title": "Electrician Template",
+    "description": "A modern electrician service website template designed for electrical contractors. Highlights services, emergency contact, and professional certifications with a clean layout.",
+    "link": "https://electrician-templatev2.vercel.app/",
+    "icon": "bolt",
+    "tags": ["HTML", "CSS", "JavaScript"]
+  },
+  {
+    "title": "HVAC Template",
+    "description": "A professional HVAC service website template with modern design and responsive layout. Built for heating and cooling businesses with service details and appointment booking.",
+    "link": "https://hvac-template-rbep.vercel.app/",
+    "icon": "wind",
+    "tags": ["HTML", "CSS", "JavaScript"]
+  },
+  {
+    "title": "Plumbing Template",
+    "description": "A clean and professional plumbing service website template featuring service showcases, emergency contact options, and customer testimonials for plumbing businesses.",
+    "link": "https://plumbing-template-henna.vercel.app/",
+    "icon": "droplet",
+    "tags": ["HTML", "CSS", "JavaScript"]
+  }
+]

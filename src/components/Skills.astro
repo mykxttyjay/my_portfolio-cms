@@ -1,32 +1,11 @@
 ---
-// No imports needed - all data is hardcoded below
+import profileData from '../data/profile.json'
+import skillsData from '../data/skills.json'
 
-// Flatten all skills into individual cards with icons
-const skillIcons: Record<string, string> = {
-	'Web Development': 'fa-solid fa-code',
-	'Web Design': 'fa-solid fa-paintbrush',
-	'UI/UX Design': 'fa-solid fa-pen-nib',
-	'Graphic Design': 'fa-solid fa-palette',
-	'Quality Assurance': 'fa-solid fa-check-circle',
-	'PHP': 'fa-brands fa-php',
-	'Astro': 'fa-solid fa-rocket',
-	'Tailwind CSS': 'fa-solid fa-wind',
-	'Java': 'fa-brands fa-java'
-};
+const { skillsDescription } = profileData
 
-const coreSkillsList = "Web Development, Graphic Design, Web Design, UI/UX Design, Quality Assurance";
-const toolsList = "PHP, Astro, Tailwind CSS, Java";
-const skillsDescription = "My expertise spans across web development, design, and quality assurance. I specialize in creating user-centered digital experiences through thoughtful design and reliable development. Each project is an opportunity to blend creativity with technical precision, delivering solutions that are both functional and visually compelling.";
-
-const skills = coreSkillsList.split(',').map((s: string) => ({
-	name: s.trim(),
-	icon: skillIcons[s.trim()] || 'fa-solid fa-code'
-}));
-
-const tools = toolsList.split(',').map((s: string) => ({
-	name: s.trim(),
-	icon: skillIcons[s.trim()] || 'fa-solid fa-code'
-}));
+const coreSkills = skillsData.filter(s => s.category === 'core')
+const tools = skillsData.filter(s => s.category === 'tools')
 ---
 
 <section class="skills" id="skills">
@@ -39,7 +18,7 @@ const tools = toolsList.split(',').map((s: string) => ({
 		</div>
 		<div class="skills-right">
 			<div class="skills-container">
-				{tools.map((tool: any) => (
+				{tools.map((tool) => (
 					<div class="skill-stamp">
 						<div class="stamp-icon">
 							<i class={tool.icon}></i>
@@ -51,7 +30,7 @@ const tools = toolsList.split(',').map((s: string) => ({
 				))}
 			</div>
 			<div class="skills-list">
-				{skills.map((skill: any) => (
+				{coreSkills.map((skill) => (
 					<div class="skill-line">{skill.name}</div>
 				))}
 			</div>

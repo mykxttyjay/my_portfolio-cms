@@ -1,0 +1,14 @@
+{
+  "firstName": "Angel",
+  "lastName": "Marie Sabido",
+  "title": "Designer & Developer",
+  "intro": "Welcome to my portfolio! I'm excited to share my journey, projects, and passion for technology with you. Let's explore together what we can build together.",
+  "aboutParagraph1": "I am a dedicated Full Stack Developer with a passion for creating innovative web solutions. My journey in software development has equipped me with a diverse skill set spanning both frontend and backend technologies.",
+  "aboutParagraph2": "With experience in modern frameworks and a keen eye for design, I strive to build applications that are not only functional but also provide exceptional user experiences. I am constantly learning and adapting to new technologies to stay at the forefront of web development.",
+  "birthday": "September 30, 2003",
+  "degree": "BS in Information Technology",
+  "location": "Lapu-Lapu City, Cebu",
+  "email": "sabidoangel.uc@gmail.com",
+  "interests": "Web Development & Graphic Design",
+  "skillsDescription": "My expertise spans across web development, design, and quality assurance. I specialize in creating user-centered digital experiences through thoughtful design and reliable development. Each project is an opportunity to blend creativity with technical precision, delivering solutions that are both functional and visually compelling."
+}

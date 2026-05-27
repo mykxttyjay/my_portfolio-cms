@@ -1,5 +1,8 @@
 ---
-// No imports needed - all data is hardcoded below
+import profileData from '../data/profile.json'
+
+const { firstName, lastName, birthday, degree, location, email, interests, aboutParagraph1, aboutParagraph2 } = profileData
+const fullName = `${firstName} ${lastName}`
 ---
 
 <section class="about" id="about">
@@ -24,30 +27,30 @@
 			<!-- Profile Section -->
 			<div class="profile-section">
 				<div class="card-image">
-					<img src="https://images.unsplash.com/photo-1567484072688-2041f76a3fda?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Angel Marie Sabido" />
+					<img src="https://images.unsplash.com/photo-1567484072688-2041f76a3fda?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt={fullName} />
 				</div>
 				<div class="card-content">
-					<h3 class="card-name">Hi! It's Angel Marie Sabido</h3>
+					<h3 class="card-name">Hi! It's {fullName}</h3>
 					<div class="card-info">
 						<div class="info-row">
 							<span class="label">Birthday:</span>
-							<span class="value">September 30, 2003</span>
+							<span class="value">{birthday}</span>
 						</div>
 						<div class="info-row">
 							<span class="label">Degree:</span>
-							<span class="value">BS in Information Technology</span>
+							<span class="value">{degree}</span>
 						</div>
 						<div class="info-row">
 							<span class="label">Location:</span>
-							<span class="value">Lapu-Lapu City, Cebu</span>
+							<span class="value">{location}</span>
 						</div>
 						<div class="info-row">
 							<span class="label">Email:</span>
-							<span class="value">sabidoangel.uc@gmail.com</span>
+							<span class="value">{email}</span>
 						</div>
 						<div class="info-row">
 							<span class="label">Interests:</span>
-							<span class="value">Web Development & Graphic Design</span>
+							<span class="value">{interests}</span>
 						</div>
 					</div>
 				</div>
@@ -58,15 +61,15 @@
 				<p class="letter-greeting">About Me</p>
 				<div class="letter-body">
 					<p class="about-text">
-						I am currently pursuing a Bachelor of Science in Information Technology (BSIT). My journey in tech started with a curiosity for how things work on the web, which blossomed into a passion for clean coding and sleek interface designs. I love bridging the gap between aesthetics and functionality.
+						{aboutParagraph1}
 					</p>
 					<p class="about-text">
-						My hands-on experience across different projects has taught me the importance of collaboration, attention to detail, and continuous learning in our ever-evolving tech landscape. Driven by curiosity and a desire to make a meaningful impact, I aim to leverage my skills to support organizational goals and create innovative solutions. I am incredibly excited about the opportunities ahead and remain committed to bringing dedication and enthusiasm to every project I undertake.
+						{aboutParagraph2}
 					</p>
 				</div>
 				<div class="letter-footer">
 					<p class="letter-closing">Warmly,</p>
-					<p class="letter-signature">Angel Marie Sabido</p>
+					<p class="letter-signature">{fullName}</p>
 				</div>
 			</div>
 		</div>

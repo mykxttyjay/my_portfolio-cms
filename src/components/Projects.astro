@@ -1,5 +1,5 @@
 ---
-// No imports needed - all data is hardcoded below
+import projectsData from '../data/projects.json'
 
 // Function to generate a beautiful deterministic gradient based on a string
 function getDeterministicTheme(str: string, index: number) {
@@ -16,65 +16,30 @@ function getDeterministicTheme(str: string, index: number) {
 	return gradients[index % gradients.length];
 }
 
-const projectsData = [
-	{
-		title: "Patio Time Bar",
-		description: "A vibrant and inviting patio bar website featuring outdoor dining experiences. Showcases menu items, ambiance, and booking options with a modern, responsive design.",
-		icon: "fa-solid fa-martini-glass-citrus",
-		tags: "Astro, React, Tailwind CSS",
-		project_url: "https://phase-2-patiotimebar.vercel.app/",
-		screenshot_url: "/screenshots/patiotimebar.png"
-	},
-	{
-		title: "Dealer Template",
-		description: "A professional automotive dealer website template with sleek design and inventory showcase. Features vehicle listings, search functionality, and contact forms for car dealerships.",
-		icon: "fa-solid fa-car",
-		tags: "JavaScript, HTML, CSS",
-		project_url: "https://phase-3-dealertemplate.vercel.app/",
-		screenshot_url: "/screenshots/dealertemplate.png"
-	},
-	{
-		title: "Electrician Template",
-		description: "A modern electrician service website template designed for electrical contractors. Highlights services, emergency contact, and professional certifications with a clean layout.",
-		icon: "fa-solid fa-bolt",
-		tags: "HTML, CSS, JavaScript",
-		project_url: "https://electrician-templatev2.vercel.app/",
-		screenshot_url: "/screenshots/electrician.png"
-	},
-	{
-		title: "HVAC Template",
-		description: "A professional HVAC service website template with modern design and responsive layout. Built for heating and cooling businesses with service details and appointment booking.",
-		icon: "fa-solid fa-temperature-half",
-		tags: "HTML, CSS, JavaScript",
-		project_url: "https://hvac-template-rbep.vercel.app/",
-		screenshot_url: "/screenshots/hvac.png"
-	},
-	{
-		title: "Plumbing Template",
-		description: "A clean and professional plumbing service website template featuring service showcases, emergency contact options, and customer testimonials for plumbing businesses.",
-		icon: "fa-solid fa-wrench",
-		tags: "HTML, CSS, JavaScript",
-		project_url: "https://plumbing-template-henna.vercel.app/",
-		screenshot_url: "/screenshots/plumbing.png"
-	}
-];
+// Icon mapping
+const iconMap: Record<string, string> = {
+	'utensils': 'fa-solid fa-martini-glass-citrus',
+	'car': 'fa-solid fa-car',
+	'bolt': 'fa-solid fa-bolt',
+	'wind': 'fa-solid fa-temperature-half',
+	'droplet': 'fa-solid fa-wrench'
+}
 
 // Transform data into the format needed for display
 const projectsList = projectsData.map((project, index) => {
 	// Generate screenshot URL from the project URL using a free screenshot service
 	let screenshotUrl = "";
-	if (project.project_url) {
-		// Use Microlink API for free screenshots
-		const encodedUrl = encodeURIComponent(project.project_url);
+	if (project.link) {
+		const encodedUrl = encodeURIComponent(project.link);
 		screenshotUrl = `https://api.microlink.io/?url=${encodedUrl}&screenshot=true&meta=false&embed=screenshot.url`;
 	}
 	
 	return {
 		title: project.title,
 		description: project.description,
-		icon: project.icon || "fa-solid fa-code",
-		tags: project.tags ? project.tags.split(',').map((t: string) => t.trim()) : [],
-		project_url: project.project_url || "",
+		icon: iconMap[project.icon] || "fa-solid fa-code",
+		tags: project.tags,
+		project_url: project.link,
 		screenshot_url: screenshotUrl,
 		theme: getDeterministicTheme(project.title, index)
 	};

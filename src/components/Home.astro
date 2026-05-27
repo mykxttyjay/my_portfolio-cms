@@ -1,5 +1,7 @@
 ---
-// No imports needed - all data is hardcoded below
+import profileData from '../data/profile.json'
+
+const { firstName, title, intro } = profileData
 ---
 
 <section class="home" id="home">
@@ -74,9 +76,9 @@
 
 			<!-- Letter Contents -->
 			<div class="letter-content">
-				<h1 class="letter-title">Hello, I'm Angel</h1>
-				<div class="letter-role-capsule">Designer & Developer</div>
-				<p class="letter-description">Welcome to my portfolio! I'm excited to share my journey, projects, and passion for technology with you. Let's explore together what we can build together.</p>
+				<h1 class="letter-title">Hello, I'm {firstName}</h1>
+				<div class="letter-role-capsule">{title}</div>
+				<p class="letter-description">{intro}</p>
 			</div>
 			</div>
 		</div>
