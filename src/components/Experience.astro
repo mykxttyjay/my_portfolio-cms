@@ -14,8 +14,8 @@ import experienceData from '../data/experience.json'
 			</p>
 		</div>
 		<div class="experience-container">
-			{experienceData.map((exp) => (
-				<div class="experience-box">
+			{experienceData.map((exp, index) => (
+				<div class="experience-box" data-index={index}>
 					<div class="experience-header-row">
 						<h3>{exp.title}</h3>
 						<p class="date">{exp.date}</p>
@@ -26,6 +26,29 @@ import experienceData from '../data/experience.json'
 		</div>
 	</div>
 </section>
+
+<script>
+	const initExperienceAnimation = () => {
+		const experienceBoxes = document.querySelectorAll('.experience-box');
+		
+		const observer = new IntersectionObserver((entries) => {
+			entries.forEach(entry => {
+				if (entry.isIntersecting) {
+					entry.target.classList.add('visible');
+				} else {
+					entry.target.classList.remove('visible');
+				}
+			});
+		}, { threshold: 0.2 });
+
+		experienceBoxes.forEach(box => {
+			observer.observe(box);
+		});
+	};
+
+	initExperienceAnimation();
+	document.addEventListener('astro:page-load', initExperienceAnimation);
+</script>
 
 <style>
 	.experience {
@@ -144,7 +167,20 @@ import experienceData from '../data/experience.json'
 		max-width: 100%;
 		aspect-ratio: auto;
 		overflow: visible;
+		opacity: 0;
+		transform: translateY(30px);
+		transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
 	}
+
+	.experience-box.visible {
+		opacity: 1;
+		transform: translateY(0);
+	}
+
+	.experience-box:nth-child(1) { transition-delay: 0.1s; }
+	.experience-box:nth-child(2) { transition-delay: 0.2s; }
+	.experience-box:nth-child(3) { transition-delay: 0.3s; }
+	.experience-box:nth-child(4) { transition-delay: 0.4s; }
 
 	.experience-box::before {
 		content: '';

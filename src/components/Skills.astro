@@ -18,8 +18,8 @@ const tools = skillsData.filter(s => s.category === 'tools')
 		</div>
 		<div class="skills-right">
 			<div class="skills-container">
-				{tools.map((tool) => (
-					<div class="skill-stamp">
+				{tools.map((tool, index) => (
+					<div class="skill-stamp" data-index={index}>
 						<div class="stamp-icon">
 							<i class={tool.icon}></i>
 						</div>
@@ -30,13 +30,36 @@ const tools = skillsData.filter(s => s.category === 'tools')
 				))}
 			</div>
 			<div class="skills-list">
-				{coreSkills.map((skill) => (
-					<div class="skill-line">{skill.name}</div>
+				{coreSkills.map((skill, index) => (
+					<div class="skill-line" data-index={index}>{skill.name}</div>
 				))}
 			</div>
 		</div>
 	</div>
 </section>
+
+<script>
+	const initSkillsAnimation = () => {
+		const skillLines = document.querySelectorAll('.skill-line');
+		
+		const observer = new IntersectionObserver((entries) => {
+			entries.forEach(entry => {
+				if (entry.isIntersecting) {
+					entry.target.classList.add('visible');
+				} else {
+					entry.target.classList.remove('visible');
+				}
+			});
+		}, { threshold: 0.1 });
+
+		skillLines.forEach(line => {
+			observer.observe(line);
+		});
+	};
+
+	initSkillsAnimation();
+	document.addEventListener('astro:page-load', initSkillsAnimation);
+</script>
 
 <style>
 	.skills {
@@ -136,7 +159,24 @@ const tools = skillsData.filter(s => s.category === 'tools')
 		font-style: italic;
 		width: 100%;
 		font-weight: 700;
+		opacity: 0;
+		transform: translateY(30px);
+		transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
 	}
+
+	.skill-line.visible {
+		opacity: 1;
+		transform: translateY(0);
+	}
+
+	.skill-line:nth-child(1) { transition-delay: 0.1s; }
+	.skill-line:nth-child(2) { transition-delay: 0.2s; }
+	.skill-line:nth-child(3) { transition-delay: 0.3s; }
+	.skill-line:nth-child(4) { transition-delay: 0.4s; }
+	.skill-line:nth-child(5) { transition-delay: 0.5s; }
+	.skill-line:nth-child(6) { transition-delay: 0.6s; }
+	.skill-line:nth-child(7) { transition-delay: 0.7s; }
+	.skill-line:nth-child(8) { transition-delay: 0.8s; }
 
 	.skills .heading {
 		color: #4A1215;
@@ -281,7 +321,7 @@ const tools = skillsData.filter(s => s.category === 'tools')
 	}
 
 	.skill-stamp:hover .stamp-icon {
-		transform: scale(1.15) rotate(10deg);
+		transform: scale(1.15) rotate(15deg);
 		background: linear-gradient(135deg, #A31D1D 0%, #8B1515 100%);
 		color: #FEF9E1;
 		border-color: transparent;
