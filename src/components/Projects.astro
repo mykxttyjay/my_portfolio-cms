@@ -171,8 +171,24 @@ const row2List = [...row2Base, ...row2Base, ...row2Base];
 
 		if (!projectsSection || tracks.length === 0) return;
 
-		// 1. Scroll-driven Parallax Animation
+		let ticking = false;
+		let lastScrollY = 0;
+
+		// 1. Optimized Scroll-driven Parallax Animation
 		const handleScroll = () => {
+			lastScrollY = window.scrollY;
+			
+			if (!ticking) {
+				requestAnimationFrame(() => {
+					updateParallax();
+					ticking = false;
+				});
+				ticking = true;
+			}
+		};
+
+		const updateParallax = () => {
+			// Batch all reads first
 			const sectionRect = projectsSection.getBoundingClientRect();
 			const windowHeight = window.innerHeight;
 
@@ -182,6 +198,7 @@ const row2List = [...row2Base, ...row2Base, ...row2Base];
 				const currentScroll = windowHeight - sectionRect.top;
 				const scrollPercent = Math.min(Math.max(currentScroll / totalScrollableHeight, 0), 1);
 
+				// Batch all writes together
 				tracks.forEach((track) => {
 					const directionAttr = track.parentElement?.getAttribute('data-direction');
 					const direction = parseFloat(directionAttr || '1');
@@ -198,7 +215,7 @@ const row2List = [...row2Base, ...row2Base, ...row2Base];
 
 		window.addEventListener('scroll', handleScroll, { passive: true });
 		// Trigger once initially to position them
-		handleScroll();
+		updateParallax();
 
 		// 2. Click navigation on cards
 		const cards = document.querySelectorAll('.project-mockup-card');
@@ -215,32 +232,19 @@ const row2List = [...row2Base, ...row2Base, ...row2Base];
 			});
 		});
 
-		// 3. Drag and Swipe Support
+		// 3. Optimized Drag and Swipe Support
 		tracks.forEach(track => {
 			let isDown = false;
 			let startX: number;
 			let initialTranslate = 0;
+			let currentTranslate = 0;
 
-			// Parse current translate from style transform
-			const getTranslateX = () => {
-				const style = window.getComputedStyle(track);
-				const transform = style.transform;
-				if (transform === 'none') return 0;
-				
-				// Parse matrix(1, 0, 0, 1, translateX, translateY)
-				const matrix = transform.match(/matrix\(([^,]+, ){4}([^,]+),/);
-				if (matrix && matrix[2]) {
-					return parseFloat(matrix[2]);
-				}
-				return 0;
-			};
-
-			const handleDown = (pageX: number) => {
+			const handleDown = (pageX: number, offsetLeft: number) => {
 				isDown = true;
 				track.classList.add('active');
-				startX = pageX - track.offsetLeft;
-				initialTranslate = getTranslateX();
-				track.style.transition = 'none'; // Disable transition during drag
+				startX = pageX - offsetLeft;
+				initialTranslate = currentTranslate;
+				track.style.transition = 'none';
 			};
 
 			const handleUp = () => {
@@ -250,29 +254,36 @@ const row2List = [...row2Base, ...row2Base, ...row2Base];
 				track.style.transition = 'transform 0.3s cubic-bezier(0.1, 0.8, 0.2, 1)';
 			};
 
-			const handleMove = (pageX: number) => {
+			const handleMove = (pageX: number, offsetLeft: number) => {
 				if (!isDown) return;
-				const x = pageX - track.offsetLeft;
-				const walk = (x - startX) * 1.5; // Drag sensitivity multiplier
-				track.style.transform = `translateX(${initialTranslate + walk}px)`;
+				const x = pageX - offsetLeft;
+				const walk = (x - startX) * 1.5;
+				currentTranslate = initialTranslate + walk;
+				
+				requestAnimationFrame(() => {
+					track.style.transform = `translateX(${currentTranslate}px)`;
+				});
 			};
 
 			// Mouse Events
 			track.addEventListener('mousedown', (e: MouseEvent) => {
-				handleDown(e.pageX);
+				handleDown(e.pageX, track.offsetLeft);
 			});
 
 			track.addEventListener('mouseleave', handleUp);
 			track.addEventListener('mouseup', handleUp);
 
 			track.addEventListener('mousemove', (e: MouseEvent) => {
-				handleMove(e.pageX);
+				if (isDown) {
+					e.preventDefault();
+					handleMove(e.pageX, track.offsetLeft);
+				}
 			});
 
 			// Touch Events for Mobile
 			track.addEventListener('touchstart', (e: TouchEvent) => {
 				if (e.touches[0]) {
-					handleDown(e.touches[0].pageX);
+					handleDown(e.touches[0].pageX, track.offsetLeft);
 				}
 			}, { passive: true });
 
@@ -280,7 +291,7 @@ const row2List = [...row2Base, ...row2Base, ...row2Base];
 
 			track.addEventListener('touchmove', (e: TouchEvent) => {
 				if (isDown && e.touches[0]) {
-					handleMove(e.touches[0].pageX);
+					handleMove(e.touches[0].pageX, track.offsetLeft);
 				}
 			}, { passive: true });
 		});
@@ -366,6 +377,7 @@ const row2List = [...row2Base, ...row2Base, ...row2Base];
 		will-change: transform;
 		transform: translateX(0px);
 		transition: transform 0.4s cubic-bezier(0.1, 0.8, 0.2, 1);
+		contain: layout style;
 	}
 
 	.project-mockup-card {
