@@ -1,10 +1,10 @@
-# 🌟 Personal Portfolio - Astro
+# 🌟 Personal Portfolio - Astro + EmDash CMS
 
-A modern, responsive personal portfolio website built with **Astro** featuring a vintage letter theme with elegant animations and a simple JSON-based CMS for easy content management.
+A modern, responsive personal portfolio website built with **Astro** featuring a vintage letter theme with elegant animations. Content is managed through **EmDash CMS** — a full-stack, Astro-native CMS with a visual admin panel, backed by SQLite.
 
 ## 📋 Project Overview
 
-This portfolio showcases skills, projects, and experience with a unique letter/postal theme, smooth animations, and interactive elements. All content is managed through easy-to-edit JSON files—no database required!
+This portfolio showcases skills, projects, and experience with a unique letter/postal theme, smooth animations, and interactive elements. All content is editable through the EmDash admin panel at `/_emdash/admin`, with local JSON files serving as a fallback.
 
 ## ✨ Features
 
@@ -22,13 +22,18 @@ This portfolio showcases skills, projects, and experience with a unique letter/p
 - Interactive floating sparkles
 - Responsive design for all devices
 - Custom wavy borders and postal elements
-- JSON-based CMS for easy content management
+
+### CMS Highlights
+- Visual admin panel at `/_emdash/admin`
+- Live content collections — edits appear without rebuilding
+- SQLite database (local) with JSON fallback
+- All 5 content types editable from the admin UI
 
 ## 🚀 Getting Started
 
 ### Prerequisites
 - Node.js >= 22.12.0
-- npm or yarn
+- npm
 
 ### Installation
 
@@ -36,24 +41,33 @@ This portfolio showcases skills, projects, and experience with a unique letter/p
 # Install dependencies
 npm install
 
+# Initialize the database and seed content
+npm run bootstrap
+
 # Start development server
 npm run dev
+```
 
+The admin panel is available at `http://localhost:4321/_emdash/admin`.  
+The first visit will prompt you to create an admin account.
+
+```bash
 # Build for production
 npm run build
 
-# Preview production build
-npm run preview
+# Start production server (runs bootstrap first automatically)
+npm start
 ```
 
 ## 🎨 Tech Stack
 
 - **Framework**: Astro 6.3+
+- **Adapter**: @astrojs/node (standalone server)
+- **CMS**: EmDash 0.14+ (Astro-native, SQLite)
 - **Styling**: Custom CSS with vintage letter theme
-- **Content Management**: JSON-based CMS (no database required)
 - **Icons**: Font Awesome 6.5.2
 - **Fonts**: Google Fonts (Poppins, Playfair Display, EB Garamond, Dancing Script)
-- **Deployment**: Vercel
+- **Deployment**: Any Node.js host (Vercel, Railway, Render, Code Capsules, etc.)
 
 ## 📂 Project Structure
 
@@ -71,109 +85,91 @@ my_portfolio/
 │   │   ├── Projects.astro
 │   │   ├── Ribbon.astro
 │   │   └── Skills.astro
-│   ├── data/              # JSON CMS files
-│   │   ├── profile.json   # Personal info & about
-│   │   ├── projects.json  # Portfolio projects
-│   │   ├── skills.json    # Skills & tools
-│   │   ├── experience.json # Work experience
-│   │   └── contact.json   # Contact information
+│   ├── data/              # JSON fallback files (used if DB is unavailable)
+│   │   ├── profile.json
+│   │   ├── projects.json
+│   │   ├── skills.json
+│   │   ├── experience.json
+│   │   └── contact.json
+│   ├── lib/
+│   │   └── cms.ts         # Centralized CMS loader (EmDash → JSON fallback)
+│   ├── live.config.ts     # EmDash live content collection config
 │   ├── pages/
 │   │   └── index.astro
 │   └── styles/
 │       └── global.css
+├── seed/
+│   └── seed.json          # EmDash schema + initial content
+├── scripts/
+│   └── bootstrap.mjs      # DB init + seed script
 ├── public/
 │   ├── portfolio.png
 │   ├── profile.jpg
 │   └── resume.pdf
+├── emdash-env.d.ts        # EmDash TypeScript types
 ├── astro.config.mjs
 ├── package.json
-├── CMS-GUIDE.md          # Detailed CMS editing guide
 └── README.md
 ```
 
 ## 📝 Content Management
 
-This portfolio uses a simple **JSON-based CMS** for easy content management. All content is stored in JSON files in the `src/data/` folder.
+Content is managed through the **EmDash admin panel**. After running `npm run bootstrap` and starting the dev server, go to:
 
-### Quick Edit Guide
+```
+http://localhost:4321/_emdash/admin
+```
 
-**Profile Information** (`src/data/profile.json`)
-- Name, title, intro text
-- About paragraphs
-- Personal details (birthday, degree, location, email, interests)
-- Skills description
+### Collections
 
-**Projects** (`src/data/projects.json`)
-- Add/edit/remove projects
-- Each project has: title, description, link, icon, tags
+| Collection | Fields |
+|------------|--------|
+| Profile | First/last name, title, intro, about paragraphs, birthday, degree, location, email, specialization, skills description |
+| Projects | Title, description, URL, icon, tags, display order |
+| Skills | Name, category (core/tools), Font Awesome icon, display order |
+| Experience | Job title, company, date range, display order |
+| Contact | Email, phone, GitHub, LinkedIn, resume link |
 
-**Skills** (`src/data/skills.json`)
-- Manage skills with categories (core/tools)
-- Font Awesome icons for each skill
+### How it works
 
-**Experience** (`src/data/experience.json`)
-- Work experience entries
-- Job title, company, date range
+1. Run `npm run bootstrap` once to set up the database and seed initial content
+2. Start the dev server with `npm run dev`
+3. Open `/_emdash/admin` and log in
+4. Edit any collection — changes appear live without a rebuild
 
-**Contact** (`src/data/contact.json`)
-- Email, phone, social links
-- Resume link
-
-### How to Edit
-
-1. Open any JSON file in `src/data/`
-2. Edit the values (keep valid JSON syntax)
-3. Save the file
-4. Refresh browser to see changes
-
-📖 **See `CMS-GUIDE.md` for detailed instructions, examples, and tips!**
-
-### Benefits
-
-✓ **No Database** - Just edit JSON files  
-✓ **Version Control** - Track changes with Git  
-✓ **Simple** - No complex setup or admin panel  
-✓ **Fast** - Data is bundled at build time  
-✓ **Type-Safe** - JSON structure validated during build
+The `src/data/*.json` files are kept as a fallback. If EmDash is unreachable, components automatically read from those files instead.
 
 ## 🌐 Deployment
 
-This is a static Astro site that can be deployed to any static hosting platform.
+The site now runs as a **Node.js server** (not static). It requires a persistent filesystem for the SQLite database and uploaded media.
 
-### Recommended: Vercel
-- Seamless deployment with automatic builds from GitHub
-- Excellent performance and global CDN
-- Generous free tier (100GB bandwidth/month)
-- Official Astro adapter with great support
-- Simple setup: connect repo → automatic deployments
-
-### Deploy to Vercel
+### Node.js hosts (Railway, Render, Fly.io, etc.)
 
 ```bash
-# Build the project
+npm install
 npm run build
-
-# Deploy to Vercel
-vercel deploy
+npm start          # runs bootstrap then starts the server
 ```
 
-Or connect your GitHub repository to Vercel for automatic deployments.
+Set `PERSISTENT_STORAGE_DIR` to a mounted volume path to keep the database and uploads across deploys.
+
+### Vercel / serverless
+
+Serverless platforms don't support persistent SQLite. For those, either:
+- Use a remote database adapter (Turso/libSQL, PostgreSQL) — see EmDash docs
+- Or keep the static JSON files as the sole content source and revert `output` to `"static"` in `astro.config.mjs`
 
 ## 📝 Commands Reference
 
 | Command | Action |
 |---------|--------|
 | `npm install` | Install dependencies |
+| `npm run bootstrap` | Initialize DB and seed content |
 | `npm run dev` | Start dev server at `localhost:4321` |
-| `npm run build` | Build production site to `./dist/` |
-| `npm run preview` | Preview production build locally |
-| `npm run astro` | Run Astro CLI commands |
+| `npm run build` | Build for production |
+| `npm start` | Start production server (auto-bootstraps) |
+| `npm run seed` | Re-apply seed file to the database |
 
 ## 📄 License
 
 This project is open source and available for personal use.
-
----
-
-
-
