@@ -17,69 +17,29 @@ const siteTitle = `${profileData.firstName} ${profileData.lastName} - ${profileD
 const siteDescription = `${profileData.firstName} ${profileData.lastName} is a ${profileData.title} specializing in ${profileData.specialization}. Explore my portfolio showcasing web development projects, design work, and technical expertise in creating user-centered digital experiences.`;
 const siteKeywords = 'web developer, graphic designer, portfolio, web development, UI/UX design, frontend developer, Lapu-Lapu City, Cebu, Philippines, IT graduate';
 const canonicalURL = 'https://angelmariesabido.vercel.app';
+const ogImageURL = `${canonicalURL}/portfolio.png`;
 ---
 
 <html lang="en">
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="generator" content={Astro.generator} />
 		
 		<!-- Primary SEO Meta Tags -->
 		<title>{siteTitle}</title>
-		<meta name="title" content={siteTitle} />
 		<meta name="description" content={siteDescription} />
 		<meta name="keywords" content={siteKeywords} />
 		<meta name="author" content={`${profileData.firstName} ${profileData.lastName}`} />
-		<meta name="robots" content="index, follow" />
+		<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+		<meta name="googlebot" content="index, follow" />
 		<link rel="canonical" href={canonicalURL} />
 		
 		<!-- Favicon -->
 		<link rel="icon" type="image/png" href="/portfolio.png" />
 		<link rel="apple-touch-icon" href="/portfolio.png" />
-		
-		<!-- Open Graph / Facebook -->
-		<meta property="og:type" content="website" />
-		<meta property="og:url" content={canonicalURL} />
-		<meta property="og:title" content={siteTitle} />
-		<meta property="og:description" content={siteDescription} />
-		<meta property="og:image" content={`${canonicalURL}/portfolio.png`} />
-		<meta property="og:locale" content="en_US" />
-		<meta property="og:site_name" content={`${profileData.firstName} ${profileData.lastName} Portfolio`} />
-		
-		<!-- Twitter Card -->
-		<meta name="twitter:card" content="summary_large_image" />
-		<meta name="twitter:url" content={canonicalURL} />
-		<meta name="twitter:title" content={siteTitle} />
-		<meta name="twitter:description" content={siteDescription} />
-		<meta name="twitter:image" content={`${canonicalURL}/portfolio.png`} />
-		
-		<!-- Structured Data (JSON-LD) -->
-		<script type="application/ld+json" set:html={JSON.stringify({
-			"@context": "https://schema.org",
-			"@type": "Person",
-			"name": `${profileData.firstName} ${profileData.lastName}`,
-			"jobTitle": profileData.title,
-			"description": siteDescription,
-			"url": canonicalURL,
-			"email": profileData.email,
-			"address": {
-				"@type": "PostalAddress",
-				"addressLocality": "Lapu-Lapu City",
-				"addressRegion": "Cebu",
-				"addressCountry": "Philippines"
-			},
-			"alumniOf": {
-				"@type": "EducationalOrganization",
-				"name": "University of Cebu"
-			},
-			"knowsAbout": ["Web Development", "Graphic Design", "UI/UX Design", "Frontend Development"],
-			"sameAs": [
-				"https://linkedin.com/in/gelmarie",
-				"https://github.com/mykxttyjay",
-				"https://instagram.com/gelmarieee"
-			]
-		})} />
+		<meta name="theme-color" content="#8F1D21" />
 		
 		<!-- Fonts -->
 		<link rel="preconnect" href="https://fonts.googleapis.com" />

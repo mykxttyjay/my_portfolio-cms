@@ -58,6 +58,8 @@
 .fa-php::before { content: "\f457"; }
 .fa-rocket::before { content: "\f135"; }
 .fa-java::before { content: "\f4e4"; }
+.fa-wind::before { content: "\f72e"; }
+.fa-check-circle::before { content: "\f058"; }
 
 @tailwind base;
 @tailwind components;
