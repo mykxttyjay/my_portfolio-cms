@@ -5,6 +5,28 @@ const { email, resumeLink } = contactData
 ---
 
 <section id="contact" class="contact-section">
+	<!-- Sparkles matching Home section -->
+	<div class="sparkles-container">
+		<div class="sparkle sparkle-1">
+			<svg viewBox="0 0 24 24"><path d="M12,2 L15,9 L22,12 L15,15 L12,22 L9,15 L2,12 L9,9 Z" /></svg>
+		</div>
+		<div class="sparkle sparkle-2">
+			<svg viewBox="0 0 24 24"><path d="M12,2 L14,10 L22,12 L14,14 L12,22 L10,14 L2,12 L10,10 Z" /></svg>
+		</div>
+		<div class="sparkle sparkle-3">
+			<svg viewBox="0 0 24 24"><path d="M12,2 L15,9 L22,12 L15,15 L12,22 L9,15 L2,12 L9,9 Z" /></svg>
+		</div>
+		<div class="sparkle sparkle-4">
+			<svg viewBox="0 0 24 24"><path d="M12,2 L14,10 L22,12 L14,14 L12,22 L10,14 L2,12 L10,10 Z" /></svg>
+		</div>
+		<div class="sparkle sparkle-5">
+			<svg viewBox="0 0 24 24"><path d="M12,2 L15,9 L22,12 L15,15 L12,22 L9,15 L2,12 L9,9 Z" /></svg>
+		</div>
+		<div class="sparkle sparkle-6">
+			<svg viewBox="0 0 24 24"><path d="M12,2 L14,10 L22,12 L14,14 L12,22 L10,14 L2,12 L10,10 Z" /></svg>
+		</div>
+	</div>
+
 	<div class="contact-wrapper">
 		<div class="envelope-container">
 			<div class="envelope-back-panel">
@@ -17,6 +39,9 @@ const { email, resumeLink } = contactData
 				<svg viewBox="0 0 650 181" preserveAspectRatio="none">
 					<path d="M 5,180 L 325,5 L 645,180 Z" fill="#EADFCB" stroke="#4A1215" stroke-width="4.5" stroke-linejoin="round" />
 				</svg>
+				<div class="thank-you-message">
+					<p>Thank You!</p>
+				</div>
 			</div>
 
 			<div class="contact-card-wrapper">
@@ -137,6 +162,138 @@ const { email, resumeLink } = contactData
 		z-index: 1;
 	}
 
+	.sparkles-container {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		pointer-events: none;
+		z-index: 12;
+		overflow: hidden;
+	}
+
+	.sparkle {
+		position: absolute;
+		opacity: 0.85;
+		color: #FFF2D4;
+		filter: drop-shadow(0 0 8px rgba(255, 242, 212, 0.8));
+		pointer-events: none;
+		transform-origin: center;
+	}
+
+	.sparkle svg {
+		width: 100%;
+		height: 100%;
+		fill: currentColor;
+		display: block;
+		transform-origin: center;
+	}
+
+	.sparkle-1 {
+		top: 15%;
+		left: 10%;
+		width: 28px;
+		height: 28px;
+	}
+	.sparkle-1 svg {
+		animation: twinkle-1 4s ease-in-out infinite;
+	}
+
+	.sparkle-2 {
+		top: 25%;
+		right: 12%;
+		width: 22px;
+		height: 22px;
+	}
+	.sparkle-2 svg {
+		animation: twinkle-2 3.5s ease-in-out infinite;
+	}
+
+	.sparkle-3 {
+		top: 45%;
+		left: 14%;
+		width: 18px;
+		height: 18px;
+	}
+	.sparkle-3 svg {
+		animation: twinkle-3 5s ease-in-out infinite;
+	}
+
+	.sparkle-4 {
+		top: 55%;
+		right: 8%;
+		width: 32px;
+		height: 32px;
+	}
+	.sparkle-4 svg {
+		animation: twinkle-4 4.5s ease-in-out infinite;
+	}
+
+	.sparkle-5 {
+		top: 70%;
+		left: 8%;
+		width: 24px;
+		height: 24px;
+	}
+	.sparkle-5 svg {
+		animation: twinkle-1 3.8s ease-in-out infinite;
+	}
+
+	.sparkle-6 {
+		top: 75%;
+		right: 15%;
+		width: 20px;
+		height: 20px;
+	}
+	.sparkle-6 svg {
+		animation: twinkle-2 4.2s ease-in-out infinite;
+	}
+
+	@keyframes twinkle-1 {
+		0%, 100% {
+			transform: scale(0.6) translateY(0) rotate(0deg);
+			opacity: 0.4;
+		}
+		50% {
+			transform: scale(1.1) translateY(-15px) rotate(180deg);
+			opacity: 1;
+		}
+	}
+
+	@keyframes twinkle-2 {
+		0%, 100% {
+			transform: scale(0.8) translateY(0) rotate(0deg);
+			opacity: 0.5;
+		}
+		50% {
+			transform: scale(1.2) translateY(-25px) rotate(-90deg);
+			opacity: 1;
+		}
+	}
+
+	@keyframes twinkle-3 {
+		0%, 100% {
+			transform: scale(0.5) translateY(0) rotate(0deg);
+			opacity: 0.3;
+		}
+		50% {
+			transform: scale(1) translateY(-10px) rotate(120deg);
+			opacity: 0.9;
+		}
+	}
+
+	@keyframes twinkle-4 {
+		0%, 100% {
+			transform: scale(0.7) translateY(0) rotate(0deg);
+			opacity: 0.5;
+		}
+		50% {
+			transform: scale(1.3) translateY(-20px) rotate(45deg);
+			opacity: 1;
+		}
+	}
+
 	.contact-wrapper {
 		width: 100%;
 		margin: 0 auto;
@@ -191,6 +348,33 @@ const { email, resumeLink } = contactData
 		width: 100%;
 		height: 100%;
 		filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.15));
+	}
+
+	.thank-you-message {
+		position: absolute;
+		top: 65%;
+		left: 50%;
+		transform: translate(-50%, -50%) rotateX(180deg);
+		z-index: 10;
+		pointer-events: none;
+		opacity: 0;
+		transition: opacity 0.4s ease;
+	}
+
+	.contact-section.scroll-connect .thank-you-message {
+		opacity: 1;
+		transition: opacity 0.6s ease 0.5s;
+	}
+
+	.thank-you-message p {
+		font-family: 'Playfair Display', Georgia, serif;
+		font-size: 70px;
+		font-weight: 700;
+		font-style: italic;
+		color: #4A1215;
+		margin: 0;
+		text-shadow: 1px 1px 2px rgba(74, 18, 21, 0.1);
+		white-space: nowrap;
 	}
 
 	.envelope-body {
@@ -378,7 +562,7 @@ const { email, resumeLink } = contactData
 
 	.resume-button {
 		display: inline-block;
-		color: #8b7355;
+		color: #4A1215;
 		font-family: 'Poppins', sans-serif;
 		font-size: 1.1rem;
 		font-weight: 600;
@@ -388,13 +572,24 @@ const { email, resumeLink } = contactData
 	}
 
 	.resume-button:hover {
-		color: #4A1215;
+		color: #8b7355;
 		text-decoration: underline;
 	}
 
 	@media (max-width: 768px) {
 		.contact-section {
 			padding: 2rem 1rem;
+		}
+
+		.sparkle-1 { left: 4%; top: 10%; width: 18px; height: 18px; }
+		.sparkle-2 { right: 4%; top: 20%; width: 14px; height: 14px; }
+		.sparkle-3 { left: 3%; top: 40%; width: 12px; height: 12px; }
+		.sparkle-4 { right: 3%; top: 50%; width: 20px; height: 20px; }
+		.sparkle-5 { left: 5%; top: 68%; width: 16px; height: 16px; }
+		.sparkle-6 { right: 5%; top: 78%; width: 14px; height: 14px; }
+
+		.thank-you-message p {
+			font-size: 2rem;
 		}
 
 		.contact-card {
@@ -443,6 +638,10 @@ const { email, resumeLink } = contactData
 		.wax-seal {
 			width: 70px;
 			height: 70px;
+		}
+
+		.thank-you-message p {
+			font-size: 1.5rem;
 		}
 
 		.contact-title {
