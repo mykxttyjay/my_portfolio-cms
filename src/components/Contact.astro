@@ -36,7 +36,7 @@ const { email, resumeLink } = contactData
 							<i class="fa-solid fa-file-lines"></i>
 							<div class="contact-details">
 								<span class="contact-label">Resume</span>
-								<a href={resumeLink} target="_blank" rel="noopener noreferrer" class="contact-value contact-link">View My Resume</a>
+								<a href={resumeLink} target="_blank" rel="noopener noreferrer" class="resume-button">View My Resume</a>
 							</div>
 						</div>
 					</div>
@@ -201,6 +201,7 @@ const { email, resumeLink } = contactData
 		height: 55%;
 		z-index: 15;
 		filter: drop-shadow(0 10px 25px rgba(0, 0, 0, 0.3));
+		pointer-events: none;
 	}
 
 	.envelope-front-svg {
@@ -209,6 +210,7 @@ const { email, resumeLink } = contactData
 		left: 0;
 		width: 100%;
 		height: 100%;
+		pointer-events: none;
 	}
 
 	.wax-seal {
@@ -220,6 +222,7 @@ const { email, resumeLink } = contactData
 		transform: translate(-50%, -50%);
 		filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.35));
 		z-index: 25;
+		pointer-events: none;
 	}
 
 	.wax-seal-svg {
@@ -371,6 +374,22 @@ const { email, resumeLink } = contactData
 		color: #4A1215;
 		text-decoration: underline;
 		transform: translateX(4px);
+	}
+
+	.resume-button {
+		display: inline-block;
+		color: #8b7355;
+		font-family: 'Poppins', sans-serif;
+		font-size: 1.1rem;
+		font-weight: 600;
+		text-decoration: none;
+		transition: color 0.3s ease;
+		cursor: pointer;
+	}
+
+	.resume-button:hover {
+		color: #4A1215;
+		text-decoration: underline;
 	}
 
 	@media (max-width: 768px) {
