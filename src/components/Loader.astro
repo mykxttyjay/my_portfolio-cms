@@ -193,8 +193,8 @@
 ========================= */
 window.addEventListener('load', () => {
 	const loader = document.getElementById('loader');
-	const letter = document.querySelector('.letter');
-	const envelopeLoader = document.querySelector('.envelope-loader');
+	const letter = document.querySelector('.letter') as HTMLElement;
+	const envelopeLoader = document.querySelector('.envelope-loader') as HTMLElement;
 
 	// wait for animation + progress bar to complete
 	setTimeout(() => {
