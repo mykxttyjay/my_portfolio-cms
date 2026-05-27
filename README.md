@@ -1,10 +1,10 @@
 # 🌟 Personal Portfolio - Astro
 
-A modern, responsive personal portfolio website built with **Astro** featuring a vintage letter theme with elegant animations.
+A modern, responsive personal portfolio website built with **Astro** featuring a vintage letter theme with elegant animations and a simple JSON-based CMS for easy content management.
 
 ## 📋 Project Overview
 
-This portfolio showcases my skills, projects, and experience as an IT student and aspiring web developer. The site features a unique letter/postal theme with smooth animations and interactive elements.
+This portfolio showcases skills, projects, and experience with a unique letter/postal theme, smooth animations, and interactive elements. All content is managed through easy-to-edit JSON files—no database required!
 
 ## ✨ Features
 
@@ -22,6 +22,7 @@ This portfolio showcases my skills, projects, and experience as an IT student an
 - Interactive floating sparkles
 - Responsive design for all devices
 - Custom wavy borders and postal elements
+- JSON-based CMS for easy content management
 
 ## 🚀 Getting Started
 
@@ -49,6 +50,7 @@ npm run preview
 
 - **Framework**: Astro 6.3+
 - **Styling**: Custom CSS with vintage letter theme
+- **Content Management**: JSON-based CMS (no database required)
 - **Icons**: Font Awesome 6.5.2
 - **Fonts**: Google Fonts (Poppins, Playfair Display, EB Garamond, Dancing Script)
 - **Deployment**: Vercel
@@ -62,39 +64,77 @@ my_portfolio/
 │   │   ├── About.astro
 │   │   ├── Contact.astro
 │   │   ├── Divider.astro
-│   │   ├── Education.astro
 │   │   ├── Experience.astro
 │   │   ├── Footer.astro
-│   │   ├── Header.astro
 │   │   ├── Home.astro
 │   │   ├── Loader.astro
 │   │   ├── Projects.astro
 │   │   ├── Ribbon.astro
 │   │   └── Skills.astro
+│   ├── data/              # JSON CMS files
+│   │   ├── profile.json   # Personal info & about
+│   │   ├── projects.json  # Portfolio projects
+│   │   ├── skills.json    # Skills & tools
+│   │   ├── experience.json # Work experience
+│   │   └── contact.json   # Contact information
 │   ├── pages/
 │   │   └── index.astro
 │   └── styles/
 │       └── global.css
 ├── public/
 │   ├── portfolio.png
+│   ├── profile.jpg
 │   └── resume.pdf
 ├── astro.config.mjs
 ├── package.json
+├── CMS-GUIDE.md          # Detailed CMS editing guide
 └── README.md
 ```
 
 ## 📝 Content Management
 
-All content is hardcoded directly in the component files for simplicity:
+This portfolio uses a simple **JSON-based CMS** for easy content management. All content is stored in JSON files in the `src/data/` folder.
 
-- **Home** (`src/components/Home.astro`) - Name, role, intro text
-- **About** (`src/components/About.astro`) - Profile info, about paragraphs
-- **Skills** (`src/components/Skills.astro`) - Skills list and description
-- **Projects** (`src/components/Projects.astro`) - Project details and links
-- **Experience** (`src/components/Experience.astro`) - Work experience
-- **Contact** (`src/components/Contact.astro`) - Email and resume link
+### Quick Edit Guide
 
-To update content, simply edit the respective component file.
+**Profile Information** (`src/data/profile.json`)
+- Name, title, intro text
+- About paragraphs
+- Personal details (birthday, degree, location, email, interests)
+- Skills description
+
+**Projects** (`src/data/projects.json`)
+- Add/edit/remove projects
+- Each project has: title, description, link, icon, tags
+
+**Skills** (`src/data/skills.json`)
+- Manage skills with categories (core/tools)
+- Font Awesome icons for each skill
+
+**Experience** (`src/data/experience.json`)
+- Work experience entries
+- Job title, company, date range
+
+**Contact** (`src/data/contact.json`)
+- Email, phone, social links
+- Resume link
+
+### How to Edit
+
+1. Open any JSON file in `src/data/`
+2. Edit the values (keep valid JSON syntax)
+3. Save the file
+4. Refresh browser to see changes
+
+📖 **See `CMS-GUIDE.md` for detailed instructions, examples, and tips!**
+
+### Benefits
+
+✓ **No Database** - Just edit JSON files  
+✓ **Version Control** - Track changes with Git  
+✓ **Simple** - No complex setup or admin panel  
+✓ **Fast** - Data is bundled at build time  
+✓ **Type-Safe** - JSON structure validated during build
 
 ## 🌐 Deployment
 
@@ -106,12 +146,6 @@ This is a static Astro site that can be deployed to any static hosting platform.
 - Generous free tier (100GB bandwidth/month)
 - Official Astro adapter with great support
 - Simple setup: connect repo → automatic deployments
-
-### Other Options
-- **Netlify**: Similar to Vercel with drag-and-drop deployment
-- **Cloudflare Pages**: Fast global CDN with unlimited bandwidth
-- **GitHub Pages**: Free hosting for public repositories
-- **Render**: Simple deployment with automatic SSL
 
 ### Deploy to Vercel
 
