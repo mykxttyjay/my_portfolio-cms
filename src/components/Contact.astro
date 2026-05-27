@@ -46,7 +46,7 @@ const { email, resumeLink } = contactData
 
 			<div class="contact-card-wrapper">
 				<div class="contact-card">
-					<h2 class="contact-title">Let's Connect</h2>
+					<h2 class="contact-title">Let's Connect!</h2>
 					<p class="contact-subtitle">I'd love to hear from you! Feel free to reach out via email or check out my resume.</p>
 					
 					<div class="contact-info">
@@ -54,7 +54,7 @@ const { email, resumeLink } = contactData
 							<i class="fa-solid fa-envelope"></i>
 							<div class="contact-details">
 								<span class="contact-label">Email</span>
-								<span class="contact-value">{email}</span>
+								<a href={`mailto:${email}`} class="contact-value contact-link">{email}</a>
 							</div>
 						</div>
 						<div class="contact-item">
@@ -541,7 +541,20 @@ const { email, resumeLink } = contactData
 	.contact-value {
 		font-family: 'Poppins', sans-serif;
 		font-size: 1.1rem;
-		color: #2c2c2c;
+		color: #4A1215;
+	}
+
+	.contact-value.contact-link {
+		color: #4A1215;
+		text-decoration: none;
+		transition: color 0.3s ease;
+		cursor: pointer;
+		font-weight: 600;
+	}
+
+	.contact-value.contact-link:hover {
+		color: #8b7355;
+		text-decoration: underline;
 	}
 
 	.contact-link {
