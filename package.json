@@ -11,7 +11,6 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
-    "preview": "astro preview",
     "start": "node ./dist/server/entry.mjs",
     "prestart": "npm run bootstrap",
     "bootstrap": "node scripts/bootstrap.mjs",
