@@ -1,7 +1,13 @@
 import { defineConfig } from 'astro/config';
 import node from '@astrojs/node';
 import react from '@astrojs/react';
-import emdash from 'emdash/astro';
+import path from 'node:path';
+import emdash, { local } from 'emdash/astro';
+import { sqlite } from 'emdash/db';
+
+const storageDir = process.env.PERSISTENT_STORAGE_DIR;
+const dbPath = storageDir ? path.join(storageDir, 'data.db') : './data.db';
+const uploadsDir = storageDir ? path.join(storageDir, 'uploads') : './uploads';
 
 export default defineConfig({
   output: 'server',
@@ -12,5 +18,14 @@ export default defineConfig({
     port: Number(process.env.PORT) || 3000
   },
 
-  integrations: [react(), emdash()]
+  integrations: [
+    react(),
+    emdash({
+      database: sqlite({ url: `file:${dbPath}` }),
+      storage: local({
+        directory: uploadsDir,
+        baseUrl: '/_emdash/api/media/file'
+      })
+    })
+  ]
 });
