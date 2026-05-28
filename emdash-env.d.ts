@@ -5,14 +5,30 @@
 
 import type { ContentBylineCredit } from "emdash";
 
+export interface AboutMe {
+  id: string;
+  slug: string | null;
+  status: string;
+  photo?: { id: string; src?: string; alt?: string; width?: number; height?: number; provider?: string; previewUrl?: string; meta?: Record<string, unknown> };
+  photo_alt?: string;
+  about_paragraph_1?: string;
+  about_paragraph_2?: string;
+  birthday?: string;
+  degree?: string;
+  location?: string;
+  email?: string;
+  specialization?: string;
+  createdAt: Date;
+  updatedAt: Date;
+  publishedAt: Date | null;
+  bylines?: ContentBylineCredit[];
+}
+
 export interface Contact {
   id: string;
   slug: string | null;
   status: string;
   email?: string;
-  phone?: string;
-  github?: string;
-  linkedin?: string;
   resume_link?: string;
   createdAt: Date;
   updatedAt: Date;
@@ -34,7 +50,7 @@ export interface Experience {
   bylines?: ContentBylineCredit[];
 }
 
-export interface Profile {
+export interface Home {
   id: string;
   slug: string | null;
   status: string;
@@ -42,14 +58,6 @@ export interface Profile {
   last_name: string;
   title: string;
   intro?: string;
-  about_paragraph_1?: string;
-  about_paragraph_2?: string;
-  birthday?: string;
-  degree?: string;
-  location?: string;
-  email?: string;
-  specialization?: string;
-  skills_description?: string;
   createdAt: Date;
   updatedAt: Date;
   publishedAt: Date | null;
@@ -88,9 +96,10 @@ export interface Skill {
 
 declare module "emdash" {
   interface EmDashCollections {
+    about_me: AboutMe;
     contact: Contact;
     experience: Experience;
-    profile: Profile;
+    home: Home;
     projects: Project;
     skills: Skill;
   }

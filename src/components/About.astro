@@ -1,9 +1,12 @@
 ---
-import { getProfile } from '../lib/cms'
+import { getHome, getAboutMe } from '../lib/cms'
 
-const profileData = await getProfile()
-const { firstName, lastName, birthday, degree, location, email, specialization, aboutParagraph1, aboutParagraph2 } = profileData
+const homeData = await getHome()
+const aboutData = await getAboutMe()
+const { firstName, lastName } = homeData
+const { photo, photoAlt, birthday, degree, location, email, specialization, aboutParagraph1, aboutParagraph2 } = aboutData
 const fullName = `${firstName} ${lastName}`
+const photoAltText = photoAlt || fullName
 ---
 
 <section class="about" id="about">
@@ -28,7 +31,7 @@ const fullName = `${firstName} ${lastName}`
 			<!-- Profile Section -->
 			<div class="profile-section">
 				<div class="card-image">
-					<img src="/profile.jpg" alt={fullName} />
+					<img src={photo} alt={photoAltText} />
 				</div>
 				<div class="card-content">
 					<h3 class="card-name">Hi! It's {fullName}</h3>

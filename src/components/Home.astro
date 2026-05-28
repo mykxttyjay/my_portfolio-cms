@@ -1,8 +1,8 @@
 ---
-import { getProfile } from '../lib/cms'
+import { getHome } from '../lib/cms'
 
-const profileData = await getProfile()
-const { firstName, title, intro } = profileData
+const homeData = await getHome()
+const { firstName, title, intro } = homeData
 ---
 
 <section class="home" id="home">

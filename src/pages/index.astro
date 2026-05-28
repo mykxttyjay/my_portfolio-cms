@@ -11,11 +11,12 @@ import Ribbon from '../components/Ribbon.astro';
 import Contact from '../components/Contact.astro';
 import Loader from '../components/Loader.astro';
 import Footer from '../components/Footer.astro';
-import { getProfile } from '../lib/cms';
+import { getHome, getAboutMe } from '../lib/cms';
 
-const profileData = await getProfile();
-const siteTitle = `${profileData.firstName} ${profileData.lastName} - ${profileData.title} Portfolio`;
-const siteDescription = `${profileData.firstName} ${profileData.lastName} is a ${profileData.title} specializing in ${profileData.specialization}. Explore my portfolio showcasing web development projects, design work, and technical expertise in creating user-centered digital experiences.`;
+const homeData = await getHome();
+const aboutData = await getAboutMe();
+const siteTitle = `${homeData.firstName} ${homeData.lastName} - ${homeData.title} Portfolio`;
+const siteDescription = `${homeData.firstName} ${homeData.lastName} is a ${homeData.title} specializing in ${aboutData.specialization}. Explore my portfolio showcasing web development projects, design work, and technical expertise in creating user-centered digital experiences.`;
 const siteKeywords = 'web developer, graphic designer, portfolio, web development, UI/UX design, frontend developer, Lapu-Lapu City, Cebu, Philippines, IT graduate';
 const canonicalURL = 'https://angelmariesabido.vercel.app';
 const ogImageURL = `${canonicalURL}/portfolio.png`;
@@ -32,7 +33,7 @@ const ogImageURL = `${canonicalURL}/portfolio.png`;
 		<title>{siteTitle}</title>
 		<meta name="description" content={siteDescription} />
 		<meta name="keywords" content={siteKeywords} />
-		<meta name="author" content={`${profileData.firstName} ${profileData.lastName}`} />
+		<meta name="author" content={`${homeData.firstName} ${homeData.lastName}`} />
 		<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
 		<meta name="googlebot" content="index, follow" />
 		<link rel="canonical" href={canonicalURL} />

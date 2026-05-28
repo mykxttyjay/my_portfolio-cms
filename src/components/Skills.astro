@@ -1,9 +1,7 @@
 ---
-import { getProfile, getSkills } from '../lib/cms'
+import { getSkills } from '../lib/cms'
 
-const profileData = await getProfile()
 const skillsData = await getSkills()
-const { skillsDescription } = profileData
 
 const coreSkills = skillsData.filter(s => s.category === 'core')
 const tools = skillsData.filter(s => s.category === 'tools')
@@ -14,7 +12,7 @@ const tools = skillsData.filter(s => s.category === 'tools')
 		<div class="skills-header">
 			<h2 class="heading"><span>Skills</span></h2>
 			<p class="skills-description">
-				{skillsDescription}
+				My expertise spans across web development, design, and quality assurance. I specialize in creating user-centered digital experiences through thoughtful design and reliable development. Each project is an opportunity to blend creativity with technical precision, delivering solutions that are both functional and visually compelling.
 			</p>
 		</div>
 		<div class="skills-right">

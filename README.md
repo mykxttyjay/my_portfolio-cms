@@ -85,14 +85,8 @@ my_portfolio/
 │   │   ├── Projects.astro
 │   │   ├── Ribbon.astro
 │   │   └── Skills.astro
-│   ├── data/              # JSON fallback files (used if DB is unavailable)
-│   │   ├── profile.json
-│   │   ├── projects.json
-│   │   ├── skills.json
-│   │   ├── experience.json
-│   │   └── contact.json
 │   ├── lib/
-│   │   └── cms.ts         # Centralized CMS loader (EmDash → JSON fallback)
+│   │   └── cms.ts         # Centralized CMS loader (EmDash → seed.json fallback)
 │   ├── live.config.ts     # EmDash live content collection config
 │   ├── pages/
 │   │   └── index.astro
@@ -137,7 +131,7 @@ http://localhost:4321/_emdash/admin
 3. Open `/_emdash/admin` and log in
 4. Edit any collection — changes appear live without a rebuild
 
-The `src/data/*.json` files are kept as a fallback. If EmDash is unreachable, components automatically read from those files instead.
+The `seed/seed.json` file is the single source of truth for both schema and default content. If EmDash is unreachable, components automatically read the seeded values from it instead.
 
 ## 🌐 Deployment
 
