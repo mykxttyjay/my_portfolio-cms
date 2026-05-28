@@ -19,8 +19,10 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@astrojs/cloudflare": "^13.5.5",
     "@astrojs/node": "^10.1.1",
     "@astrojs/react": "^5.0.5",
+    "@emdash-cms/cloudflare": "^0.14.0",
     "@fontsource/dancing-script": "^5.2.8",
     "astro": "^6.3.7",
     "better-sqlite3": "^12.10.0",
