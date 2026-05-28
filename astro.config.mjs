@@ -21,6 +21,7 @@ export default defineConfig({
   integrations: [
     react(),
     emdash({
+      siteUrl: process.env.SITE_URL,
       database: sqlite({ url: `file:${dbPath}` }),
       storage: local({
         directory: uploadsDir,
