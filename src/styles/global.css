@@ -61,10 +61,6 @@
 .fa-wind::before { content: "\f72e"; }
 .fa-check-circle::before { content: "\f058"; }
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
 :root {
 	--primary: #a288a6;
 	--secondary: #bb9bb0;

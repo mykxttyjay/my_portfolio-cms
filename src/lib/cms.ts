@@ -100,14 +100,22 @@ function mapHome(data: Record<string, unknown>): Home {
 }
 
 const DEFAULT_PHOTO = '/profile.jpg';
+const LOCAL_MEDIA_BASE_URL = '/_emdash/api/media/file';
 
 function extractPhotoSrc(value: unknown): string {
   if (typeof value === 'string' && value.length > 0) return value;
   if (value && typeof value === 'object') {
     const obj = value as Record<string, unknown>;
     if (typeof obj.src === 'string' && obj.src.length > 0) return obj.src;
+    if (typeof obj.url === 'string' && obj.url.length > 0) return obj.url;
     if (typeof obj.previewUrl === 'string' && obj.previewUrl.length > 0)
       return obj.previewUrl;
+    const meta = obj.meta as Record<string, unknown> | undefined;
+    const storageKey =
+      (typeof obj.storageKey === 'string' && obj.storageKey) ||
+      (meta && typeof meta.storageKey === 'string' && meta.storageKey) ||
+      undefined;
+    if (storageKey) return `${LOCAL_MEDIA_BASE_URL}/${storageKey}`;
   }
   return DEFAULT_PHOTO;
 }
