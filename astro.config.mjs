@@ -12,11 +12,5 @@ export default defineConfig({
     port: Number(process.env.PORT) || 3000
   },
 
-  integrations: [react(), emdash()],
-
-  vite: {
-    ssr: {
-      external: ['emdash']
-    }
-  }
+  integrations: [react(), emdash()]
 });
