@@ -8,8 +8,8 @@ export default defineConfig({
     mode: 'standalone'
   }),
   server: {
-    host: true,   // 👈 IMPORTANT
-    port: process.env.PORT || 3000
+    host: true,
+    port: Number(process.env.PORT) || 3000
   },
   integrations: [react()],
 });
