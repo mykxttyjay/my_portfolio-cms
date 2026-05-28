@@ -74,6 +74,8 @@ export interface Project {
   icon?: string;
   tags?: unknown;
   display_order?: number;
+  thumbnail?: { id: string; src?: string; alt?: string; width?: number; height?: number; provider?: string; previewUrl?: string; meta?: Record<string, unknown> };
+  thumbnail_alt?: string;
   createdAt: Date;
   updatedAt: Date;
   publishedAt: Date | null;

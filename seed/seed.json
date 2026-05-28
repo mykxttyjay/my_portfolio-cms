@@ -59,6 +59,8 @@
       "fields": [
         { "slug": "title", "label": "Title", "type": "string", "required": true, "searchable": true },
         { "slug": "description", "label": "Description", "type": "text", "searchable": true },
+        { "slug": "thumbnail", "label": "Thumbnail Image", "type": "image" },
+        { "slug": "thumbnail_alt", "label": "Thumbnail Alt Text", "type": "string" },
         { "slug": "link", "label": "Project URL", "type": "string" },
         { "slug": "icon", "label": "Icon (Font Awesome name)", "type": "string" },
         { "slug": "tags", "label": "Tags (JSON array)", "type": "json" },
@@ -127,7 +129,7 @@
         "status": "published",
         "data": {
           "title": "Patio Time Bar",
-          "description": "A vibrant and inviting patio bar website featuring outdoor dining experiences. Showcases menu items, ambiance, and booking options with a modern, responsive design.",
+          "description": "A vibrant patio bar website featuring outdoor dining experiences. Showcases menu, ambiance, and booking with a modern responsive design.",
           "link": "https://phase-2-patiotimebar.vercel.app/",
           "icon": "utensils",
           "tags": ["Astro", "React", "Tailwind CSS"],
@@ -140,7 +142,7 @@
         "status": "published",
         "data": {
           "title": "Dealer Template",
-          "description": "A professional automotive dealer website template with sleek design and inventory showcase. Features vehicle listings, search functionality, and contact forms for car dealerships.",
+          "description": "A professional automotive dealer website with sleek design and full inventory showcase. Features vehicle listings, advanced search, and contact forms.",
           "link": "https://phase-3-dealertemplate.vercel.app/",
           "icon": "car",
           "tags": ["JavaScript", "HTML", "CSS"],
@@ -153,7 +155,7 @@
         "status": "published",
         "data": {
           "title": "Electrician Template",
-          "description": "A modern electrician service website template designed for electrical contractors. Highlights services, emergency contact, and professional certifications with a clean layout.",
+          "description": "A modern electrician service website for electrical contractors. Highlights services, emergency contact, and certifications with a clean layout.",
           "link": "https://electrician-templatev2.vercel.app/",
           "icon": "bolt",
           "tags": ["HTML", "CSS", "JavaScript"],
@@ -166,7 +168,7 @@
         "status": "published",
         "data": {
           "title": "HVAC Template",
-          "description": "A professional HVAC service website template with modern design and responsive layout. Built for heating and cooling businesses with service details and appointment booking.",
+          "description": "A professional HVAC service website with modern design and responsive layout. Built for heating and cooling businesses with appointment booking.",
           "link": "https://hvac-template-rbep.vercel.app/",
           "icon": "wind",
           "tags": ["HTML", "CSS", "JavaScript"],
@@ -179,7 +181,7 @@
         "status": "published",
         "data": {
           "title": "Plumbing Template",
-          "description": "A clean and professional plumbing service website template featuring service showcases, emergency contact options, and customer testimonials for plumbing businesses.",
+          "description": "A clean and modern professional plumbing service website featuring service showcases, emergency contact options, and customer testimonials.",
           "link": "https://plumbing-template-henna.vercel.app/",
           "icon": "droplet",
           "tags": ["HTML", "CSS", "JavaScript"],

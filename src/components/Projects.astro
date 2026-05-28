@@ -29,20 +29,24 @@ const iconMap: Record<string, string> = {
 
 // Transform data into the format needed for display
 const projectsList = projectsData.map((project, index) => {
-	// Generate screenshot URL from the project URL using a free screenshot service
-	let screenshotUrl = "";
-	if (project.link) {
+	// Prefer the editor-uploaded thumbnail. If none is set, fall back to a
+	// live screenshot via Microlink (which always reflects the project URL's
+	// current state — handy for fresh sites, but it also captures popups
+	// and modals that appear on load).
+	let screenshotUrl = project.thumbnail || "";
+	if (!screenshotUrl && project.link) {
 		const encodedUrl = encodeURIComponent(project.link);
 		screenshotUrl = `https://api.microlink.io/?url=${encodedUrl}&screenshot=true&meta=false&embed=screenshot.url`;
 	}
-	
+
 	return {
 		title: project.title,
 		description: project.description,
-		icon: iconMap[project.icon] || "fa-solid fa-code",
+		icon: iconMap[project.icon ?? ''] || "fa-solid fa-code",
 		tags: project.tags,
 		project_url: project.link,
 		screenshot_url: screenshotUrl,
+		screenshot_alt: project.thumbnailAlt || `${project.title} screenshot`,
 		theme: getDeterministicTheme(project.title, index)
 	};
 });
@@ -79,7 +83,7 @@ const row2List = [...row2Base, ...row2Base, ...row2Base];
 							{project.screenshot_url ? (
 								<img
 									src={project.screenshot_url}
-									alt={`${project.title} screenshot`}
+									alt={project.screenshot_alt}
 									class="mockup-screenshot"
 									loading="lazy"
 								/>
@@ -131,7 +135,7 @@ const row2List = [...row2Base, ...row2Base, ...row2Base];
 							{project.screenshot_url ? (
 								<img
 									src={project.screenshot_url}
-									alt={`${project.title} screenshot`}
+									alt={project.screenshot_alt}
 									class="mockup-screenshot"
 									loading="lazy"
 								/>
@@ -574,7 +578,7 @@ const row2List = [...row2Base, ...row2Base, ...row2Base];
 	}
 
 	.overlay-content p {
-		font-family: 'EB Garamond', Georgia, serif;
+		font-family: 'Playfair Display', Georgia, serif;
 		font-size: 0.9rem;
 		line-height: 1.6;
 		margin: 0 0 0.4rem 0;

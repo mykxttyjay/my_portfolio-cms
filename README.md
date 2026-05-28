@@ -1,169 +1,124 @@
-# 🌟 Personal Portfolio - Astro + EmDash CMS
+# Personal Portfolio — Astro + EmDash CMS
 
-A modern, responsive personal portfolio website built with **Astro** featuring a vintage letter theme with elegant animations. Content is managed through **EmDash CMS** — a full-stack, Astro-native CMS with a visual admin panel, backed by SQLite.
+Personal portfolio with a vintage letter / postal theme. Built with Astro and managed through [EmDash CMS](https://emdashcms.com/), backed by SQLite. Deployed on [Render](https://render.com).
 
-## 📋 Project Overview
+## Sections
 
-This portfolio showcases skills, projects, and experience with a unique letter/postal theme, smooth animations, and interactive elements. All content is editable through the EmDash admin panel at `/_emdash/admin`, with local JSON files serving as a fallback.
+- **Home** — animated envelope reveal with name, role, and intro
+- **About Me** — profile card with editable photo and personal info
+- **Skills** — postage-stamp style cards split into core skills and tools
+- **Projects** — browser-mockup cards with editable thumbnails (live screenshot fallback via Microlink)
+- **Experience** — letter-styled work entries
+- **Contact** — email + resume link
 
-## ✨ Features
+## Tech Stack
 
-### Sections
-- **Home** - Animated envelope with letter reveal and wax seal
-- **About Me** - Combined profile card and letter format
-- **Skills** - Vintage postage stamp design with skill categories
-- **Projects** - Browser mockup cards with horizontal scrolling carousel
-- **Experience** - Letter-styled experience cards
-- **Contact** - Contact information section
+- **Astro 6** with `@astrojs/node` (standalone server)
+- **EmDash 0.14** for the CMS, with SQLite storage
+- **Fonts**: Playfair Display (Google Fonts) and Dancing Script (`@fontsource/dancing-script`)
+- **Icons**: Font Awesome 6.5
 
-### Design Highlights
-- Vintage letter and postal theme throughout
-- Smooth scroll animations and transitions
-- Interactive floating sparkles
-- Responsive design for all devices
-- Custom wavy borders and postal elements
-
-### CMS Highlights
-- Visual admin panel at `/_emdash/admin`
-- Live content collections — edits appear without rebuilding
-- SQLite database (local) with JSON fallback
-- All 5 content types editable from the admin UI
-
-## 🚀 Getting Started
-
-### Prerequisites
-- Node.js >= 22.12.0
-- npm
-
-### Installation
+## Getting Started
 
 ```bash
-# Install dependencies
 npm install
-
-# Initialize the database and seed content
-npm run bootstrap
-
-# Start development server
+npm run bootstrap      # init DB, apply seed, wire default About Me photo
 npm run dev
 ```
 
-The admin panel is available at `http://localhost:4321/_emdash/admin`.  
-The first visit will prompt you to create an admin account.
+- Site: `http://localhost:4321`
+- Admin: `http://localhost:4321/_emdash/admin` (first visit prompts you to create an account)
 
-```bash
-# Build for production
-npm run build
+## Content Management
 
-# Start production server (runs bootstrap first automatically)
-npm start
-```
-
-## 🎨 Tech Stack
-
-- **Framework**: Astro 6.3+
-- **Adapter**: @astrojs/node (standalone server)
-- **CMS**: EmDash 0.14+ (Astro-native, SQLite)
-- **Styling**: Custom CSS with vintage letter theme
-- **Icons**: Font Awesome 6.5.2
-- **Fonts**: Google Fonts (Poppins, Playfair Display, EB Garamond, Dancing Script)
-- **Deployment**: Any Node.js host (Vercel, Railway, Render, Code Capsules, etc.)
-
-## 📂 Project Structure
-
-```
-my_portfolio/
-├── src/
-│   ├── components/
-│   │   ├── About.astro
-│   │   ├── Contact.astro
-│   │   ├── Divider.astro
-│   │   ├── Experience.astro
-│   │   ├── Footer.astro
-│   │   ├── Home.astro
-│   │   ├── Loader.astro
-│   │   ├── Projects.astro
-│   │   ├── Ribbon.astro
-│   │   └── Skills.astro
-│   ├── lib/
-│   │   └── cms.ts         # Centralized CMS loader (EmDash → seed.json fallback)
-│   ├── live.config.ts     # EmDash live content collection config
-│   ├── pages/
-│   │   └── index.astro
-│   └── styles/
-│       └── global.css
-├── seed/
-│   └── seed.json          # EmDash schema + initial content
-├── scripts/
-│   └── bootstrap.mjs      # DB init + seed script
-├── public/
-│   ├── portfolio.png
-│   ├── profile.jpg
-│   └── resume.pdf
-├── emdash-env.d.ts        # EmDash TypeScript types
-├── astro.config.mjs
-├── package.json
-└── README.md
-```
-
-## 📝 Content Management
-
-Content is managed through the **EmDash admin panel**. After running `npm run bootstrap` and starting the dev server, go to:
-
-```
-http://localhost:4321/_emdash/admin
-```
+`seed/seed.json` is the single source of truth for both schema and default content. Editors work in `/_emdash/admin`; the live site reads from EmDash and falls back to the seed if the database is unreachable.
 
 ### Collections
 
-| Collection | Fields |
-|------------|--------|
-| Profile | First/last name, title, intro, about paragraphs, birthday, degree, location, email, specialization, skills description |
-| Projects | Title, description, URL, icon, tags, display order |
-| Skills | Name, category (core/tools), Font Awesome icon, display order |
-| Experience | Job title, company, date range, display order |
-| Contact | Email, phone, GitHub, LinkedIn, resume link |
+| Collection | Editable fields |
+|---|---|
+| Home | first name, last name, title, intro |
+| About Me | profile photo, photo alt, two about paragraphs, birthday, degree, location, email, specialization |
+| Skills | name, category (`core`/`tools`), Font Awesome icon class, display order |
+| Projects | title, description, **thumbnail** (image), **thumbnail alt**, project URL, icon, tags (JSON array), display order |
+| Experience | job title, company, date range, display order |
+| Contact | email, resume link |
 
-### How it works
+### Project thumbnails
 
-1. Run `npm run bootstrap` once to set up the database and seed initial content
-2. Start the dev server with `npm run dev`
-3. Open `/_emdash/admin` and log in
-4. Edit any collection — changes appear live without a rebuild
+Each project card uses the uploaded **Thumbnail Image** when present. If none is uploaded, it falls back to a live screenshot from `api.microlink.io`, which captures whatever the project URL currently shows (including modals or popups). Upload a static thumbnail in the admin to lock in a specific shot.
 
-The `seed/seed.json` file is the single source of truth for both schema and default content. If EmDash is unreachable, components automatically read the seeded values from it instead.
+### Adding or changing fields
 
-## 🌐 Deployment
+1. Edit `seed/seed.json` (collection schema + initial content).
+2. If components consume the field, update the matching type and mapper in `src/lib/cms.ts`.
+3. Apply the change to the local database:
+   ```bash
+   npx emdash seed --on-conflict update
+   ```
+4. Use the field in the relevant Astro component.
 
-The site now runs as a **Node.js server** (not static). It requires a persistent filesystem for the SQLite database and uploaded media.
+## Deployment (Render)
 
-### Node.js hosts (Railway, Render, Fly.io, etc.)
+This site runs as a Node web service with a Persistent Disk for the SQLite database and uploads.
 
+1. Create a Web Service from this repo.
+2. **Build Command**: `npm install && npm run build`
+3. **Start Command**: `npm start` (runs `npm run bootstrap` automatically)
+4. Add a Persistent Disk and set the mount path (e.g. `/var/data`).
+5. Set environment variables:
+   - `PERSISTENT_STORAGE_DIR` = the mount path
+   - `NODE_VERSION` = `22.12.0` (matches `.node-version`)
+
+`data.db` and `uploads/` will live inside `PERSISTENT_STORAGE_DIR` and survive every redeploy.
+
+After a schema change, run on the Render shell:
 ```bash
-npm install
-npm run build
-npm start          # runs bootstrap then starts the server
+npx emdash seed --on-conflict update
 ```
 
-Set `PERSISTENT_STORAGE_DIR` to a mounted volume path to keep the database and uploads across deploys.
+## Slack / Link Previews
 
-### Vercel / serverless
+The page emits Open Graph tags (`og:title`, `og:description`, `og:image`, `og:url`) so Slack renders a preview card. The image is `public/portfolio.png` served from `canonicalURL` (set in `src/pages/index.astro` — update this if your domain changes). Slack caches previews aggressively; append `?v=2` to the URL to force a refresh.
 
-Serverless platforms don't support persistent SQLite. For those, either:
-- Use a remote database adapter (Turso/libSQL, PostgreSQL) — see EmDash docs
-- Or keep the static JSON files as the sole content source and revert `output` to `"static"` in `astro.config.mjs`
+## Project Structure
 
-## 📝 Commands Reference
+```
+src/
+  components/         # Astro components for each section
+  lib/cms.ts          # EmDash loader with seed.json fallback + image helpers
+  live.config.ts      # EmDash live content collection config
+  pages/index.astro   # Main page + SEO/OG meta
+  styles/global.css
+seed/seed.json        # Schema + default content (single source of truth)
+scripts/bootstrap.mjs # DB init + seed + default photo wiring
+public/               # Static assets (profile.jpg, portfolio.png, resume.pdf)
+emdash-env.d.ts       # Auto-generated EmDash types
+```
+
+## Commands
 
 | Command | Action |
-|---------|--------|
+|---|---|
 | `npm install` | Install dependencies |
-| `npm run bootstrap` | Initialize DB and seed content |
-| `npm run dev` | Start dev server at `localhost:4321` |
-| `npm run build` | Build for production |
-| `npm start` | Start production server (auto-bootstraps) |
-| `npm run seed` | Re-apply seed file to the database |
+| `npm run bootstrap` | Init DB, apply seed, wire default photo |
+| `npm run dev` | Dev server at `localhost:4321` |
+| `npm run build` | Production build |
+| `npm start` | Start server (auto-bootstraps) |
+| `npm run seed` | Re-apply seed (skip-on-conflict) |
+| `npx emdash seed --on-conflict update` | Re-apply seed and overwrite existing rows |
 
-## 📄 License
+## License
 
-This project is open source and available for personal use.
+Open source for personal use.
+
+## Final Recommendation
+
+For a simple Astro portfolio, I recommend **Vercel**.
+
+For Astro + EmDash CMS, I recommend **Render**.
+
+Reason:
+- Static Astro = plain HTML/CSS/JS, so a serverless CDN like Vercel is fastest and free.
+- EmDash needs a writable filesystem for SQLite and media uploads, which serverless can't provide.
+- Render's Persistent Disk keeps `data.db` and `uploads/` across redeploys.

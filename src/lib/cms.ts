@@ -49,6 +49,8 @@ export interface AboutMe {
 export interface Project {
   title: string;
   description?: string;
+  thumbnail?: string;
+  thumbnailAlt?: string;
   link?: string;
   icon?: string;
   tags?: string[];
@@ -102,7 +104,7 @@ function mapHome(data: Record<string, unknown>): Home {
 const DEFAULT_PHOTO = '/profile.jpg';
 const LOCAL_MEDIA_BASE_URL = '/_emdash/api/media/file';
 
-function extractPhotoSrc(value: unknown): string {
+function extractImageSrc(value: unknown): string | null {
   if (typeof value === 'string' && value.length > 0) return value;
   if (value && typeof value === 'object') {
     const obj = value as Record<string, unknown>;
@@ -117,7 +119,27 @@ function extractPhotoSrc(value: unknown): string {
       undefined;
     if (storageKey) return `${LOCAL_MEDIA_BASE_URL}/${storageKey}`;
   }
-  return DEFAULT_PHOTO;
+  return null;
+}
+
+function extractPhotoSrc(value: unknown): string {
+  return extractImageSrc(value) ?? DEFAULT_PHOTO;
+}
+
+function mapProject(data: Record<string, unknown>): Project {
+  const thumbnailSrc = extractImageSrc(data.thumbnail);
+  return {
+    title: str(data.title),
+    description: typeof data.description === 'string' ? data.description : undefined,
+    thumbnail: thumbnailSrc ?? undefined,
+    thumbnailAlt:
+      typeof data.thumbnail_alt === 'string' ? data.thumbnail_alt : undefined,
+    link: typeof data.link === 'string' ? data.link : undefined,
+    icon: typeof data.icon === 'string' ? data.icon : undefined,
+    tags: Array.isArray(data.tags) ? (data.tags as string[]) : undefined,
+    display_order:
+      typeof data.display_order === 'number' ? data.display_order : undefined,
+  };
 }
 
 function mapAboutMe(data: Record<string, unknown>): AboutMe {
@@ -147,8 +169,8 @@ function mapContact(data: Record<string, unknown>): Contact {
 const seedHome: Home = mapHome(seedContent.home[0]?.data ?? {});
 const seedAboutMe: AboutMe = mapAboutMe(seedContent.about_me[0]?.data ?? {});
 const seedContact: Contact = mapContact(seedContent.contact[0]?.data ?? {});
-const seedProjects: Project[] = seedContent.projects.map(
-  (e) => e.data as unknown as Project
+const seedProjects: Project[] = seedContent.projects.map((e) =>
+  mapProject(e.data as Record<string, unknown>)
 );
 const seedSkills: Skill[] = seedContent.skills.map(
   (e) => e.data as unknown as Skill
@@ -187,7 +209,9 @@ export async function getProjects(): Promise<Project[]> {
   try {
     const { entries } = await getEmDashCollection('projects' as never);
     if (entries.length > 0) {
-      return sortByOrder(entries.map((e) => e.data as unknown as Project));
+      return sortByOrder(
+        entries.map((e) => mapProject(e.data as Record<string, unknown>))
+      );
     }
   } catch {
     /* fall through */
