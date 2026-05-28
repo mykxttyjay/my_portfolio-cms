@@ -49,13 +49,28 @@ function ensureDefaultProfilePhoto() {
 
     const current = parseJsonOrNull(row.photo);
 
-    // Treat the photo as missing if it references a media row that no longer exists.
+    // Treat the photo as missing if it references a media row that no
+    // longer exists, OR if the row exists but the actual file has been
+    // wiped from the uploads directory (common after a deploy that lost
+    // the persistent disk or had PERSISTENT_STORAGE_DIR misconfigured).
     let pointsAtMissingMedia = false;
     if (current && current.id && current.provider !== 'external') {
-      const exists = db
-        .prepare('SELECT 1 FROM media WHERE id = ?')
+      const mediaRow = db
+        .prepare('SELECT storage_key FROM media WHERE id = ?')
         .get(current.id);
-      pointsAtMissingMedia = !exists;
+      if (!mediaRow) {
+        pointsAtMissingMedia = true;
+      } else if (mediaRow.storage_key) {
+        const onDisk = path.join(uploadsDir, mediaRow.storage_key);
+        if (!existsSync(onDisk)) {
+          pointsAtMissingMedia = true;
+          // The DB row is now an orphan with no backing file. Clean it up.
+          db.prepare('DELETE FROM media WHERE id = ?').run(current.id);
+          console.log(
+            `[bootstrap] Removed orphan media row ${current.id} (file missing on disk)`
+          );
+        }
+      }
     }
 
     const referencesRemoved =
