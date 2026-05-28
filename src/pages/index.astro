@@ -42,7 +42,13 @@ const ogImageURL = `${canonicalURL}/portfolio.png`;
 		<link rel="icon" type="image/png" href="/portfolio.png" />
 		<link rel="apple-touch-icon" href="/portfolio.png" />
 		<meta name="theme-color" content="#8F1D21" />
-		
+
+		<!-- Slack link preview (Open Graph) -->
+		<meta property="og:title" content={siteTitle} />
+		<meta property="og:description" content={siteDescription} />
+		<meta property="og:image" content={ogImageURL} />
+		<meta property="og:url" content={canonicalURL} />
+
 		<!-- Fonts -->
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
