@@ -16,10 +16,10 @@ import { getHome, getAboutMe } from '../lib/cms';
 const homeData = await getHome();
 const aboutData = await getAboutMe();
 const siteTitle = `${homeData.firstName} ${homeData.lastName} - ${homeData.title} Portfolio`;
-const siteDescription = `${homeData.firstName} ${homeData.lastName} is a ${homeData.title} specializing in ${aboutData.specialization}. Explore my portfolio showcasing web development projects, design work, and technical expertise in creating user-centered digital experiences.`;
+const siteDescription = `${homeData.firstName} ${homeData.lastName} — Designer & Developer.`;
 const siteKeywords = 'web developer, graphic designer, portfolio, web development, UI/UX design, frontend developer, Lapu-Lapu City, Cebu, Philippines, IT graduate';
 const canonicalURL = 'https://angelmarie.onrender.com';
-const ogImageURL = `${canonicalURL}/portfolio.png`;
+const ogImageURL = `${canonicalURL}/profile.jpg`;
 ---
 
 <html lang="en">
