@@ -5,7 +5,7 @@ import emdash from 'emdash/astro';
 
 export default defineConfig({
   output: 'server',
-  adapter: node({ mode: 'standalone' }),
+  adapter: node({ mode: 'middleware' }),
 
   server: {
     host: true,
