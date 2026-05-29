@@ -1,6 +1,7 @@
 import { defineConfig } from 'astro/config';
 import node from '@astrojs/node';
 import react from '@astrojs/react';
+import tailwindcss from '@tailwindcss/vite';
 import path from 'node:path';
 import emdash, { local } from 'emdash/astro';
 import { sqlite } from 'emdash/db';
@@ -16,6 +17,10 @@ export default defineConfig({
   server: {
     host: true,
     port: Number(process.env.PORT) || 3000
+  },
+
+  vite: {
+    plugins: [tailwindcss()]
   },
 
   integrations: [

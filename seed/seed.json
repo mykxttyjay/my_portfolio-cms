@@ -67,7 +67,7 @@
         { "slug": "display_order", "label": "Display Order", "type": "number" }
       ]
     },
-    
+
     {
       "slug": "experience",
       "label": "Experience",
@@ -92,148 +92,11 @@
     }
   ],
   "content": {
-    "home": [
-      {
-        "id": "main",
-        "slug": "main",
-        "status": "published",
-        "data": {
-          "first_name": "Angel",
-          "last_name": "Marie Sabido",
-          "title": "Designer & Developer",
-          "intro": "Welcome to my portfolio! I'm excited to share my journey, projects, and passion for technology with you. Let's explore together what we can build together."
-        }
-      }
-    ],
-    "about_me": [
-      {
-        "id": "main",
-        "slug": "main",
-        "status": "published",
-        "data": {
-          "photo_alt": "Angel Marie Sabido",
-          "about_paragraph_1": "I am a passionate Junior Web Developer with a Bachelor of Science in Information Technology. My journey in tech started with a curiosity for how things work on the web, which blossomed into a passion for clean coding and sleek interface designs. I love bridging the gap between aesthetics and functionality.",
-          "about_paragraph_2": "My hands-on experience across different projects has taught me the importance of collaboration, attention to detail, and continuous learning in our ever-evolving tech landscape. Driven by curiosity and a strong desire to make a meaningful impact, I am ready to leverage my skills to support organizational goals and create innovative solutions. I am incredibly excited about the opportunities ahead and remain committed to bringing dedication and enthusiasm to every project I undertake with passion and purpose.",
-          "birthday": "September 30, 2003",
-          "degree": "BS in Information Technology",
-          "location": "Lapu-Lapu City, Cebu",
-          "email": "sabidoangel.uc@gmail.com",
-          "specialization": "Web Development & Graphic Design"
-        }
-      }
-    ],
-    "projects": [
-      {
-        "id": "patio-time-bar",
-        "slug": "patio-time-bar",
-        "status": "published",
-        "data": {
-          "title": "Patio Time Bar",
-          "description": "A vibrant patio bar website featuring outdoor dining experiences. Showcases menu, ambiance, and booking with a modern responsive design.",
-          "link": "https://phase-2-patiotimebar.vercel.app/",
-          "icon": "utensils",
-          "tags": ["Astro", "React", "Tailwind CSS"],
-          "display_order": 1
-        }
-      },
-      {
-        "id": "dealer-template",
-        "slug": "dealer-template",
-        "status": "published",
-        "data": {
-          "title": "Dealer Template",
-          "description": "A professional automotive dealer website with sleek design and full inventory showcase. Features vehicle listings, advanced search, and contact forms.",
-          "link": "https://phase-3-dealertemplate.vercel.app/",
-          "icon": "car",
-          "tags": ["JavaScript", "HTML", "CSS"],
-          "display_order": 2
-        }
-      },
-      {
-        "id": "electrician-template",
-        "slug": "electrician-template",
-        "status": "published",
-        "data": {
-          "title": "Electrician Template",
-          "description": "A modern electrician service website for electrical contractors. Highlights services, emergency contact, and certifications with a clean layout.",
-          "link": "https://electrician-templatev2.vercel.app/",
-          "icon": "bolt",
-          "tags": ["HTML", "CSS", "JavaScript"],
-          "display_order": 3
-        }
-      },
-      {
-        "id": "hvac-template",
-        "slug": "hvac-template",
-        "status": "published",
-        "data": {
-          "title": "HVAC Template",
-          "description": "A professional HVAC service website with modern design and responsive layout. Built for heating and cooling businesses with appointment booking.",
-          "link": "https://hvac-template-rbep.vercel.app/",
-          "icon": "wind",
-          "tags": ["HTML", "CSS", "JavaScript"],
-          "display_order": 4
-        }
-      },
-      {
-        "id": "plumbing-template",
-        "slug": "plumbing-template",
-        "status": "published",
-        "data": {
-          "title": "Plumbing Template",
-          "description": "A clean and modern professional plumbing service website featuring service showcases, emergency contact options, and customer testimonials.",
-          "link": "https://plumbing-template-henna.vercel.app/",
-          "icon": "droplet",
-          "tags": ["HTML", "CSS", "JavaScript"],
-          "display_order": 5
-        }
-      }
-    ],
-    "skills": [
-      { "id": "skill-web-development", "slug": "web-development", "status": "published", "data": { "name": "Web Development", "category": "core", "icon": "fa-solid fa-code", "display_order": 1 } },
-      { "id": "skill-web-design", "slug": "web-design", "status": "published", "data": { "name": "Web Design", "category": "core", "icon": "fa-solid fa-paintbrush", "display_order": 2 } },
-      { "id": "skill-ui-ux", "slug": "ui-ux-design", "status": "published", "data": { "name": "UI/UX Design", "category": "core", "icon": "fa-solid fa-pen-nib", "display_order": 3 } },
-      { "id": "skill-graphic-design", "slug": "graphic-design", "status": "published", "data": { "name": "Graphic Design", "category": "core", "icon": "fa-solid fa-palette", "display_order": 4 } },
-      { "id": "skill-qa", "slug": "quality-assurance", "status": "published", "data": { "name": "Quality Assurance", "category": "core", "icon": "fa-solid fa-check-circle", "display_order": 5 } },
-      { "id": "skill-php", "slug": "php", "status": "published", "data": { "name": "PHP", "category": "tools", "icon": "fa-brands fa-php", "display_order": 6 } },
-      { "id": "skill-astro", "slug": "astro", "status": "published", "data": { "name": "Astro", "category": "tools", "icon": "fa-solid fa-rocket", "display_order": 7 } },
-      { "id": "skill-tailwind", "slug": "tailwind-css", "status": "published", "data": { "name": "Tailwind CSS", "category": "tools", "icon": "fa-solid fa-wind", "display_order": 8 } },
-      { "id": "skill-java", "slug": "java", "status": "published", "data": { "name": "Java", "category": "tools", "icon": "fa-brands fa-java", "display_order": 9 } }
-    ],
-    "experience": [
-      {
-        "id": "exp-ncompass",
-        "slug": "ncompass-tv",
-        "status": "published",
-        "data": {
-          "title": "Web Development Internship",
-          "company": "N-Compass TV",
-          "date": "January 2026 - May 2026",
-          "display_order": 1
-        }
-      },
-      {
-        "id": "exp-accenture",
-        "slug": "accenture",
-        "status": "published",
-        "data": {
-          "title": "Academy Technology Salesforce",
-          "company": "Accenture",
-          "date": "February 2026 - April 2026",
-          "display_order": 2
-        }
-      }
-    ],
-    "contact": [
-      {
-        "id": "main",
-        "slug": "main",
-        "status": "published",
-        "data": {
-          "email": "sabidoangel.uc@gmail.com",
-          "resume_link": "/resume.pdf"
-        }
-      }
-    ]
+    "home": [],
+    "about_me": [],
+    "skills": [],
+    "projects": [],
+    "experience": [],
+    "contact": []
   }
 }

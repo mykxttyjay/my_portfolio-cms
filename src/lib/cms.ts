@@ -1,31 +1,18 @@
 /**
  * Centralized CMS loader for EmDash.
  *
- * Each helper queries EmDash and falls back to the seed file when EmDash
- * is unreachable (e.g. during a fresh build before the database is bootstrapped).
- * `seed/seed.json` is the single source of truth — both the schema and the
- * default content live there. EmDash uses snake_case field slugs, so the
- * loaders map them back to camelCase here.
+ * EmDash (the SQLite-backed CMS) is the single source of truth at runtime.
+ * `seed/seed.json` defines the schema only — its `content` arrays are empty
+ * by design. Real content lives in the database and is edited through the
+ * admin UI at `/_emdash/admin`.
+ *
+ * EmDash uses snake_case field slugs, so the loaders map them back to
+ * camelCase here. If a collection is empty (e.g. on a freshly bootstrapped
+ * install before the editor has added anything), the loader returns a
+ * neutral empty value so the page can still render.
  */
 
 import { getEmDashCollection } from 'emdash';
-import seed from '../../seed/seed.json';
-
-type SeedEntry<T = Record<string, unknown>> = {
-  id?: string;
-  slug?: string;
-  status?: string;
-  data: T;
-};
-
-const seedContent = seed.content as {
-  home: SeedEntry[];
-  about_me: SeedEntry[];
-  projects: SeedEntry[];
-  skills: SeedEntry[];
-  experience: SeedEntry[];
-  contact: SeedEntry[];
-};
 
 export interface Home {
   firstName: string;
@@ -166,18 +153,9 @@ function mapContact(data: Record<string, unknown>): Contact {
   };
 }
 
-const seedHome: Home = mapHome(seedContent.home[0]?.data ?? {});
-const seedAboutMe: AboutMe = mapAboutMe(seedContent.about_me[0]?.data ?? {});
-const seedContact: Contact = mapContact(seedContent.contact[0]?.data ?? {});
-const seedProjects: Project[] = seedContent.projects.map((e) =>
-  mapProject(e.data as Record<string, unknown>)
-);
-const seedSkills: Skill[] = seedContent.skills.map(
-  (e) => e.data as unknown as Skill
-);
-const seedExperience: Experience[] = seedContent.experience.map(
-  (e) => e.data as unknown as Experience
-);
+const EMPTY_HOME: Home = mapHome({});
+const EMPTY_ABOUT: AboutMe = mapAboutMe({});
+const EMPTY_CONTACT: Contact = mapContact({});
 
 export async function getHome(): Promise<Home> {
   try {
@@ -187,9 +165,9 @@ export async function getHome(): Promise<Home> {
     const entry = entries[0];
     if (entry?.data) return mapHome(entry.data as Record<string, unknown>);
   } catch {
-    /* fall through */
+    /* DB unreachable — fall through to empty defaults */
   }
-  return seedHome;
+  return EMPTY_HOME;
 }
 
 export async function getAboutMe(): Promise<AboutMe> {
@@ -200,47 +178,38 @@ export async function getAboutMe(): Promise<AboutMe> {
     const entry = entries[0];
     if (entry?.data) return mapAboutMe(entry.data as Record<string, unknown>);
   } catch {
-    /* fall through */
+    /* DB unreachable — fall through to empty defaults */
   }
-  return seedAboutMe;
+  return EMPTY_ABOUT;
 }
 
 export async function getProjects(): Promise<Project[]> {
   try {
     const { entries } = await getEmDashCollection('projects' as never);
-    if (entries.length > 0) {
-      return sortByOrder(
-        entries.map((e) => mapProject(e.data as Record<string, unknown>))
-      );
-    }
+    return sortByOrder(
+      entries.map((e) => mapProject(e.data as Record<string, unknown>))
+    );
   } catch {
-    /* fall through */
+    return [];
   }
-  return sortByOrder(seedProjects);
 }
 
 export async function getSkills(): Promise<Skill[]> {
   try {
     const { entries } = await getEmDashCollection('skills' as never);
-    if (entries.length > 0) {
-      return sortByOrder(entries.map((e) => e.data as unknown as Skill));
-    }
+    return sortByOrder(entries.map((e) => e.data as unknown as Skill));
   } catch {
-    /* fall through */
+    return [];
   }
-  return sortByOrder(seedSkills);
 }
 
 export async function getExperience(): Promise<Experience[]> {
   try {
     const { entries } = await getEmDashCollection('experience' as never);
-    if (entries.length > 0) {
-      return sortByOrder(entries.map((e) => e.data as unknown as Experience));
-    }
+    return sortByOrder(entries.map((e) => e.data as unknown as Experience));
   } catch {
-    /* fall through */
+    return [];
   }
-  return sortByOrder(seedExperience);
 }
 
 export async function getContact(): Promise<Contact> {
@@ -251,7 +220,7 @@ export async function getContact(): Promise<Contact> {
     const entry = entries[0];
     if (entry?.data) return mapContact(entry.data as Record<string, unknown>);
   } catch {
-    /* fall through */
+    /* DB unreachable — fall through to empty defaults */
   }
-  return seedContact;
+  return EMPTY_CONTACT;
 }
